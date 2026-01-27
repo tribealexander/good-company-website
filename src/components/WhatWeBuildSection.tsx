@@ -1,0 +1,109 @@
+"use client";
+
+import { useState } from "react";
+import ScrollReveal from "./ScrollReveal";
+import SectionHeading from "./SectionHeading";
+
+interface ServiceCardData {
+  id: number;
+  title: string;
+  description: string;
+  example: string;
+  impact: string;
+  supportingText: string;
+  color: string;
+}
+
+const services: ServiceCardData[] = [
+  {
+    id: 1,
+    title: "Work Automation",
+    description:
+      "The repetitive coordination, handoffs, and follow-ups that drain your team. We identify what should never touch a human and build systems to handle it.",
+    example: "Intake → triage → assignment → follow-ups, fully automated",
+    impact: "5-10 hours per person per week reclaimed",
+    supportingText:
+      "Eliminate the busywork that drains your team's time and energy. We identify repetitive work and build automated systems that handle it consistently and accurately.",
+    color: "#F5EDE5", // warm cream
+  },
+  {
+    id: 2,
+    title: "Real-Time Visibility",
+    description:
+      "Automated monitoring and reporting so you see what's happening before it becomes a crisis. Track service quality, client health, and operational performance without manual data pulls.",
+    example: "Automated ops dashboard with early warning alerts and trend analysis",
+    impact: "10+ hours/week saved on reporting",
+    supportingText:
+      "Stop managing blind. See what's actually happening in your business through automated reporting that tells you when to act, not after it's too late.",
+    color: "#E5EDF5", // cool blue-gray
+  },
+  {
+    id: 3,
+    title: "Evidence-Based Accountability",
+    description:
+      "Performance tracking that's built into workflows, not bolted on after. Know who's doing what, measure with real data, and coach based on evidence instead of gut feel.",
+    example: "QA scoring + escalation rules + coaching dashboard",
+    impact: "10-20% productivity improvement",
+    supportingText:
+      "Enable evidence-based management. Hold people accountable with clear, measurable data on performance tied directly to outcomes.",
+    color: "#E5F0E8", // soft sage
+  },
+];
+
+export default function WhatWeBuildSection() {
+  const [activeId, setActiveId] = useState<number | null>(null);
+
+  const backgroundColor = activeId
+    ? services.find((s) => s.id === activeId)?.color || "#FFFFFF"
+    : "#FFFFFF";
+
+  return (
+    <section
+      id="solutions"
+      className="py-12 transition-colors duration-400 ease-in-out lg:py-16"
+      style={{ backgroundColor }}
+    >
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        <ScrollReveal>
+          <SectionHeading className="mb-6">What We Build</SectionHeading>
+          <p className="mb-12 max-w-4xl text-xl text-text-light">
+            Most consultants hand you a system and hope people use it. We build
+            three types of intelligent systems that enforce their own adoption:
+          </p>
+        </ScrollReveal>
+
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((service, index) => (
+            <ScrollReveal key={service.id} delay={index * 100}>
+              <div
+                className={`flex h-full cursor-pointer flex-col rounded-xl border bg-white p-8 shadow-[0_2px_12px_rgba(0,0,0,0.04)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] ${
+                  activeId === service.id
+                    ? "border-primary shadow-[0_8px_24px_rgba(0,0,0,0.08)]"
+                    : "border-border hover:border-primary"
+                }`}
+                onMouseEnter={() => setActiveId(service.id)}
+                onMouseLeave={() => setActiveId(null)}
+                onClick={() => setActiveId(activeId === service.id ? null : service.id)}
+              >
+                <h3 className="mb-3 text-xl font-semibold text-dark">
+                  {service.title}
+                </h3>
+                <p className="mb-4 text-text-light">{service.description}</p>
+                <div className="mt-auto space-y-3 border-t border-border pt-4">
+                  <p className="font-mono text-sm text-text-light">
+                    <span className="font-semibold text-primary">Example:</span>{" "}
+                    {service.example}
+                  </p>
+                  <p className="font-mono text-sm">
+                    <span className="font-semibold text-gold">Impact:</span>{" "}
+                    {service.impact}
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
