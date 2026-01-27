@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Source_Sans_3, JetBrains_Mono } from "next/font/google";
+import { Inter, Source_Sans_3, JetBrains_Mono, Caveat } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -23,6 +23,13 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "600"],
 });
 
+const caveat = Caveat({
+  variable: "--font-caveat",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
   title: "Good Company - Automate. Organize. Build Accountability.",
   description:
@@ -42,6 +49,16 @@ export const metadata: Metadata = {
   },
 };
 
+// Console easter egg message
+const consoleMessage = `
+%c👋 Hey, you're poking around. We like that.
+
+Built with care in Peterborough, Ontario.
+Interested in how this was built? Let's chat.
+
+→ hello@goodcompany.ca
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -49,8 +66,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `console.log("${consoleMessage.replace(/\n/g, "\\n")}", "color: #006747; font-size: 14px; font-family: system-ui;");`,
+          }}
+        />
+      </head>
       <body
-        className={`${inter.variable} ${sourceSans.variable} ${jetbrainsMono.variable} font-sans antialiased`}
+        className={`${inter.variable} ${sourceSans.variable} ${jetbrainsMono.variable} ${caveat.variable} font-sans antialiased`}
       >
         {children}
       </body>

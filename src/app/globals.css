@@ -92,10 +92,14 @@ body {
   transform: translateY(0);
 }
 
-/* Custom selection color */
+/* Custom selection color - brand green */
 ::selection {
-  background: var(--color-primary);
-  color: white;
+  background: rgba(0, 103, 71, 0.2);
+  color: #006747;
+}
+::-moz-selection {
+  background: rgba(0, 103, 71, 0.2);
+  color: #006747;
 }
 
 /* Subtle hover lift animation for cards */
@@ -238,11 +242,28 @@ body {
   margin: 0 auto 16px;
 }
 
-/* Subtle noise texture for beige sections */
+/* Visible grain/noise texture for beige sections - heavy film grain effect */
 .bg-cream-textured {
   background-color: var(--color-cream);
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  background-blend-mode: overlay;
+  position: relative;
+}
+.bg-cream-textured::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Heavy film grain - lower baseFrequency = larger grain, higher opacity = more visible */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+.bg-cream-textured > * {
+  position: relative;
+  z-index: 2;
 }
 
 /* Header scroll shadow */
@@ -320,6 +341,76 @@ body {
   opacity: 1;
   transform: translateX(0);
 }
+
+/* Handwritten font styling */
+.font-handwritten {
+  font-family: var(--font-caveat), cursive;
+  font-size: 1.15em;
+  display: inline-block;
+  transform: rotate(-1deg);
+}
+
+/* Card breathe on hover */
+.card-breathe {
+  transition: transform 300ms ease-out;
+}
+.card-breathe:hover {
+  transform: scale(1.01);
+}
+
+/* Button press effect */
+.btn-press:active {
+  transform: scale(0.98);
+  transition: transform 100ms;
+}
+
+/* Logo wiggle animation */
+@keyframes logoWiggle {
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(-5deg); }
+  40% { transform: rotate(5deg); }
+  60% { transform: rotate(-3deg); }
+  80% { transform: rotate(3deg); }
+  100% { transform: rotate(0deg); }
+}
+.logo-wiggle {
+  animation: logoWiggle 500ms ease-in-out;
+}
+
+/* Pennant wave animation */
+@keyframes pennantWave {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(-5deg); }
+  75% { transform: rotate(3deg); }
+  100% { transform: rotate(0deg); }
+}
+.pennant-wave:hover {
+  animation: pennantWave 600ms ease-in-out;
+}
+
+/* Floating pill navbar styles removed - using inline nav pill now */
+
+/* Staggered checkmark animation */
+@keyframes checkmarkPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.checkmark-animate {
+  animation: checkmarkPop 400ms ease-out forwards;
+}
+.checkmark-delay-1 { animation-delay: 100ms; opacity: 0; }
+.checkmark-delay-2 { animation-delay: 200ms; opacity: 0; }
+.checkmark-delay-3 { animation-delay: 300ms; opacity: 0; }
 
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {

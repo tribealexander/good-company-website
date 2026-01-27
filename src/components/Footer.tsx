@@ -66,20 +66,20 @@ export default function Footer() {
           </div>
 
           {/* Column 3 - Contact */}
-          <div>
-            <div className="mb-4 flex items-center justify-center gap-3 md:justify-start">
+          <div className="flex flex-col items-center md:items-end">
+            <div className="mb-4 flex items-center gap-3">
               <Image
                 src="/images/logos/pennant.png"
                 alt=""
                 width={32}
                 height={32}
-                className="h-8 w-auto brightness-0 invert opacity-80"
+                className="pennant-wave h-8 w-auto brightness-0 invert opacity-80"
               />
               <h4 className="text-sm font-semibold uppercase tracking-wider text-white">
                 Get in Touch
               </h4>
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col items-center gap-2 md:items-end">
               <a
                 href="mailto:hello@goodcompany.ca"
                 className="text-sm text-[#A8D5C2] transition-colors duration-200 hover:text-gold"

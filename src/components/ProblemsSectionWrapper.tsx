@@ -49,7 +49,7 @@ export default function ProblemsSectionWrapper() {
         <ScrollReveal delay={300}>
           <div className="grid gap-8 md:grid-cols-2">
             {/* Reclaims Capacity */}
-            <div className="rounded-lg bg-[#F9F9F7] p-8">
+            <div className="card-breathe rounded-lg bg-[#F9F9F7] p-8">
               <div className="mb-3 flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
                   <svg
@@ -78,7 +78,7 @@ export default function ProblemsSectionWrapper() {
             </div>
 
             {/* Protects & Grows Revenue */}
-            <div className="rounded-lg bg-[#F9F9F7] p-8">
+            <div className="card-breathe rounded-lg bg-[#F9F9F7] p-8">
               <div className="mb-3 flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
                   <svg

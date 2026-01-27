@@ -71,8 +71,8 @@ Sections alternate between white and cream backgrounds:
   </div>
 </section>
 
-{/* Cream background */}
-<section className="bg-cream py-20 lg:py-28">
+{/* Cream background with film grain texture */}
+<section className="bg-cream-textured py-20 lg:py-28">
   <div className="mx-auto max-w-7xl px-6 lg:px-10">
     {/* content */}
   </div>
@@ -85,6 +85,28 @@ Defined in `/src/app/globals.css`:
 - `animate-fade-in-up` - Fade in and slide up
 - `animate-fade-in` - Simple fade in
 - `animation-delay-100` through `animation-delay-400` - Staggered delays
+- `checkmark-animate` with `checkmark-delay-1/2/3` - Staggered checkmark pop animation
+- `logo-wiggle` - Easter egg logo wiggle on triple-click
+- `pennant-wave` - Pennant flag wave on hover
+- `card-breathe` - Subtle scale on card hover
+- `btn-press` - Button press-down effect on click
+- `nav-link` - Navigation links with animated gold underline on hover
+- `hover-lift` - Card lift with shadow on hover
+
+### Film Grain Texture
+
+The site uses a visible film grain effect on cream-colored sections:
+
+```css
+.bg-cream-textured {
+  /* Heavy film grain overlay */
+  background-image: url("data:image/svg+xml,...");
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+}
+```
+
+Apply with `bg-cream-textured` class on sections for the textured beige background with film grain.
 
 ---
 
@@ -115,9 +137,13 @@ import { Header, Footer, Button, ServiceCard, ProblemSelector } from "@/componen
 ### Component Details
 
 #### Header (`Header.tsx`)
-- Sticky navigation with `backdrop-blur`
+- Fixed navigation that starts transparent, transitions to white bar on scroll
+- Smooth 500ms transition with subtle shadow and backdrop blur when scrolled
+- Compact height (h-16 / 64px)
 - Mobile hamburger menu (slides down)
-- Text logo fallback (see "Adding Logo" section below)
+- Nav links use `nav-link` class with animated gold underline on hover
+- Logo has easter egg: triple-click triggers wiggle animation
+- Logo turns green on hover
 
 #### Footer (`Footer.tsx`)
 - Simple centered footer with copyright
