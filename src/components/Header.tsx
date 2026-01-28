@@ -7,15 +7,23 @@ import Image from "next/image";
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [logoClickCount, setLogoClickCount] = useState(0);
   const [isWiggling, setIsWiggling] = useState(false);
   const [logoHovered, setLogoHovered] = useState(false);
   const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Mark as mounted after hydration
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
+    // Check initial scroll position
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -40,17 +48,28 @@ export default function Header() {
   };
 
   const navLinks = [
-    { href: "#how-we-work", label: "About" },
+    { href: "/about", label: "About" },
     { href: "/case-studies", label: "Case Studies" },
   ];
+
+  // Determine if we should show light (for dark hero) or dark (scrolled) styles
+  // Default to light styles for SSR to match the dark hero background
+  const showScrolledStyles = mounted && isScrolled;
+
+  // Logo filter - white for dark backgrounds, dark for light backgrounds
+  const logoFilter = showScrolledStyles
+    ? logoHovered
+      ? "brightness(0) saturate(100%) invert(24%) sepia(98%) saturate(1000%) hue-rotate(130deg) brightness(90%) contrast(101%)"
+      : "brightness(0) saturate(100%) invert(21%) sepia(6%) saturate(19%) hue-rotate(316deg) brightness(95%) contrast(89%)"
+    : "brightness(0) saturate(100%) invert(100%)";
 
   return (
     <header
       className="fixed left-0 right-0 top-0 z-40 transition-all duration-500 ease-out"
       style={{
-        backgroundColor: isScrolled ? "rgba(255, 255, 255, 0.97)" : "transparent",
-        boxShadow: isScrolled ? "0 1px 12px rgba(0, 0, 0, 0.04)" : "none",
-        backdropFilter: isScrolled ? "blur(8px)" : "none",
+        backgroundColor: showScrolledStyles ? "rgba(255, 255, 255, 0.97)" : "transparent",
+        boxShadow: showScrolledStyles ? "0 1px 12px rgba(0, 0, 0, 0.04)" : "none",
+        backdropFilter: showScrolledStyles ? "blur(8px)" : "none",
       }}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
@@ -71,11 +90,7 @@ export default function Header() {
               className={`h-8 w-auto transition-all duration-300 ${
                 isWiggling ? "logo-wiggle" : ""
               } ${logoHovered ? "scale-105" : "scale-100"}`}
-              style={{
-                filter: logoHovered
-                  ? "brightness(0) saturate(100%) invert(24%) sepia(98%) saturate(1000%) hue-rotate(130deg) brightness(90%) contrast(101%)"
-                  : "brightness(0) saturate(100%) invert(21%) sepia(6%) saturate(19%) hue-rotate(316deg) brightness(95%) contrast(89%)",
-              }}
+              style={{ filter: logoFilter }}
               priority
             />
           </Link>
@@ -86,17 +101,23 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="nav-link text-sm font-medium"
+                className={`text-sm font-medium ${
+                  showScrolledStyles ? "nav-link" : "nav-link-light"
+                }`}
               >
                 {link.label}
               </Link>
             ))}
             <Link
               href="#contact-form"
-              className="nav-link group inline-flex items-center text-sm font-medium"
+              className={`group inline-flex items-center text-sm font-medium ${
+                showScrolledStyles ? "nav-link" : "nav-link-light"
+              }`}
             >
               Book a Brainstorm
-              <span className="ml-1 inline-block transition-all duration-300 ease-out group-hover:ml-2 group-hover:text-primary">
+              <span className={`ml-1 inline-block transition-all duration-300 ease-out group-hover:ml-2 ${
+                showScrolledStyles ? "group-hover:text-primary" : "group-hover:text-white"
+              }`}>
                 →
               </span>
             </Link>
@@ -105,7 +126,9 @@ export default function Header() {
           {/* Mobile menu button */}
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-full p-2.5 text-text md:hidden"
+            className={`inline-flex items-center justify-center rounded-full p-2.5 transition-colors duration-300 md:hidden ${
+              showScrolledStyles ? "text-text" : "text-white"
+            }`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle navigation menu"

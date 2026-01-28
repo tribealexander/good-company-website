@@ -234,6 +234,32 @@ body {
   width: 100%;
 }
 
+/* Navigation link for dark backgrounds (hero) */
+.nav-link-light {
+  position: relative;
+  color: rgba(255, 255, 255, 0.9);
+  transition: color 250ms ease-out;
+}
+
+.nav-link-light::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-gold);
+  transition: width 250ms ease-out;
+}
+
+.nav-link-light:hover {
+  color: #ffffff;
+}
+
+.nav-link-light:hover::after {
+  width: 100%;
+}
+
 /* Section divider gradient */
 .section-divider {
   width: 60px;

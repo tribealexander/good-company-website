@@ -21,7 +21,7 @@ export default function SectionHeading({
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.disconnect(); // Only animate once
+          observer.disconnect();
         }
       },
       { threshold: 0.2 }
@@ -35,7 +35,10 @@ export default function SectionHeading({
   }, []);
 
   return (
-    <div ref={headingRef} className={`${centered ? "text-center" : ""} ${className}`}>
+    <div
+      ref={headingRef}
+      className={`${centered ? "text-center" : ""} ${className}`}
+    >
       <h2 className="text-3xl font-bold tracking-tight text-dark md:text-4xl lg:text-5xl">
         {children}
       </h2>

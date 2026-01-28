@@ -10,3 +10,7 @@ export { default as ScrollReveal, StaggerContainer } from "./ScrollReveal";
 export { default as FAQ } from "./FAQ";
 export { default as SectionHeading } from "./SectionHeading";
 export { default as WhatWeBuildSection } from "./WhatWeBuildSection";
+export { default as RoughAnnotation } from "./RoughAnnotation";
+export { default as HeroHeadline } from "./HeroHeadline";
+export { default as TrustIndicators } from "./TrustIndicators";
+export { default as InvestmentSection } from "./InvestmentSection";
