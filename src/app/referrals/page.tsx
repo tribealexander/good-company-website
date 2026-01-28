@@ -91,14 +91,11 @@ export default function ReferralsPage() {
         <section className="bg-[#E8E3DB] px-6 py-12 lg:px-10 lg:py-16">
           <div className="mx-auto max-w-[500px] text-center">
             <ScrollReveal>
-              <h2 className="mb-3 text-xl font-semibold text-[#1A1A1A] lg:text-2xl">
+              <h2 className="mb-2 text-xl font-semibold text-[#1A1A1A] lg:text-2xl">
                 That&apos;s it.
               </h2>
-              <p className="mb-6 text-sm text-[#666666] lg:text-base">
+              <p className="mb-8 text-sm text-[#666666] lg:text-base">
                 No minimum engagement. No specific industry. No paperwork unless you want it.
-              </p>
-              <p className="mb-4 text-sm text-[#4A4A4A]">
-                Have someone in mind?
               </p>
               <a
                 href="mailto:alex@goodcompany.ca?subject=Referral%20Introduction"
