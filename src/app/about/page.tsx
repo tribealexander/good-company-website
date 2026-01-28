@@ -62,7 +62,7 @@ export default function AboutPage() {
                 .
               </h1>
               <p className="mb-8 text-xl leading-relaxed text-text-light">
-                I build operational systems for growing businesses.
+                I build automation systems for growing businesses.
               </p>
 
               {/* Story - flows directly from subhead */}
