@@ -25,7 +25,7 @@ export default function Home() {
             {/* Pill Badge */}
             <div className="animate-fade-in-up animation-delay-100 mb-8">
               <span className="inline-block rounded-full border border-white/20 bg-white/15 px-5 py-2 text-sm font-medium text-white">
-                For $1M–$50M companies ready to scale
+                Ideal for $1M+ revenue companies
               </span>
             </div>
 
@@ -35,9 +35,8 @@ export default function Home() {
             {/* Subhead */}
             <p className="animate-fade-in-up animation-delay-300 mx-auto max-w-[700px] text-lg leading-relaxed text-[#A8D5C2] md:text-xl">
               Your team wastes hours on manual tasks, things slip through the
-              cracks because bandwidth is maxed, and you don&apos;t see problems
-              until they&apos;re already fires. We build systems that fix all
-              three—so you can scale without adding headcount.
+              cracks, and problems stay hidden until they&apos;re fires. We build
+              systems that fix all three—so you can scale without adding headcount.
             </p>
 
             {/* CTA Button */}

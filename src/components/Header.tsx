@@ -73,7 +73,7 @@ export default function Header() {
       }}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link
             href="/"

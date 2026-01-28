@@ -68,7 +68,7 @@ export default function ProblemsSectionWrapper() {
                 </svg>
               </div>
               <h3 className="text-base font-medium uppercase tracking-wider text-primary">
-                Reclaims Capacity
+                Saves Time
               </h3>
             </div>
 

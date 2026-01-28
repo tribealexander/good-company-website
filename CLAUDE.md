@@ -240,9 +240,9 @@ The homepage (`/src/app/page.tsx`) follows this section order:
 
 - **Background**: Deep green (`#004D36`)
 - **Padding**: Large vertical padding to fill viewport (`pt-32 pb-28` mobile, `pt-44 pb-40` desktop)
-- **Badge**: Semi-transparent white pill ("For $1M-$50M companies ready to scale")
+- **Badge**: Semi-transparent white pill ("Ideal for $1M+ revenue companies")
 - **Headline**: White text with gold rough-notation underline on "automate"
-- **Subhead**: Light green text (`#A8D5C2`)
+- **Subhead**: Light green text (`#A8D5C2`) - concise version
 - **CTA**: White button that turns gold on hover (`variant="hero"`)
 
 ### What We Build Section
@@ -263,7 +263,7 @@ Each card shows:
 Interactive split-screen layout with dynamic backgrounds:
 - **Intro**: "Every business is different, but these are the problems we see most often:"
 - **6 problems** that users can select, each with a different earth-tone background
-- **Value Framework**: Bold intro + two horizontal boxes showing "Reclaims Capacity" and "Protects & Grows Revenue"
+- **Value Framework**: Bold intro + two horizontal boxes showing "Saves Time" and "Protects & Grows Revenue"
 - Smooth 400ms transition between background colors
 
 ### From Build to Buy-In Section
@@ -394,6 +394,24 @@ RESEND_API_KEY=re_xxxxxxxx
 # Email address to receive form submissions
 CONTACT_EMAIL=hello@goodcompany.com
 ```
+
+---
+
+## Analytics
+
+The site uses Vercel Analytics and Speed Insights for tracking:
+
+```tsx
+// In layout.tsx
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
+// Inside <body>
+<Analytics />
+<SpeedInsights />
+```
+
+Analytics are automatically enabled when deployed to Vercel.
 
 ---
 
