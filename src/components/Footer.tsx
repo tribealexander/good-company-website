@@ -68,6 +68,12 @@ export default function Footer() {
               >
                 Acquisitions &amp; Partnerships
               </Link>
+              <Link
+                href="/referrals"
+                className="text-sm text-[#A8D5C2] transition-colors duration-200 hover:text-gold"
+              >
+                Referrals
+              </Link>
             </nav>
           </div>
 
