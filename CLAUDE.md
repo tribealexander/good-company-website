@@ -239,6 +239,7 @@ The homepage (`/src/app/page.tsx`) follows this section order:
 ### Hero Section
 
 - **Background**: Deep green (`#004D36`)
+- **Padding**: Large vertical padding to fill viewport (`pt-32 pb-28` mobile, `pt-44 pb-40` desktop)
 - **Badge**: Semi-transparent white pill ("For $1M-$50M companies ready to scale")
 - **Headline**: White text with gold rough-notation underline on "automate"
 - **Subhead**: Light green text (`#A8D5C2`)

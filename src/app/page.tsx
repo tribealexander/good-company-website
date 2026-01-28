@@ -20,7 +20,7 @@ export default function Home() {
       <FloatingCTA />
       <main>
         {/* Hero Section - Deep Green */}
-        <section className="bg-[#004D36] px-6 pb-20 pt-24 lg:px-10 lg:pb-20 lg:pt-32">
+        <section className="bg-[#004D36] px-6 pb-28 pt-32 lg:px-10 lg:pb-40 lg:pt-44">
           <div className="mx-auto max-w-4xl text-center">
             {/* Pill Badge */}
             <div className="animate-fade-in-up animation-delay-100 mb-8">
