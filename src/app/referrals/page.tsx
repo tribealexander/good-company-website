@@ -15,7 +15,7 @@ export default function ReferralsPage() {
               Referrals
             </p>
             <h1 className="mb-5 text-3xl font-bold text-white md:text-4xl lg:text-[42px] lg:leading-tight">
-              Know someone who could use my help?
+              Know someone who could use our help?
             </h1>
             <p className="text-base leading-[1.7] text-[#A8D5C2] lg:text-lg">
               If you introduce me to someone who becomes a client, I&apos;ll pay you{" "}
