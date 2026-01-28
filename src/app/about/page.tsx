@@ -74,7 +74,10 @@ export default function AboutPage() {
                   I like to think of myself as a co-founder on retainer. An advisor who isn&apos;t trying to sell you something you don&apos;t need. When I start working with someone, I mostly just ask questions. A lot of them. I don&apos;t show up with answers—I show up trying to understand what&apos;s actually broken, what matters, and what&apos;s going to get ignored if we build it.
                 </p>
                 <p>
-                  After years of doing this, a lot of the work comes down to the same things: automation, visibility, and accountability. The tools change, but the principles don&apos;t.
+                  After years of doing this, a lot of the work comes down to the same things: don&apos;t drop leads, deliver a great customer experience, and make more money than you spend. Simple to say, hard to do consistently.
+                </p>
+                <p>
+                  How I help is usually some combination of automation, visibility, and accountability—tech that handles the repetitive stuff, dashboards that show what&apos;s actually happening, and systems that make sure people follow through.
                 </p>
               </div>
 
