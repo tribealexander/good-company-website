@@ -150,7 +150,7 @@ export default function AboutPage() {
                   when something&apos;s stuck in my head.
                 </p>
                 <p>
-                  And if you&apos;re in Toronto, I host a dinner series for business owners and executives, feel free to{" "}
+                  And if you&apos;re in Toronto, I host a dinner series for business owners and execs, feel free to{" "}
                   <a href="#" className="text-primary hover:text-primary-light">
                     <RoughAnnotation
                       type="underline"
