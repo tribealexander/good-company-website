@@ -62,6 +62,12 @@ export default function Footer() {
               >
                 FAQ
               </Link>
+              <Link
+                href="/acquisitions"
+                className="text-sm text-[#A8D5C2] transition-colors duration-200 hover:text-gold"
+              >
+                Acquisitions &amp; Partnerships
+              </Link>
             </nav>
           </div>
 

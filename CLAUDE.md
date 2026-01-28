@@ -15,6 +15,7 @@ This is the marketing website for **Good Company**, a boutique operational effic
 **Key files**:
 - `/src/app/page.tsx` - Homepage (main landing page)
 - `/src/app/about/page.tsx` - About page with founder bio
+- `/src/app/acquisitions/page.tsx` - Acquisitions & Partnerships page
 - `/src/app/case-studies/page.tsx` - Case studies listing
 - `/src/app/api/contact/route.ts` - Contact form API
 - `/src/app/globals.css` - Global styles and Tailwind theme
@@ -294,6 +295,20 @@ Rough Notation placements:
 - Hero: Green underline on "Alex"
 - Origin Story: Light green highlight on "Technology is easy. Adoption is hard."
 - Beliefs: Green underlines on "enforce themselves", "beats planning", "if you use it"
+
+---
+
+## Acquisitions & Partnerships Page
+
+The Acquisitions page (`/src/app/acquisitions/page.tsx`) is a separate landing page for business acquisition/partnership inquiries. NOT linked in main nav - only in footer.
+
+Sections:
+1. **Hero** - Dark green, "Thinking About an Exit?"
+2. **The Pitch** - 3 cards: You Want Out, You Want Help, You Want a Partner
+3. **What I Look For** - Checklist of criteria (service businesses, $500K-$50M, etc.)
+4. **CTA** - "Interested?" with email link (different from main site CTA)
+
+Footer link: "Acquisitions & Partnerships" under Quick Links
 
 ---
 
