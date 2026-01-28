@@ -42,7 +42,7 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#E8E3DB]" />
           </div>
 
-          {/* Hero content + Origin Story (unified) */}
+          {/* Hero content + Story (unified) */}
           <div className="relative mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-32">
             <div className="max-w-xl">
               <p className="mb-4 text-sm font-medium uppercase tracking-wider text-[#6B6B6B]">
@@ -61,29 +61,20 @@ export default function AboutPage() {
                 </RoughAnnotation>
                 .
               </h1>
-              <p className="mb-10 text-xl leading-relaxed text-text-light">
-                I help founder-led service businesses build operational systems that actually get used.
+              <p className="mb-8 text-xl leading-relaxed text-text-light">
+                I build operational systems for growing businesses.
               </p>
 
-              {/* Origin Story - flows directly from subhead */}
+              {/* Story - flows directly from subhead */}
               <div className="space-y-6 text-lg leading-[1.8] text-text">
                 <p className="first-letter:float-left first-letter:mr-3 first-letter:text-6xl first-letter:font-bold first-letter:leading-none first-letter:text-primary">
-                  I&apos;ve operated and consulted for a range of businesses—events, e-commerce, agencies, field services. The industries varied, but the pattern was always the same: someone builds a system, everyone agrees it&apos;s great, and nobody uses it.
+                  I work with founders because they&apos;re the people I like to be around. People who take charge, figure things out, and don&apos;t wait for permission. That probably sounds like a platitude, but it&apos;s simpler than that—they&apos;re the people that energize me.
                 </p>
                 <p>
-                  The CRM sits empty. The dashboards go stale. The SOPs collect dust.
+                  I like to think of myself as a co-founder on retainer. An advisor who isn&apos;t trying to sell you something you don&apos;t need. When I start working with someone, I mostly just ask questions. A lot of them. I don&apos;t show up with answers—I show up trying to understand what&apos;s actually broken, what matters, and what&apos;s going to get ignored if we build it.
                 </p>
                 <p>
-                  <RoughAnnotation
-                    type="highlight"
-                    color="rgba(0, 103, 71, 0.15)"
-                    strokeWidth={2}
-                    animationDuration={600}
-                    showOnScroll={true}
-                  >
-                    Technology is easy. Adoption is hard.
-                  </RoughAnnotation>{" "}
-                  That&apos;s what I focus on now.
+                  After years of doing this, a lot of the work comes down to the same things: automation, visibility, and accountability. The tools change, but the principles don&apos;t.
                 </p>
               </div>
 
@@ -190,29 +181,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Section 4: Background */}
-        <section className="bg-white px-6 py-12 lg:px-10 lg:py-20">
-          <div className="mx-auto max-w-[680px]">
-            <ScrollReveal>
-              <h2 className="mb-6 text-3xl font-bold text-dark lg:text-4xl">
-                Where I&apos;ve Been
-              </h2>
-              <div className="space-y-6 text-lg leading-[1.8] text-text">
-                <p>
-                  I&apos;ve spent the last few years embedded with founder-led service businesses—MSPs, agencies, field service companies, anyone whose revenue is tied to people doing good work consistently. Before that, I was at a digital agency learning how software gets built, and before that I was automating my own business so I could avoid the parts I didn&apos;t like.
-                </p>
-                <p>
-                  The common thread across all of it: businesses where the founder is the bottleneck, there are too many moving parts, and balls keep getting dropped. Service delivery and customer experience are everything—but the systems to support them are usually a mess.
-                </p>
-                <p>
-                  What I bring from that: I&apos;ve seen what actually gets adopted and what sits unused. I know what breaks when companies try to scale, and I know what questions to ask before we build anything.
-                </p>
-              </div>
-            </ScrollReveal>
-          </div>
-        </section>
-
-        {/* Section 5: How I Think */}
+        {/* Section 4: How I Think */}
         <section className="bg-[#E8E3DB] px-6 py-12 lg:px-10 lg:py-20">
           <div className="mx-auto max-w-4xl">
             <ScrollReveal>

@@ -276,13 +276,12 @@ Explains why implementations stick:
 
 ## About Page
 
-The About page (`/src/app/about/page.tsx`) has 5 sections:
+The About page (`/src/app/about/page.tsx`) has 4 sections:
 
-1. **Hero + Origin Story** (unified) - Photo integration, "Hi, I'm Alex", subhead flows directly into condensed origin story with standalone closing statement
+1. **Hero + Story** (unified) - Photo integration, "Hi, I'm Alex", subhead "I build operational systems for growing businesses", flows into story about working with founders, ends with standalone closer
 2. **What I Believe** - 3 numbered cards with green underlines on key phrases
-3. **Background** - "Where I've Been" - single column prose
-4. **How I Think** - Newsletter cards (The Come Up, Five-Minute MBA, Personal Writing)
-5. **CTA** - Dark green section "Want to Work Together?"
+3. **How I Think** - Newsletter cards (The Come Up, Five-Minute MBA, Personal Writing)
+4. **CTA** - Dark green section "Want to Work Together?"
 
 Photo is integrated into the hero with:
 - Desktop: Right half of screen with gradient overlay fading into beige
@@ -291,7 +290,6 @@ Photo is integrated into the hero with:
 
 Rough Notation placements:
 - Hero: Green underline on "Alex"
-- Origin Story: Light green highlight on "Technology is easy. Adoption is hard."
 - Standalone statement: Green underline on "directly"
 - Beliefs: Green underlines on "enforce themselves", "beats planning", "if you use it"
 
