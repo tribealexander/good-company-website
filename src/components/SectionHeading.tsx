@@ -43,7 +43,7 @@ export default function SectionHeading({
         {children}
       </h2>
       <div
-        className={`mt-4 h-1 rounded-sm bg-gradient-to-r from-primary to-gold transition-all duration-600 ease-out ${
+        className={`mt-4 h-1 rounded-full bg-primary transition-all duration-600 ease-out ${
           centered ? "mx-auto" : ""
         } ${isVisible ? "w-20 opacity-100" : "w-0 opacity-0"}`}
       />

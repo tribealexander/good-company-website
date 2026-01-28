@@ -150,7 +150,7 @@ src/components/
 ├── HeroHeadline.tsx        # Hero headline with Rough Notation underline
 ├── RoughAnnotation.tsx     # Wrapper for rough-notation library
 ├── ScrollReveal.tsx        # Scroll-triggered fade-in animations
-├── SectionHeading.tsx      # Consistent section headings
+├── SectionHeading.tsx      # Consistent section headings with green underline
 ├── FloatingCTA.tsx         # Floating CTA button
 ├── InvestmentSection.tsx   # Pricing section
 ├── FAQ.tsx                 # FAQ accordion

@@ -31,7 +31,7 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Good Company - Automate. Organize. Build Accountability.",
+  title: "Good Company - Organize. Automate. Scale.",
   description:
     "Boutique operational efficiency and automation consultancy for $1M-$50M businesses. We build systems that remove busywork, create visibility, and enable evidence-based management.",
   keywords: [
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     "workflow automation",
   ],
   openGraph: {
-    title: "Good Company - Automate. Organize. Build Accountability.",
+    title: "Good Company - Organize. Automate. Scale.",
     description:
       "We build systems that remove busywork, create visibility, and enable evidence-based management.",
     type: "website",
