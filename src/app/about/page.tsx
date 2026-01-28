@@ -148,16 +148,18 @@ export default function AboutPage() {
                 </p>
                 <p>
                   And if you&apos;re in Toronto, I host dinner series for business owners, feel free to{" "}
-                  <RoughAnnotation
-                    type="underline"
-                    color="#006747"
-                    strokeWidth={2}
-                    animationDuration={600}
-                    showOnScroll={true}
-                    delay={600}
-                  >
-                    reach out
-                  </RoughAnnotation>{" "}
+                  <a href="#" className="text-primary hover:text-primary-light">
+                    <RoughAnnotation
+                      type="underline"
+                      color="#006747"
+                      strokeWidth={2}
+                      animationDuration={600}
+                      showOnScroll={true}
+                      delay={600}
+                    >
+                      reach out
+                    </RoughAnnotation>
+                  </a>{" "}
                   if you want an invite.
                 </p>
               </div>
@@ -165,24 +167,16 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Section 3: Transition to CTA */}
-        <section className="bg-white px-6 pb-8 lg:px-10 lg:pb-12">
-          <div className="mx-auto max-w-[680px] text-center">
-            <ScrollReveal>
-              <h3 className="mb-4 text-2xl font-medium text-dark">
-                Got a Project in Mind?
-              </h3>
-              <p className="text-lg text-text-light">
-                I&apos;m always happy to talk through what you&apos;re working on, even if it goes nowhere. No pressure, no pitch.
-              </p>
-            </ScrollReveal>
-          </div>
-        </section>
-
-        {/* Section 4: CTA */}
-        <section className="bg-[#004D36] px-6 py-12 lg:px-10 lg:py-16">
+        {/* Section 3: CTA */}
+        <section className="bg-[#004D36] px-6 py-16 lg:px-10 lg:py-20">
           <div className="mx-auto max-w-[600px] text-center">
             <ScrollReveal>
+              <h3 className="mb-4 text-2xl font-medium text-white">
+                Got a Project in Mind?
+              </h3>
+              <p className="mb-8 text-lg text-[#A8D5C2]">
+                I&apos;m always happy to talk through what you&apos;re working on, even if it goes nowhere. No pressure, no pitch.
+              </p>
               <a
                 href="/#contact-form"
                 className="inline-block rounded-full bg-white px-8 py-4 font-semibold text-[#004D36] transition-all duration-300 hover:bg-gold hover:text-white hover:shadow-[0_4px_20px_rgba(184,134,11,0.3)]"
