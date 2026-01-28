@@ -18,17 +18,17 @@ export default function CaseStudies() {
 
   // CMS-ready case study data structure
   interface CaseStudy {
-    slug: string;
+    id: string;
     department: string;
     title: string;
     description: string;
     results: string[];
-    image?: string;
+    videoUrl?: string;
   }
 
   const caseStudies: CaseStudy[] = [
     {
-      slug: "customer-success-workflow-automation",
+      id: "customer-success-workflow-automation",
       department: "Operations",
       title: "Customer Success Workflow Automation",
       description:
@@ -40,7 +40,7 @@ export default function CaseStudies() {
       ],
     },
     {
-      slug: "real-time-project-profitability-dashboard",
+      id: "real-time-project-profitability-dashboard",
       department: "Finance",
       title: "Real-Time Project Profitability Dashboard",
       description:
@@ -52,7 +52,7 @@ export default function CaseStudies() {
       ],
     },
     {
-      slug: "knowledge-capture-system",
+      id: "knowledge-capture-system",
       department: "Operations",
       title: "Knowledge Capture System",
       description:
@@ -108,49 +108,41 @@ export default function CaseStudies() {
             </div>
 
             {/* Case Study Cards Grid */}
-            <div className="grid gap-8 md:grid-cols-2">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {filteredCaseStudies.map((study) => (
                 <article
-                  key={study.slug}
-                  className="group rounded-xl border border-[#E0DBD3] bg-white p-8 shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)]"
+                  key={study.id}
+                  className="group rounded-xl border border-[#E0DBD3] bg-white p-5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)]"
                 >
-                  {/* Thumbnail Placeholder */}
-                  <div className="mb-6 aspect-video rounded-lg bg-[#F5F5F5]" />
+                  {/* Video Thumbnail Placeholder */}
+                  <div className="mb-4 aspect-video rounded-lg bg-[#F5F5F5]" />
 
                   {/* Department Tag */}
-                  <span className="mb-3 inline-block rounded-full bg-[#E8EDE9] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#006747]">
+                  <span className="mb-2 inline-block rounded-full bg-[#E8EDE9] px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-[#006747]">
                     {study.department}
                   </span>
 
                   {/* Title */}
-                  <h3 className="mb-3 text-xl font-semibold text-[#1A1A1A] lg:text-2xl">
+                  <h3 className="mb-2 text-lg font-semibold text-[#1A1A1A]">
                     {study.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="mb-5 text-base text-[#4A4A4A]">
+                  <p className="mb-4 text-sm text-[#4A4A4A]">
                     {study.description}
                   </p>
 
                   {/* Results */}
-                  <div className="mb-6 space-y-2">
+                  <div className="space-y-1.5">
                     {study.results.map((result, i) => (
                       <div key={i} className="flex items-start gap-2">
-                        <span className="mt-0.5 text-primary">✓</span>
-                        <span className="text-sm text-[#4A4A4A] lg:text-base">
+                        <span className="mt-0.5 text-sm text-primary">✓</span>
+                        <span className="text-sm text-[#4A4A4A]">
                           {result}
                         </span>
                       </div>
                     ))}
                   </div>
-
-                  {/* Link */}
-                  <a
-                    href={`/case-studies/${study.slug}`}
-                    className="font-medium text-[#006747] transition-all duration-200 hover:underline"
-                  >
-                    Read Case Study →
-                  </a>
                 </article>
               ))}
             </div>
