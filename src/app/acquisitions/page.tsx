@@ -99,7 +99,7 @@ export default function AcquisitionsPage() {
                     </svg>
                   </div>
                   <p className="text-lg text-text">
-                    Service businesses, $500K–$50M revenue
+                    Service businesses, $500K–$10M revenue
                   </p>
                 </li>
                 <li className="flex items-start gap-4">
