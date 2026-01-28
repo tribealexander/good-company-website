@@ -291,7 +291,7 @@ Photo is integrated into the hero with:
 Rough Notation placements:
 - Hero: Green underline on "Alex"
 - Standalone statement: Green underline on "directly"
-- Go Deeper: Green underline on "The Come Up", gold underline on "Five-Minute MBA", green underline on "essay"
+- Go Deeper: Green underline on "The Come Up", gold underline on "Five-Minute MBA", green underline on "essay", green underline on "reach out"
 
 ---
 

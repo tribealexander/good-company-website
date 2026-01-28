@@ -131,7 +131,7 @@ export default function AboutPage() {
                       Five-Minute MBA
                     </RoughAnnotation>
                   </a>{" "}
-                  is business book summaries for people who don&apos;t have time. I also write the occasional{" "}
+                  is a weekly series of business book summaries for people who want the insights, but don&apos;t have the time. I also write the occasional{" "}
                   <a href="#" className="text-primary hover:text-primary-light">
                     <RoughAnnotation
                       type="underline"
@@ -147,7 +147,18 @@ export default function AboutPage() {
                   when something&apos;s stuck in my head.
                 </p>
                 <p>
-                  And if you&apos;re in Toronto, I host dinner series for business owners—reach out if you want an invite.
+                  And if you&apos;re in Toronto, I host dinner series for business owners, feel free to{" "}
+                  <RoughAnnotation
+                    type="underline"
+                    color="#006747"
+                    strokeWidth={2}
+                    animationDuration={600}
+                    showOnScroll={true}
+                    delay={600}
+                  >
+                    reach out
+                  </RoughAnnotation>{" "}
+                  if you want an invite.
                 </p>
               </div>
             </ScrollReveal>
