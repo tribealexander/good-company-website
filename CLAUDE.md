@@ -277,14 +277,13 @@ Explains why implementations stick:
 
 ## About Page
 
-The About page (`/src/app/about/page.tsx`) has 6 sections:
+The About page (`/src/app/about/page.tsx`) has 5 sections:
 
-1. **Hero** - Photo integration with grayscale filter, "Hi, I'm Alex" with green underline
-2. **Origin Story** - "Why I Started Good Company" with drop cap and highlight on "Technology is easy. Adoption is hard."
-3. **What I Believe** - 3 numbered cards with green underlines on key phrases
-4. **Background** - "Where I've Been" - single column prose (no quick facts sidebar)
-5. **How I Think** - Newsletter cards (The Come Up, Five-Minute MBA, Personal Writing)
-6. **CTA** - Dark green section "Want to Work Together?"
+1. **Hero + Origin Story** (merged) - Photo integration, "Hi, I'm Alex", flows into origin story on same beige background
+2. **What I Believe** - 3 numbered cards with green underlines on key phrases
+3. **Background** - "Where I've Been" - single column prose
+4. **How I Think** - Newsletter cards (The Come Up, Five-Minute MBA, Personal Writing)
+5. **CTA** - Dark green section "Want to Work Together?"
 
 Photo is integrated into the hero with:
 - Desktop: Right half of screen with gradient overlay fading into beige

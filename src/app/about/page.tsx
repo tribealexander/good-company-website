@@ -15,8 +15,8 @@ export default function AboutPage() {
     <>
       <Header />
       <main>
-        {/* Section 1: Hero */}
-        <section className="relative min-h-[80vh] overflow-hidden bg-[#E8E3DB]">
+        {/* Section 1: Hero + Origin Story (merged) */}
+        <section className="relative overflow-hidden bg-[#E8E3DB]">
           {/* Background photo - right side on desktop */}
           <div className="absolute inset-y-0 right-0 hidden w-1/2 lg:block">
             <Image
@@ -42,7 +42,7 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#E8E3DB]" />
           </div>
 
-          {/* Text content */}
+          {/* Hero content */}
           <div className="relative mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-32">
             <div className="max-w-xl">
               <p className="mb-4 text-sm font-medium uppercase tracking-wider text-[#6B6B6B]">
@@ -66,20 +66,11 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-        </section>
 
-        {/* Section 2: Origin Story */}
-        <section className="bg-white px-6 py-12 lg:px-10 lg:py-20">
-          <div className="mx-auto max-w-[680px]">
+          {/* Origin Story - flows from hero */}
+          <div className="relative mx-auto max-w-[680px] px-6 pb-16 lg:px-10 lg:pb-24">
             <ScrollReveal>
-              {/* Decorative quote mark */}
-              <div className="relative">
-                <span className="absolute -top-8 left-1/2 -translate-x-1/2 font-serif text-[120px] leading-none text-primary/15">
-                  &ldquo;
-                </span>
-              </div>
-
-              <h2 className="mb-10 pt-16 text-center text-3xl font-bold text-dark lg:text-4xl">
+              <h2 className="mb-8 text-center text-2xl font-medium text-[#4A4A4A]">
                 Why I Started Good Company
               </h2>
 
