@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -12,6 +13,10 @@ export default function Header() {
   const [isWiggling, setIsWiggling] = useState(false);
   const [logoHovered, setLogoHovered] = useState(false);
   const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const pathname = usePathname();
+
+  // Determine if this is the homepage (has dark hero) or an inner page (beige background)
+  const isHomepage = pathname === "/";
 
   // Mark as mounted after hydration
   useEffect(() => {
@@ -52,12 +57,14 @@ export default function Header() {
     { href: "/case-studies", label: "Case Studies" },
   ];
 
-  // Determine if we should show light (for dark hero) or dark (scrolled) styles
-  // Default to light styles for SSR to match the dark hero background
-  const showScrolledStyles = mounted && isScrolled;
+  // Determine styling mode:
+  // - Homepage + not scrolled = light text on dark hero
+  // - Homepage + scrolled = dark text on white background
+  // - Inner pages = always dark text (beige background)
+  const showDarkStyles = mounted && (isScrolled || !isHomepage);
 
   // Logo filter - white for dark backgrounds, dark for light backgrounds
-  const logoFilter = showScrolledStyles
+  const logoFilter = showDarkStyles
     ? logoHovered
       ? "brightness(0) saturate(100%) invert(24%) sepia(98%) saturate(1000%) hue-rotate(130deg) brightness(90%) contrast(101%)"
       : "brightness(0) saturate(100%) invert(21%) sepia(6%) saturate(19%) hue-rotate(316deg) brightness(95%) contrast(89%)"
@@ -67,9 +74,9 @@ export default function Header() {
     <header
       className="fixed left-0 right-0 top-0 z-40 transition-all duration-500 ease-out"
       style={{
-        backgroundColor: showScrolledStyles ? "rgba(255, 255, 255, 0.97)" : "transparent",
-        boxShadow: showScrolledStyles ? "0 1px 12px rgba(0, 0, 0, 0.04)" : "none",
-        backdropFilter: showScrolledStyles ? "blur(8px)" : "none",
+        backgroundColor: showDarkStyles ? "rgba(255, 255, 255, 0.97)" : "transparent",
+        boxShadow: showDarkStyles ? "0 1px 12px rgba(0, 0, 0, 0.04)" : "none",
+        backdropFilter: showDarkStyles ? "blur(8px)" : "none",
       }}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
@@ -102,32 +109,38 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 className={`text-sm font-medium ${
-                  showScrolledStyles ? "nav-link" : "nav-link-light"
+                  showDarkStyles ? "nav-link" : "nav-link-light"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="#contact-form"
-              className={`group inline-flex items-center text-sm font-medium ${
-                showScrolledStyles ? "nav-link" : "nav-link-light"
-              }`}
-            >
-              Book a Brainstorm
-              <span className={`ml-1 inline-block transition-all duration-300 ease-out group-hover:ml-2 ${
-                showScrolledStyles ? "group-hover:text-primary" : "group-hover:text-white"
-              }`}>
-                →
-              </span>
-            </Link>
+            {/* CTA Button - different styling for inner pages */}
+            {showDarkStyles ? (
+              <Link
+                href="/#contact-form"
+                className="rounded-full bg-[#004D36] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-gold hover:shadow-[0_4px_12px_rgba(184,134,11,0.3)]"
+              >
+                Book a Brainstorm →
+              </Link>
+            ) : (
+              <Link
+                href="#contact-form"
+                className="group inline-flex items-center text-sm font-medium nav-link-light"
+              >
+                Book a Brainstorm
+                <span className="ml-1 inline-block transition-all duration-300 ease-out group-hover:ml-2 group-hover:text-white">
+                  →
+                </span>
+              </Link>
+            )}
           </nav>
 
           {/* Mobile menu button */}
           <button
             type="button"
             className={`inline-flex items-center justify-center rounded-full p-2.5 transition-colors duration-300 md:hidden ${
-              showScrolledStyles ? "text-text" : "text-white"
+              showDarkStyles ? "text-text" : "text-white"
             }`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
@@ -182,7 +195,7 @@ export default function Header() {
               ))}
               {/* Mobile CTA */}
               <Link
-                href="#contact-form"
+                href="/#contact-form"
                 className="btn-press mt-2 block rounded-full bg-primary px-6 py-3 text-center text-base font-semibold text-white transition-all duration-200 hover:bg-[#2D8659]"
                 onClick={() => setMobileMenuOpen(false)}
               >
