@@ -12,7 +12,7 @@ export default function AcquisitionsPage() {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="bg-[#004D36] px-6 pb-20 pt-32 lg:px-10 lg:pb-28 lg:pt-40">
+        <section className="bg-[#004D36] px-6 pb-16 pt-32 lg:px-10 lg:pb-20 lg:pt-40">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-6 text-4xl font-bold text-white md:text-5xl lg:text-[56px] lg:leading-tight">
               Thinking About an Exit?
@@ -24,7 +24,7 @@ export default function AcquisitionsPage() {
         </section>
 
         {/* The Pitch - 3 Paths */}
-        <section className="bg-white px-6 py-16 lg:px-10 lg:py-24">
+        <section className="bg-white px-6 py-12 lg:px-10 lg:py-16">
           <div className="mx-auto max-w-5xl">
             <ScrollReveal>
               <h2 className="mb-12 text-center text-3xl font-bold text-dark lg:text-4xl">
