@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Header, Footer } from "@/components";
 
 export default function CaseStudies() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [visibleCount, setVisibleCount] = useState(6);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [selectedStudy, setSelectedStudy] = useState<CaseStudy | null>(null);
 
   // Department filters
   const departments = [
@@ -178,12 +180,37 @@ export default function CaseStudies() {
     setVisibleCount(6);
   };
 
+  // Open lightbox
+  const openLightbox = (study: CaseStudy) => {
+    setSelectedStudy(study);
+    setLightboxOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  // Close lightbox
+  const closeLightbox = useCallback(() => {
+    setLightboxOpen(false);
+    setSelectedStudy(null);
+    document.body.style.overflow = "unset";
+  }, []);
+
+  // Handle escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && lightboxOpen) {
+        closeLightbox();
+      }
+    };
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [lightboxOpen, closeLightbox]);
+
   return (
     <>
       <Header />
       <main>
         {/* Hero */}
-        <section className="bg-cream pb-8 pt-28 lg:pb-10 lg:pt-32">
+        <section className="bg-cream pb-6 pt-28 lg:pt-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             <h1 className="mb-2 text-4xl font-bold tracking-tight text-dark md:text-5xl">
               Case Studies
@@ -197,8 +224,8 @@ export default function CaseStudies() {
         {/* Filters + Case Studies Grid */}
         <section className="bg-cream pb-16 pt-6 lg:pb-20">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            {/* Department Filters */}
-            <div className="mb-8 flex flex-wrap gap-2">
+            {/* Department Filters - Left aligned, tight spacing */}
+            <div className="mb-6 flex flex-wrap gap-2">
               {departments.map((department) => (
                 <button
                   key={department}
@@ -214,20 +241,26 @@ export default function CaseStudies() {
               ))}
             </div>
 
-            {/* Case Study Cards Grid */}
-            <div className="grid gap-6 md:grid-cols-2">
+            {/* Case Study Cards Grid - No borders, editorial look */}
+            <div className="grid gap-x-8 gap-y-12 md:grid-cols-2">
               {visibleCaseStudies.map((study) => (
                 <article
                   key={study.id}
-                  className="group rounded-xl border border-[#E0DBD3] bg-white p-6 shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)]"
+                  className="group"
                 >
                   {/* Video Thumbnail with Play Button */}
-                  <div className="relative mb-5 aspect-video cursor-pointer overflow-hidden rounded-lg bg-[#3D3D3D] transition-all duration-200 group-hover:shadow-md">
-                    {/* Play Button */}
+                  <div
+                    onClick={() => openLightbox(study)}
+                    className="relative mb-4 aspect-video cursor-pointer overflow-hidden rounded-2xl bg-[#3D3D3D] transition-all duration-300 group-hover:scale-[1.02]"
+                  >
+                    {/* Subtle gradient overlay for depth */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+
+                    {/* Play Button - Smaller, more subtle */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 transition-transform duration-200 group-hover:scale-110">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/80 opacity-80 transition-all duration-300 group-hover:opacity-100 group-hover:scale-110">
                         <svg
-                          className="ml-1 h-5 w-5 text-[#3D3D3D]"
+                          className="ml-0.5 h-4 w-4 text-[#3D3D3D]"
                           fill="currentColor"
                           viewBox="0 0 24 24"
                         >
@@ -235,8 +268,6 @@ export default function CaseStudies() {
                         </svg>
                       </div>
                     </div>
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-black/0 transition-all duration-200 group-hover:bg-black/10" />
                   </div>
 
                   {/* Department Tag */}
@@ -245,21 +276,21 @@ export default function CaseStudies() {
                   </span>
 
                   {/* Title */}
-                  <h3 className="mb-2 text-lg font-semibold text-[#1A1A1A]">
+                  <h3 className="mb-2 text-xl font-semibold text-[#1A1A1A]">
                     {study.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="mb-4 text-sm text-[#4A4A4A]">
+                  <p className="mb-3 text-[15px] leading-relaxed text-[#666666]">
                     {study.description}
                   </p>
 
                   {/* Results */}
-                  <div className="space-y-1.5">
+                  <div className="space-y-1">
                     {study.results.map((result, i) => (
                       <div key={i} className="flex items-start gap-2">
-                        <span className="mt-0.5 text-sm text-primary">✓</span>
-                        <span className="text-sm text-[#4A4A4A]">
+                        <span className="mt-0.5 text-sm text-[#006747]">✓</span>
+                        <span className="text-sm text-[#666666]">
                           {result}
                         </span>
                       </div>
@@ -280,10 +311,10 @@ export default function CaseStudies() {
 
             {/* Load More Button */}
             {hasMore && (
-              <div className="mt-10 text-center">
+              <div className="mt-12 text-center">
                 <button
                   onClick={() => setVisibleCount((prev) => prev + 6)}
-                  className="rounded-full border border-[#E0DBD3] bg-white px-8 py-3 text-sm font-medium text-[#3D3D3D] transition-all duration-200 hover:bg-[#E8EDE9]"
+                  className="rounded-lg border border-[#E0DBD3] bg-transparent px-8 py-3 text-sm font-medium text-[#3D3D3D] transition-all duration-200 hover:bg-[#E8EDE9]"
                 >
                   Load More
                 </button>
@@ -311,6 +342,72 @@ export default function CaseStudies() {
         </section>
       </main>
       <Footer />
+
+      {/* Video Lightbox Modal */}
+      {lightboxOpen && selectedStudy && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 transition-opacity duration-200"
+          onClick={closeLightbox}
+        >
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/85" />
+
+          {/* Modal Content */}
+          <div
+            className="relative z-10 w-full max-w-[900px] animate-scale-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={closeLightbox}
+              className="absolute -right-2 -top-12 flex h-8 w-8 items-center justify-center text-white transition-opacity hover:opacity-70"
+              aria-label="Close lightbox"
+            >
+              <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Video Container */}
+            <div className="aspect-video overflow-hidden rounded-xl bg-[#1A1A1A]">
+              {selectedStudy.videoUrl ? (
+                <iframe
+                  src={selectedStudy.videoUrl}
+                  className="h-full w-full"
+                  allow="autoplay; fullscreen"
+                  allowFullScreen
+                />
+              ) : (
+                <div className="flex h-full w-full flex-col items-center justify-center text-white/60">
+                  <svg className="mb-3 h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
+                  </svg>
+                  <p className="text-lg">Video coming soon</p>
+                  <p className="mt-1 text-sm text-white/40">{selectedStudy.title}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Lightbox animation styles */}
+      <style jsx>{`
+        @keyframes scale-in {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        .animate-scale-in {
+          animation: scale-in 0.2s ease-out forwards;
+        }
+      `}</style>
     </>
   );
 }
