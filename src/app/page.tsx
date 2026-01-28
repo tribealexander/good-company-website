@@ -22,13 +22,6 @@ export default function Home() {
         {/* Hero Section - Deep Green */}
         <section className="bg-[#004D36] px-6 pb-28 pt-32 lg:px-10 lg:pb-40 lg:pt-44">
           <div className="mx-auto max-w-4xl text-center">
-            {/* Pill Badge */}
-            <div className="animate-fade-in-up animation-delay-100 mb-8">
-              <span className="inline-block rounded-full border border-white/20 bg-white/15 px-5 py-2 text-sm font-medium text-white">
-                Ideal for $1M+ revenue companies
-              </span>
-            </div>
-
             {/* Headline with Rough Notation */}
             <HeroHeadline />
 
