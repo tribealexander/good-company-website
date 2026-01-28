@@ -42,7 +42,7 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#E8E3DB]" />
           </div>
 
-          {/* Hero content */}
+          {/* Hero content + Origin Story (unified) */}
           <div className="relative mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-32">
             <div className="max-w-xl">
               <p className="mb-4 text-sm font-medium uppercase tracking-wider text-[#6B6B6B]">
@@ -61,28 +61,19 @@ export default function AboutPage() {
                 </RoughAnnotation>
                 .
               </h1>
-              <p className="text-xl leading-relaxed text-text-light">
+              <p className="mb-10 text-xl leading-relaxed text-text-light">
                 I help founder-led service businesses build operational systems that actually get used.
               </p>
-            </div>
-          </div>
 
-          {/* Origin Story - flows from hero */}
-          <div className="relative mx-auto max-w-[680px] px-6 pb-16 lg:px-10 lg:pb-24">
-            <ScrollReveal>
-              <h2 className="mb-8 text-center text-2xl font-medium text-[#4A4A4A]">
-                Why I Started Good Company
-              </h2>
-
+              {/* Origin Story - flows directly from subhead */}
               <div className="space-y-6 text-lg leading-[1.8] text-text">
                 <p className="first-letter:float-left first-letter:mr-3 first-letter:text-6xl first-letter:font-bold first-letter:leading-none first-letter:text-primary">
-                  Before consulting, I ran a DJ and events business. I automated everything—invoices, follow-ups, booking confirmations—because I wanted to stay in the studio, not answer emails. I learned that if you control the customer experience proactively, you stop being reactive. If you&apos;re always delivering information before someone thinks to ask, they never need to chase you.
+                  I&apos;ve operated and consulted for a range of businesses—events, e-commerce, agencies, field services. The industries varied, but the pattern was always the same: someone builds a system, everyone agrees it&apos;s great, and nobody uses it.
                 </p>
                 <p>
-                  COVID wiped that out overnight. I sold hand sanitizer for a while, then joined a digital agency where I learned software and got restless working for someone else. Eventually I started consulting—taking whatever came through the door. Strategy projects, CRM implementations, sales coaching. All over the place.
+                  The CRM sits empty. The dashboards go stale. The SOPs collect dust.
                 </p>
                 <p>
-                  Then I noticed a pattern: I&apos;d build something, the client would love it, and nobody would use it. The CRM sat empty. The dashboards went stale. I looked like an idiot—but the problem wasn&apos;t the system. It was that no one had asked: what happens if people don&apos;t use it? That&apos;s when everything clicked.{" "}
                   <RoughAnnotation
                     type="highlight"
                     color="rgba(0, 103, 71, 0.15)"
@@ -92,10 +83,26 @@ export default function AboutPage() {
                   >
                     Technology is easy. Adoption is hard.
                   </RoughAnnotation>{" "}
-                  Now I don&apos;t build anything without solving for that first.
+                  That&apos;s what I focus on now.
                 </p>
               </div>
-            </ScrollReveal>
+
+              {/* Standalone statement */}
+              <p className="mt-10 text-lg font-medium text-dark">
+                I work{" "}
+                <RoughAnnotation
+                  type="underline"
+                  color="#006747"
+                  strokeWidth={2}
+                  animationDuration={600}
+                  showOnScroll={true}
+                  delay={300}
+                >
+                  directly
+                </RoughAnnotation>{" "}
+                with every client. No handoffs, no juniors.
+              </p>
+            </div>
           </div>
         </section>
 
