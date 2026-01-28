@@ -278,17 +278,22 @@ Explains why implementations stick:
 
 The About page (`/src/app/about/page.tsx`) has 6 sections:
 
-1. **Hero** - Photo integration with grayscale filter, gradient overlay
-2. **Origin Story** - Personal narrative
-3. **What I Believe** - Core principles
-4. **Background** - Professional history with icons
-5. **How I Think** - Approach and methodology
-6. **CTA** - Final call to action
+1. **Hero** - Photo integration with grayscale filter, "Hi, I'm Alex" with green underline
+2. **Origin Story** - "Why I Started Good Company" with drop cap and highlight on "Technology is easy. Adoption is hard."
+3. **What I Believe** - 3 numbered cards with green underlines on key phrases
+4. **Background** - "Where I've Been" - single column prose (no quick facts sidebar)
+5. **How I Think** - Newsletter cards (The Come Up, Five-Minute MBA, Personal Writing)
+6. **CTA** - Dark green section "Want to Work Together?"
 
 Photo is integrated into the hero with:
 - Desktop: Right half of screen with gradient overlay fading into beige
 - Mobile: Top half with gradient fading down
 - Grayscale filter (85%) with slight contrast/brightness adjustments
+
+Rough Notation placements:
+- Hero: Green underline on "Alex"
+- Origin Story: Light green highlight on "Technology is easy. Adoption is hard."
+- Beliefs: Green underlines on "enforce themselves", "beats planning", "if you use it"
 
 ---
 

@@ -9,7 +9,6 @@ import {
 } from "@/components";
 import RoughAnnotation from "@/components/RoughAnnotation";
 import Image from "next/image";
-import { Briefcase, Building, Clock, MapPin } from "lucide-react";
 
 export default function AboutPage() {
   return (
@@ -63,7 +62,7 @@ export default function AboutPage() {
                 .
               </h1>
               <p className="text-xl leading-relaxed text-text-light">
-                [Placeholder for one sentence about what you do and who you help]
+                I help founder-led service businesses build operational systems that actually get used.
               </p>
             </div>
           </div>
@@ -86,10 +85,13 @@ export default function AboutPage() {
 
               <div className="space-y-6 text-lg leading-[1.8] text-text">
                 <p className="first-letter:float-left first-letter:mr-3 first-letter:text-6xl first-letter:font-bold first-letter:leading-none first-letter:text-primary">
-                  [Placeholder: What you were doing before. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.]
+                  Before consulting, I ran a DJ and events business. I automated everything—invoices, follow-ups, booking confirmations—because I wanted to stay in the studio, not answer emails. I learned that if you control the customer experience proactively, you stop being reactive. If you&apos;re always delivering information before someone thinks to ask, they never need to chase you.
                 </p>
                 <p>
-                  [Placeholder: The frustration or realization.{" "}
+                  COVID wiped that out overnight. I sold hand sanitizer for a while, then joined a digital agency where I learned software and got restless working for someone else. Eventually I started consulting—taking whatever came through the door. Strategy projects, CRM implementations, sales coaching. All over the place.
+                </p>
+                <p>
+                  Then I noticed a pattern: I&apos;d build something, the client would love it, and nobody would use it. The CRM sat empty. The dashboards went stale. I looked like an idiot—but the problem wasn&apos;t the system. It was that no one had asked: what happens if people don&apos;t use it? That&apos;s when everything clicked.{" "}
                   <RoughAnnotation
                     type="highlight"
                     color="rgba(0, 103, 71, 0.15)"
@@ -97,12 +99,9 @@ export default function AboutPage() {
                     animationDuration={600}
                     showOnScroll={true}
                   >
-                    This key phrase will be highlighted
+                    Technology is easy. Adoption is hard.
                   </RoughAnnotation>{" "}
-                  when you scroll to it. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.]
-                </p>
-                <p>
-                  [Placeholder: Why this matters to you. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.]
+                  Now I don&apos;t build anything without solving for that first.
                 </p>
               </div>
             </ScrollReveal>
@@ -124,6 +123,7 @@ export default function AboutPage() {
                 <div className="rounded-lg border-l-4 border-l-primary bg-white p-8 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
                   <span className="text-5xl font-bold text-dark/20">01</span>
                   <h3 className="mt-4 text-xl font-semibold text-dark">
+                    Systems don&apos;t{" "}
                     <RoughAnnotation
                       type="underline"
                       color="#006747"
@@ -131,12 +131,12 @@ export default function AboutPage() {
                       animationDuration={600}
                       showOnScroll={true}
                     >
-                      [Placeholder
-                    </RoughAnnotation>{" "}
-                    belief statement]
+                      enforce themselves
+                    </RoughAnnotation>
+                    .
                   </h3>
                   <p className="mt-3 text-text-light">
-                    [Placeholder 1-2 sentences explaining this belief and why it matters.]
+                    Most implementations fail because there&apos;s no consequence for non-compliance. I won&apos;t build a system without agreeing upfront on what happens if people don&apos;t use it.
                   </p>
                 </div>
               </ScrollReveal>
@@ -146,6 +146,7 @@ export default function AboutPage() {
                 <div className="rounded-lg border-l-4 border-l-primary bg-white p-8 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
                   <span className="text-5xl font-bold text-dark/20">02</span>
                   <h3 className="mt-4 text-xl font-semibold text-dark">
+                    Iteration{" "}
                     <RoughAnnotation
                       type="underline"
                       color="#006747"
@@ -154,12 +155,12 @@ export default function AboutPage() {
                       showOnScroll={true}
                       delay={200}
                     >
-                      [Placeholder
-                    </RoughAnnotation>{" "}
-                    belief statement]
+                      beats planning
+                    </RoughAnnotation>
+                    .
                   </h3>
                   <p className="mt-3 text-text-light">
-                    [Placeholder 1-2 sentences explaining this belief and why it matters.]
+                    We can test ideas faster than ever. I&apos;d rather build something in a week and learn from it than spend a month on a PowerPoint that never ships.
                   </p>
                 </div>
               </ScrollReveal>
@@ -169,6 +170,7 @@ export default function AboutPage() {
                 <div className="rounded-lg border-l-4 border-l-primary bg-white p-8 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
                   <span className="text-5xl font-bold text-dark/20">03</span>
                   <h3 className="mt-4 text-xl font-semibold text-dark">
+                    Data only matters{" "}
                     <RoughAnnotation
                       type="underline"
                       color="#006747"
@@ -177,12 +179,12 @@ export default function AboutPage() {
                       showOnScroll={true}
                       delay={400}
                     >
-                      [Placeholder
-                    </RoughAnnotation>{" "}
-                    belief statement]
+                      if you use it
+                    </RoughAnnotation>
+                    .
                   </h3>
                   <p className="mt-3 text-text-light">
-                    [Placeholder 1-2 sentences explaining this belief and why it matters.]
+                    Small companies can now get the visibility that used to require middle management—if the data is in one place and actually gets looked at.
                   </p>
                 </div>
               </ScrollReveal>
@@ -192,89 +194,23 @@ export default function AboutPage() {
 
         {/* Section 4: Background */}
         <section className="bg-white px-6 py-12 lg:px-10 lg:py-20">
-          <div className="mx-auto max-w-[1000px]">
-            <div className="flex flex-col gap-12 lg:flex-row lg:gap-16">
-              {/* Left column - prose */}
-              <div className="w-full lg:w-3/5">
-                <ScrollReveal>
-                  <h2 className="mb-6 text-3xl font-bold text-dark lg:text-4xl">
-                    Where I&apos;ve Been
-                  </h2>
-                  <div className="space-y-4 text-lg leading-relaxed text-text">
-                    <p>
-                      [Placeholder: First paragraph about experience. Not a resume, just context about the journey and what shaped your perspective on operations and systems.]
-                    </p>
-                    <p>
-                      [Placeholder: Second paragraph about specific experiences or roles that inform how you approach problems today.]
-                    </p>
-                    <p>
-                      [Placeholder: Third paragraph about what you learned and why it matters for the clients you serve now.]
-                    </p>
-                  </div>
-                </ScrollReveal>
+          <div className="mx-auto max-w-[680px]">
+            <ScrollReveal>
+              <h2 className="mb-6 text-3xl font-bold text-dark lg:text-4xl">
+                Where I&apos;ve Been
+              </h2>
+              <div className="space-y-6 text-lg leading-[1.8] text-text">
+                <p>
+                  I&apos;ve spent the last few years embedded with founder-led service businesses—MSPs, agencies, field service companies, anyone whose revenue is tied to people doing good work consistently. Before that, I was at a digital agency learning how software gets built, and before that I was automating my own business so I could avoid the parts I didn&apos;t like.
+                </p>
+                <p>
+                  The common thread across all of it: businesses where the founder is the bottleneck, there are too many moving parts, and balls keep getting dropped. Service delivery and customer experience are everything—but the systems to support them are usually a mess.
+                </p>
+                <p>
+                  What I bring from that: I&apos;ve seen what actually gets adopted and what sits unused. I know what breaks when companies try to scale, and I know what questions to ask before we build anything.
+                </p>
               </div>
-
-              {/* Right column - quick facts */}
-              <div className="w-full lg:w-2/5">
-                <ScrollReveal delay={100}>
-                  <div className="rounded-xl border border-[#E0DBD3] bg-[#FAFAF9] p-6 lg:p-8">
-                    <div className="space-y-6">
-                      {/* Industries */}
-                      <div className="flex items-start gap-4">
-                        <Briefcase className="mt-1 h-5 w-5 shrink-0 text-primary" />
-                        <div>
-                          <p className="text-xs font-medium uppercase tracking-wider text-[#6B6B6B]">
-                            Industries
-                          </p>
-                          <p className="mt-1 text-base text-dark">
-                            [Placeholder: e.g., MSPs, agencies, service businesses]
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Company Size */}
-                      <div className="flex items-start gap-4">
-                        <Building className="mt-1 h-5 w-5 shrink-0 text-primary" />
-                        <div>
-                          <p className="text-xs font-medium uppercase tracking-wider text-[#6B6B6B]">
-                            Company Size
-                          </p>
-                          <p className="mt-1 text-base text-dark">
-                            [Placeholder: e.g., $1M–$50M businesses]
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Experience */}
-                      <div className="flex items-start gap-4">
-                        <Clock className="mt-1 h-5 w-5 shrink-0 text-primary" />
-                        <div>
-                          <p className="text-xs font-medium uppercase tracking-wider text-[#6B6B6B]">
-                            Experience
-                          </p>
-                          <p className="mt-1 text-base text-dark">
-                            [Placeholder: e.g., X years in operations]
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Location */}
-                      <div className="flex items-start gap-4">
-                        <MapPin className="mt-1 h-5 w-5 shrink-0 text-primary" />
-                        <div>
-                          <p className="text-xs font-medium uppercase tracking-wider text-[#6B6B6B]">
-                            Location
-                          </p>
-                          <p className="mt-1 text-base text-dark">
-                            Toronto, Ontario
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              </div>
-            </div>
+            </ScrollReveal>
           </div>
         </section>
 

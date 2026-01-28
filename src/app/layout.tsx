@@ -55,7 +55,7 @@ export const metadata: Metadata = {
 const consoleMessage = `
 %c👋 Hey, you're poking around. We like that.
 
-Built with care in Peterborough, Ontario.
+Built with care in Toronto, Ontario.
 Interested in how this was built? Let's chat.
 
 → hello@goodcompany.ca
