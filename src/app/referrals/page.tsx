@@ -9,25 +9,27 @@ export default function ReferralsPage() {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="bg-[#E8E3DB] px-6 pb-10 pt-28 lg:px-10 lg:pb-12 lg:pt-36">
+        <section className="bg-[#004D36] px-6 pb-12 pt-28 lg:px-10 lg:pb-16 lg:pt-36">
           <div className="mx-auto max-w-[600px] text-center">
-            <p className="mb-3 text-xs font-medium uppercase tracking-wider text-[#6B6B6B]">
+            <p className="mb-3 text-xs font-medium uppercase tracking-wider text-[#A8D5C2]">
               Referrals
             </p>
-            <h1 className="mb-5 text-3xl font-bold text-[#1A1A1A] md:text-4xl lg:text-[42px] lg:leading-tight">
+            <h1 className="mb-5 text-3xl font-bold text-white md:text-4xl lg:text-[42px] lg:leading-tight">
               Know someone who could use my help?
             </h1>
-            <p className="text-base leading-[1.7] text-[#4A4A4A] lg:text-lg">
+            <p className="text-base leading-[1.7] text-[#A8D5C2] lg:text-lg">
               If you introduce me to someone who becomes a client, I&apos;ll pay you{" "}
-              <RoughAnnotation
-                type="underline"
-                color="#B8860B"
-                strokeWidth={2}
-                animationDuration={600}
-                showOnScroll={true}
-              >
-                10%
-              </RoughAnnotation>{" "}
+              <span className="text-white">
+                <RoughAnnotation
+                  type="underline"
+                  color="#B8860B"
+                  strokeWidth={2}
+                  animationDuration={600}
+                  showOnScroll={true}
+                >
+                  10%
+                </RoughAnnotation>
+              </span>{" "}
               of everything they pay me. Not just the first project—every invoice, for as long as they&apos;re a client.
             </p>
           </div>
