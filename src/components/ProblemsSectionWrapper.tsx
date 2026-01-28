@@ -29,8 +29,8 @@ export default function ProblemsSectionWrapper() {
         <ScrollReveal>
           <SectionHeading className="mb-5">The Problems We Solve</SectionHeading>
           <p className="mb-8 text-xl text-text-light">
-            Everything we do uses intelligent systems to help you make more
-            money and solve problems. That looks like:
+            Every business is different, but these are the problems we see most
+            often:
           </p>
         </ScrollReveal>
 
@@ -41,7 +41,7 @@ export default function ProblemsSectionWrapper() {
 
         {/* Value Framework */}
         <ScrollReveal delay={200}>
-          <p className="mb-6 mt-10 text-center text-lg text-text-light">
+          <p className="mb-6 mt-10 text-center text-lg font-semibold text-text">
             These are just a few examples. Ultimately, every system we build
             delivers one of two business outcomes:
           </p>

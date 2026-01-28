@@ -124,11 +124,9 @@ export default function Home() {
 
               {/* Conclusion */}
               <ScrollReveal>
-                <div className="rounded-2xl border-2 border-primary bg-white p-8 text-center lg:p-10">
-                  <p className="text-2xl font-semibold leading-relaxed text-primary lg:text-3xl">
-                    That&apos;s why our work sticks.
-                  </p>
-                </div>
+                <p className="mt-10 text-center text-lg font-medium text-dark">
+                  That&apos;s why our work sticks.
+                </p>
               </ScrollReveal>
             </div>
           </div>

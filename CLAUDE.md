@@ -261,9 +261,16 @@ Each card shows:
 ### Problems We Solve Section
 
 Interactive split-screen layout with dynamic backgrounds:
-- **Value Framework**: Two horizontal boxes showing "Reclaims Capacity" and "Protects & Grows Revenue"
+- **Intro**: "Every business is different, but these are the problems we see most often:"
 - **6 problems** that users can select, each with a different earth-tone background
+- **Value Framework**: Bold intro + two horizontal boxes showing "Reclaims Capacity" and "Protects & Grows Revenue"
 - Smooth 400ms transition between background colors
+
+### From Build to Buy-In Section
+
+Explains why implementations stick:
+- 3 pillars: Less to Adopt, Problems Surface Fast, Built-In Accountability
+- Closing statement: "That's why our work sticks." (simple centered text, no box)
 
 ---
 
