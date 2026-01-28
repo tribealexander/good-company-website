@@ -97,22 +97,17 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Section 3: What I Believe */}
-        <section className="bg-[#E8E3DB] px-6 py-12 lg:px-10 lg:py-20">
-          <div className="mx-auto max-w-[800px]">
+        {/* Section 2: If You Want to Go Deeper */}
+        <section className="bg-white px-6 py-16 lg:px-10 lg:py-20">
+          <div className="mx-auto max-w-[680px]">
             <ScrollReveal>
-              <h2 className="mb-12 text-center text-3xl font-bold text-dark lg:text-4xl">
-                What I Believe
+              <h2 className="mb-8 text-3xl font-bold text-dark lg:text-4xl">
+                If You Want to Go Deeper
               </h2>
-            </ScrollReveal>
-
-            <div className="space-y-6">
-              {/* Belief Card 1 */}
-              <ScrollReveal delay={0}>
-                <div className="rounded-lg border-l-4 border-l-primary bg-white p-8 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-                  <span className="text-5xl font-bold text-dark/20">01</span>
-                  <h3 className="mt-4 text-xl font-semibold text-dark">
-                    Systems don&apos;t{" "}
+              <div className="space-y-6 text-lg leading-[1.8] text-text">
+                <p>
+                  I write a lot.{" "}
+                  <a href="#" className="text-primary hover:text-primary-light">
                     <RoughAnnotation
                       type="underline"
                       color="#006747"
@@ -120,46 +115,24 @@ export default function AboutPage() {
                       animationDuration={600}
                       showOnScroll={true}
                     >
-                      enforce themselves
+                      The Come Up
                     </RoughAnnotation>
-                    .
-                  </h3>
-                  <p className="mt-3 text-text-light">
-                    Most implementations fail because there&apos;s no consequence for non-compliance. I won&apos;t build a system without agreeing upfront on what happens if people don&apos;t use it.
-                  </p>
-                </div>
-              </ScrollReveal>
-
-              {/* Belief Card 2 */}
-              <ScrollReveal delay={100}>
-                <div className="rounded-lg border-l-4 border-l-primary bg-white p-8 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-                  <span className="text-5xl font-bold text-dark/20">02</span>
-                  <h3 className="mt-4 text-xl font-semibold text-dark">
-                    Iteration{" "}
+                  </a>{" "}
+                  is where I interview entrepreneurs about the wins, the setbacks, and everything in between.{" "}
+                  <a href="#" className="text-gold hover:text-gold/80">
                     <RoughAnnotation
                       type="underline"
-                      color="#006747"
+                      color="#B8860B"
                       strokeWidth={2}
                       animationDuration={600}
                       showOnScroll={true}
                       delay={200}
                     >
-                      beats planning
+                      Five-Minute MBA
                     </RoughAnnotation>
-                    .
-                  </h3>
-                  <p className="mt-3 text-text-light">
-                    We can test ideas faster than ever. I&apos;d rather build something in a week and learn from it than spend a month on a PowerPoint that never ships.
-                  </p>
-                </div>
-              </ScrollReveal>
-
-              {/* Belief Card 3 */}
-              <ScrollReveal delay={200}>
-                <div className="rounded-lg border-l-4 border-l-primary bg-white p-8 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-                  <span className="text-5xl font-bold text-dark/20">03</span>
-                  <h3 className="mt-4 text-xl font-semibold text-dark">
-                    Data only matters{" "}
+                  </a>{" "}
+                  is business book summaries for people who don&apos;t have time. I also write the occasional{" "}
+                  <a href="#" className="text-primary hover:text-primary-light">
                     <RoughAnnotation
                       type="underline"
                       color="#006747"
@@ -168,99 +141,37 @@ export default function AboutPage() {
                       showOnScroll={true}
                       delay={400}
                     >
-                      if you use it
+                      essay
                     </RoughAnnotation>
-                    .
-                  </h3>
-                  <p className="mt-3 text-text-light">
-                    Small companies can now get the visibility that used to require middle management—if the data is in one place and actually gets looked at.
-                  </p>
-                </div>
-              </ScrollReveal>
-            </div>
-          </div>
-        </section>
-
-        {/* Section 4: How I Think */}
-        <section className="bg-[#E8E3DB] px-6 py-12 lg:px-10 lg:py-20">
-          <div className="mx-auto max-w-4xl">
-            <ScrollReveal>
-              <div className="mb-12 text-center">
-                <h2 className="mb-4 text-3xl font-bold text-dark lg:text-4xl">
-                  How I Think
-                </h2>
-                <p className="text-xl text-text-light">
-                  I write about operations, systems, and building businesses that actually work.
+                  </a>{" "}
+                  when something&apos;s stuck in my head.
+                </p>
+                <p>
+                  And if you&apos;re in Toronto, I host dinner series for business owners—reach out if you want an invite.
                 </p>
               </div>
             </ScrollReveal>
-
-            {/* Newsletter cards */}
-            <div className="grid gap-6 md:grid-cols-3">
-              <ScrollReveal delay={0}>
-                <a
-                  href="#"
-                  className="group block h-full rounded-lg border border-[#E0DBD3] bg-white p-6 text-center shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
-                >
-                  <h3 className="mb-2 text-lg font-semibold text-dark">
-                    The Come Up
-                  </h3>
-                  <p className="mb-4 text-sm text-text-light">
-                    Interviews with entrepreneurs
-                  </p>
-                  <span className="font-medium text-primary transition-colors group-hover:text-primary-light">
-                    Read →
-                  </span>
-                </a>
-              </ScrollReveal>
-
-              <ScrollReveal delay={100}>
-                <a
-                  href="#"
-                  className="group block h-full rounded-lg border border-[#E0DBD3] bg-white p-6 text-center shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
-                >
-                  <h3 className="mb-2 text-lg font-semibold text-dark">
-                    Five-Minute MBA
-                  </h3>
-                  <p className="mb-4 text-sm text-text-light">
-                    Business book summaries
-                  </p>
-                  <span className="font-medium text-primary transition-colors group-hover:text-primary-light">
-                    Read →
-                  </span>
-                </a>
-              </ScrollReveal>
-
-              <ScrollReveal delay={200}>
-                <a
-                  href="#"
-                  className="group block h-full rounded-lg border border-[#E0DBD3] bg-white p-6 text-center shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
-                >
-                  <h3 className="mb-2 text-lg font-semibold text-dark">
-                    Personal Writing
-                  </h3>
-                  <p className="mb-4 text-sm text-text-light">
-                    Essays and observations
-                  </p>
-                  <span className="font-medium text-primary transition-colors group-hover:text-primary-light">
-                    Read →
-                  </span>
-                </a>
-              </ScrollReveal>
-            </div>
           </div>
         </section>
 
-        {/* Section 6: CTA */}
-        <section className="bg-[#004D36] px-6 py-12 lg:px-10 lg:py-20">
+        {/* Section 3: Transition to CTA */}
+        <section className="bg-white px-6 pb-8 lg:px-10 lg:pb-12">
+          <div className="mx-auto max-w-[680px] text-center">
+            <ScrollReveal>
+              <h3 className="mb-4 text-2xl font-medium text-dark">
+                Got a Project in Mind?
+              </h3>
+              <p className="text-lg text-text-light">
+                I&apos;m always happy to talk through what you&apos;re working on, even if it goes nowhere. No pressure, no pitch.
+              </p>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* Section 4: CTA */}
+        <section className="bg-[#004D36] px-6 py-12 lg:px-10 lg:py-16">
           <div className="mx-auto max-w-[600px] text-center">
             <ScrollReveal>
-              <h2 className="mb-4 text-3xl font-bold text-white lg:text-4xl">
-                Want to Work Together?
-              </h2>
-              <p className="mb-8 text-lg text-[#A8D5C2]">
-                Let&apos;s start with a conversation.
-              </p>
               <a
                 href="/#contact-form"
                 className="inline-block rounded-full bg-white px-8 py-4 font-semibold text-[#004D36] transition-all duration-300 hover:bg-gold hover:text-white hover:shadow-[0_4px_20px_rgba(184,134,11,0.3)]"

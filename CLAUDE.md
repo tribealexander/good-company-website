@@ -278,10 +278,10 @@ Explains why implementations stick:
 
 The About page (`/src/app/about/page.tsx`) has 4 sections:
 
-1. **Hero + Story** (unified) - Photo integration, "Hi, I'm Alex", subhead "I build operational systems for growing businesses", flows into story about working with founders, ends with standalone closer
-2. **What I Believe** - 3 numbered cards with green underlines on key phrases
-3. **How I Think** - Newsletter cards (The Come Up, Five-Minute MBA, Personal Writing)
-4. **CTA** - Dark green section "Want to Work Together?"
+1. **Hero + Story** (unified) - Photo integration, "Hi, I'm Alex", subhead, story about working with founders, standalone closer
+2. **If You Want to Go Deeper** - Prose with newsletter links + dinner series mention
+3. **Got a Project in Mind?** - Transition section before CTA
+4. **CTA** - Dark green section with just the button
 
 Photo is integrated into the hero with:
 - Desktop: Right half of screen with gradient overlay fading into beige
@@ -291,7 +291,7 @@ Photo is integrated into the hero with:
 Rough Notation placements:
 - Hero: Green underline on "Alex"
 - Standalone statement: Green underline on "directly"
-- Beliefs: Green underlines on "enforce themselves", "beats planning", "if you use it"
+- Go Deeper: Green underline on "The Come Up", gold underline on "Five-Minute MBA", green underline on "essay"
 
 ---
 
