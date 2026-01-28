@@ -16,7 +16,8 @@ export default function CaseStudies() {
     "Sales",
     "Customer Success",
     "Finance",
-    "Field Services",
+    "Marketing",
+    "HR",
   ];
 
   // CMS-ready case study data structure
@@ -86,14 +87,14 @@ export default function CaseStudies() {
       ],
     },
     {
-      id: "technician-accountability-system",
-      department: "Field Services",
-      title: "Technician Accountability System",
+      id: "employee-onboarding-automation",
+      department: "HR",
+      title: "Employee Onboarding Automation",
       description:
-        "GPS tracking and job note compliance scoring for field techs.",
+        "Automated new hire workflows from offer acceptance to day one.",
       results: [
-        "35% improvement in note quality",
-        "Real-time location visibility",
+        "60% reduction in admin time",
+        "Zero missed onboarding steps",
       ],
     },
     {
@@ -141,14 +142,14 @@ export default function CaseStudies() {
       ],
     },
     {
-      id: "dispatch-optimization",
-      department: "Field Services",
-      title: "Dispatch Optimization",
+      id: "campaign-performance-dashboard",
+      department: "Marketing",
+      title: "Campaign Performance Dashboard",
       description:
-        "Automated job assignment based on location and skill.",
+        "Unified marketing analytics across channels with ROI tracking.",
       results: [
-        "20% reduction in drive time",
-        "Better tech utilization",
+        "Real-time campaign visibility",
+        "30% improvement in ad spend efficiency",
       ],
     },
     {
