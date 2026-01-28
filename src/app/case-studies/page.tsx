@@ -1,36 +1,75 @@
-import { Header, Footer, Button } from "@/components";
+"use client";
 
-export const metadata = {
-  title: "Case Studies - Good Company",
-  description:
-    "Real implementations, real results. See how we've helped businesses automate operations, build visibility, and improve accountability.",
-};
+import { useState } from "react";
+import { Header, Footer } from "@/components";
 
 export default function CaseStudies() {
-  // Placeholder case studies ready for video embeds
-  const caseStudies = [
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  // Department filters
+  const departments = [
+    "All",
+    "Operations",
+    "Sales",
+    "Customer Success",
+    "Finance",
+    "Field Services",
+  ];
+
+  // CMS-ready case study data structure
+  interface CaseStudy {
+    slug: string;
+    department: string;
+    title: string;
+    description: string;
+    results: string[];
+    image?: string;
+  }
+
+  const caseStudies: CaseStudy[] = [
     {
+      slug: "customer-success-workflow-automation",
+      department: "Operations",
       title: "Customer Success Workflow Automation",
-      industry: "Managed Services",
-      videoPlaceholder: true,
-      results: ["80% reduction in reporting time", "3 at-risk accounts flagged early"],
-      gradient: "from-blue-500 to-indigo-600",
+      description:
+        "Automated reporting and early warning system for a managed services provider.",
+      results: [
+        "80% reduction in reporting time",
+        "3 at-risk accounts flagged early",
+        "Weekly reports now generated automatically",
+      ],
     },
     {
+      slug: "real-time-project-profitability-dashboard",
+      department: "Finance",
       title: "Real-Time Project Profitability Dashboard",
-      industry: "Professional Services",
-      videoPlaceholder: true,
-      results: ["Real-time margin tracking", "15% improvement in utilization"],
-      gradient: "from-emerald-500 to-teal-600",
+      description:
+        "Live margin tracking and utilization visibility for a professional services firm.",
+      results: [
+        "Real-time margin tracking per project",
+        "15% improvement in utilization",
+        "Eliminated end-of-month surprises",
+      ],
     },
     {
-      title: "Knowledge Capture System Implementation",
-      industry: "Municipal Technology",
-      videoPlaceholder: true,
-      results: ["Complete process documentation", "40% faster onboarding"],
-      gradient: "from-amber-500 to-orange-600",
+      slug: "knowledge-capture-system",
+      department: "Operations",
+      title: "Knowledge Capture System",
+      description:
+        "Process documentation and institutional knowledge system for a growing team.",
+      results: [
+        "Complete process documentation",
+        "40% faster employee onboarding",
+        "Reduced reliance on tribal knowledge",
+      ],
     },
   ];
+
+  // Filter case studies based on active filter
+  const filteredCaseStudies =
+    activeFilter === "All"
+      ? caseStudies
+      : caseStudies.filter((study) => study.department === activeFilter);
 
   return (
     <>
@@ -39,98 +78,109 @@ export default function CaseStudies() {
         {/* Hero */}
         <section className="bg-cream py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <h1 className="mb-6 text-4xl font-bold tracking-tight text-dark md:text-5xl lg:text-6xl">
+            <h1 className="mb-4 text-4xl font-bold tracking-tight text-dark md:text-5xl lg:text-6xl">
               Case Studies
             </h1>
-            <p className="max-w-2xl text-xl text-text-light">
+            <p className="text-xl text-text-light">
               Real implementations, real results.
             </p>
           </div>
         </section>
 
-        {/* Case Studies Grid */}
-        <section className="py-20 lg:py-28">
+        {/* Filters + Case Studies Grid */}
+        <section className="py-16 lg:py-20">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            {/* Coming Soon Notice */}
-            <div className="mb-16 rounded-xl border border-border bg-white p-8 text-center lg:p-10">
-              <p className="text-lg text-text">
-                <strong className="text-dark">Case studies coming soon.</strong>
-              </p>
-              <p className="mt-2 text-text-light">
-                Recent client work includes workflow automation for managed service providers,
-                municipal technology platforms, and professional services firms.
-              </p>
-            </div>
-
-            {/* Video-Ready Case Study Cards */}
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {caseStudies.map((study, index) => (
-                <div
-                  key={index}
-                  className="overflow-hidden rounded-xl border border-border bg-white transition-all duration-300 hover:shadow-lg"
+            {/* Department Filters */}
+            <div className="mb-12 flex flex-wrap gap-3">
+              {departments.map((department) => (
+                <button
+                  key={department}
+                  onClick={() => setActiveFilter(department)}
+                  className={`rounded-full px-5 py-2 text-sm font-medium transition-all duration-200 ${
+                    activeFilter === department
+                      ? "bg-[#004D36] text-white"
+                      : "border border-[#E0DBD3] bg-white text-dark hover:bg-[#E8EDE9]"
+                  }`}
                 >
-                  {/* Video Embed Area (placeholder) */}
-                  <div
-                    className={`relative flex aspect-video items-center justify-center bg-gradient-to-br ${study.gradient}`}
-                  >
-                    {/* Play button placeholder */}
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm transition-transform duration-300 hover:scale-110">
-                      <svg
-                        className="ml-1 h-8 w-8 text-white"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </div>
-                    {/* Video coming soon overlay */}
-                    <div className="absolute bottom-3 left-3">
-                      <span className="rounded bg-black/50 px-2 py-1 text-xs text-white/80">
-                        Video coming soon
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="p-6">
-                    {/* Industry Tag */}
-                    <span className="mb-3 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
-                      {study.industry}
-                    </span>
-
-                    {/* Title */}
-                    <h3 className="mb-4 text-lg font-semibold text-dark">
-                      {study.title}
-                    </h3>
-
-                    {/* Results */}
-                    <div className="space-y-2">
-                      {study.results.map((result, i) => (
-                        <div key={i} className="flex items-start gap-2">
-                          <span className="mt-0.5 text-gold">✓</span>
-                          <span className="font-mono text-sm text-text-light">
-                            {result}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                  {department}
+                </button>
               ))}
             </div>
+
+            {/* Case Study Cards Grid */}
+            <div className="grid gap-8 md:grid-cols-2">
+              {filteredCaseStudies.map((study) => (
+                <article
+                  key={study.slug}
+                  className="group rounded-xl border border-[#E0DBD3] bg-white p-8 shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)]"
+                >
+                  {/* Thumbnail Placeholder */}
+                  <div className="mb-6 aspect-video rounded-lg bg-[#F5F5F5]" />
+
+                  {/* Department Tag */}
+                  <span className="mb-3 inline-block rounded-full bg-[#E8EDE9] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#006747]">
+                    {study.department}
+                  </span>
+
+                  {/* Title */}
+                  <h3 className="mb-3 text-xl font-semibold text-[#1A1A1A] lg:text-2xl">
+                    {study.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="mb-5 text-base text-[#4A4A4A]">
+                    {study.description}
+                  </p>
+
+                  {/* Results */}
+                  <div className="mb-6 space-y-2">
+                    {study.results.map((result, i) => (
+                      <div key={i} className="flex items-start gap-2">
+                        <span className="mt-0.5 text-primary">✓</span>
+                        <span className="text-sm text-[#4A4A4A] lg:text-base">
+                          {result}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Link */}
+                  <a
+                    href={`/case-studies/${study.slug}`}
+                    className="font-medium text-[#006747] transition-all duration-200 hover:underline"
+                  >
+                    Read Case Study →
+                  </a>
+                </article>
+              ))}
+            </div>
+
+            {/* Empty state when no results */}
+            {filteredCaseStudies.length === 0 && (
+              <div className="py-16 text-center">
+                <p className="text-lg text-text-light">
+                  No case studies in this category yet.
+                </p>
+              </div>
+            )}
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="bg-cream py-20 lg:py-28">
-          <div className="mx-auto max-w-3xl px-6 text-center lg:px-10">
-            <h2 className="mb-6 text-3xl font-bold tracking-tight text-dark">
-              Ready to be our next success story?
+        <section className="bg-[#004D36] py-16 lg:py-20">
+          <div className="mx-auto max-w-2xl px-6 text-center lg:px-10">
+            <h2 className="mb-4 text-2xl font-medium text-white lg:text-3xl">
+              Got a Similar Problem?
             </h2>
-            <p className="mb-8 text-lg text-text-light">
-              Let&apos;s discuss how we can help your business reclaim capacity
-              and build systems that stick.
+            <p className="mb-8 text-lg text-[#A8D5C2]">
+              Let&apos;s talk through it.
             </p>
-            <Button href="/#contact">Book a Discovery Call</Button>
+            <a
+              href="/#contact-form"
+              className="inline-block rounded-full bg-white px-8 py-4 font-semibold text-[#004D36] transition-all duration-300 hover:bg-gold hover:text-white hover:shadow-[0_4px_20px_rgba(184,134,11,0.3)]"
+            >
+              Book a Brainstorm →
+            </a>
           </div>
         </section>
       </main>
