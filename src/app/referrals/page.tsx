@@ -1,6 +1,6 @@
 "use client";
 
-import { Header, Footer } from "@/components";
+import { Header, Footer, ScrollReveal } from "@/components";
 import RoughAnnotation from "@/components/RoughAnnotation";
 
 export default function ReferralsPage() {
@@ -9,15 +9,15 @@ export default function ReferralsPage() {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="bg-[#E8E3DB] px-6 pb-16 pt-32 lg:px-10 lg:pb-16 lg:pt-40">
+        <section className="bg-[#E8E3DB] px-6 pb-10 pt-28 lg:px-10 lg:pb-12 lg:pt-36">
           <div className="mx-auto max-w-[600px] text-center">
-            <p className="mb-4 text-sm font-medium uppercase tracking-wider text-[#6B6B6B]">
+            <p className="mb-3 text-xs font-medium uppercase tracking-wider text-[#6B6B6B]">
               Referrals
             </p>
-            <h1 className="mb-6 text-4xl font-bold text-[#1A1A1A] md:text-[44px] lg:text-[48px] lg:leading-tight">
+            <h1 className="mb-5 text-3xl font-bold text-[#1A1A1A] md:text-4xl lg:text-[42px] lg:leading-tight">
               Know someone who could use my help?
             </h1>
-            <p className="text-lg leading-[1.7] text-[#4A4A4A]">
+            <p className="text-base leading-[1.7] text-[#4A4A4A] lg:text-lg">
               If you introduce me to someone who becomes a client, I&apos;ll pay you{" "}
               <RoughAnnotation
                 type="underline"
@@ -34,55 +34,77 @@ export default function ReferralsPage() {
         </section>
 
         {/* How It Works Section */}
-        <section className="bg-white px-6 py-16 lg:px-10">
-          <div className="mx-auto max-w-[600px]">
-            <h2 className="mb-10 text-center text-[28px] font-semibold text-[#1A1A1A]">
-              How it works
-            </h2>
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <span className="text-2xl font-bold text-[#006747]">1.</span>
-                <p className="text-lg text-[#3D3D3D]">Send an intro (email is fine)</p>
-              </div>
-              <div className="flex items-start gap-4">
-                <span className="text-2xl font-bold text-[#006747]">2.</span>
-                <p className="text-lg text-[#3D3D3D]">I take it from there</p>
-              </div>
-              <div className="flex items-start gap-4">
-                <span className="text-2xl font-bold text-[#006747]">3.</span>
-                <p className="text-lg text-[#3D3D3D]">You get paid after every invoice clears</p>
-              </div>
+        <section className="bg-white px-6 py-12 lg:px-10 lg:py-16">
+          <div className="mx-auto max-w-4xl">
+            <ScrollReveal>
+              <h2 className="mb-8 text-center text-2xl font-semibold text-[#1A1A1A] lg:text-3xl">
+                How it works
+              </h2>
+            </ScrollReveal>
+
+            <div className="grid gap-6 md:grid-cols-3">
+              {/* Step 1 */}
+              <ScrollReveal delay={0}>
+                <div className="h-full rounded-xl border border-[#E0DBD3] bg-white p-6 text-center shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                  <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#E8EDE9]">
+                    <span className="text-lg font-bold text-[#006747]">1</span>
+                  </div>
+                  <h3 className="mb-2 text-lg font-semibold text-[#1A1A1A]">Send an intro</h3>
+                  <p className="text-sm text-[#666666]">
+                    Email is fine—just connect us
+                  </p>
+                </div>
+              </ScrollReveal>
+
+              {/* Step 2 */}
+              <ScrollReveal delay={100}>
+                <div className="h-full rounded-xl border border-[#E0DBD3] bg-white p-6 text-center shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                  <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#E8EDE9]">
+                    <span className="text-lg font-bold text-[#006747]">2</span>
+                  </div>
+                  <h3 className="mb-2 text-lg font-semibold text-[#1A1A1A]">I take it from there</h3>
+                  <p className="text-sm text-[#666666]">
+                    No selling required on your end
+                  </p>
+                </div>
+              </ScrollReveal>
+
+              {/* Step 3 */}
+              <ScrollReveal delay={200}>
+                <div className="h-full rounded-xl border border-[#E0DBD3] bg-white p-6 text-center shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                  <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#E8EDE9]">
+                    <span className="text-lg font-bold text-[#006747]">3</span>
+                  </div>
+                  <h3 className="mb-2 text-lg font-semibold text-[#1A1A1A]">You get paid</h3>
+                  <p className="text-sm text-[#666666]">
+                    After every invoice clears
+                  </p>
+                </div>
+              </ScrollReveal>
             </div>
           </div>
         </section>
 
         {/* Closing Section */}
-        <section className="bg-[#E8E3DB] px-6 pb-20 pt-16 lg:px-10 lg:pb-20">
-          <div className="mx-auto max-w-[600px] text-center">
-            <h2 className="mb-4 text-2xl font-semibold text-[#1A1A1A]">
-              That&apos;s it.
-            </h2>
-            <p className="mb-8 text-base text-[#666666]">
-              No minimum engagement. No specific industry. No paperwork unless you want it.
-            </p>
-            <p className="mb-4 text-base text-[#4A4A4A]">
-              If you have someone in mind, email me:
-            </p>
-            <a
-              href="mailto:alex@goodcompany.ca"
-              className="inline-block text-xl font-semibold text-[#006747] transition-all hover:underline"
-            >
-              <RoughAnnotation
-                type="underline"
-                color="#006747"
-                strokeWidth={2}
-                animationDuration={600}
-                showOnScroll={true}
-                delay={300}
+        <section className="bg-[#E8E3DB] px-6 py-12 lg:px-10 lg:py-16">
+          <div className="mx-auto max-w-[500px] text-center">
+            <ScrollReveal>
+              <h2 className="mb-3 text-xl font-semibold text-[#1A1A1A] lg:text-2xl">
+                That&apos;s it.
+              </h2>
+              <p className="mb-6 text-sm text-[#666666] lg:text-base">
+                No minimum engagement. No specific industry. No paperwork unless you want it.
+              </p>
+              <p className="mb-4 text-sm text-[#4A4A4A]">
+                Have someone in mind?
+              </p>
+              <a
+                href="mailto:alex@goodcompany.ca?subject=Referral%20Introduction"
+                className="inline-block rounded-full bg-[#004D36] px-6 py-3 font-semibold text-white transition-all duration-300 hover:bg-gold hover:shadow-[0_4px_12px_rgba(184,134,11,0.3)]"
               >
-                alex@goodcompany.ca
-              </RoughAnnotation>
-            </a>
+                Connect Us by Email →
+              </a>
+            </ScrollReveal>
           </div>
         </section>
       </main>
