@@ -20,7 +20,7 @@ export default function Home() {
       <FloatingCTA />
       <main>
         {/* Hero Section - Deep Green */}
-        <section className="bg-[#004D36] px-6 pb-28 pt-32 lg:px-10 lg:pb-40 lg:pt-44">
+        <section className="bg-[#004D36] px-6 pb-24 pt-32 lg:px-10 lg:pb-32 lg:pt-44">
           <div className="mx-auto max-w-4xl text-center">
             {/* Headline with Rough Notation */}
             <HeroHeadline />
