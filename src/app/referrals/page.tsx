@@ -18,7 +18,7 @@ export default function ReferralsPage() {
               Know someone who could use our help?
             </h1>
             <p className="text-base leading-[1.7] text-[#A8D5C2] lg:text-lg">
-              If you introduce me to someone who becomes a client, I&apos;ll pay you{" "}
+              If you introduce us to someone who becomes a client, we&apos;ll pay you{" "}
               <span className="text-white">
                 <RoughAnnotation
                   type="underline"
@@ -30,7 +30,7 @@ export default function ReferralsPage() {
                   10%
                 </RoughAnnotation>
               </span>{" "}
-              of everything they pay me. Not just the first project—every invoice, for as long as they&apos;re a client.
+              of everything they pay us. Not just the first project—every invoice, for as long as they&apos;re a client.
             </p>
           </div>
         </section>
@@ -64,7 +64,7 @@ export default function ReferralsPage() {
                   <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#E8EDE9]">
                     <span className="text-lg font-bold text-[#006747]">2</span>
                   </div>
-                  <h3 className="mb-2 text-lg font-semibold text-[#1A1A1A]">I take it from there</h3>
+                  <h3 className="mb-2 text-lg font-semibold text-[#1A1A1A]">We take it from there</h3>
                   <p className="text-sm text-[#666666]">
                     No selling required on your end
                   </p>

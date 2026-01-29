@@ -318,7 +318,7 @@ The Referrals page (`/src/app/referrals/page.tsx`) explains the 10% lifetime ref
 
 Sections:
 1. **Hero** - Dark green, "Know someone who could use our help?" with 10% highlighted (gold Rough Notation underline)
-2. **How It Works** - 3 cards: Send an intro, I take it from there, You get paid
+2. **How It Works** - 3 cards: Send an intro, We take it from there, You get paid
 3. **That's it.** - Closing section with email CTA button
 
 Footer link: "Referrals" under Quick Links
