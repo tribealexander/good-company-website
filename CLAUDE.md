@@ -16,7 +16,8 @@ This is the marketing website for **Good Company**, a boutique operational effic
 - `/src/app/page.tsx` - Homepage (main landing page)
 - `/src/app/about/page.tsx` - About page with founder bio
 - `/src/app/acquisitions/page.tsx` - Acquisitions & Partnerships page
-- `/src/app/case-studies/page.tsx` - Case studies listing
+- `/src/app/case-studies/page.tsx` - Case studies listing with video lightbox
+- `/src/app/referrals/page.tsx` - Referrals program page
 - `/src/app/api/contact/route.ts` - Contact form API
 - `/src/app/globals.css` - Global styles and Tailwind theme
 - `/src/app/layout.tsx` - Root layout with fonts and metadata
@@ -168,9 +169,11 @@ import { Header, Footer, Button, ServiceCard, ProblemSelector } from "@/componen
 ### Component Details
 
 #### Header (`Header.tsx`)
-- Fixed navigation with two visual states:
-  - **Over hero (dark background)**: Transparent background, white logo, white text
-  - **After scroll**: White background with blur, dark logo, dark text
+- Fixed navigation with multiple visual states based on page and scroll:
+  - **Homepage over hero (dark background)**: Transparent background, white logo, white text
+  - **Homepage after scroll**: White background with blur, dark logo, dark text
+  - **Inner pages (About, Case Studies, Referrals, etc.)**: Dark logo, dark text, green CTA button (no transparent state)
+- Uses `usePathname()` to detect homepage vs inner pages
 - Uses `mounted` state to prevent hydration mismatch
 - Smooth 500ms transition between states
 - Compact height (h-16 / 64px)
@@ -302,10 +305,38 @@ The Acquisitions page (`/src/app/acquisitions/page.tsx`) is a separate landing p
 Sections:
 1. **Hero** - Dark green, "Thinking About an Exit?"
 2. **The Pitch** - 3 cards: You Want Out, You Want Help, You Want a Partner
-3. **What I Look For** - Checklist of criteria (service businesses, $500K-$50M, etc.)
+3. **What I Look For** - Checklist of criteria (service businesses, $500K-$10M, etc.)
 4. **CTA** - "Interested?" with email link (different from main site CTA)
 
 Footer link: "Acquisitions & Partnerships" under Quick Links
+
+---
+
+## Referrals Page
+
+The Referrals page (`/src/app/referrals/page.tsx`) explains the 10% lifetime referral program. NOT linked in main nav - only in footer.
+
+Sections:
+1. **Hero** - Dark green, "Know someone who could use our help?" with 10% highlighted (gold Rough Notation underline)
+2. **How It Works** - 3 cards: Send an intro, I take it from there, You get paid
+3. **That's it.** - Closing section with email CTA button
+
+Footer link: "Referrals" under Quick Links
+
+---
+
+## Case Studies Page
+
+The Case Studies page (`/src/app/case-studies/page.tsx`) displays work examples organized by department.
+
+Features:
+- **Department filters**: All, Operations, Sales, Customer Success, Finance, Marketing, HR
+- **CMS-ready data structure**: Each case study has id, department, title, description, results array, and optional videoUrl/thumbnailUrl
+- **Video lightbox**: Clicking a card opens a modal with the video (or "Video coming soon" placeholder)
+- **Load More**: Shows 6 case studies initially, with button to load more
+- **Escape key**: Closes lightbox
+
+12 placeholder case studies currently populate the page across all departments
 
 ---
 
