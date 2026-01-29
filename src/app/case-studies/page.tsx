@@ -41,6 +41,7 @@ export default function CaseStudies() {
         "80% reduction in reporting time",
         "3 at-risk accounts flagged early",
       ],
+      videoUrl: "https://www.loom.com/embed/6ec4a176b02141c09167a8b3b6bc9a45",
     },
     {
       id: "real-time-project-profitability-dashboard",
