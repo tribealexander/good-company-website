@@ -43,7 +43,7 @@ export default function CaseStudies() {
         "3 at-risk accounts flagged early",
       ],
       videoUrl: "https://www.loom.com/embed/6ec4a176b02141c09167a8b3b6bc9a45",
-      thumbnailUrl: "https://cdn.loom.com/sessions/thumbnails/6ec4a176b02141c09167a8b3b6bc9a45-1e253e02420a65d8-full-play.gif",
+      thumbnailUrl: "https://cdn.loom.com/sessions/thumbnails/6ec4a176b02141c09167a8b3b6bc9a45-00001.jpg",
     },
     {
       id: "real-time-project-profitability-dashboard",
