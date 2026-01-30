@@ -1,13 +1,9 @@
 // Strapi Cloud URL - hardcoded for now until env var issue is resolved
 const STRAPI_CLOUD_URL = 'https://supportive-blessing-06262181b8.strapiapp.com';
 
-// Get Strapi URL at runtime, not module load time
+// Get Strapi URL at runtime
 function getStrapiUrl(): string {
-  const url = process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL || STRAPI_CLOUD_URL;
-  console.log('STRAPI_URL env:', process.env.STRAPI_URL);
-  console.log('NEXT_PUBLIC_STRAPI_URL env:', process.env.NEXT_PUBLIC_STRAPI_URL);
-  console.log('Using Strapi URL:', url);
-  return url;
+  return process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL || STRAPI_CLOUD_URL;
 }
 
 export interface StrapiCaseStudy {
@@ -59,7 +55,7 @@ export async function getCaseStudies(): Promise<CaseStudy[]> {
     const res = await fetch(
       `${strapiUrl}/api/case-studies?populate=*&sort=order:asc,createdAt:desc`,
       {
-        cache: 'no-store', // Always fetch fresh data
+        next: { revalidate: 60 }, // Cache for 60 seconds, then revalidate
       }
     );
 
