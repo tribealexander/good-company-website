@@ -1,5 +1,7 @@
-// Use STRAPI_URL for server-side, NEXT_PUBLIC_STRAPI_URL for client-side
-const STRAPI_URL = process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+// Get Strapi URL at runtime, not module load time
+function getStrapiUrl(): string {
+  return process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+}
 
 export interface StrapiCaseStudy {
   id: number;
@@ -43,10 +45,11 @@ interface StrapiResponse<T> {
 }
 
 export async function getCaseStudies(): Promise<CaseStudy[]> {
+  const strapiUrl = getStrapiUrl();
   try {
-    console.log('Fetching from Strapi URL:', STRAPI_URL);
+    console.log('Fetching from Strapi URL:', strapiUrl);
     const res = await fetch(
-      `${STRAPI_URL}/api/case-studies?populate=*&sort=order:asc,createdAt:desc`,
+      `${strapiUrl}/api/case-studies?populate=*&sort=order:asc,createdAt:desc`,
       {
         cache: 'no-store', // Always fetch fresh data
       }
@@ -78,9 +81,10 @@ export async function getCaseStudies(): Promise<CaseStudy[]> {
 }
 
 export async function getCaseStudyBySlug(slug: string): Promise<CaseStudy | null> {
+  const strapiUrl = getStrapiUrl();
   try {
     const res = await fetch(
-      `${STRAPI_URL}/api/case-studies?filters[slug][$eq]=${slug}&populate=*`,
+      `${strapiUrl}/api/case-studies?filters[slug][$eq]=${slug}&populate=*`,
       { next: { revalidate: 60 } }
     );
 
