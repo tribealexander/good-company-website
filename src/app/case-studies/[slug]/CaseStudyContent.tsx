@@ -7,6 +7,17 @@ interface Props {
   caseStudy: CaseStudy;
 }
 
+// Helper to detect video type from URL
+function detectVideoType(url: string): 'youtube' | 'loom' | null {
+  if (url.includes('youtube.com') || url.includes('youtu.be')) {
+    return 'youtube';
+  }
+  if (url.includes('loom.com')) {
+    return 'loom';
+  }
+  return null;
+}
+
 // Helper to get YouTube embed URL
 function getYouTubeEmbedUrl(url: string): string | null {
   const patterns = [
@@ -33,12 +44,17 @@ function getLoomEmbedUrl(url: string): string | null {
 }
 
 export default function CaseStudyContent({ caseStudy }: Props) {
-  // Determine embed URL based on video type
+  // Determine embed URL - auto-detect type if videoType is "none" or not set
   let embedUrl: string | null = null;
   if (caseStudy.videoUrl) {
-    if (caseStudy.videoType === "youtube") {
+    // Use explicit videoType if set, otherwise auto-detect from URL
+    const videoType = (caseStudy.videoType && caseStudy.videoType !== 'none')
+      ? caseStudy.videoType
+      : detectVideoType(caseStudy.videoUrl);
+
+    if (videoType === "youtube") {
       embedUrl = getYouTubeEmbedUrl(caseStudy.videoUrl);
-    } else if (caseStudy.videoType === "loom") {
+    } else if (videoType === "loom") {
       embedUrl = getLoomEmbedUrl(caseStudy.videoUrl);
     }
   }
