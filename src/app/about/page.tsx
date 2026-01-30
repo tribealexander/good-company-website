@@ -6,6 +6,7 @@ import {
   Button,
   ScrollReveal,
   SectionHeading,
+  PageTransition,
 } from "@/components";
 import RoughAnnotation from "@/components/RoughAnnotation";
 import Image from "next/image";
@@ -14,7 +15,8 @@ export default function AboutPage() {
   return (
     <>
       <Header />
-      <main>
+      <PageTransition>
+        <main>
         {/* Section 1: Hero + Origin Story (merged) */}
         <section className="relative overflow-hidden bg-[#E8E3DB]">
           {/* Background photo - right side on desktop */}
@@ -189,7 +191,8 @@ export default function AboutPage() {
             </ScrollReveal>
           </div>
         </section>
-      </main>
+        </main>
+      </PageTransition>
       <Footer />
     </>
   );

@@ -51,7 +51,6 @@ export async function getCaseStudies(): Promise<CaseStudy[]> {
   const strapiUrl = getStrapiUrl();
 
   try {
-    console.log('Fetching from Strapi URL:', strapiUrl);
     const res = await fetch(
       `${strapiUrl}/api/case-studies?populate=*&sort=order:asc,createdAt:desc`,
       {

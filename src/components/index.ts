@@ -14,3 +14,4 @@ export { default as RoughAnnotation } from "./RoughAnnotation";
 export { default as HeroHeadline } from "./HeroHeadline";
 export { default as TrustIndicators } from "./TrustIndicators";
 export { default as InvestmentSection } from "./InvestmentSection";
+export { default as PageTransition } from "./PageTransition";

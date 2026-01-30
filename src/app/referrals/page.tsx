@@ -1,13 +1,14 @@
 "use client";
 
-import { Header, Footer, ScrollReveal } from "@/components";
+import { Header, Footer, ScrollReveal, PageTransition } from "@/components";
 import RoughAnnotation from "@/components/RoughAnnotation";
 
 export default function ReferralsPage() {
   return (
     <>
       <Header />
-      <main>
+      <PageTransition>
+        <main>
         {/* Hero Section */}
         <section className="bg-[#004D36] px-6 pb-12 pt-28 lg:px-10 lg:pb-16 lg:pt-36">
           <div className="mx-auto max-w-[600px] text-center">
@@ -106,7 +107,8 @@ export default function ReferralsPage() {
             </ScrollReveal>
           </div>
         </section>
-      </main>
+        </main>
+      </PageTransition>
       <Footer />
     </>
   );

@@ -4,13 +4,15 @@ import {
   Header,
   Footer,
   ScrollReveal,
+  PageTransition,
 } from "@/components";
 
 export default function AcquisitionsPage() {
   return (
     <>
       <Header />
-      <main>
+      <PageTransition>
+        <main>
         {/* Hero Section */}
         <section className="bg-[#004D36] px-6 pb-16 pt-32 lg:px-10 lg:pb-20 lg:pt-40">
           <div className="mx-auto max-w-3xl text-center">
@@ -156,7 +158,8 @@ export default function AcquisitionsPage() {
             </ScrollReveal>
           </div>
         </section>
-      </main>
+        </main>
+      </PageTransition>
       <Footer />
     </>
   );

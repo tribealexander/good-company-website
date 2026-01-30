@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { Header, Footer } from "@/components";
+import { Header, Footer, PageTransition } from "@/components";
 
 interface CaseStudy {
   id: string;
@@ -78,9 +78,10 @@ export default function CaseStudiesClient({ initialCaseStudies }: CaseStudiesCli
   return (
     <>
       <Header />
-      <main>
-        {/* Hero */}
-        <section className="bg-cream pb-6 pt-28 lg:pt-32">
+      <PageTransition>
+        <main>
+          {/* Hero */}
+          <section className="bg-cream pb-6 pt-28 lg:pt-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             <h1 className="mb-2 text-4xl font-bold tracking-tight text-dark md:text-5xl">
               Case Studies
@@ -221,7 +222,8 @@ export default function CaseStudiesClient({ initialCaseStudies }: CaseStudiesCli
             </a>
           </div>
         </section>
-      </main>
+        </main>
+      </PageTransition>
       <Footer />
 
       {/* Video Lightbox Modal */}
