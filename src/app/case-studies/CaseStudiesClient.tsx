@@ -21,6 +21,8 @@ export default function CaseStudiesClient({ initialCaseStudies }: CaseStudiesCli
     "Sales",
     "Customer Success",
     "Finance",
+    "Marketing",
+    "HR",
     "Field Services",
   ];
 
