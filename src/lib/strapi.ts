@@ -1,4 +1,5 @@
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+// Use STRAPI_URL for server-side, NEXT_PUBLIC_STRAPI_URL for client-side
+const STRAPI_URL = process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 
 export interface StrapiCaseStudy {
   id: number;
