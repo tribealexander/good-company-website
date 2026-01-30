@@ -1,10 +1,13 @@
+// Strapi Cloud URL - hardcoded for now until env var issue is resolved
+const STRAPI_CLOUD_URL = 'https://supportive-blessing-06262181b8.strapiapp.com';
+
 // Get Strapi URL at runtime, not module load time
-function getStrapiUrl(): string | null {
-  const url = process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL;
+function getStrapiUrl(): string {
+  const url = process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL || STRAPI_CLOUD_URL;
   console.log('STRAPI_URL env:', process.env.STRAPI_URL);
   console.log('NEXT_PUBLIC_STRAPI_URL env:', process.env.NEXT_PUBLIC_STRAPI_URL);
-  console.log('Using Strapi URL:', url || 'NOT SET - will skip fetch');
-  return url || null;
+  console.log('Using Strapi URL:', url);
+  return url;
 }
 
 export interface StrapiCaseStudy {
@@ -51,12 +54,6 @@ interface StrapiResponse<T> {
 export async function getCaseStudies(): Promise<CaseStudy[]> {
   const strapiUrl = getStrapiUrl();
 
-  // Skip fetch if no Strapi URL configured (e.g., during build)
-  if (!strapiUrl) {
-    console.log('No Strapi URL configured, returning empty array');
-    return [];
-  }
-
   try {
     console.log('Fetching from Strapi URL:', strapiUrl);
     const res = await fetch(
@@ -93,11 +90,6 @@ export async function getCaseStudies(): Promise<CaseStudy[]> {
 
 export async function getCaseStudyBySlug(slug: string): Promise<CaseStudy | null> {
   const strapiUrl = getStrapiUrl();
-
-  if (!strapiUrl) {
-    console.log('No Strapi URL configured, returning null');
-    return null;
-  }
 
   try {
     const res = await fetch(
