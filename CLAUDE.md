@@ -156,6 +156,7 @@ src/components/
 ├── FloatingCTA.tsx         # Floating CTA button
 ├── InvestmentSection.tsx   # Pricing section
 ├── FAQ.tsx                 # FAQ accordion
+├── PageTransition.tsx      # Page transition animations (fade-in on navigation)
 └── index.ts                # Barrel exports
 ```
 
@@ -220,6 +221,26 @@ Wraps content for scroll-triggered fade-in animations:
   <SectionHeading>Title</SectionHeading>
 </ScrollReveal>
 ```
+
+#### PageTransition (`PageTransition.tsx`)
+Provides smooth fade-in animations on page navigation. Uses `usePathname()` to detect route changes and re-trigger animation:
+```tsx
+export default function SomePage() {
+  return (
+    <>
+      <Header />
+      <PageTransition>
+        <main>
+          {/* Page content */}
+        </main>
+      </PageTransition>
+      <Footer />
+    </>
+  );
+}
+```
+
+**Note**: Wrap the `<main>` element, not the entire page. Header and Footer should be outside the transition.
 
 ---
 
@@ -329,14 +350,19 @@ Footer link: "Referrals" under Quick Links
 
 The Case Studies page (`/src/app/case-studies/page.tsx`) displays work examples organized by department.
 
+**Architecture**:
+- `page.tsx` - Server component that fetches data from Strapi CMS
+- `CaseStudiesClient.tsx` - Client component with filters, lightbox, and interactivity
+- `loading.tsx` - Skeleton UI shown during navigation/loading
+
 Features:
 - **Department filters**: All, Operations, Sales, Customer Success, Finance, Marketing, HR
-- **CMS-ready data structure**: Each case study has id, department, title, description, results array, and optional videoUrl/thumbnailUrl
-- **Video lightbox**: Clicking a card opens a modal with the video (or "Video coming soon" placeholder)
+- **Strapi CMS integration**: Fetches case studies from Strapi Cloud with ISR (60s revalidation)
+- **Fallback data**: If Strapi is unavailable, falls back to hardcoded case studies
+- **Video lightbox**: Clicking a card opens a modal with YouTube/Loom video
 - **Load More**: Shows 6 case studies initially, with button to load more
 - **Escape key**: Closes lightbox
-
-12 placeholder case studies currently populate the page across all departments
+- **Page transitions**: Smooth fade-in animation via PageTransition component
 
 ---
 
@@ -433,7 +459,7 @@ import RoughAnnotation from "@/components/RoughAnnotation";
 
 ## Environment Variables
 
-Required for contact form functionality. Create `.env.local` from `.env.example`:
+Required environment variables. Create `.env.local` from `.env.example`:
 
 ```bash
 # Resend.com API key for sending emails
@@ -441,7 +467,94 @@ RESEND_API_KEY=re_xxxxxxxx
 
 # Email address to receive form submissions
 CONTACT_EMAIL=hello@goodcompany.com
+
+# Strapi CMS URL (optional - has hardcoded fallback)
+STRAPI_URL=https://your-strapi-instance.strapiapp.com
 ```
+
+**Vercel Environment Variables**: Make sure to add `STRAPI_URL` in Vercel project settings and link it to the production deployment.
+
+---
+
+## Strapi CMS
+
+The site uses **Strapi Cloud** as a headless CMS for managing case studies content.
+
+### Architecture
+
+```
+good-company-website/          # Next.js frontend (this repo)
+├── src/lib/strapi.ts          # Strapi API client
+├── src/app/case-studies/
+│   ├── page.tsx               # Server component (fetches from Strapi)
+│   ├── CaseStudiesClient.tsx  # Client component (UI/interactivity)
+│   └── loading.tsx            # Skeleton loading state
+
+good-company-cms/              # Separate repo for Strapi CMS
+├── src/api/case-study/        # Case Study content type
+└── ... (standard Strapi v5 structure)
+```
+
+### Strapi Cloud Dashboard
+
+- **URL**: https://cloud.strapi.io/
+- **CMS Admin**: Login via Strapi Cloud dashboard → Open admin panel
+- **API Endpoint**: `https://supportive-blessing-06262181b8.strapiapp.com`
+
+### Case Study Content Type
+
+Fields in Strapi:
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| title | Text | Yes | Case study title |
+| slug | UID (from title) | Yes | URL-friendly identifier |
+| department | Enumeration | Yes | Operations, Sales, Customer Success, Finance, Marketing, HR |
+| description | Text (long) | Yes | Brief description |
+| results | Component (repeatable) | No | Array of result strings |
+| videoUrl | Text | No | YouTube or Loom embed URL |
+| videoType | Enumeration | No | youtube, loom, or none |
+| featured | Boolean | No | Featured case study flag |
+| order | Integer | No | Sort order (lower = first) |
+
+### API Permissions
+
+In Strapi Admin → Settings → Roles → Public:
+- Enable `find` and `findOne` for Case Study
+
+### Data Fetching
+
+The `src/lib/strapi.ts` file handles all Strapi API calls:
+
+```typescript
+// Fetch all case studies (with ISR caching)
+const caseStudies = await getCaseStudies();
+
+// Fetch single case study by slug
+const caseStudy = await getCaseStudyBySlug('my-case-study');
+```
+
+**Caching**: Uses Next.js ISR with 60-second revalidation (`next: { revalidate: 60 }`).
+
+### Adding/Editing Case Studies
+
+1. Go to Strapi Cloud dashboard
+2. Open admin panel
+3. Navigate to Content Manager → Case Study
+4. Create/edit entry
+5. **Important**: Click "Publish" to make it live
+6. Changes appear on website within 60 seconds (ISR revalidation)
+
+### Local CMS Development (Optional)
+
+The CMS code is in a separate repo (`good-company-cms`). To run locally:
+
+```bash
+cd good-company-cms
+npm install
+npm run develop
+```
+
+Local Strapi runs on `http://localhost:1337`
 
 ---
 
@@ -492,16 +605,24 @@ npm run lint
 |------|---------|
 | `src/app/page.tsx` | Homepage - all main content sections |
 | `src/app/about/page.tsx` | About page with founder bio |
+| `src/app/about/loading.tsx` | About page skeleton loading state |
 | `src/app/layout.tsx` | Root layout, fonts, SEO metadata |
 | `src/app/globals.css` | Tailwind theme, animations, global styles |
-| `src/app/case-studies/page.tsx` | Case studies page |
+| `src/app/case-studies/page.tsx` | Case studies server component (fetches from Strapi) |
+| `src/app/case-studies/CaseStudiesClient.tsx` | Case studies client component (UI/filters) |
+| `src/app/case-studies/loading.tsx` | Case studies skeleton loading state |
+| `src/app/acquisitions/page.tsx` | Acquisitions & partnerships page |
+| `src/app/referrals/page.tsx` | Referrals program page |
 | `src/app/api/contact/route.ts` | Contact form API endpoint |
+| `src/lib/strapi.ts` | Strapi CMS API client |
 | `src/components/Header.tsx` | Navigation (adapts to dark hero) |
 | `src/components/Button.tsx` | CTA button styles (including hero variant) |
 | `src/components/WhatWeBuildSection.tsx` | Services with dynamic backgrounds |
 | `src/components/ProblemsSectionWrapper.tsx` | Problems with dynamic backgrounds |
 | `src/components/HeroHeadline.tsx` | Hero headline with rough notation |
 | `src/components/RoughAnnotation.tsx` | Rough notation wrapper |
+| `src/components/PageTransition.tsx` | Page navigation fade-in animations |
+| `src/components/ScrollReveal.tsx` | Scroll-triggered animations |
 
 ---
 
