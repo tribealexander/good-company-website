@@ -16,20 +16,18 @@ export default function PageTransition({ children, className = "" }: PageTransit
     // Reset visibility on route change
     setIsVisible(false);
 
-    // Small delay to ensure the component is mounted before animating
-    const timer = requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        setIsVisible(true);
-      });
-    });
+    // Small delay before starting the fade-in for a more gradual feel
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 50);
 
-    return () => cancelAnimationFrame(timer);
+    return () => clearTimeout(timer);
   }, [pathname]); // Re-run when pathname changes
 
   return (
     <div
-      className={`transition-all duration-500 ease-out ${
-        isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+      className={`transition-all duration-700 ease-out ${
+        isVisible ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
       } ${className}`}
     >
       {children}
