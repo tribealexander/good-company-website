@@ -1,72 +1,78 @@
-import { getCaseStudies } from "@/lib/strapi";
+import { getCaseStudies, CaseStudy } from "@/lib/strapi";
 import CaseStudiesClient from "./CaseStudiesClient";
 
 // Fallback data for when Strapi is unavailable
-const fallbackCaseStudies = [
+const fallbackCaseStudies: CaseStudy[] = [
   {
     id: "customer-success-workflow-automation",
+    slug: "customer-success-workflow-automation",
     department: "Operations",
     title: "Customer Success Workflow Automation",
     description:
       "Automated reporting and early warning system for a managed services provider.",
     results: [
-      "80% reduction in reporting time",
-      "3 at-risk accounts flagged early",
+      { text: "80% reduction in reporting time" },
+      { text: "3 at-risk accounts flagged early" },
     ],
   },
   {
     id: "real-time-project-profitability-dashboard",
+    slug: "real-time-project-profitability-dashboard",
     department: "Finance",
     title: "Real-Time Project Profitability Dashboard",
     description:
       "Live margin tracking and utilization visibility for a professional services firm.",
     results: [
-      "Real-time margin tracking",
-      "15% improvement in utilization",
+      { text: "Real-time margin tracking" },
+      { text: "15% improvement in utilization" },
     ],
   },
   {
     id: "knowledge-capture-system",
+    slug: "knowledge-capture-system",
     department: "Operations",
     title: "Knowledge Capture System",
     description:
       "Process documentation and institutional knowledge system for a growing team.",
     results: [
-      "40% faster onboarding",
-      "Reduced tribal knowledge dependency",
+      { text: "40% faster onboarding" },
+      { text: "Reduced tribal knowledge dependency" },
     ],
   },
   {
     id: "lead-response-automation",
+    slug: "lead-response-automation",
     department: "Sales",
     title: "Lead Response Automation",
     description:
       "Automated lead routing and follow-up sequences for a sales team.",
     results: [
-      "Response time under 5 minutes",
-      "23% increase in conversion",
+      { text: "Response time under 5 minutes" },
+      { text: "23% increase in conversion" },
     ],
   },
   {
     id: "client-health-monitoring",
+    slug: "client-health-monitoring",
     department: "Customer Success",
     title: "Client Health Monitoring",
     description:
       "Proactive alerting system for at-risk accounts.",
     results: [
-      "Churn reduced by 18%",
-      "Early warning on 12 accounts",
+      { text: "Churn reduced by 18%" },
+      { text: "Early warning on 12 accounts" },
     ],
   },
   {
-    id: "employee-onboarding-automation",
-    department: "HR",
-    title: "Employee Onboarding Automation",
+    id: "field-service-dispatch-optimization",
+    slug: "field-service-dispatch-optimization",
+    department: "Field Services",
+    title: "Field Service Dispatch Optimization",
     description:
-      "Automated new hire workflows from offer acceptance to day one.",
+      "Automated scheduling and route optimization for a field services company.",
     results: [
-      "60% reduction in admin time",
-      "Zero missed onboarding steps",
+      { text: "30% reduction in drive time" },
+      { text: "25% more jobs per day" },
     ],
   },
 ];

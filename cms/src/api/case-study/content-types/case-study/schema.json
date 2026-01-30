@@ -5,7 +5,7 @@
     "singularName": "case-study",
     "pluralName": "case-studies",
     "displayName": "Case Study",
-    "description": "Client case studies with video"
+    "description": "Client case studies with detailed content"
   },
   "options": {
     "draftAndPublish": true
@@ -27,14 +27,21 @@
         "Sales",
         "Customer Success",
         "Finance",
-        "Marketing",
-        "HR"
+        "Field Services"
       ],
       "required": true
     },
     "description": {
       "type": "text",
       "required": true
+    },
+    "problem": {
+      "type": "richtext",
+      "required": false
+    },
+    "solution": {
+      "type": "richtext",
+      "required": false
     },
     "results": {
       "type": "json",
@@ -52,6 +59,12 @@
         "none"
       ],
       "default": "none"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
     },
     "featured": {
       "type": "boolean",
