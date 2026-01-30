@@ -43,10 +43,11 @@ interface StrapiResponse<T> {
 
 export async function getCaseStudies(): Promise<CaseStudy[]> {
   try {
+    console.log('Fetching from Strapi URL:', STRAPI_URL);
     const res = await fetch(
       `${STRAPI_URL}/api/case-studies?populate=*&sort=order:asc,createdAt:desc`,
       {
-        next: { revalidate: 60 }, // Revalidate every 60 seconds
+        cache: 'no-store', // Always fetch fresh data
       }
     );
 
