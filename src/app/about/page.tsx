@@ -112,7 +112,7 @@ export default function AboutPage() {
               <div className="space-y-6 text-lg leading-[1.8] text-text">
                 <p>
                   I write a lot.{" "}
-                  <a href="#" className="text-primary hover:text-primary-light">
+                  <a href="https://www.thecomeup.co/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-light">
                     <RoughAnnotation
                       type="underline"
                       color="#006747"
@@ -124,7 +124,7 @@ export default function AboutPage() {
                     </RoughAnnotation>
                   </a>{" "}
                   is where I interview entrepreneurs about the wins, the setbacks, and everything in between.{" "}
-                  <a href="#" className="text-gold hover:text-gold/80">
+                  <a href="https://thefiveminutemba.substack.com/" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold/80">
                     <RoughAnnotation
                       type="underline"
                       color="#B8860B"
@@ -137,7 +137,7 @@ export default function AboutPage() {
                     </RoughAnnotation>
                   </a>{" "}
                   is a weekly series of business book summaries for people who want the insights, but don&apos;t have the time. I also write the occasional{" "}
-                  <a href="#" className="text-primary hover:text-primary-light">
+                  <a href="https://tribealexander.substack.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-light">
                     <RoughAnnotation
                       type="underline"
                       color="#006747"
