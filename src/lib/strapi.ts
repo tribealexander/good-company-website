@@ -1,6 +1,10 @@
 // Get Strapi URL at runtime, not module load time
 function getStrapiUrl(): string {
-  return process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+  const url = process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+  console.log('STRAPI_URL env:', process.env.STRAPI_URL);
+  console.log('NEXT_PUBLIC_STRAPI_URL env:', process.env.NEXT_PUBLIC_STRAPI_URL);
+  console.log('Using Strapi URL:', url);
+  return url;
 }
 
 export interface StrapiCaseStudy {

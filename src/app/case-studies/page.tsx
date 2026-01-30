@@ -73,10 +73,13 @@ const fallbackCaseStudies = [
 
 export default async function CaseStudiesPage() {
   // Fetch from Strapi
+  console.log('CaseStudiesPage: Fetching from Strapi...');
   const strapiCaseStudies = await getCaseStudies();
+  console.log('CaseStudiesPage: Got', strapiCaseStudies.length, 'case studies from Strapi');
 
   // Use Strapi data if available, otherwise fall back to hardcoded data
   const caseStudies = strapiCaseStudies.length > 0 ? strapiCaseStudies : fallbackCaseStudies;
+  console.log('CaseStudiesPage: Using', caseStudies.length, 'case studies (fallback:', strapiCaseStudies.length === 0, ')');
 
   return <CaseStudiesClient initialCaseStudies={caseStudies} />;
 }
