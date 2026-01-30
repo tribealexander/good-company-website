@@ -346,23 +346,60 @@ Footer link: "Referrals" under Quick Links
 
 ---
 
-## Case Studies Page
+## Case Studies
 
-The Case Studies page (`/src/app/case-studies/page.tsx`) displays work examples organized by department.
+### List Page (`/case-studies`)
+
+The Case Studies listing page displays work examples organized by department.
 
 **Architecture**:
 - `page.tsx` - Server component that fetches data from Strapi CMS
-- `CaseStudiesClient.tsx` - Client component with filters, lightbox, and interactivity
+- `CaseStudiesClient.tsx` - Client component with filters and card grid
 - `loading.tsx` - Skeleton UI shown during navigation/loading
 
-Features:
-- **Department filters**: All, Operations, Sales, Customer Success, Finance, Marketing, HR
+**Features**:
+- **Department filters**: All, Operations, Sales, Customer Success, Finance, Marketing, HR, Field Services
 - **Strapi CMS integration**: Fetches case studies from Strapi Cloud with ISR (60s revalidation)
 - **Fallback data**: If Strapi is unavailable, falls back to hardcoded case studies
-- **Video lightbox**: Clicking a card opens a modal with YouTube/Loom video
+- **Card links**: Clicking a card navigates to `/case-studies/[slug]` detail page
+- **Video badge**: Cards with videos show a "Video" indicator
 - **Load More**: Shows 6 case studies initially, with button to load more
-- **Escape key**: Closes lightbox
 - **Page transitions**: Smooth fade-in animation via PageTransition component
+
+### Detail Page (`/case-studies/[slug]`)
+
+Individual case study pages with full content.
+
+**Architecture**:
+- `[slug]/page.tsx` - Server component with SEO metadata generation
+- `[slug]/CaseStudyContent.tsx` - Client component with video embed and rich text
+- `[slug]/loading.tsx` - Skeleton loading state
+
+**Page Structure**:
+1. **Hero** - Dark green (`#004D36`) background with decorative blur elements
+   - Back link to Case Studies
+   - Department tag (glass-style pill)
+   - Large title (56px on desktop)
+   - Description in light green text
+2. **Video** (if exists) - Pulled up with negative margin, shadow/glow effect
+   - Auto-detects YouTube/Loom from URL
+   - Rounded corners with premium shadow
+3. **Problem & Solution** - Side-by-side on desktop
+   - Gold accent line for "The Problem" section
+   - Green accent line for "What We Built" section
+   - Icon badges for visual hierarchy
+4. **Results** - Full-width beige background
+   - "Measurable Impact" eyebrow text
+   - Large stat numbers in monospace font
+   - Cards with hover animations (lift + bottom accent line)
+5. **CTA** - Dark green section
+   - "Got a Similar Challenge?" heading
+   - Book a Brainstorm button
+
+**Video URL Detection**:
+The detail page auto-detects video type from URL if `videoType` is set to "none":
+- YouTube URLs → YouTube embed
+- Loom URLs → Loom embed
 
 ---
 
@@ -508,13 +545,24 @@ Fields in Strapi:
 |-------|------|----------|-------------|
 | title | Text | Yes | Case study title |
 | slug | UID (from title) | Yes | URL-friendly identifier |
-| department | Enumeration | Yes | Operations, Sales, Customer Success, Finance, Marketing, HR |
+| department | Enumeration | Yes | Operations, Sales, Customer Success, Finance, Marketing, HR, Field Services |
 | description | Text (long) | Yes | Brief description |
-| results | Component (repeatable) | No | Array of result strings |
-| videoUrl | Text | No | YouTube or Loom embed URL |
-| videoType | Enumeration | No | youtube, loom, or none |
+| problem | Rich Text | No | "The Problem" section content |
+| solution | Rich Text | No | "What We Built" section content |
+| results | JSON | No | Array of `{ text, stat? }` objects |
+| videoUrl | Text | No | YouTube or Loom URL |
+| videoType | Enumeration | No | youtube, loom, or none (auto-detected if none) |
+| thumbnail | Media (image) | No | Card thumbnail image |
 | featured | Boolean | No | Featured case study flag |
 | order | Integer | No | Sort order (lower = first) |
+
+**Results format** in Strapi:
+```json
+[
+  { "text": "reduction in reporting time", "stat": "80%" },
+  { "text": "at-risk accounts flagged early", "stat": "3" }
+]
+```
 
 ### API Permissions
 
@@ -555,6 +603,21 @@ npm run develop
 ```
 
 Local Strapi runs on `http://localhost:1337`
+
+### Next.js Image Configuration
+
+Strapi Cloud media URLs are configured in `next.config.ts`:
+
+```typescript
+images: {
+  remotePatterns: [
+    { protocol: 'https', hostname: '*.strapiapp.com' },
+    { protocol: 'https', hostname: '*.media.strapiapp.com' },
+  ],
+}
+```
+
+This allows Next.js `<Image>` components to load thumbnails from Strapi Cloud.
 
 ---
 
@@ -608,9 +671,12 @@ npm run lint
 | `src/app/about/loading.tsx` | About page skeleton loading state |
 | `src/app/layout.tsx` | Root layout, fonts, SEO metadata |
 | `src/app/globals.css` | Tailwind theme, animations, global styles |
-| `src/app/case-studies/page.tsx` | Case studies server component (fetches from Strapi) |
-| `src/app/case-studies/CaseStudiesClient.tsx` | Case studies client component (UI/filters) |
-| `src/app/case-studies/loading.tsx` | Case studies skeleton loading state |
+| `src/app/case-studies/page.tsx` | Case studies list server component (fetches from Strapi) |
+| `src/app/case-studies/CaseStudiesClient.tsx` | Case studies list client component (UI/filters) |
+| `src/app/case-studies/loading.tsx` | Case studies list skeleton loading state |
+| `src/app/case-studies/[slug]/page.tsx` | Case study detail server component |
+| `src/app/case-studies/[slug]/CaseStudyContent.tsx` | Case study detail client component (video/content) |
+| `src/app/case-studies/[slug]/loading.tsx` | Case study detail skeleton loading state |
 | `src/app/acquisitions/page.tsx` | Acquisitions & partnerships page |
 | `src/app/referrals/page.tsx` | Referrals program page |
 | `src/app/api/contact/route.ts` | Contact form API endpoint |
