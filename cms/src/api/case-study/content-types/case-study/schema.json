@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "case_studies",
+  "info": {
+    "singularName": "case-study",
+    "pluralName": "case-studies",
+    "displayName": "Case Study",
+    "description": "Client case studies with video"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "department": {
+      "type": "enumeration",
+      "enum": [
+        "Operations",
+        "Sales",
+        "Customer Success",
+        "Finance",
+        "Marketing",
+        "HR"
+      ],
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "results": {
+      "type": "json",
+      "required": false
+    },
+    "videoUrl": {
+      "type": "string",
+      "required": false
+    },
+    "videoType": {
+      "type": "enumeration",
+      "enum": [
+        "youtube",
+        "loom",
+        "none"
+      ],
+      "default": "none"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

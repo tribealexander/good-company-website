@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "cms": "cd cms && npm run develop",
+    "cms:build": "cd cms && npm run build",
+    "cms:start": "cd cms && npm run start"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
