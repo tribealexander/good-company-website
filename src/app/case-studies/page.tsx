@@ -1,6 +1,9 @@
 import { getCaseStudies } from "@/lib/strapi";
 import CaseStudiesClient from "./CaseStudiesClient";
 
+// Force dynamic rendering - fetch at request time, not build time
+export const dynamic = 'force-dynamic';
+
 // Fallback data for when Strapi is unavailable
 const fallbackCaseStudies = [
   {
