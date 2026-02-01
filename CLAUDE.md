@@ -750,6 +750,7 @@ When writing or editing copy, follow these terminology rules:
 - Use **"intelligent systems"** or **"automated systems"** instead of "AI"
 - Keep language **mechanism-agnostic** - don't reference specific platforms
 - Emphasize **scaling without adding headcount** over cost reduction
+- **No em dashes** (—) in copy - use commas or reword instead
 
 **Current service names** (What We Build section):
 1. Automate Manual Work
