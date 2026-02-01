@@ -19,7 +19,7 @@ const services: ServiceCardData[] = [
     id: 1,
     title: "Automate Manual Work",
     description:
-      "We identify what should never touch a human and build systems to handle it. Whether that's repetitive coordination or one-off handoffs, across any department—the process is the same.",
+      "We identify what should never touch a human and build systems to handle it. Whether that's repetitive coordination or one-off handoffs, across any department, the process is the same.",
     example: "Intake → triage → assignment → follow-ups, fully automated",
     impact: "5-10 hours per person per week reclaimed",
     supportingText:
@@ -30,7 +30,7 @@ const services: ServiceCardData[] = [
     id: 2,
     title: "Create Better Visibility",
     description:
-      "Most leaders either micromanage or fly blind. We build systems that give you visibility into what's actually happening—without hiring someone just to track it or digging through spreadsheets.",
+      "Most leaders either micromanage or fly blind. We build systems that give you visibility into what's actually happening without hiring someone just to track it or digging through spreadsheets.",
     example: "Automated ops dashboard with early warning alerts and trend analysis",
     impact: "10+ hours/week saved on reporting",
     supportingText:
@@ -41,7 +41,7 @@ const services: ServiceCardData[] = [
     id: 3,
     title: "Improve Employee Performance",
     description:
-      "Data alone doesn't change behavior. We build systems where performance is tracked automatically and tied to real incentives—so people have a reason to do better work, and you're not the one enforcing it.",
+      "Data alone doesn't change behavior. We build systems where performance is tracked automatically and tied to real incentives, so people have a reason to do better work and you're not the one enforcing it.",
     example: "QA scoring + escalation rules + coaching dashboard",
     impact: "10-20% productivity improvement",
     supportingText:
