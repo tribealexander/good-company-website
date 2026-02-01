@@ -159,9 +159,10 @@ src/components/
 ├── ScrollReveal.tsx        # Scroll-triggered animations (AnimeJS v4) + StaggerContainer, TextReveal, CountUp
 ├── SectionHeading.tsx      # Consistent section headings with Lora font + green underline
 ├── FloatingCTA.tsx         # Floating CTA button
-├── InvestmentSection.tsx   # Pricing section
+├── InvestmentSection.tsx   # Pricing section with collapsible Automation Roadmap
 ├── FAQ.tsx                 # FAQ accordion
 ├── PageTransition.tsx      # Page transition animations (fade-in + scroll to top on navigation)
+├── TestimonialsCarousel.tsx # 3-card carousel with navigation, touch/swipe support
 └── index.ts                # Barrel exports
 
 src/hooks/
@@ -259,6 +260,24 @@ export default function SomePage() {
 
 **Note**: Wrap the `<main>` element, not the entire page. Header and Footer should be outside the transition.
 
+#### TestimonialsCarousel (`TestimonialsCarousel.tsx`)
+A horizontal carousel displaying client testimonials with navigation:
+- **Responsive layout**: 3 cards on desktop (lg+), 2 on tablet (sm-lg), 1 on mobile
+- **Navigation arrows**: Left/right buttons with disabled states when at boundaries
+- **Dot indicators**: Clickable dots showing current position
+- **Touch/swipe support**: Drag to navigate on mobile and desktop
+- **Avatar placeholders**: SVG silhouette icons (40x40px)
+- **Accessibility**: ARIA labels, reduced motion support
+- **Card design**: Quote mark decoration, left green border accent, subtle shadow
+
+```tsx
+import { TestimonialsCarousel } from "@/components";
+
+<TestimonialsCarousel />
+```
+
+Testimonials are hardcoded in the component with placeholder names (`[CLIENT NAME]`, `[ROLE]`, `[COMPANY]`).
+
 ---
 
 ## Homepage Structure
@@ -268,8 +287,8 @@ The homepage (`/src/app/page.tsx`) follows this section order:
 | # | Section | Background | ID |
 |---|---------|------------|-----|
 | 1 | Hero | Deep Green (`#004D36`) | - |
-| 2 | What We Build | White/Dynamic | `#solutions` |
-| 3 | Problems We Solve | Dynamic (earth tones) | `#problems` |
+| 2 | Problems We Solve | White/Dynamic (earth tones) | `#problems` |
+| 3 | What We Build | White/Dynamic | `#solutions` |
 | 4 | From Build to Buy-In | White | - |
 | 5 | How We Work | Cream textured | `#how-we-work` |
 | 6 | Testimonials | White | `#testimonials` |
@@ -302,15 +321,19 @@ Each card shows:
 ### Problems We Solve Section
 
 Interactive split-screen layout with dynamic backgrounds:
+- **Default state**: White background, first problem content displayed (but no background color until clicked)
 - **Intro**: "Every business is different, but these are the problems we see most often:"
 - **6 problems** that users can select, each with a different earth-tone background
 - **Value Framework**: Bold intro + two horizontal boxes showing "Saves Time" and "Protects & Grows Revenue"
 - Smooth 400ms transition between background colors
+- **Section order**: Appears before "What We Build" section
 
 ### From Build to Buy-In Section
 
-Explains why implementations stick:
-- 3 pillars: Less to Adopt, Problems Surface Fast, Built-In Accountability
+Explains why implementations stick, addressing common objections:
+- **Simple by Design**: "We build for non-technical teams"
+- **Your Team Owns It**: "We train your people and document everything"
+- **We Don't Disappear**: "60 days of support after launch, plus ongoing retainer options"
 - Closing statement: "That's why our work sticks." (simple centered text, no box)
 
 ---
@@ -702,7 +725,8 @@ npm run lint
 | `src/components/Button.tsx` | CTA button styles (including hero variant) |
 | `src/components/WhatWeBuildSection.tsx` | Services with dynamic backgrounds |
 | `src/components/ProblemsSectionWrapper.tsx` | Problems with dynamic backgrounds |
-| `src/components/HeroHeadline.tsx` | Hero headline with rough notation |
+| `src/components/TestimonialsCarousel.tsx` | Testimonials carousel with navigation |
+| `src/components/InvestmentSection.tsx` | Pricing section with collapsible Automation Roadmap |
 | `src/components/RoughAnnotation.tsx` | Rough notation wrapper |
 | `src/components/PageTransition.tsx` | Page navigation fade-in animations |
 | `src/components/ScrollReveal.tsx` | Scroll-triggered animations |
