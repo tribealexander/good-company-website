@@ -40,7 +40,7 @@ export default function ReferralsPage() {
         <section className="bg-white px-6 py-12 lg:px-10 lg:py-16">
           <div className="mx-auto max-w-4xl">
             <ScrollReveal>
-              <h2 className="mb-8 text-center text-2xl font-semibold text-[#1A1A1A] lg:text-3xl">
+              <h2 className="font-serif mb-8 text-center text-2xl font-semibold text-[#1A1A1A] lg:text-3xl">
                 How it works
               </h2>
             </ScrollReveal>
@@ -92,7 +92,7 @@ export default function ReferralsPage() {
         <section className="bg-[#E8E3DB] px-6 py-12 lg:px-10 lg:py-16">
           <div className="mx-auto max-w-[500px] text-center">
             <ScrollReveal>
-              <h2 className="mb-2 text-xl font-semibold text-[#1A1A1A] lg:text-2xl">
+              <h2 className="font-serif mb-2 text-xl font-semibold text-[#1A1A1A] lg:text-2xl">
                 That&apos;s it.
               </h2>
               <p className="mb-8 text-sm text-[#666666] lg:text-base">

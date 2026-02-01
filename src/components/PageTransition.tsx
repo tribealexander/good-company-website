@@ -16,6 +16,9 @@ export default function PageTransition({ children, className = "" }: PageTransit
     // Reset visibility on route change
     setIsVisible(false);
 
+    // Scroll to top on route change
+    window.scrollTo(0, 0);
+
     // Small delay before starting the fade-in for a more gradual feel
     const timer = setTimeout(() => {
       setIsVisible(true);

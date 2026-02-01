@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Source_Sans_3, JetBrains_Mono, Caveat } from "next/font/google";
+import { Inter, Source_Sans_3, JetBrains_Mono, Caveat, Lora } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
@@ -27,6 +27,13 @@ const jetbrainsMono = JetBrains_Mono({
 
 const caveat = Caveat({
   variable: "--font-caveat",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
+
+const lora = Lora({
+  variable: "--font-lora",
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
@@ -76,7 +83,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${sourceSans.variable} ${jetbrainsMono.variable} ${caveat.variable} font-sans antialiased`}
+        className={`${inter.variable} ${sourceSans.variable} ${jetbrainsMono.variable} ${caveat.variable} ${lora.variable} font-sans antialiased`}
       >
         {children}
         <Analytics />

@@ -17,6 +17,7 @@
   --font-sans: var(--font-inter);
   --font-body: var(--font-source-sans);
   --font-mono: var(--font-jetbrains-mono);
+  --font-serif: var(--font-lora);
 }
 
 /* Smooth scrolling */
@@ -29,6 +30,11 @@ body {
   color: var(--color-foreground);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Global heading styles - serif font for h1 and h2 */
+h1, h2 {
+  font-family: var(--font-lora), Lora, serif !important;
 }
 
 /* Animation keyframes */

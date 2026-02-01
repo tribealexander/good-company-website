@@ -32,6 +32,7 @@ interface RoughAnnotationProps {
   showOnScroll?: boolean;
   delay?: number;
   className?: string;
+  padding?: number | [number, number, number, number]; // top, right, bottom, left or single value
 }
 
 export default function RoughAnnotation({
@@ -46,6 +47,7 @@ export default function RoughAnnotation({
   showOnScroll = true,
   delay = 0,
   className = "",
+  padding = 0,
 }: RoughAnnotationProps) {
   const spanRef = useRef<HTMLSpanElement>(null);
   const annotationRef = useRef<AnnotationObject | null>(null);
@@ -68,6 +70,7 @@ export default function RoughAnnotation({
       animationDuration: prefersReducedMotion ? 0 : animationDuration,
       iterations,
       multiline,
+      padding,
     });
 
     if (!showOnScroll) {
@@ -116,6 +119,7 @@ export default function RoughAnnotation({
     multiline,
     showOnScroll,
     delay,
+    padding,
   ]);
 
   return (

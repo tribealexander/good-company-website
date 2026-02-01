@@ -29,7 +29,7 @@ export default function AcquisitionsPage() {
         <section className="bg-white px-6 py-12 lg:px-10 lg:py-16">
           <div className="mx-auto max-w-5xl">
             <ScrollReveal>
-              <h2 className="mb-12 text-center text-3xl font-bold text-dark lg:text-4xl">
+              <h2 className="font-serif mb-12 text-center text-3xl font-bold text-dark lg:text-4xl">
                 A Few Ways This Could Work
               </h2>
             </ScrollReveal>
@@ -87,7 +87,7 @@ export default function AcquisitionsPage() {
         <section className="bg-[#E8E3DB] px-6 py-16 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-3xl">
             <ScrollReveal>
-              <h2 className="mb-10 text-center text-3xl font-bold text-dark lg:text-4xl">
+              <h2 className="font-serif mb-10 text-center text-3xl font-bold text-dark lg:text-4xl">
                 What I Look For
               </h2>
             </ScrollReveal>
@@ -143,7 +143,7 @@ export default function AcquisitionsPage() {
         <section className="bg-[#004D36] px-6 py-16 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[600px] text-center">
             <ScrollReveal>
-              <h2 className="mb-4 text-3xl font-bold text-white lg:text-4xl">
+              <h2 className="font-serif mb-4 text-3xl font-bold text-white lg:text-4xl">
                 Interested?
               </h2>
               <p className="mb-8 text-lg text-[#A8D5C2]">

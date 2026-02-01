@@ -8,9 +8,9 @@ import {
   FAQ,
   SectionHeading,
   WhatWeBuildSection,
-  HeroHeadline,
   TrustIndicators,
   InvestmentSection,
+  HeroSection,
 } from "@/components";
 
 export default function Home() {
@@ -20,27 +20,7 @@ export default function Home() {
       <FloatingCTA />
       <main>
         {/* Hero Section - Deep Green */}
-        <section className="bg-[#004D36] px-6 pb-28 pt-32 lg:px-10 lg:pb-40 lg:pt-44">
-          <div className="mx-auto max-w-4xl text-center">
-            {/* Headline with Rough Notation */}
-            <HeroHeadline />
-
-            {/* Subhead */}
-            <p className="animate-fade-in-up animation-delay-300 mx-auto max-w-[700px] text-lg leading-relaxed text-[#A8D5C2] md:text-xl">
-              Your team wastes hours on manual tasks, things slip through the
-              cracks, and problems stay hidden until they&apos;re fires. We build
-              systems that fix all three—so you can scale without adding headcount.
-            </p>
-
-            {/* CTA Button */}
-            <div className="animate-fade-in-up animation-delay-400 mt-10">
-              <Button href="#contact-form" size="large" variant="hero">
-                Book a Discovery Call
-              </Button>
-            </div>
-
-          </div>
-        </section>
+        <HeroSection />
 
         {/* What We Build - White (with dynamic colors on interaction) */}
         <WhatWeBuildSection />
@@ -241,7 +221,7 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             <ScrollReveal>
               <SectionHeading className="mb-12">
-                From Our Clients
+                From Chaos to Clockwork
               </SectionHeading>
             </ScrollReveal>
 

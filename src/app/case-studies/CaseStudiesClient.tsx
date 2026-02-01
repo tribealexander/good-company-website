@@ -1,10 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { animate, stagger } from "animejs";
 import { Header, Footer, PageTransition } from "@/components";
 import { CaseStudy } from "@/lib/strapi";
+
+// Check for reduced motion preference
+function prefersReducedMotion(): boolean {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
 
 interface CaseStudiesClientProps {
   initialCaseStudies: CaseStudy[];
@@ -13,6 +20,8 @@ interface CaseStudiesClientProps {
 export default function CaseStudiesClient({ initialCaseStudies }: CaseStudiesClientProps) {
   const [activeFilter, setActiveFilter] = useState("All");
   const [visibleCount, setVisibleCount] = useState(6);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const prevCountRef = useRef(0);
 
   // Department filters
   const departments = [
@@ -36,8 +45,46 @@ export default function CaseStudiesClient({ initialCaseStudies }: CaseStudiesCli
   const visibleCaseStudies = filteredCaseStudies.slice(0, visibleCount);
   const hasMore = filteredCaseStudies.length > visibleCount;
 
+  // Animate cards when filter changes or load more is clicked
+  useEffect(() => {
+    if (!gridRef.current || prefersReducedMotion()) return;
+
+    const cards = gridRef.current.querySelectorAll("[data-case-study-card]");
+    if (cards.length === 0) return;
+
+    // Determine if this is a filter change or load more
+    const isLoadMore = prevCountRef.current > 0 && visibleCount > prevCountRef.current;
+    const startIndex = isLoadMore ? prevCountRef.current : 0;
+
+    // Get cards to animate
+    const cardsToAnimate = Array.from(cards).slice(startIndex);
+
+    if (cardsToAnimate.length === 0) {
+      prevCountRef.current = visibleCount;
+      return;
+    }
+
+    // Set initial state
+    cardsToAnimate.forEach((card) => {
+      (card as HTMLElement).style.opacity = "0";
+      (card as HTMLElement).style.transform = "translateY(30px)";
+    });
+
+    // Animate with stagger
+    animate(cardsToAnimate, {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      duration: 600,
+      delay: stagger(80),
+      ease: "outExpo",
+    });
+
+    prevCountRef.current = visibleCount;
+  }, [activeFilter, visibleCount, visibleCaseStudies.length]);
+
   // Reset visible count when filter changes
   const handleFilterChange = (department: string) => {
+    prevCountRef.current = 0; // Reset for filter change animation
     setActiveFilter(department);
     setVisibleCount(6);
   };
@@ -50,7 +97,7 @@ export default function CaseStudiesClient({ initialCaseStudies }: CaseStudiesCli
           {/* Hero */}
           <section className="bg-cream pb-6 pt-28 lg:pt-32">
             <div className="mx-auto max-w-7xl px-6 lg:px-10">
-              <h1 className="mb-2 text-4xl font-bold tracking-tight text-dark md:text-5xl">
+              <h1 className="font-serif mb-2 text-4xl font-bold tracking-tight text-dark md:text-5xl">
                 Case Studies
               </h1>
               <p className="text-lg text-text-light">
@@ -81,12 +128,13 @@ export default function CaseStudiesClient({ initialCaseStudies }: CaseStudiesCli
 
               {/* Case Study Cards Grid */}
               {visibleCaseStudies.length > 0 ? (
-                <div className="grid gap-x-8 gap-y-12 md:grid-cols-2">
+                <div ref={gridRef} className="grid gap-x-8 gap-y-12 md:grid-cols-2">
                   {visibleCaseStudies.map((study) => (
                     <Link
                       key={study.id}
                       href={`/case-studies/${study.slug}`}
                       className="group block"
+                      data-case-study-card
                     >
                       <article>
                         {/* Thumbnail */}
@@ -189,7 +237,7 @@ export default function CaseStudiesClient({ initialCaseStudies }: CaseStudiesCli
           {/* CTA Section */}
           <section className="bg-[#004D36] py-16 lg:py-20">
             <div className="mx-auto max-w-2xl px-6 text-center lg:px-10">
-              <h2 className="mb-4 text-2xl font-medium text-white lg:text-3xl">
+              <h2 className="font-serif mb-4 text-2xl font-medium text-white lg:text-3xl">
                 Got a Similar Problem?
               </h2>
               <p className="mb-8 text-lg text-[#A8D5C2]">

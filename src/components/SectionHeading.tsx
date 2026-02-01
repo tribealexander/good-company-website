@@ -39,11 +39,11 @@ export default function SectionHeading({
       ref={headingRef}
       className={`${centered ? "text-center" : ""} ${className}`}
     >
-      <h2 className="text-3xl font-bold tracking-tight text-dark md:text-4xl lg:text-5xl">
+      <h2 className="font-serif text-3xl font-bold tracking-tight text-dark md:text-4xl lg:text-5xl">
         {children}
       </h2>
       <div
-        className={`mt-4 h-1 rounded-full bg-primary transition-all duration-600 ease-out ${
+        className={`mt-2 h-1 rounded-full bg-primary transition-all duration-600 ease-out ${
           centered ? "mx-auto" : ""
         } ${isVisible ? "w-20 opacity-100" : "w-0 opacity-0"}`}
       />

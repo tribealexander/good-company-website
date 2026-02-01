@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+import { animate, stagger } from "animejs";
 import {
   Header,
   Footer,
@@ -11,7 +13,41 @@ import {
 import RoughAnnotation from "@/components/RoughAnnotation";
 import Image from "next/image";
 
+// Check for reduced motion preference
+function prefersReducedMotion(): boolean {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
 export default function AboutPage() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    if (!heroRef.current || hasAnimated.current || prefersReducedMotion()) return;
+    hasAnimated.current = true;
+
+    const elements = heroRef.current.querySelectorAll("[data-hero-animate]");
+    if (elements.length === 0) return;
+
+    // Set initial state
+    elements.forEach((el) => {
+      (el as HTMLElement).style.opacity = "0";
+      (el as HTMLElement).style.transform = "translateY(20px)";
+    });
+
+    // Animate with stagger after a brief delay for page load
+    setTimeout(() => {
+      animate(elements, {
+        opacity: [0, 1],
+        translateY: [20, 0],
+        duration: 800,
+        delay: stagger(100),
+        ease: "outExpo",
+      });
+    }, 200);
+  }, []);
+
   return (
     <>
       <Header />
@@ -45,12 +81,12 @@ export default function AboutPage() {
           </div>
 
           {/* Hero content + Story (unified) */}
-          <div className="relative mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-32">
+          <div ref={heroRef} className="relative mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-32">
             <div className="max-w-xl">
-              <p className="mb-4 text-sm font-medium uppercase tracking-wider text-[#6B6B6B]">
+              <p data-hero-animate className="mb-4 text-sm font-medium uppercase tracking-wider text-[#6B6B6B]">
                 About
               </p>
-              <h1 className="mb-6 text-4xl font-bold text-dark md:text-5xl lg:text-[56px] lg:leading-tight">
+              <h1 data-hero-animate className="font-serif mb-6 text-4xl font-bold text-dark md:text-5xl lg:text-[56px] lg:leading-tight">
                 Hi, I&apos;m{" "}
                 <RoughAnnotation
                   type="underline"
@@ -58,33 +94,34 @@ export default function AboutPage() {
                   strokeWidth={3}
                   animationDuration={800}
                   showOnScroll={true}
+                  delay={400}
                 >
                   Alex
                 </RoughAnnotation>
                 .
               </h1>
-              <p className="mb-8 text-xl leading-relaxed text-text-light">
+              <p data-hero-animate className="mb-8 text-xl leading-relaxed text-text-light">
                 I build automation systems for growing businesses.
               </p>
 
               {/* Story - flows directly from subhead */}
               <div className="space-y-6 text-lg leading-[1.8] text-text">
-                <p className="first-letter:float-left first-letter:mr-3 first-letter:text-6xl first-letter:font-bold first-letter:leading-none first-letter:text-primary">
+                <p data-hero-animate className="first-letter:float-left first-letter:mr-3 first-letter:text-6xl first-letter:font-bold first-letter:leading-none first-letter:text-primary">
                   I work with founders because they&apos;re the people I like to be around. People who take charge, figure things out, and don&apos;t wait for permission. That probably sounds like a platitude, but it&apos;s simpler than that—they&apos;re the people that energize me.
                 </p>
-                <p>
+                <p data-hero-animate>
                   I like to think of myself as a co-founder on retainer. An advisor who isn&apos;t trying to sell you something you don&apos;t need. When I start working with someone, I mostly just ask questions. A lot of them. I don&apos;t show up with answers—I show up trying to understand what&apos;s actually broken, what matters, and what&apos;s going to get ignored if we build it.
                 </p>
-                <p>
+                <p data-hero-animate>
                   After years of doing this, a lot of the work comes down to the same things: don&apos;t drop leads, deliver a great customer experience, and make more money than you spend. Simple to say, hard to do consistently.
                 </p>
-                <p>
+                <p data-hero-animate>
                   How I help is usually some combination of automation, visibility, and accountability—tech that handles the repetitive stuff, dashboards that show what&apos;s actually happening, and systems that make sure people follow through.
                 </p>
               </div>
 
               {/* Standalone statement */}
-              <p className="mt-10 text-lg font-medium text-dark">
+              <p data-hero-animate className="mt-10 text-lg font-medium text-dark">
                 I work{" "}
                 <RoughAnnotation
                   type="underline"
@@ -92,7 +129,7 @@ export default function AboutPage() {
                   strokeWidth={2}
                   animationDuration={600}
                   showOnScroll={true}
-                  delay={300}
+                  delay={800}
                 >
                   directly
                 </RoughAnnotation>{" "}
@@ -106,7 +143,7 @@ export default function AboutPage() {
         <section className="bg-white px-6 py-16 lg:px-10 lg:py-20">
           <div className="mx-auto max-w-[680px]">
             <ScrollReveal>
-              <h2 className="mb-8 text-3xl font-bold text-dark lg:text-4xl">
+              <h2 className="font-serif mb-8 text-3xl font-bold text-dark lg:text-4xl">
                 If You Want to Go Deeper
               </h2>
               <div className="space-y-6 text-lg leading-[1.8] text-text">

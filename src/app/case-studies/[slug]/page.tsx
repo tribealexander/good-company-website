@@ -101,7 +101,7 @@ export default async function CaseStudyPage({ params }: Props) {
                 <p className="text-[#A8D5C2] text-sm font-medium uppercase tracking-wider mb-4">
                   Ready to solve your problem?
                 </p>
-                <h2 className="mb-6 text-3xl font-bold text-white lg:text-4xl">
+                <h2 className="font-serif mb-6 text-3xl font-bold text-white lg:text-4xl">
                   Got a Similar Challenge?
                 </h2>
                 <p className="mb-10 text-lg text-[#A8D5C2] max-w-xl mx-auto">

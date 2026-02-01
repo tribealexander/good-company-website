@@ -66,13 +66,18 @@ Fonts are loaded in `/src/app/layout.tsx`:
 
 | Purpose | Font | Weights | CSS Variable |
 |---------|------|---------|--------------|
-| Headings | Inter | 400, 500, 600, 700 | `--font-inter` |
-| Body | Source Sans 3 | 400, 600 | `--font-source-sans` |
+| Headings (h1, h2) | Lora | 400, 500, 600, 700 | `--font-lora` |
+| Body/UI | Inter | 400, 500, 600, 700 | `--font-inter` |
+| Body Text | Source Sans 3 | 400, 600 | `--font-source-sans` |
 | Technical/Data | JetBrains Mono | 400, 600 | `--font-jetbrains-mono` |
+| Handwritten | Caveat | 400-700 | `--font-caveat` |
 
 **Usage**:
+- `font-serif` - Lora serif for headings (applied globally to h1, h2 via CSS)
 - `font-sans` - Default (Inter)
 - `font-mono` - Monospace for stats, prices, labels
+
+**Note**: All h1 and h2 elements automatically use Lora via global CSS rule in `globals.css`.
 
 ### Spacing Rules
 
@@ -149,15 +154,18 @@ src/components/
 ├── ProblemSelector.tsx     # Interactive split-screen problem selector
 ├── ProblemsSectionWrapper.tsx # Problems section with dynamic backgrounds
 ├── WhatWeBuildSection.tsx  # Services section with dynamic backgrounds
-├── HeroHeadline.tsx        # Hero headline with Rough Notation underline
-├── RoughAnnotation.tsx     # Wrapper for rough-notation library
-├── ScrollReveal.tsx        # Scroll-triggered fade-in animations
-├── SectionHeading.tsx      # Consistent section headings with green underline
+├── HeroSection.tsx         # Homepage hero with AnimeJS timeline animations
+├── RoughAnnotation.tsx     # Wrapper for rough-notation library (supports padding prop)
+├── ScrollReveal.tsx        # Scroll-triggered animations (AnimeJS v4) + StaggerContainer, TextReveal, CountUp
+├── SectionHeading.tsx      # Consistent section headings with Lora font + green underline
 ├── FloatingCTA.tsx         # Floating CTA button
 ├── InvestmentSection.tsx   # Pricing section
 ├── FAQ.tsx                 # FAQ accordion
-├── PageTransition.tsx      # Page transition animations (fade-in on navigation)
+├── PageTransition.tsx      # Page transition animations (fade-in + scroll to top on navigation)
 └── index.ts                # Barrel exports
+
+src/hooks/
+└── useAnimations.ts        # AnimeJS v4 animation hooks
 ```
 
 ### Import Pattern
@@ -207,23 +215,32 @@ Wrapper for the rough-notation library to add hand-drawn annotations:
   animationDuration={800}
   showOnScroll={false}
   delay={500}
+  padding={[0, 0, -8, 0]}  // Adjust underline position: [top, right, bottom, left]
 >
   automate
 </RoughAnnotation>
 ```
 
-Used in hero headline to underline "automate" with a gold hand-drawn line.
+Used in hero headline to underline "automate" with a gold hand-drawn line. The `padding` prop can adjust the annotation position relative to the text.
 
 #### ScrollReveal (`ScrollReveal.tsx`)
-Wraps content for scroll-triggered fade-in animations:
+Wraps content for scroll-triggered fade-in animations using AnimeJS v4:
 ```tsx
 <ScrollReveal delay={100}>
   <SectionHeading>Title</SectionHeading>
 </ScrollReveal>
 ```
 
+Also exports:
+- `StaggerContainer` - Animates children with staggered delays
+- `TextReveal` - Character-by-character text animation
+- `CountUp` - Animated number counting
+
+#### HeroSection (`HeroSection.tsx`)
+Homepage hero with AnimeJS timeline animations for headline, subhead, and CTA. Uses RoughAnnotation for the gold underline on "automate".
+
 #### PageTransition (`PageTransition.tsx`)
-Provides smooth fade-in animations on page navigation. Uses `usePathname()` to detect route changes and re-trigger animation:
+Provides smooth fade-in animations on page navigation. Uses `usePathname()` to detect route changes and re-trigger animation. Also scrolls to top on route change.
 ```tsx
 export default function SomePage() {
   return (
