@@ -156,7 +156,7 @@ export default function CaseStudyContent({ caseStudy }: Props) {
                   Measurable Impact
                 </p>
                 <h2 className="font-serif text-3xl font-bold text-dark lg:text-4xl">
-                  Results
+                  Results{caseStudy.resultsTimeframe && ` in ${caseStudy.resultsTimeframe}`}
                 </h2>
               </div>
             </ScrollReveal>

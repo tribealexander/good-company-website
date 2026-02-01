@@ -590,6 +590,7 @@ Fields in Strapi:
 | problem | Rich Text | No | "The Problem" section content |
 | solution | Rich Text | No | "What We Built" section content |
 | results | JSON | No | Array of `{ text, stat? }` objects |
+| resultsTimeframe | Text | No | Timeframe for results (e.g., "first 60 days") |
 | videoUrl | Text | No | YouTube or Loom URL |
 | videoType | Enumeration | No | youtube, loom, or none (auto-detected if none) |
 | thumbnail | Media (image) | No | Card thumbnail image |
@@ -603,6 +604,13 @@ Fields in Strapi:
   { "text": "at-risk accounts flagged early", "stat": "3" }
 ]
 ```
+
+**resultsTimeframe guidance**:
+Case study results should always specify a timeframe to demonstrate speed to value. The timeframe appears in the section header as "Results in [timeframe]". Suggested timeframes by system type:
+- **Dashboards/reporting**: "first 30 days" (immediate visibility)
+- **Workflow automation**: "first 60 days" (process adoption)
+- **Performance/incentive systems**: "first 90 days" (behavior change)
+- **Complex integrations**: "first 6 months" (full rollout)
 
 ### API Permissions
 

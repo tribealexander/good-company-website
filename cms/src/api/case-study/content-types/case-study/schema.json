@@ -27,6 +27,8 @@
         "Sales",
         "Customer Success",
         "Finance",
+        "Marketing",
+        "HR",
         "Field Services"
       ],
       "required": true
@@ -45,6 +47,10 @@
     },
     "results": {
       "type": "json",
+      "required": false
+    },
+    "resultsTimeframe": {
+      "type": "string",
       "required": false
     },
     "videoUrl": {

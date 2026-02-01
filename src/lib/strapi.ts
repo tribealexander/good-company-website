@@ -31,6 +31,7 @@ export interface StrapiCaseStudy {
   problem: string | null;
   solution: string | null;
   results: { text: string; stat?: string }[] | null;
+  resultsTimeframe: string | null;
   videoUrl: string | null;
   videoType: 'youtube' | 'loom' | 'none';
   thumbnail: StrapiMedia | null;
@@ -50,6 +51,7 @@ export interface CaseStudy {
   problem?: string;
   solution?: string;
   results: { text: string; stat?: string }[];
+  resultsTimeframe?: string;
   videoUrl?: string;
   videoType?: 'youtube' | 'loom' | 'none';
   thumbnailUrl?: string;
@@ -142,16 +144,56 @@ export async function getAllCaseStudySlugs(): Promise<string[]> {
   }
 }
 
+// Extract video thumbnail URL from YouTube or Loom URLs
+function getVideoThumbnail(videoUrl: string | null, videoType: 'youtube' | 'loom' | 'none'): string | undefined {
+  if (!videoUrl) return undefined;
+
+  // YouTube thumbnail extraction
+  if (videoType === 'youtube' || videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')) {
+    // Extract video ID from various YouTube URL formats
+    let videoId: string | null = null;
+
+    if (videoUrl.includes('youtu.be/')) {
+      videoId = videoUrl.split('youtu.be/')[1]?.split(/[?&#]/)[0] || null;
+    } else if (videoUrl.includes('youtube.com/watch')) {
+      const urlParams = new URL(videoUrl).searchParams;
+      videoId = urlParams.get('v');
+    } else if (videoUrl.includes('youtube.com/embed/')) {
+      videoId = videoUrl.split('embed/')[1]?.split(/[?&#]/)[0] || null;
+    }
+
+    if (videoId) {
+      // Use maxresdefault for highest quality, falls back gracefully
+      return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+    }
+  }
+
+  // Loom thumbnail extraction
+  if (videoType === 'loom' || videoUrl.includes('loom.com')) {
+    // Extract share ID from Loom URL
+    const loomMatch = videoUrl.match(/loom\.com\/share\/([a-zA-Z0-9]+)/);
+    if (loomMatch && loomMatch[1]) {
+      return `https://cdn.loom.com/sessions/thumbnails/${loomMatch[1]}-with-play.gif`;
+    }
+  }
+
+  return undefined;
+}
+
 // Helper to map Strapi response to our CaseStudy type
 function mapStrapiToCaseStudy(study: StrapiCaseStudy): CaseStudy {
   const strapiUrl = getStrapiUrl();
 
   // Handle thumbnail URL - Strapi returns relative URLs
+  // Priority: 1) Uploaded thumbnail, 2) Video thumbnail, 3) undefined
   let thumbnailUrl: string | undefined;
   if (study.thumbnail?.url) {
     thumbnailUrl = study.thumbnail.url.startsWith('http')
       ? study.thumbnail.url
       : `${strapiUrl}${study.thumbnail.url}`;
+  } else if (study.videoUrl) {
+    // Fall back to video thumbnail if no custom thumbnail uploaded
+    thumbnailUrl = getVideoThumbnail(study.videoUrl, study.videoType);
   }
 
   return {
@@ -166,6 +208,7 @@ function mapStrapiToCaseStudy(study: StrapiCaseStudy): CaseStudy {
       text: r.text,
       stat: r.stat
     })) || [],
+    resultsTimeframe: study.resultsTimeframe || undefined,
     videoUrl: study.videoUrl || undefined,
     videoType: study.videoType,
     thumbnailUrl,
