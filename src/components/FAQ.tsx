@@ -9,9 +9,9 @@ interface FAQItem {
 
 const faqData: FAQItem[] = [
   {
-    question: "What do we get in the Discovery Workshop?",
+    question: "What do we get in the Automation Roadmap?",
     answer:
-      "We assess your current operations, interview stakeholders at every level, audit your data landscape, and identify your highest-leverage opportunities. Often, the biggest insight isn't what to automate—it's where your data lives (scattered emails, texts, calls) and how to consolidate it first. You'll leave Discovery with a prioritized roadmap and a clear recommendation on which partnership size makes sense.",
+      "You'll walk away with a prioritized list of automation opportunities, ROI estimates for each, implementation recommendations (exactly how we'd build it), and a 90-day action plan you can execute yourself or with us. The roadmap is designed to be valuable whether or not you continue working with us. Most clients find the 'aha' moment isn't just what to automate—it's discovering where their data actually lives and how to consolidate it first.",
   },
   {
     question: "How much time does this take from our team?",
@@ -36,7 +36,7 @@ const faqData: FAQItem[] = [
   {
     question: "What happens after the 4-month commitment?",
     answer:
-      "You own everything we build. The automations keep running even if you stop working with us—though they won't be maintained or evolved. Most clients continue because we keep finding new problems to solve as the business grows. You can shift to a lower-hours maintenance partnership or pause entirely. It's flexible.",
+      "You own everything we build. The automations keep running even if you stop working with us—though they won't be maintained or evolved. Most clients continue because we keep finding new problems to solve as the business grows. You can shift to a lighter maintenance partnership or pause entirely. It's flexible.",
   },
   {
     question: "How do we know if this is worth the investment?",

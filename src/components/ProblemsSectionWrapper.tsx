@@ -16,9 +16,10 @@ const backgroundColors: Record<number, string> = {
 };
 
 export default function ProblemsSectionWrapper() {
-  const [selectedProblemId, setSelectedProblemId] = useState(1);
-  const backgroundColor =
-    backgroundColors[selectedProblemId] || backgroundColors[1];
+  const [selectedProblemId, setSelectedProblemId] = useState<number | null>(null);
+  const backgroundColor = selectedProblemId
+    ? backgroundColors[selectedProblemId]
+    : "#FFFFFF";
 
   return (
     <section

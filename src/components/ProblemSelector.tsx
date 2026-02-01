@@ -22,7 +22,7 @@ interface Problem {
 }
 
 interface ProblemSelectorProps {
-  onProblemChange?: (id: number) => void;
+  onProblemChange?: (id: number | null) => void;
 }
 
 const problems: Problem[] = [
@@ -99,8 +99,8 @@ const problems: Problem[] = [
 export default function ProblemSelector({
   onProblemChange,
 }: ProblemSelectorProps) {
-  const [selectedId, setSelectedId] = useState(1);
-  const [displayedProblem, setDisplayedProblem] = useState(problems[0]);
+  const [selectedId, setSelectedId] = useState<number | null>(1);
+  const [displayedProblem, setDisplayedProblem] = useState<Problem | null>(problems[0]);
   const [isExiting, setIsExiting] = useState(false);
   const [isEntering, setIsEntering] = useState(false);
   const [pressedId, setPressedId] = useState<number | null>(null);
@@ -123,10 +123,23 @@ export default function ProblemSelector({
     // Notify parent of change immediately for background color
     onProblemChange?.(id);
 
+    const newProblem = problems.find((p) => p.id === id)!;
+
+    // If no problem was previously selected, just set it directly with enter animation
+    if (selectedId === null) {
+      setSelectedId(id);
+      setDisplayedProblem(newProblem);
+      setIsEntering(true);
+      setTimeout(() => {
+        setIsEntering(false);
+      }, 300);
+      return;
+    }
+
     if (prefersReducedMotion) {
       // Instant swap for reduced motion
       setSelectedId(id);
-      setDisplayedProblem(problems.find((p) => p.id === id)!);
+      setDisplayedProblem(newProblem);
       return;
     }
 
@@ -136,7 +149,7 @@ export default function ProblemSelector({
     // After exit animation (150ms), update content and start enter animation
     setTimeout(() => {
       setSelectedId(id);
-      setDisplayedProblem(problems.find((p) => p.id === id)!);
+      setDisplayedProblem(newProblem);
       setIsExiting(false);
       setIsEntering(true);
 
@@ -184,8 +197,6 @@ export default function ProblemSelector({
     if (isEntering) return "";
     return "";
   };
-
-  const DisplayIcon = displayedProblem.Icon;
 
   return (
     <div className="mt-8">
@@ -249,42 +260,50 @@ export default function ProblemSelector({
           ref={contentRef}
           className="flex w-3/5 items-start"
         >
-          <div
-            className={`w-full rounded-xl border border-border bg-white p-7 shadow-[0_2px_12px_rgba(0,0,0,0.04)] ${getContentClasses()}`}
-          >
-            <h3 className="mb-5 text-2xl font-bold text-dark">
-              {displayedProblem.headline}
-            </h3>
+          {displayedProblem ? (
+            <div
+              className={`w-full rounded-xl border border-border bg-white p-7 shadow-[0_2px_12px_rgba(0,0,0,0.04)] ${getContentClasses()}`}
+            >
+              <h3 className="mb-5 text-2xl font-bold text-dark">
+                {displayedProblem.headline}
+              </h3>
 
-            <div className="space-y-4">
-              <div>
-                <h4 className="mb-2 font-mono text-xs font-semibold uppercase tracking-wider text-primary">
-                  What we find
-                </h4>
-                <p className="text-base leading-relaxed text-text">
-                  {displayedProblem.whatWeFind}
-                </p>
-              </div>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="mb-2 font-mono text-xs font-semibold uppercase tracking-wider text-primary">
+                    What we find
+                  </h4>
+                  <p className="text-base leading-relaxed text-text">
+                    {displayedProblem.whatWeFind}
+                  </p>
+                </div>
 
-              <div>
-                <h4 className="mb-2 font-mono text-xs font-semibold uppercase tracking-wider text-primary">
-                  What we build
-                </h4>
-                <p className="text-base leading-relaxed text-text">
-                  {displayedProblem.whatWeBuild}
-                </p>
-              </div>
+                <div>
+                  <h4 className="mb-2 font-mono text-xs font-semibold uppercase tracking-wider text-primary">
+                    What we build
+                  </h4>
+                  <p className="text-base leading-relaxed text-text">
+                    {displayedProblem.whatWeBuild}
+                  </p>
+                </div>
 
-              <div className="rounded-lg border border-primary/30 bg-[#E5F0E8] p-4">
-                <h4 className="mb-2 font-mono text-xs font-semibold uppercase tracking-wider text-primary">
-                  Result
-                </h4>
-                <p className="text-base font-medium text-primary">
-                  {displayedProblem.result}
-                </p>
+                <div className="rounded-lg border border-primary/30 bg-[#E5F0E8] p-4">
+                  <h4 className="mb-2 font-mono text-xs font-semibold uppercase tracking-wider text-primary">
+                    Result
+                  </h4>
+                  <p className="text-base font-medium text-primary">
+                    {displayedProblem.result}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <div className="flex w-full items-center justify-center rounded-xl border border-dashed border-border bg-white/50 p-7 text-center">
+              <p className="text-text-light">
+                Select a problem to see how we solve it
+              </p>
+            </div>
+          )}
         </div>
       </div>
 
@@ -311,42 +330,50 @@ export default function ProblemSelector({
 
         {/* Mobile content */}
         <div className="bg-cream/50 p-4">
-          <div
-            className={`rounded-xl border border-border bg-white p-5 shadow-[0_2px_12px_rgba(0,0,0,0.04)] ${getContentClasses()}`}
-          >
-            <h3 className="mb-5 text-xl font-bold text-dark">
-              {displayedProblem.headline}
-            </h3>
+          {displayedProblem ? (
+            <div
+              className={`rounded-xl border border-border bg-white p-5 shadow-[0_2px_12px_rgba(0,0,0,0.04)] ${getContentClasses()}`}
+            >
+              <h3 className="mb-5 text-xl font-bold text-dark">
+                {displayedProblem.headline}
+              </h3>
 
-            <div className="space-y-4">
-              <div>
-                <h4 className="mb-2 font-mono text-xs font-semibold uppercase tracking-wider text-primary">
-                  What we find
-                </h4>
-                <p className="leading-relaxed text-text">
-                  {displayedProblem.whatWeFind}
-                </p>
-              </div>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="mb-2 font-mono text-xs font-semibold uppercase tracking-wider text-primary">
+                    What we find
+                  </h4>
+                  <p className="leading-relaxed text-text">
+                    {displayedProblem.whatWeFind}
+                  </p>
+                </div>
 
-              <div>
-                <h4 className="mb-2 font-mono text-xs font-semibold uppercase tracking-wider text-primary">
-                  What we build
-                </h4>
-                <p className="leading-relaxed text-text">
-                  {displayedProblem.whatWeBuild}
-                </p>
-              </div>
+                <div>
+                  <h4 className="mb-2 font-mono text-xs font-semibold uppercase tracking-wider text-primary">
+                    What we build
+                  </h4>
+                  <p className="leading-relaxed text-text">
+                    {displayedProblem.whatWeBuild}
+                  </p>
+                </div>
 
-              <div className="rounded-lg border border-primary/30 bg-[#E5F0E8] p-4">
-                <h4 className="mb-2 font-mono text-xs font-semibold uppercase tracking-wider text-primary">
-                  Result
-                </h4>
-                <p className="font-medium text-primary">
-                  {displayedProblem.result}
-                </p>
+                <div className="rounded-lg border border-primary/30 bg-[#E5F0E8] p-4">
+                  <h4 className="mb-2 font-mono text-xs font-semibold uppercase tracking-wider text-primary">
+                    Result
+                  </h4>
+                  <p className="font-medium text-primary">
+                    {displayedProblem.result}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <div className="flex items-center justify-center rounded-xl border border-dashed border-border bg-white/50 p-5 text-center">
+              <p className="text-text-light">
+                Select a problem to see how we solve it
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -11,6 +11,7 @@ import {
   TrustIndicators,
   InvestmentSection,
   HeroSection,
+  TestimonialsCarousel,
 } from "@/components";
 
 export default function Home() {
@@ -22,11 +23,11 @@ export default function Home() {
         {/* Hero Section - Deep Green */}
         <HeroSection />
 
-        {/* What We Build - White (with dynamic colors on interaction) */}
-        <WhatWeBuildSection />
-
         {/* The Problems We Solve - Beige (with dynamic colors on interaction) */}
         <ProblemsSectionWrapper />
+
+        {/* What We Build - White (with dynamic colors on interaction) */}
+        <WhatWeBuildSection />
 
         {/* From Build to Buy-In - White */}
         <section className="bg-white py-12 lg:py-16">
@@ -42,10 +43,10 @@ export default function Home() {
               <ScrollReveal>
                 <div className="mb-12 text-center">
                   <p className="mb-4 text-xl leading-relaxed text-text">
-                    Getting people to do things differently is hard, and even good ideas fail when there&apos;s no visibility, no follow-through, and no reason to stick with it.
+                    New systems fail when they&apos;re too complicated, when your team doesn&apos;t trust them, or when there&apos;s no one to call when something breaks.
                   </p>
                   <p className="text-xl font-semibold text-dark">
-                    Technology is easy. Adoption is hard. That&apos;s why we focus on both.
+                    We design for all three.
                   </p>
                 </div>
               </ScrollReveal>
@@ -59,9 +60,9 @@ export default function Home() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
                     </div>
-                    <h3 className="mb-2 text-lg font-semibold text-dark">Less to Adopt</h3>
+                    <h3 className="mb-2 text-lg font-semibold text-dark">Simple by Design</h3>
                     <p className="text-sm text-text-light">
-                      Automation handles the repetitive stuff, so there&apos;s less behavior change required.
+                      We build for the least technical person on your team. If it&apos;s not obvious, we haven&apos;t finished.
                     </p>
                   </div>
                 </ScrollReveal>
@@ -69,13 +70,12 @@ export default function Home() {
                   <div className="h-full rounded-xl border border-[#D4CFC7] bg-white p-6 text-center shadow-[0_2px_12px_rgba(0,0,0,0.04)] card-breathe transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                     <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-2xl">
                       <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                       </svg>
                     </div>
-                    <h3 className="mb-2 text-lg font-semibold text-dark">Problems Surface Fast</h3>
+                    <h3 className="mb-2 text-lg font-semibold text-dark">Your Team Owns It</h3>
                     <p className="text-sm text-text-light">
-                      Built-in visibility means you know when something&apos;s not working—before it becomes a problem.
+                      We train your people, document everything, and make sure someone internal knows how it works.
                     </p>
                   </div>
                 </ScrollReveal>
@@ -83,12 +83,12 @@ export default function Home() {
                   <div className="h-full rounded-xl border border-[#D4CFC7] bg-white p-6 text-center shadow-[0_2px_12px_rgba(0,0,0,0.04)] card-breathe transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                     <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-2xl">
                       <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
                       </svg>
                     </div>
-                    <h3 className="mb-2 text-lg font-semibold text-dark">Built-In Accountability</h3>
+                    <h3 className="mb-2 text-lg font-semibold text-dark">We Don&apos;t Disappear</h3>
                     <p className="text-sm text-text-light">
-                      Performance is tracked and tied to outcomes that matter.
+                      Ongoing partnerships mean we&apos;re there when things change. New hire? New process? We adapt it with you.
                     </p>
                   </div>
                 </ScrollReveal>
@@ -225,92 +225,9 @@ export default function Home() {
               </SectionHeading>
             </ScrollReveal>
 
-            {/* Testimonial Cards - Fixed design */}
-            <div className="grid gap-6 lg:grid-cols-2">
-              {/* Testimonial 1 */}
-              <ScrollReveal delay={0}>
-                <div className="relative h-full min-h-[280px] rounded-xl border border-[#D4CFC7] border-l-4 border-l-primary bg-white p-10 shadow-[0_2px_12px_rgba(0,0,0,0.04)] transition-all duration-300 hover:shadow-lg">
-                  {/* Quote mark */}
-                  <span className="absolute left-6 top-6 font-serif text-5xl text-primary/30">&ldquo;</span>
-                  <div className="flex h-full flex-col justify-between pt-8">
-                    <p className="text-lg italic leading-relaxed text-dark" style={{ lineHeight: 1.7 }}>
-                      We were drowning in manual reporting. Every week,
-                      managers spent hours pulling data from three different
-                      systems just to know what was happening. Now it&apos;s automated,
-                      and we actually have time to act on the insights.
-                    </p>
-                    <div className="mt-6">
-                      <h4 className="text-base font-semibold text-dark">
-                        [CLIENT NAME]
-                      </h4>
-                      <p className="text-sm text-[#6B6B6B]">[ROLE], [COMPANY]</p>
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-
-              {/* Testimonial 2 */}
-              <ScrollReveal delay={100}>
-                <div className="relative h-full min-h-[280px] rounded-xl border border-[#D4CFC7] border-l-4 border-l-primary bg-white p-10 shadow-[0_2px_12px_rgba(0,0,0,0.04)] transition-all duration-300 hover:shadow-lg">
-                  {/* Quote mark */}
-                  <span className="absolute left-6 top-6 font-serif text-5xl text-primary/30">&ldquo;</span>
-                  <div className="flex h-full flex-col justify-between pt-8">
-                    <p className="text-lg italic leading-relaxed text-dark" style={{ lineHeight: 1.7 }}>
-                      Before Good Company, we had no idea which clients were
-                      actually happy. Customer success made calls, but nothing was
-                      tracked. Now we catch at-risk accounts before they churn.
-                      It&apos;s already paid for itself three times over.
-                    </p>
-                    <div className="mt-6">
-                      <h4 className="text-base font-semibold text-dark">
-                        [CLIENT NAME]
-                      </h4>
-                      <p className="text-sm text-[#6B6B6B]">[ROLE], [COMPANY]</p>
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            </div>
-
-            {/* Navigation Arrows */}
-            <div className="mt-10 flex justify-center gap-4">
-              <button
-                className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#D4CFC7] text-dark transition-all duration-200 hover:border-primary hover:bg-primary hover:text-white"
-                aria-label="Previous testimonial"
-              >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="relative -left-px"
-                >
-                  <polyline points="15 18 9 12 15 6" />
-                </svg>
-              </button>
-              <button
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white transition-all duration-200 hover:bg-primary-light"
-                aria-label="Next testimonial"
-              >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="relative left-px"
-                >
-                  <polyline points="9 18 15 12 9 6" />
-                </svg>
-              </button>
-            </div>
+            <ScrollReveal delay={100}>
+              <TestimonialsCarousel />
+            </ScrollReveal>
           </div>
         </section>
 
@@ -331,31 +248,15 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Final CTA - Beige with grain texture */}
+        {/* Contact Form Section - Beige with grain texture */}
         <section id="contact" className="bg-cream-textured py-12 lg:py-16">
-          <div className="mx-auto max-w-4xl px-6 text-center lg:px-10">
-            <ScrollReveal>
-              <SectionHeading centered className="mb-6">
-                Ready to reclaim your capacity?
-              </SectionHeading>
-              <p className="mb-10 text-xl text-text-light lg:text-2xl">
-                Let&apos;s find the 15-20% you&apos;re leaving on the table—and build
-                systems that actually stick.
-              </p>
-              <Button href="#contact-form">Book a Discovery Call</Button>
-            </ScrollReveal>
-          </div>
-        </section>
-
-        {/* Contact Form Section - White */}
-        <section id="contact-form" className="bg-white py-12 lg:py-16">
           <div className="mx-auto max-w-2xl px-6 lg:px-10">
             <ScrollReveal>
               <SectionHeading centered className="mb-4">
-                Get in Touch
+                Ready to reclaim your capacity?
               </SectionHeading>
               <p className="mb-10 text-center text-text-light">
-                Tell us about your challenges and we&apos;ll schedule a discovery call.
+                Book a call and let&apos;s talk about what&apos;s slowing you down.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={100}>
