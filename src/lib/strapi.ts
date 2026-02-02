@@ -180,6 +180,100 @@ function getVideoThumbnail(videoUrl: string | null, videoType: 'youtube' | 'loom
   return undefined;
 }
 
+// Proposal types
+export interface StrapiProposal {
+  id: number;
+  documentId: string;
+  slug: string;
+  clientName: string;
+  projectTitle: string;
+  date: string;
+  projectFee: string | null;
+  monthlyHosting: string | null;
+  launchTarget: string | null;
+  summary: string | null;
+  deliverables: { category: string; items: string }[] | null;
+  whatsIncluded: string | null;
+  notIncluded: string | null;
+  clientResponsibilities: string | null;
+  ownershipText: string | null;
+  paymentMilestones: { milestone: string; amount: string }[] | null;
+  signatureClientName: string | null;
+  signatureConsultantName: string | null;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+export interface Proposal {
+  id: string;
+  slug: string;
+  clientName: string;
+  projectTitle: string;
+  date: string;
+  projectFee?: string;
+  monthlyHosting?: string;
+  launchTarget?: string;
+  summary?: string;
+  deliverables?: { category: string; items: string }[];
+  whatsIncluded?: string;
+  notIncluded?: string;
+  clientResponsibilities?: string;
+  ownershipText?: string;
+  paymentMilestones?: { milestone: string; amount: string }[];
+  signatureClientName?: string;
+  signatureConsultantName?: string;
+}
+
+export async function getProposalBySlug(slug: string): Promise<Proposal | null> {
+  const strapiUrl = getStrapiUrl();
+
+  try {
+    const res = await fetch(
+      `${strapiUrl}/api/proposals?filters[slug][$eq]=${slug}&populate=*`,
+      { next: { revalidate: 60 } }
+    );
+
+    if (!res.ok) {
+      console.error('Failed to fetch proposal:', res.status, res.statusText);
+      return null;
+    }
+
+    const data: StrapiResponse<StrapiProposal> = await res.json();
+    const proposal = data.data[0];
+
+    if (!proposal) return null;
+
+    return mapStrapiToProposal(proposal);
+  } catch (error) {
+    console.error('Error fetching proposal:', error);
+    return null;
+  }
+}
+
+// Helper to map Strapi response to our Proposal type
+function mapStrapiToProposal(proposal: StrapiProposal): Proposal {
+  return {
+    id: proposal.slug || proposal.documentId,
+    slug: proposal.slug,
+    clientName: proposal.clientName,
+    projectTitle: proposal.projectTitle,
+    date: proposal.date,
+    projectFee: proposal.projectFee || undefined,
+    monthlyHosting: proposal.monthlyHosting || undefined,
+    launchTarget: proposal.launchTarget || undefined,
+    summary: proposal.summary || undefined,
+    deliverables: proposal.deliverables || undefined,
+    whatsIncluded: proposal.whatsIncluded || undefined,
+    notIncluded: proposal.notIncluded || undefined,
+    clientResponsibilities: proposal.clientResponsibilities || undefined,
+    ownershipText: proposal.ownershipText || undefined,
+    paymentMilestones: proposal.paymentMilestones || undefined,
+    signatureClientName: proposal.signatureClientName || undefined,
+    signatureConsultantName: proposal.signatureConsultantName || undefined,
+  };
+}
+
 // Helper to map Strapi response to our CaseStudy type
 function mapStrapiToCaseStudy(study: StrapiCaseStudy): CaseStudy {
   const strapiUrl = getStrapiUrl();

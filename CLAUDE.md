@@ -386,6 +386,39 @@ Footer link: "Referrals" under Quick Links
 
 ---
 
+## Proposals (Private)
+
+The Proposals system (`/proposals/[slug]`) is a private, unlisted section for sending scope-of-work documents to clients via direct link.
+
+**Privacy Features**:
+- NOT in navigation, footer, or sitemap
+- `robots.txt` disallows `/proposals/`
+- Pages have `noindex, nofollow` meta tags
+- Only accessible via direct URL
+
+**Architecture**:
+- `/src/app/proposals/[slug]/page.tsx` - Server component fetching from Strapi
+- `/src/app/proposals/[slug]/ProposalContent.tsx` - Client component with PDF generation
+- `/src/app/proposals/[slug]/not-found.tsx` - Custom 404 for expired/invalid proposals
+- `/src/app/robots.ts` - Robots.txt excluding `/proposals/`
+
+**Page Structure**:
+1. **Header** - "Scope of Work" eyebrow, project title, client name
+2. **Summary Table** - Client, Consultant, Date, Project Fee, Monthly Hosting, Launch Target
+3. **Sections** - Project Summary, Deliverables, What's Included, Not Included, Client Responsibilities, Ownership & Hosting
+4. **Payment Schedule** - Table of milestones and amounts
+5. **Signatures** - Visual signature lines (not e-signature)
+6. **Footer** - Company name and website
+
+**PDF Download**:
+- Fixed "Download PDF" button in top-right corner
+- Uses `html2canvas-pro` + `jsPDF` for generation
+- Filename: `[clientName]-proposal-[date].pdf`
+
+**Strapi Content Type**: See "Proposal Content Type" section below.
+
+---
+
 ## Case Studies
 
 ### List Page (`/case-studies`)
@@ -612,10 +645,50 @@ Case study results should always specify a timeframe to demonstrate speed to val
 - **Performance/incentive systems**: "first 90 days" (behavior change)
 - **Complex integrations**: "first 6 months" (full rollout)
 
+### Proposal Content Type
+
+Fields in Strapi:
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| slug | UID | Yes | URL identifier (e.g., "acme-website-2026") |
+| clientName | Text | Yes | Client company or person name |
+| projectTitle | Text | Yes | Project title for header |
+| date | Date | Yes | Proposal date |
+| projectFee | Text | No | Total fee (e.g., "$15,000 CAD") |
+| monthlyHosting | Text | No | Hosting cost (e.g., "~$20/month") |
+| launchTarget | Date | No | Target launch date |
+| summary | Rich Text | No | Project summary section |
+| deliverables | JSON | No | Array of `{ category, items }` objects |
+| whatsIncluded | Rich Text | No | What's included section |
+| notIncluded | Rich Text | No | What's not included section |
+| clientResponsibilities | Rich Text | No | Client responsibilities section |
+| ownershipText | Rich Text | No | Ownership & hosting section |
+| paymentMilestones | JSON | No | Array of `{ milestone, amount }` objects |
+| signatureClientName | Text | No | Name for client signature line |
+| signatureConsultantName | Text | No | Name for consultant signature (default: "Alex Tribe, Good Company") |
+
+**Deliverables format** in Strapi:
+```json
+[
+  { "category": "Design", "items": "<ul><li>Homepage design</li><li>Mobile responsive</li></ul>" },
+  { "category": "Development", "items": "<ul><li>Next.js build</li><li>CMS integration</li></ul>" }
+]
+```
+
+**Payment milestones format** in Strapi:
+```json
+[
+  { "milestone": "Project kickoff", "amount": "$5,000" },
+  { "milestone": "Design approval", "amount": "$5,000" },
+  { "milestone": "Launch", "amount": "$5,000" }
+]
+```
+
 ### API Permissions
 
 In Strapi Admin → Settings → Roles → Public:
 - Enable `find` and `findOne` for Case Study
+- Enable `find` and `findOne` for Proposal
 
 ### Data Fetching
 
@@ -727,6 +800,9 @@ npm run lint
 | `src/app/case-studies/[slug]/loading.tsx` | Case study detail skeleton loading state |
 | `src/app/acquisitions/page.tsx` | Acquisitions & partnerships page |
 | `src/app/referrals/page.tsx` | Referrals program page |
+| `src/app/proposals/[slug]/page.tsx` | Proposal page server component (private, unlisted) |
+| `src/app/proposals/[slug]/ProposalContent.tsx` | Proposal client component with PDF download |
+| `src/app/robots.ts` | Robots.txt (disallows /proposals/) |
 | `src/app/api/contact/route.ts` | Contact form API endpoint |
 | `src/lib/strapi.ts` | Strapi CMS API client |
 | `src/components/Header.tsx` | Navigation (adapts to dark hero) |

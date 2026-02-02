@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "proposals",
+  "info": {
+    "singularName": "proposal",
+    "pluralName": "proposals",
+    "displayName": "Proposal",
+    "description": "Client proposals and scope of work documents"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "clientName": {
+      "type": "string",
+      "required": true
+    },
+    "projectTitle": {
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "projectFee": {
+      "type": "string"
+    },
+    "monthlyHosting": {
+      "type": "string"
+    },
+    "launchTarget": {
+      "type": "date"
+    },
+    "summary": {
+      "type": "richtext"
+    },
+    "deliverables": {
+      "type": "json"
+    },
+    "whatsIncluded": {
+      "type": "richtext"
+    },
+    "notIncluded": {
+      "type": "richtext"
+    },
+    "clientResponsibilities": {
+      "type": "richtext"
+    },
+    "ownershipText": {
+      "type": "richtext"
+    },
+    "paymentMilestones": {
+      "type": "json"
+    },
+    "signatureClientName": {
+      "type": "string"
+    },
+    "signatureConsultantName": {
+      "type": "string",
+      "default": "Alex Tribe, Good Company"
+    }
+  }
+}
