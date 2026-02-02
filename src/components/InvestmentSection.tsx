@@ -31,7 +31,7 @@ export default function InvestmentSection() {
               {/* Always visible header */}
               <div className="text-center">
                 <h3 className="mb-1 text-xl font-semibold text-dark">
-                  Discovery + Roadmap
+                  Discovery & Automation Roadmap
                 </h3>
                 <div className="mb-1 font-mono text-3xl font-bold text-gold">
                   $6K
