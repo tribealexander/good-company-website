@@ -98,12 +98,14 @@ export default function Footer() {
               >
                 hello@goodcompany.ca
               </a>
-              <Link
-                href="#contact-form"
+              <a
+                href="https://calendar.app.google/gi1oCV2S8mcjTqRx7"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-4 text-sm font-semibold text-gold transition-colors duration-200 hover:underline"
               >
                 Book a Discovery Call &rarr;
-              </Link>
+              </a>
             </div>
           </div>
         </div>

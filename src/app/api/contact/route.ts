@@ -31,9 +31,10 @@ export async function POST(request: NextRequest) {
 
     // Check if Resend API key is configured
     const resendApiKey = process.env.RESEND_API_KEY;
-    const contactEmail = process.env.CONTACT_EMAIL;
+    // TODO: Move to CRM integration in future. For now, email directly to Alex.
+    const contactEmail = process.env.CONTACT_EMAIL || "alex@tribealexander.com";
 
-    if (resendApiKey && contactEmail) {
+    if (resendApiKey) {
       // Send email via Resend
       const response = await fetch("https://api.resend.com/emails", {
         method: "POST",

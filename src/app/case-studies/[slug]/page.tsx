@@ -107,12 +107,14 @@ export default async function CaseStudyPage({ params }: Props) {
                 <p className="mb-10 text-lg text-[#A8D5C2] max-w-xl mx-auto">
                   Let&apos;s talk through it. We&apos;ll help you identify the root cause and map out a solution—no pressure, no pitch.
                 </p>
-                <Link
-                  href="/#contact-form"
+                <a
+                  href="https://calendar.app.google/gi1oCV2S8mcjTqRx7"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block rounded-full bg-white px-10 py-4 text-lg font-semibold text-[#004D36] transition-all duration-300 hover:bg-gold hover:text-white hover:shadow-[0_4px_30px_rgba(184,134,11,0.4)] hover:scale-105"
                 >
                   Book a Brainstorm →
-                </Link>
+                </a>
               </ScrollReveal>
             </div>
           </section>

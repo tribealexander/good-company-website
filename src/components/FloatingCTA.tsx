@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
 
 export default function FloatingCTA() {
@@ -35,8 +34,10 @@ export default function FloatingCTA() {
       }`}
     >
       {/* Desktop floating button with pennant */}
-      <Link
-        href="#contact-form"
+      <a
+        href="https://calendar.app.google/gi1oCV2S8mcjTqRx7"
+        target="_blank"
+        rel="noopener noreferrer"
         className="btn-press hidden items-center gap-2 rounded-lg bg-primary px-6 py-3 text-[15px] font-semibold text-white shadow-[0_4px_16px_rgba(0,103,71,0.2)] transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-primary-light hover:shadow-[0_6px_24px_rgba(0,103,71,0.25)] md:inline-flex"
       >
         <Image
@@ -47,12 +48,14 @@ export default function FloatingCTA() {
           className="h-5 w-auto brightness-0 invert"
         />
         Book a Brainstorm
-      </Link>
+      </a>
 
       {/* Mobile bottom bar */}
       <div className="fixed inset-x-0 bottom-0 border-t border-border bg-white p-4 shadow-[0_-4px_16px_rgba(0,0,0,0.08)] md:hidden">
-        <Link
-          href="#contact-form"
+        <a
+          href="https://calendar.app.google/gi1oCV2S8mcjTqRx7"
+          target="_blank"
+          rel="noopener noreferrer"
           className="btn-press flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3 text-center text-[15px] font-semibold text-white shadow-[0_4px_16px_rgba(0,103,71,0.2)] transition-all duration-200 ease-out"
         >
           <Image
@@ -63,7 +66,7 @@ export default function FloatingCTA() {
             className="h-[18px] w-auto brightness-0 invert"
           />
           Book a Brainstorm
-        </Link>
+        </a>
       </div>
     </div>
   );
