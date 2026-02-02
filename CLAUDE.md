@@ -159,7 +159,7 @@ src/components/
 ├── ScrollReveal.tsx        # Scroll-triggered animations (AnimeJS v4) + StaggerContainer, TextReveal, CountUp
 ├── SectionHeading.tsx      # Consistent section headings with Lora font + green underline
 ├── FloatingCTA.tsx         # Floating CTA button
-├── InvestmentSection.tsx   # Pricing section with collapsible Automation Roadmap
+├── InvestmentSection.tsx   # Pricing section with collapsible Discovery + Roadmap
 ├── FAQ.tsx                 # FAQ accordion
 ├── PageTransition.tsx      # Page transition animations (fade-in + scroll to top on navigation)
 ├── TestimonialsCarousel.tsx # 3-card carousel with navigation, touch/swipe support
@@ -734,7 +734,7 @@ npm run lint
 | `src/components/WhatWeBuildSection.tsx` | Services with dynamic backgrounds |
 | `src/components/ProblemsSectionWrapper.tsx` | Problems with dynamic backgrounds |
 | `src/components/TestimonialsCarousel.tsx` | Testimonials carousel with navigation |
-| `src/components/InvestmentSection.tsx` | Pricing section with collapsible Automation Roadmap |
+| `src/components/InvestmentSection.tsx` | Pricing section with collapsible Discovery + Roadmap |
 | `src/components/RoughAnnotation.tsx` | Rough notation wrapper |
 | `src/components/PageTransition.tsx` | Page navigation fade-in animations |
 | `src/components/ScrollReveal.tsx` | Scroll-triggered animations |
