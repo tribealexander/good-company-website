@@ -397,10 +397,16 @@ The Proposals system (`/proposals/[slug]`) is a private, unlisted section for se
 - Only accessible via direct URL
 
 **Architecture**:
-- `/src/app/proposals/[slug]/page.tsx` - Server component fetching from Strapi
+- `/src/lib/proposals.ts` - Local proposals data (add new proposals here)
+- `/src/app/proposals/[slug]/page.tsx` - Server component with static generation
 - `/src/app/proposals/[slug]/ProposalContent.tsx` - Client component with PDF generation
 - `/src/app/proposals/[slug]/not-found.tsx` - Custom 404 for expired/invalid proposals
 - `/src/app/robots.ts` - Robots.txt excluding `/proposals/`
+
+**Adding a New Proposal**:
+1. Open `/src/lib/proposals.ts`
+2. Add a new object to the `PROPOSALS` array with all required fields
+3. Deploy - the proposal will be statically generated at build time
 
 **Page Structure**:
 1. **Header** - "Scope of Work" eyebrow, project title, client name
@@ -414,8 +420,6 @@ The Proposals system (`/proposals/[slug]`) is a private, unlisted section for se
 - Fixed "Download PDF" button in top-right corner
 - Uses `html2canvas-pro` + `jsPDF` for generation
 - Filename: `[clientName]-proposal-[date].pdf`
-
-**Strapi Content Type**: See "Proposal Content Type" section below.
 
 ---
 
@@ -645,50 +649,10 @@ Case study results should always specify a timeframe to demonstrate speed to val
 - **Performance/incentive systems**: "first 90 days" (behavior change)
 - **Complex integrations**: "first 6 months" (full rollout)
 
-### Proposal Content Type
-
-Fields in Strapi:
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| slug | UID | Yes | URL identifier (e.g., "acme-website-2026") |
-| clientName | Text | Yes | Client company or person name |
-| projectTitle | Text | Yes | Project title for header |
-| date | Date | Yes | Proposal date |
-| projectFee | Text | No | Total fee (e.g., "$15,000 CAD") |
-| monthlyHosting | Text | No | Hosting cost (e.g., "~$20/month") |
-| launchTarget | Date | No | Target launch date |
-| summary | Rich Text | No | Project summary section |
-| deliverables | JSON | No | Array of `{ category, items }` objects |
-| whatsIncluded | Rich Text | No | What's included section |
-| notIncluded | Rich Text | No | What's not included section |
-| clientResponsibilities | Rich Text | No | Client responsibilities section |
-| ownershipText | Rich Text | No | Ownership & hosting section |
-| paymentMilestones | JSON | No | Array of `{ milestone, amount }` objects |
-| signatureClientName | Text | No | Name for client signature line |
-| signatureConsultantName | Text | No | Name for consultant signature (default: "Alex Tribe, Good Company") |
-
-**Deliverables format** in Strapi:
-```json
-[
-  { "category": "Design", "items": "<ul><li>Homepage design</li><li>Mobile responsive</li></ul>" },
-  { "category": "Development", "items": "<ul><li>Next.js build</li><li>CMS integration</li></ul>" }
-]
-```
-
-**Payment milestones format** in Strapi:
-```json
-[
-  { "milestone": "Project kickoff", "amount": "$5,000" },
-  { "milestone": "Design approval", "amount": "$5,000" },
-  { "milestone": "Launch", "amount": "$5,000" }
-]
-```
-
 ### API Permissions
 
 In Strapi Admin → Settings → Roles → Public:
 - Enable `find` and `findOne` for Case Study
-- Enable `find` and `findOne` for Proposal
 
 ### Data Fetching
 
@@ -804,7 +768,8 @@ npm run lint
 | `src/app/proposals/[slug]/ProposalContent.tsx` | Proposal client component with PDF download |
 | `src/app/robots.ts` | Robots.txt (disallows /proposals/) |
 | `src/app/api/contact/route.ts` | Contact form API endpoint |
-| `src/lib/strapi.ts` | Strapi CMS API client |
+| `src/lib/strapi.ts` | Strapi CMS API client (case studies) |
+| `src/lib/proposals.ts` | Local proposals data (add new proposals here) |
 | `src/components/Header.tsx` | Navigation (adapts to dark hero) |
 | `src/components/Button.tsx` | CTA button styles (including hero variant) |
 | `src/components/WhatWeBuildSection.tsx` | Services with dynamic backgrounds |

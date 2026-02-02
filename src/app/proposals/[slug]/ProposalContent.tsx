@@ -1,6 +1,6 @@
 "use client";
 
-import { Proposal } from "@/lib/strapi";
+import { Proposal } from "@/lib/proposals";
 import { useRef } from "react";
 import html2canvas from "html2canvas-pro";
 import { jsPDF } from "jspdf";
