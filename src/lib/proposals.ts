@@ -35,7 +35,6 @@ const PROPOSALS: Proposal[] = [
     summary: `<p>Full redesign and redevelopment of the Metalex website using a headless CMS architecture (Strapi + Next.js + Vercel).</p>
 <ul>
 <li>Good Company handles all project management, design direction, CMS setup, frontend development, and deployment as a single point of contact</li>
-<li>No third-party vendors involved</li>
 </ul>`,
     deliverables: [
       {

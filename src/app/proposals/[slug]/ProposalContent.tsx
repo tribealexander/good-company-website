@@ -317,14 +317,19 @@ export default function ProposalContent({ proposal }: Props) {
             </div>
             {/* Consultant Signature */}
             <div>
-              <p className="mb-16 text-sm font-medium uppercase tracking-wider text-text-light">
+              <p className="mb-4 text-sm font-medium uppercase tracking-wider text-text-light">
                 Consultant
+              </p>
+              <p className="mb-2 font-[family-name:var(--font-caveat)] text-3xl text-dark">
+                Alex Tribe
               </p>
               <div className="border-b-2 border-dark" />
               <p className="mt-2 text-dark">
                 {proposal.signatureConsultantName || "Good Company"}
               </p>
-              <p className="mt-1 text-sm text-text-light">Date: ____________</p>
+              <p className="mt-1 text-sm text-text-light">
+                Date: {formatDate(proposal.date)}
+              </p>
             </div>
           </div>
         </section>
@@ -340,7 +345,7 @@ export default function ProposalContent({ proposal }: Props) {
               className="h-5 w-auto opacity-50"
             />
             <p className="text-sm text-text-light">
-              Good Company | goodcompany.works
+              Good Company | yourgoodcompany.com
             </p>
           </div>
         </footer>
