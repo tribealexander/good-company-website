@@ -178,7 +178,7 @@ export default function ProposalContent({ proposal }: Props) {
               Project Summary
             </h2>
             <div
-              className="prose prose-lg max-w-none text-text prose-p:leading-relaxed prose-ul:my-3 prose-ul:list-disc prose-ul:pl-6 prose-li:my-1"
+              className="proposal-content text-text leading-relaxed"
               dangerouslySetInnerHTML={{ __html: proposal.summary }}
             />
           </section>
@@ -200,7 +200,7 @@ export default function ProposalContent({ proposal }: Props) {
                     {deliverable.category}
                   </h3>
                   <div
-                    className="prose max-w-none text-text prose-ul:my-2 prose-ul:list-disc prose-ul:pl-5 prose-li:my-1"
+                    className="proposal-content text-text"
                     dangerouslySetInnerHTML={{ __html: deliverable.items }}
                   />
                 </div>
@@ -216,7 +216,7 @@ export default function ProposalContent({ proposal }: Props) {
               What&apos;s Included
             </h2>
             <div
-              className="prose prose-lg max-w-none text-text prose-ul:my-3 prose-ul:list-disc prose-ul:pl-6 prose-li:my-1"
+              className="proposal-content text-text leading-relaxed"
               dangerouslySetInnerHTML={{ __html: proposal.whatsIncluded }}
             />
           </section>
@@ -229,7 +229,7 @@ export default function ProposalContent({ proposal }: Props) {
               Not Included
             </h2>
             <div
-              className="prose prose-lg max-w-none text-text prose-ul:my-3 prose-ul:list-disc prose-ul:pl-6 prose-li:my-1"
+              className="proposal-content text-text leading-relaxed"
               dangerouslySetInnerHTML={{ __html: proposal.notIncluded }}
             />
           </section>
@@ -242,7 +242,7 @@ export default function ProposalContent({ proposal }: Props) {
               Client Responsibilities
             </h2>
             <div
-              className="prose prose-lg max-w-none text-text prose-ul:my-3 prose-ul:list-disc prose-ul:pl-6 prose-li:my-1"
+              className="proposal-content text-text leading-relaxed"
               dangerouslySetInnerHTML={{ __html: proposal.clientResponsibilities }}
             />
           </section>
@@ -255,7 +255,7 @@ export default function ProposalContent({ proposal }: Props) {
               Ownership & Hosting
             </h2>
             <div
-              className="prose prose-lg max-w-none text-text prose-ul:my-3 prose-ul:list-disc prose-ul:pl-6 prose-li:my-1"
+              className="proposal-content text-text leading-relaxed"
               dangerouslySetInnerHTML={{ __html: proposal.ownershipText }}
             />
           </section>
