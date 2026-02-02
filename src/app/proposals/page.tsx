@@ -1,12 +1,9 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { getAllProposals } from "@/lib/proposals";
-
-// Private admin page - not linked anywhere, not indexed
-export const metadata = {
-  title: "Proposals | Good Company",
-  robots: "noindex, nofollow",
-};
 
 function formatDate(dateStr: string): string {
   const date = new Date(dateStr);
@@ -17,8 +14,69 @@ function formatDate(dateStr: string): string {
   });
 }
 
+// Simple password protection - not super secure but keeps casual visitors out
+const ADMIN_PASSWORD = "goodco2026";
+
 export default function ProposalsListPage() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password === ADMIN_PASSWORD) {
+      setIsAuthenticated(true);
+      setError(false);
+    } else {
+      setError(true);
+    }
+  };
+
   const proposals = getAllProposals();
+
+  // Password gate
+  if (!isAuthenticated) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#FAF9F7] px-6">
+        <div className="w-full max-w-sm">
+          <div className="mb-8 text-center">
+            <Image
+              src="/images/logos/script-inline.png"
+              alt="Good Company"
+              width={140}
+              height={32}
+              className="mx-auto h-7 w-auto"
+            />
+          </div>
+          <form onSubmit={handleSubmit} className="rounded-xl border border-border bg-white p-8">
+            <label htmlFor="password" className="mb-2 block text-sm font-medium text-dark">
+              Admin Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className={`w-full rounded-lg border px-4 py-3 text-dark outline-none transition-colors focus:border-primary ${
+                error ? "border-red-400" : "border-border"
+              }`}
+              placeholder="Enter password"
+              autoFocus
+            />
+            {error && (
+              <p className="mt-2 text-sm text-red-500">Incorrect password</p>
+            )}
+            <button
+              type="submit"
+              className="mt-4 w-full rounded-lg bg-primary py-3 font-semibold text-white transition-colors hover:bg-primary-light"
+            >
+              Access Proposals
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#FAF9F7]">
