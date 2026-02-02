@@ -41,64 +41,56 @@ const PROPOSALS: Proposal[] = [
       {
         category: "Pages",
         items: `<ul>
-          <li><strong>Homepage</strong> — hero with product shot, stats bar, product categories, industry personas, process section, testimonials, CTA</li>
-          <li><strong>About / Team</strong> — company overview, team headshots with names and titles, certifications</li>
-          <li><strong>Products</strong> — self-framing buildings, insulated panels, rigid frame buildings with brief specs (dimensions, capacity)</li>
-          <li><strong>Oil & Gas</strong> — industry-specific page linking to pre-filtered projects</li>
-          <li><strong>Agriculture</strong> — industry-specific page linking to pre-filtered projects</li>
-          <li><strong>Projects</strong> — filterable gallery with grayscale thumbnails, structured fields per project</li>
-          <li><strong>Contact</strong> — simple inquiry form (name, email, phone, message) routing to projects@mmbi.ca</li>
-          <li><strong>Careers</strong> — accessible via footer; simple job board maintained by internal team</li>
-          <li><strong>Education / Resources</strong> — accessible via dropdown menu with Projects; launches with placeholder content</li>
-        </ul>`,
+<li>Homepage</li>
+<li>About / Team</li>
+<li>Products (self-framing buildings, insulated panels, rigid frame)</li>
+<li>Industry pages (Oil & Gas, Agriculture)</li>
+<li>Projects gallery with filtering</li>
+<li>Contact form</li>
+<li>Careers (footer link, internal job board)</li>
+<li>Education / Resources (placeholder at launch)</li>
+</ul>`,
       },
       {
         category: "CMS & Content Architecture",
         items: `<ul>
-          <li>Strapi CMS with structured content types for projects, testimonials, team, careers, and education</li>
-          <li>Admin panel access for Metalex team</li>
-          <li>Content entry via form fields (no design skills required)</li>
-          <li>Case studies and blog can be hidden at launch until content is ready</li>
-        </ul>`,
+<li>Strapi CMS with structured content types</li>
+<li>Admin panel access for Metalex team</li>
+<li>No design skills required for content updates</li>
+</ul>`,
       },
       {
         category: "Technical",
         items: `<ul>
-          <li>Next.js frontend</li>
-          <li>Responsive design (desktop, tablet, mobile)</li>
-          <li>SEO fundamentals — meta tags, structured data, sitemap</li>
-          <li>DNS cutover and SSL certificate (coordinated with Metalex IT)</li>
-          <li>Contact form with email routing to projects@mmbi.ca</li>
-        </ul>`,
+<li>Next.js frontend, responsive design</li>
+<li>SEO fundamentals (meta tags, structured data, sitemap)</li>
+<li>DNS cutover and SSL certificate</li>
+<li>Contact form routing to projects@mmbi.ca</li>
+</ul>`,
       },
     ],
     whatsIncluded: `<ul>
-      <li>Weekly revision cycles from kickoff through April 1 launch</li>
-      <li>Collaborative iteration on copy, layout, and content via live staging instance</li>
-      <li>AI-generated background and hero images as needed</li>
-      <li>Icon-style product graphics for navigation and categories</li>
-      <li>CMS training for designated team members</li>
-      <li>30-day post-launch support window (bug fixes and minor adjustments)</li>
-    </ul>`,
+<li>Weekly revision cycles through launch</li>
+<li>Live staging instance for collaborative review</li>
+<li>AI-generated imagery as needed</li>
+<li>CMS training for your team</li>
+<li>30-day post-launch support</li>
+</ul>`,
     notIncluded: `<ul>
-      <li>Professional photography or headshots (coordinated by Metalex)</li>
-      <li>Technical spec sheets and data sheets</li>
-      <li>CRM integration</li>
-      <li>Email marketing integration</li>
-      <li>Ongoing content creation after launch (blog posts, case study write-ups)</li>
-      <li>Structural changes or new feature development after launch</li>
-      <li>Video production or editing</li>
-    </ul>`,
+<li>Professional photography or headshots</li>
+<li>Technical spec sheets</li>
+<li>CRM or email marketing integration</li>
+<li>Ongoing content creation after launch</li>
+<li>New feature development after launch</li>
+</ul>`,
     clientResponsibilities: `<ul>
-      <li>Confirm team page roster (names, titles; coordinate headshots)</li>
-      <li>Confirm board member inclusion on team page</li>
-      <li>Provide or approve copy for industry vertical pages</li>
-      <li>Provide testimonials (current ones used as placeholders; new ones from key customers)</li>
-      <li>Provide project photos for gallery (can launch with placeholders)</li>
-      <li>Provide logo files and brand assets via SharePoint</li>
-      <li>Intro to IT contact for DNS access</li>
-      <li>Timely feedback on revisions to maintain April 1 target</li>
-    </ul>`,
+<li>Team roster and headshots</li>
+<li>Copy approval for industry pages</li>
+<li>Testimonials and project photos</li>
+<li>Logo files and brand assets</li>
+<li>IT contact for DNS access</li>
+<li>Timely feedback to maintain April 1 target</li>
+</ul>`,
     ownershipText: `<p>Upon final payment, Metalex owns the full codebase and all project assets. Metalex is free to engage any developer for future work.</p>`,
     paymentMilestones: [
       { milestone: "Prior to launch", amount: "$15,000 + HST" },
