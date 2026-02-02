@@ -110,3 +110,7 @@ export function getProposalBySlug(slug: string): Proposal | null {
 export function getAllProposalSlugs(): string[] {
   return PROPOSALS.map((p) => p.slug);
 }
+
+export function getAllProposals(): Proposal[] {
+  return PROPOSALS;
+}
