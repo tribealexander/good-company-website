@@ -2,6 +2,7 @@
 
 import { Proposal } from "@/lib/proposals";
 import { useRef } from "react";
+import Image from "next/image";
 import html2canvas from "html2canvas-pro";
 import { jsPDF } from "jspdf";
 
@@ -85,6 +86,22 @@ export default function ProposalContent({ proposal }: Props) {
       <div ref={contentRef} className="mx-auto max-w-4xl px-8 py-12">
         {/* Header */}
         <header className="mb-10 border-b-2 border-primary pb-8">
+          <div className="mb-6 flex items-center justify-between">
+            <Image
+              src="/images/logos/script-inline.png"
+              alt="Good Company"
+              width={180}
+              height={40}
+              className="h-10 w-auto"
+            />
+            <Image
+              src="/images/logos/pennant.png"
+              alt=""
+              width={32}
+              height={32}
+              className="h-8 w-auto opacity-60"
+            />
+          </div>
           <p className="mb-2 text-sm font-medium uppercase tracking-widest text-primary">
             Scope of Work
           </p>
@@ -313,10 +330,19 @@ export default function ProposalContent({ proposal }: Props) {
         </section>
 
         {/* Footer */}
-        <footer className="mt-16 border-t border-border pt-6 text-center">
-          <p className="text-sm text-text-light">
-            Good Company | goodcompany.works
-          </p>
+        <footer className="mt-16 border-t border-border pt-6">
+          <div className="flex items-center justify-center gap-3">
+            <Image
+              src="/images/logos/pennant.png"
+              alt=""
+              width={24}
+              height={24}
+              className="h-5 w-auto opacity-50"
+            />
+            <p className="text-sm text-text-light">
+              Good Company | goodcompany.works
+            </p>
+          </div>
         </footer>
       </div>
     </div>
