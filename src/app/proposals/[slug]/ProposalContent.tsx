@@ -110,7 +110,7 @@ export default function ProposalContent({ proposal }: Props) {
                 Consultant
               </p>
               <p className="mt-1 font-medium text-dark">
-                {proposal.signatureConsultantName || "Alex Tribe, Good Company"}
+                {proposal.signatureConsultantName || "Good Company"}
               </p>
             </div>
             <div>
@@ -305,7 +305,7 @@ export default function ProposalContent({ proposal }: Props) {
               </p>
               <div className="border-b-2 border-dark" />
               <p className="mt-2 text-dark">
-                {proposal.signatureConsultantName || "Alex Tribe, Good Company"}
+                {proposal.signatureConsultantName || "Good Company"}
               </p>
               <p className="mt-1 text-sm text-text-light">Date: ____________</p>
             </div>

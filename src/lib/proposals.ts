@@ -32,7 +32,11 @@ const PROPOSALS: Proposal[] = [
     date: "2026-02-02",
     projectFee: "$15,000 CAD + HST",
     launchTarget: "2026-04-01",
-    summary: `<p>Full redesign and redevelopment of the Metalex website using a headless CMS architecture (Strapi + Next.js + Vercel). Alex handles all project management, design direction, CMS setup, frontend development, and deployment as a single point of contact. No third-party vendors involved.</p>`,
+    summary: `<p>Full redesign and redevelopment of the Metalex website using a headless CMS architecture (Strapi + Next.js + Vercel).</p>
+    <ul>
+      <li>Good Company handles all project management, design direction, CMS setup, frontend development, and deployment as a single point of contact</li>
+      <li>No third-party vendors involved</li>
+    </ul>`,
     deliverables: [
       {
         category: "Pages",
@@ -100,7 +104,7 @@ const PROPOSALS: Proposal[] = [
       { milestone: "Prior to launch", amount: "$15,000 + HST" },
     ],
     signatureClientName: "Jon DeCoste, Metalex Metal Building Inc.",
-    signatureConsultantName: "Alex Tribe, Good Company",
+    signatureConsultantName: "Good Company",
   },
 ];
 
