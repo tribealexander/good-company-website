@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { google } from "googleapis";
 
 interface TestimonialFormData {
-  name: string;
+  firstName: string;
+  lastName: string;
   role: string;
   company: string;
   email: string;
@@ -30,10 +31,10 @@ async function appendToGoogleSheet(data: TestimonialFormData) {
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: sheetId,
-      range: "Testimonials!A:F",
+      range: "Testimonials!A:G",
       valueInputOption: "USER_ENTERED",
       requestBody: {
-        values: [[timestamp, data.name, data.role, data.company, data.email, data.quote]],
+        values: [[timestamp, data.firstName, data.lastName, data.role, data.company, data.email, data.quote]],
       },
     });
   } catch (error) {
@@ -51,6 +52,8 @@ async function sendEmailNotification(data: TestimonialFormData) {
     return;
   }
 
+  const fullName = `${data.firstName} ${data.lastName}`;
+
   try {
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -61,14 +64,14 @@ async function sendEmailNotification(data: TestimonialFormData) {
       body: JSON.stringify({
         from: "Good Company Website <noreply@resend.dev>",
         to: contactEmail,
-        subject: `New Testimonial from ${data.name} (${data.company})`,
+        subject: `New Testimonial from ${fullName} (${data.company})`,
         html: `
           <h2>New Testimonial</h2>
 
           <blockquote style="border-left: 4px solid #006747; padding-left: 16px; margin: 16px 0; font-style: italic; font-size: 18px;">
             "${data.quote}"
           </blockquote>
-          <p><strong>${data.name}</strong>, ${data.role} at ${data.company}</p>
+          <p><strong>${fullName}</strong>, ${data.role} at ${data.company}</p>
           <p style="color: #666; font-size: 14px;">Email: ${data.email}</p>
 
           <hr style="margin: 24px 0; border: none; border-top: 1px solid #eee;" />
@@ -82,7 +85,7 @@ New Testimonial
 
 "${data.quote}"
 
-— ${data.name}, ${data.role} at ${data.company}
+— ${fullName}, ${data.role} at ${data.company}
 Email: ${data.email}
 
 This testimonial has been saved to your Google Sheet.
@@ -103,7 +106,7 @@ export async function POST(request: NextRequest) {
     const data: TestimonialFormData = await request.json();
 
     // Validate required fields
-    if (!data.name || !data.email || !data.role || !data.company || !data.quote) {
+    if (!data.firstName || !data.lastName || !data.email || !data.role || !data.company || !data.quote) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }

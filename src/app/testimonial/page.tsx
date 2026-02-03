@@ -5,7 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface FormData {
-  name: string;
+  firstName: string;
+  lastName: string;
   role: string;
   company: string;
   email: string;
@@ -13,7 +14,8 @@ interface FormData {
 }
 
 const initialFormData: FormData = {
-  name: "",
+  firstName: "",
+  lastName: "",
   role: "",
   company: "",
   email: "",
@@ -125,18 +127,33 @@ export default function TestimonialPage() {
           <div className="rounded-xl border border-border bg-white p-6">
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
-                <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-dark">
-                  Name
+                <label htmlFor="firstName" className="mb-1.5 block text-sm font-medium text-dark">
+                  First Name
                 </label>
                 <input
                   type="text"
-                  id="name"
-                  name="name"
+                  id="firstName"
+                  name="firstName"
                   required
-                  value={formData.name}
+                  value={formData.firstName}
                   onChange={handleChange}
                   className="w-full rounded-lg border border-border px-4 py-3 text-dark outline-none transition-colors focus:border-primary"
-                  placeholder="Jane Smith"
+                  placeholder="Jane"
+                />
+              </div>
+              <div>
+                <label htmlFor="lastName" className="mb-1.5 block text-sm font-medium text-dark">
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  required
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  className="w-full rounded-lg border border-border px-4 py-3 text-dark outline-none transition-colors focus:border-primary"
+                  placeholder="Smith"
                 />
               </div>
               <div>
@@ -169,7 +186,7 @@ export default function TestimonialPage() {
                   placeholder="CEO"
                 />
               </div>
-              <div>
+              <div className="sm:col-span-2">
                 <label htmlFor="company" className="mb-1.5 block text-sm font-medium text-dark">
                   Company
                 </label>
