@@ -116,10 +116,10 @@ export default function TestimonialPage() {
       <main className="mx-auto max-w-xl px-6 py-12">
         <div className="mb-8">
           <h1 className="mb-3 font-serif text-3xl font-bold text-dark">
-            Quick Testimonial
+            Testimonials
           </h1>
           <p className="text-text-light">
-            Just a few fields. Takes 2 minutes.
+            We&apos;d be grateful if you could share a few words about your experience.
           </p>
         </div>
 
