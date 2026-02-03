@@ -93,16 +93,10 @@ export default function Footer() {
             </div>
             <div className="flex flex-col items-center gap-2 md:items-end">
               <a
-                href="mailto:hello@goodcompany.ca"
-                className="text-sm text-[#A8D5C2] transition-colors duration-200 hover:text-gold"
-              >
-                hello@goodcompany.ca
-              </a>
-              <a
                 href="https://calendar.app.google/gi1oCV2S8mcjTqRx7"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 text-sm font-semibold text-gold transition-colors duration-200 hover:underline"
+                className="text-sm font-semibold text-gold transition-colors duration-200 hover:underline"
               >
                 Book a Discovery Call &rarr;
               </a>
