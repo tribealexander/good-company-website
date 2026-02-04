@@ -423,6 +423,47 @@ The Proposals system (`/proposals/[slug]`) is a private, unlisted section for se
 
 ---
 
+## Mind Maps (Private)
+
+The Mind Maps system (`/mind-maps/[slug]`) is a private archive for case study visualizations used in video production. These are preserved for reference and can be accessed via direct URL.
+
+**Privacy Features**:
+- NOT in navigation, footer, or sitemap
+- `robots.txt` disallows `/mind-maps/`
+- Pages have `noindex, nofollow` meta tags
+- Only accessible via direct URL
+
+**Architecture**:
+- `/src/lib/mindmaps.ts` - Structured mind map data (add new mind maps here)
+- `/src/app/mind-maps/[slug]/page.tsx` - Server component with static generation
+- `/src/app/mind-maps/[slug]/MindMapContent.tsx` - Client component with tabbed visualization
+- `/src/app/mind-maps/[slug]/not-found.tsx` - Custom 404 for invalid mind maps
+- `/src/app/robots.ts` - Robots.txt excluding `/mind-maps/`
+
+**Adding a New Mind Map**:
+1. Open `/src/lib/mindmaps.ts`
+2. Add a new object to the `MIND_MAPS` array with:
+   - `slug` - URL-friendly identifier
+   - `title` - Display title
+   - `caseStudy` - Related case study slug
+   - `createdAt` - Date created
+   - `problems` - Array of `{ title, subtitle }` nodes
+   - `solution` - Array of `{ title, subtitle }` nodes (displayed as flow with arrows)
+   - `outputs` - Array of `{ title, subtitle }` nodes
+   - `sampleReport` (optional) - Sample report data with summary stats and notes table
+3. Deploy - the mind map will be statically generated at build time
+
+**Page Structure**:
+1. **Header** - "Case Study Visualization" eyebrow, title
+2. **Tabs** (if sampleReport exists) - "How It Works" / "Sample Report"
+3. **Mind Map View** - Visual flow: Problems → Solution → Outputs
+4. **Sample Report View** - Summary stats, submission status, notes table
+
+**Current Mind Maps**:
+- `/mind-maps/field-tech-compliance` - Field Tech Compliance case study
+
+---
+
 ## Case Studies
 
 ### List Page (`/case-studies`)
@@ -766,10 +807,13 @@ npm run lint
 | `src/app/referrals/page.tsx` | Referrals program page |
 | `src/app/proposals/[slug]/page.tsx` | Proposal page server component (private, unlisted) |
 | `src/app/proposals/[slug]/ProposalContent.tsx` | Proposal client component with PDF download |
-| `src/app/robots.ts` | Robots.txt (disallows /proposals/) |
+| `src/app/mind-maps/[slug]/page.tsx` | Mind map page server component (private, unlisted) |
+| `src/app/mind-maps/[slug]/MindMapContent.tsx` | Mind map client component with tabbed visualization |
+| `src/app/robots.ts` | Robots.txt (disallows /proposals/ and /mind-maps/) |
 | `src/app/api/contact/route.ts` | Contact form API endpoint |
 | `src/lib/strapi.ts` | Strapi CMS API client (case studies) |
 | `src/lib/proposals.ts` | Local proposals data (add new proposals here) |
+| `src/lib/mindmaps.ts` | Local mind maps data (add new mind maps here) |
 | `src/components/Header.tsx` | Navigation (adapts to dark hero) |
 | `src/components/Button.tsx` | CTA button styles (including hero variant) |
 | `src/components/WhatWeBuildSection.tsx` | Services with dynamic backgrounds |
