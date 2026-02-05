@@ -162,7 +162,7 @@ export default function CaseStudyContent({ caseStudy }: Props) {
             </ScrollReveal>
 
             <StaggerContainer
-              className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+              className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 items-stretch"
               staggerDelay={120}
               translateY={50}
               duration={700}

@@ -31,8 +31,22 @@ export default function ReferralsPage() {
                   10%
                 </RoughAnnotation>
               </span>{" "}
-              of everything they pay us. Not just the first project—every invoice, for as long as they&apos;re a client.
+              of everything they pay us for the first two years.
             </p>
+          </div>
+        </section>
+
+        {/* What We Do Section */}
+        <section className="bg-[#F7F5F0] px-6 py-10 lg:px-10 lg:py-12">
+          <div className="mx-auto max-w-2xl text-center">
+            <ScrollReveal>
+              <h2 className="font-serif mb-4 text-xl font-semibold text-[#1A1A1A] lg:text-2xl">
+                Quick background
+              </h2>
+              <p className="text-base leading-relaxed text-[#555555] lg:text-lg">
+                We help companies automate the tedious stuff (manual processes, reporting, follow-ups) so their teams can focus on actual work. If you know anyone running a business who&apos;s frustrated by how much time gets wasted on things that should just happen automatically, we&apos;d love an intro.
+              </p>
+            </ScrollReveal>
           </div>
         </section>
 
@@ -54,7 +68,7 @@ export default function ReferralsPage() {
                   </div>
                   <h3 className="mb-2 text-lg font-semibold text-[#1A1A1A]">Send an intro</h3>
                   <p className="text-sm text-[#666666]">
-                    Email is fine—just connect us
+                    Email is fine, just connect us
                   </p>
                 </div>
               </ScrollReveal>

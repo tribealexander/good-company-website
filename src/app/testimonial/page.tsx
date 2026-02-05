@@ -128,7 +128,7 @@ export default function TestimonialPage() {
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label htmlFor="firstName" className="mb-1.5 block text-sm font-medium text-dark">
-                  First Name
+                  First Name <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -143,7 +143,7 @@ export default function TestimonialPage() {
               </div>
               <div>
                 <label htmlFor="lastName" className="mb-1.5 block text-sm font-medium text-dark">
-                  Last Name
+                  Last Name <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -158,7 +158,7 @@ export default function TestimonialPage() {
               </div>
               <div>
                 <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-dark">
-                  Email
+                  Email <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="email"
@@ -173,7 +173,7 @@ export default function TestimonialPage() {
               </div>
               <div>
                 <label htmlFor="role" className="mb-1.5 block text-sm font-medium text-dark">
-                  Role
+                  Role <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -188,7 +188,7 @@ export default function TestimonialPage() {
               </div>
               <div className="sm:col-span-2">
                 <label htmlFor="company" className="mb-1.5 block text-sm font-medium text-dark">
-                  Company
+                  Company <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -205,7 +205,7 @@ export default function TestimonialPage() {
 
             <div className="mt-4">
               <label htmlFor="quote" className="mb-1.5 block text-sm font-medium text-dark">
-                Your experience in a sentence or two
+                Your experience in a sentence or two <span className="text-red-500">*</span>
               </label>
               <textarea
                 id="quote"

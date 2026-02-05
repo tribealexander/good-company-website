@@ -80,19 +80,16 @@ export default function ResultCard({ stat, text }: ResultCardProps) {
   }, [stat]);
 
   return (
-    <div className="group relative rounded-2xl bg-white p-8 shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)] overflow-hidden">
-      {/* Decorative corner accent */}
-      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary/5 to-transparent" />
-
+    <div className="group relative flex h-full flex-col rounded-2xl bg-white p-8 shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)] overflow-hidden">
       {stat && (
         <div
           ref={statRef}
-          className="text-4xl font-bold text-primary mb-3 lg:text-5xl font-mono tracking-tight"
+          className="text-4xl font-bold text-primary mb-4 lg:text-5xl font-mono tracking-tight"
         >
           {stat}
         </div>
       )}
-      <p className="text-text text-base lg:text-lg leading-relaxed">
+      <p className="text-text text-base lg:text-lg leading-relaxed mt-auto">
         {text}
       </p>
 
