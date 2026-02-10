@@ -56,7 +56,7 @@ const faqData: FAQItem[] = [
   {
     question: "What if I don't know where to start?",
     answer:
-      "That's most people. The first conversation is just about understanding what's going on in your business. No pitch, no pressure. Sometimes we find a clear starting point; sometimes we realize it's not the right time. Either way, you'll leave with clarity on what's actually worth tackling.",
+      "That's what the first conversation is for. We don't come in with a solution looking for a problem. We start by understanding your business, what's actually broken, and whether automation even makes sense. Sometimes the answer is \"not yet\" or \"don't bother.\" You'll walk away with clarity either way.",
   },
 ];
 
