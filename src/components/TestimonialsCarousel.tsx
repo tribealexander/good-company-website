@@ -30,7 +30,7 @@ const testimonials: Testimonial[] = [
   {
     id: 3,
     quote:
-      "We hired Alex to integrate multiple platform customer data sets into a single client dashboard. He was thorough in his assessment of each platform's capabilities for automation and provided a solid recommendation with the associated development. Truly appreciate Alex's expertise and communication. We will definitely use his services in the future.",
+      "We hired Alex to integrate multiple platform customer data sets into a single client dashboard. He was thorough in his assessment of each platform's capabilities for automation and provided a solid recommendation with the associated development. Truly appreciate Alex's expertise and communication.",
     name: "Aden Smith",
     role: "Marketing Consultant",
     company: "Independent",
