@@ -263,11 +263,13 @@ export default function SomePage() {
 #### TestimonialsCarousel (`TestimonialsCarousel.tsx`)
 A horizontal carousel displaying client testimonials with navigation:
 - **Responsive layout**: 3 cards on desktop (lg+), 2 on tablet (sm-lg), 1 on mobile
-- **Navigation arrows**: Left/right buttons with disabled states when at boundaries
+- **Card styling**: White background, border, shadow, quote icon, initials avatar
+- **Auto-scroll**: Advances every 5 seconds, loops infinitely, pauses on hover
+- **Navigation arrows**: Left/right buttons with hover effects
 - **Dot indicators**: Clickable dots showing current position
 - **Touch/swipe support**: Drag to navigate on mobile and desktop
+- **Hover effects**: Cards lift with shadow and border color change
 - **Accessibility**: ARIA labels, reduced motion support
-- **Card design**: Minimal - just quote text, name, role/company, thin separator line (no borders, shadows, or decorative elements)
 
 ```tsx
 import { TestimonialsCarousel } from "@/components";
@@ -452,31 +454,75 @@ The Mind Maps system (`/mind-maps/[slug]`) is a private archive for case study v
 **Architecture**:
 - `/src/lib/mindmaps.ts` - Structured mind map data (add new mind maps here)
 - `/src/app/mind-maps/[slug]/page.tsx` - Server component with static generation
-- `/src/app/mind-maps/[slug]/MindMapContent.tsx` - Client component with tabbed visualization
+- `/src/app/mind-maps/[slug]/MindMapContent.tsx` - Routes to appropriate layout component
+- `/src/app/mind-maps/[slug]/ThreeColumnMindMap.tsx` - Three-column flow layout (Problem → Solution → Results)
 - `/src/app/mind-maps/[slug]/not-found.tsx` - Custom 404 for invalid mind maps
 - `/src/app/robots.ts` - Robots.txt excluding `/mind-maps/`
 
-**Adding a New Mind Map**:
-1. Open `/src/lib/mindmaps.ts`
-2. Add a new object to the `MIND_MAPS` array with:
-   - `slug` - URL-friendly identifier
-   - `title` - Display title
-   - `caseStudy` - Related case study slug
-   - `createdAt` - Date created
-   - `problems` - Array of `{ title, subtitle }` nodes
-   - `solution` - Array of `{ title, subtitle }` nodes (displayed as flow with arrows)
-   - `outputs` - Array of `{ title, subtitle }` nodes
-   - `sampleReport` (optional) - Sample report data with summary stats and notes table
-3. Deploy - the mind map will be statically generated at build time
+**Layout Types**:
 
-**Page Structure**:
-1. **Header** - "Case Study Visualization" eyebrow, title
-2. **Tabs** (if sampleReport exists) - "How It Works" / "Sample Report"
-3. **Mind Map View** - Visual flow: Problems → Solution → Outputs
-4. **Sample Report View** - Summary stats, submission status, notes table
+1. **Vertical Layout** (`layout: "vertical"`) - Original format
+   - Stacked top-to-bottom: Problems → Solution → Outputs
+   - Cream background, site design system colors
+   - Optional sample report tab
+
+2. **Three-Column Layout** (`layout: "three-column"`) - Horizontal flow
+   - Side-by-side columns: Problem → Solution → Results
+   - Cream background with white cards
+   - Results column supports large metric values (e.g., "100%", "1-2 hrs")
+   - Dashed arrow connectors between columns
+   - Optional tagline at bottom
+   - Responsive: stacks vertically on mobile
+
+**Adding a Three-Column Mind Map**:
+```typescript
+{
+  slug: "task-pinger",
+  title: "Task Pinger",
+  caseStudy: "task-pinger",
+  createdAt: "2026-02-10",
+  layout: "three-column",
+  problems: [
+    { label: "Problem Name", description: "Description text..." },
+  ],
+  solution: [
+    { label: "Step Name", description: "Description text..." },
+  ],
+  results: [
+    { label: "Result Name", description: "Description...", metric: "50%" },
+    { label: "Non-Metric Result", description: "Description without metric" },
+  ],
+  tagline: {  // optional
+    text: "First part.",
+    emphasis: "Bold part.",
+  },
+}
+```
+
+**Adding a Vertical Mind Map**:
+```typescript
+{
+  slug: "field-tech-compliance",
+  title: "Field Tech Compliance",
+  caseStudy: "field-tech-compliance",
+  createdAt: "2026-02-04",
+  layout: "vertical",
+  problems: [
+    { title: "Problem Title", subtitle: "Brief description" },
+  ],
+  solution: [
+    { title: "Step Title", subtitle: "Brief description" },
+  ],
+  outputs: [
+    { title: "Output Title", subtitle: "Brief description" },
+  ],
+  sampleReport: { ... },  // optional
+}
+```
 
 **Current Mind Maps**:
-- `/mind-maps/field-tech-compliance` - Field Tech Compliance case study
+- `/mind-maps/task-pinger` - Task Pinger case study (three-column layout)
+- `/mind-maps/field-tech-compliance` - Field Tech Compliance case study (vertical layout)
 
 ---
 
