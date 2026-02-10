@@ -1,13 +1,33 @@
 "use client";
 
 import { useState } from "react";
-import type { MindMap } from "@/lib/mindmaps";
+import type {
+  MindMap,
+  VerticalMindMap,
+} from "@/lib/mindmaps";
+import { isThreeColumnMindMap, isVerticalMindMap } from "@/lib/mindmaps";
+import ThreeColumnMindMap from "./ThreeColumnMindMap";
 
 interface Props {
   mindMap: MindMap;
 }
 
 export default function MindMapContent({ mindMap }: Props) {
+  // Route to the appropriate layout component
+  if (isThreeColumnMindMap(mindMap)) {
+    return <ThreeColumnMindMap mindMap={mindMap} />;
+  }
+
+  // Default: Vertical layout
+  if (isVerticalMindMap(mindMap)) {
+    return <VerticalMindMapView mindMap={mindMap} />;
+  }
+
+  return null;
+}
+
+// Original vertical layout component
+function VerticalMindMapView({ mindMap }: { mindMap: VerticalMindMap }) {
   const [activeTab, setActiveTab] = useState<"mindmap" | "report">("mindmap");
 
   return (
@@ -92,7 +112,7 @@ export default function MindMapContent({ mindMap }: Props) {
                     <p className="text-xs text-text-light">{step.subtitle}</p>
                   </div>
                   {i < mindMap.solution.length - 1 && (
-                    <span className="text-2xl text-primary/40">→</span>
+                    <span className="text-2xl text-primary/40">&rarr;</span>
                   )}
                 </div>
               ))}
@@ -194,7 +214,7 @@ export default function MindMapContent({ mindMap }: Props) {
             <div className="mb-8 flex gap-4">
               <div className="flex-1 rounded-md border-l-4 border-green-600 bg-green-50 p-3">
                 <p className="mb-1 text-xs uppercase text-text-light">
-                  ✓ Submitted ({mindMap.sampleReport.submitted.length})
+                  Submitted ({mindMap.sampleReport.submitted.length})
                 </p>
                 <p className="text-sm text-dark">
                   {mindMap.sampleReport.submitted.join(", ")}
@@ -202,7 +222,7 @@ export default function MindMapContent({ mindMap }: Props) {
               </div>
               <div className="flex-1 rounded-md border-l-4 border-red-600 bg-red-50 p-3">
                 <p className="mb-1 text-xs uppercase text-text-light">
-                  ✗ No Notes ({mindMap.sampleReport.missing.length})
+                  No Notes ({mindMap.sampleReport.missing.length})
                 </p>
                 <p className="text-sm text-dark">
                   {mindMap.sampleReport.missing.join(", ")}
@@ -271,7 +291,7 @@ export default function MindMapContent({ mindMap }: Props) {
             href="/"
             className="text-sm text-text-light transition-colors hover:text-primary"
           >
-            ← Back to Home
+            &larr; Back to Home
           </a>
         </div>
       </div>

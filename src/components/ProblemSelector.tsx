@@ -33,7 +33,7 @@ const problems: Problem[] = [
     whatWeFind:
       "Critical information lives in someone's head or scattered across email threads and Slack channels. When key people are out or leave, operations slow to a crawl.",
     whatWeBuild:
-      "Systems that capture knowledge as work happens—decision logs, process documentation, pattern detection—so expertise isn't person-dependent.",
+      "Systems that capture knowledge as work happens: decision logs, process documentation, and pattern detection. Expertise becomes shared, not person-dependent.",
     result: "Scalable operations that don't break when someone's unavailable.",
     Icon: BrainCircuit,
   },
@@ -44,7 +44,7 @@ const problems: Problem[] = [
     whatWeFind:
       "Teams spend 8-15 hours per week manually pulling data from multiple systems to create reports that arrive too late to act on. By the time you see it, it's history.",
     whatWeBuild:
-      "Automated dashboards with real-time data and early warning alerts that flag issues before they escalate—no more chasing spreadsheets.",
+      "Automated dashboards with real-time data and early warning alerts that flag issues before they escalate. No more chasing spreadsheets.",
     result:
       "Hours reclaimed and proactive decisions instead of reactive firefighting.",
     Icon: BarChart3,
@@ -56,7 +56,7 @@ const problems: Problem[] = [
     whatWeFind:
       "Project profitability is calculated manually in spreadsheets weeks after work completes. Teams don't know if they're making money or losing it until it's too late to fix.",
     whatWeBuild:
-      "Real-time tracking of time, costs, and margins per project with alerts when budgets are trending off-track—visibility while you can still act.",
+      "Real-time tracking of time, costs, and margins per project. Alerts fire when budgets trend off-track, giving you visibility while you can still act.",
     result: "Know your margins in real-time. Stop bleeding money on projects you thought were profitable.",
     Icon: TrendingUp,
   },
@@ -65,9 +65,9 @@ const problems: Problem[] = [
     headline: "The Invisible Work",
     brief: "Work sits waiting 20-40% of cycle time",
     whatWeFind:
-      "Work sits waiting in approval queues, handoff points, and email threads that nobody's monitoring. 20-40% of cycle time is just... waiting. Nobody sees it.",
+      "Work sits waiting in approval queues, handoff points, and email threads that nobody's monitoring. 20-40% of cycle time is just waiting. Nobody sees it.",
     whatWeBuild:
-      "Automated handoffs, escalation rules, and visibility into where work actually sits—so bottlenecks become obvious before they cause delays.",
+      "Automated handoffs, escalation rules, and visibility into where work actually sits. Bottlenecks become obvious before they cause delays.",
     result:
       "Projects move faster and you see friction points before they cause delays.",
     Icon: Clock,
@@ -77,9 +77,9 @@ const problems: Problem[] = [
     headline: "The Fire Drill Culture",
     brief: "Always reacting, catching issues after complaints",
     whatWeFind:
-      "Teams are always reacting—catching client issues after complaints come in, discovering problems during review meetings, operating blind between check-ins.",
+      "Teams are always reacting. They catch client issues after complaints come in, discover problems during review meetings, and operate blind between check-ins.",
     whatWeBuild:
-      "Continuous monitoring that tracks client health, service quality, and operational metrics—so you catch problems early, not after they explode.",
+      "Continuous monitoring that tracks client health, service quality, and operational metrics. You catch problems early, not after they explode.",
     result: "Move from reactive firefighting to proactive problem-solving.",
     Icon: Flame,
   },
@@ -88,9 +88,9 @@ const problems: Problem[] = [
     headline: "Flying Blind on Client Health",
     brief: "No visibility into who's happy until they leave",
     whatWeFind:
-      "You don't know which clients are happy and which are at risk until they complain—or churn. Customer success runs on gut feel, not data. Surprises are common.",
+      "You don't know which clients are happy and which are at risk until they complain or churn. Customer success runs on gut feel, not data. Surprises are common.",
     whatWeBuild:
-      "Automated health monitoring that tracks sentiment, engagement, and warning signs—so you catch at-risk accounts before they leave.",
+      "Automated health monitoring that tracks sentiment, engagement, and warning signs. You catch at-risk accounts before they leave.",
     result: "Protect revenue by seeing problems while you can still fix them.",
     Icon: HeartPulse,
   },

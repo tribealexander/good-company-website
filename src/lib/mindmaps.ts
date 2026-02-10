@@ -1,6 +1,10 @@
 // Mind maps archive - unlisted pages for case study visualizations
 // These are used in video production and preserved here for reference
 
+// ===========================================
+// VERTICAL FLOW LAYOUT (original)
+// ===========================================
+
 export interface MindMapNode {
   title: string;
   subtitle: string;
@@ -27,15 +31,55 @@ export interface SampleReport {
   notes: ReportNote[];
 }
 
-export interface MindMap {
+export interface VerticalMindMap {
   slug: string;
   title: string;
   caseStudy: string;
   createdAt: string;
+  layout: "vertical";
   problems: MindMapNode[];
   solution: MindMapNode[];
   outputs: MindMapNode[];
   sampleReport?: SampleReport;
+}
+
+// ===========================================
+// THREE-COLUMN FLOW LAYOUT (Problem → Solution → Results)
+// Dark theme optimized for video recording
+// ===========================================
+
+export interface FlowCard {
+  label: string;
+  description: string;
+  metric?: string; // For results like "100%", "1–2 hrs"
+}
+
+export interface ThreeColumnMindMap {
+  slug: string;
+  title: string;
+  caseStudy?: string;
+  createdAt: string;
+  layout: "three-column";
+  solutionEmphasis?: string; // e.g., "meeting people where they already are"
+  problems: FlowCard[];
+  solution: FlowCard[];
+  results: FlowCard[];
+  tagline?: {
+    text: string;
+    emphasis: string;
+  };
+}
+
+// Union type for all mind map layouts
+export type MindMap = VerticalMindMap | ThreeColumnMindMap;
+
+// Type guard helpers
+export function isVerticalMindMap(mindMap: MindMap): mindMap is VerticalMindMap {
+  return mindMap.layout === "vertical";
+}
+
+export function isThreeColumnMindMap(mindMap: MindMap): mindMap is ThreeColumnMindMap {
+  return mindMap.layout === "three-column";
 }
 
 // ============================================
@@ -43,11 +87,93 @@ export interface MindMap {
 // ============================================
 
 const MIND_MAPS: MindMap[] = [
+  // ===========================================
+  // THREE-COLUMN LAYOUTS
+  // ===========================================
+  {
+    slug: "task-pinger",
+    title: "Task Pinger",
+    caseStudy: "task-pinger",
+    createdAt: "2026-02-10",
+    layout: "three-column",
+    solutionEmphasis: "meeting people where they already are",
+    problems: [
+      {
+        label: "Manual Follow-up",
+        description:
+          "PM spent hours pinging people on Slack for status updates across multiple projects",
+      },
+      {
+        label: "Stale Data",
+        description:
+          "Responses lived in Slack threads, never made it back to the project tracker",
+      },
+      {
+        label: "Silent Slippage",
+        description:
+          "Tasks sat for weeks without movement because no one was asking",
+      },
+      {
+        label: "Wasted Meetings",
+        description:
+          "Status meetings spent collecting updates instead of making decisions",
+      },
+    ],
+    solution: [
+      {
+        label: "Meet Them Where They Are",
+        description:
+          "The sheet worked because it was simple, so we kept it. No new platforms, no migration, no retraining.",
+      },
+      {
+        label: "Same Tools, One Tweak",
+        description:
+          "Connected their existing Google Sheet to Slack — the two tools the team already lived in",
+      },
+      {
+        label: "Auto-Ping + Auto-Capture",
+        description:
+          "Open tasks get pinged daily with context. Replies flow back to the sheet automatically, no copy-pasting",
+      },
+      {
+        label: "Persistent Until Done",
+        description:
+          "Keeps pinging daily until a response is received or the manager changes the status",
+      },
+    ],
+    results: [
+      {
+        label: "Weekly PM Time Recovered",
+        description: "From manual follow-up",
+        metric: "1–2 hrs",
+      },
+      {
+        label: "Shorter Status Meetings",
+        description: "Team arrives already informed",
+        metric: "50%",
+      },
+      {
+        label: "Task Update Compliance",
+        description: "Every item gets a response",
+        metric: "100%",
+      },
+      {
+        label: "Clear Record",
+        description:
+          "Every update timestamped and attributed — who said what, and when",
+      },
+    ],
+  },
+
+  // ===========================================
+  // VERTICAL LAYOUTS
+  // ===========================================
   {
     slug: "field-tech-compliance",
     title: "Field Tech Compliance",
     caseStudy: "field-tech-compliance",
     createdAt: "2026-02-04",
+    layout: "vertical",
     problems: [
       {
         title: "Written-Off Invoices",
