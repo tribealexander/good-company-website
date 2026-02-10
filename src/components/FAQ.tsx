@@ -53,6 +53,11 @@ const faqData: FAQItem[] = [
     answer:
       "Most automation and change management fails because it's just tools and dashboards that nobody checks after the first week. We build systems with three things baked in: visibility, accountability, and consequence. Visibility means leadership can see what's happening without micromanaging or chasing updates. Accountability means that information gets used to hold people to clear standards. And consequence means the system actually does something (flags, escalations, incentives) rather than just displaying data and hoping someone acts on it. That's the difference between installing a tool and building a system that drives behavior.",
   },
+  {
+    question: "What if I don't know where to start?",
+    answer:
+      "That's most people. The first conversation is just about understanding what's going on in your business. No pitch, no pressure. Sometimes we find a clear starting point; sometimes we realize it's not the right time. Either way, you'll leave with clarity on what's actually worth tackling.",
+  },
 ];
 
 export default function FAQ() {

@@ -29,6 +29,23 @@ export default function Home() {
         {/* What We Build - White (with dynamic colors on interaction) */}
         <WhatWeBuildSection />
 
+        {/* Not Sure Where to Start - Simple callout */}
+        <section className="bg-white py-8">
+          <div className="mx-auto max-w-7xl px-6 text-center lg:px-10">
+            <p className="text-lg text-text-light">
+              Not sure where to start?{" "}
+              <a
+                href="https://calendar.app.google/gi1oCV2S8mcjTqRx7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline decoration-primary/30 underline-offset-2 transition-colors hover:decoration-primary"
+              >
+                Happy to think through it with you.
+              </a>
+            </p>
+          </div>
+        </section>
+
         {/* From Build to Buy-In - White */}
         <section className="bg-white py-12 lg:py-16">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">

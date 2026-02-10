@@ -124,6 +124,15 @@ export default function HeroSection() {
           >
             Book a Discovery Call
           </a>
+          <p className="mt-4 text-sm text-[#A8D5C2]">
+            <a
+              href="#contact"
+              className="underline decoration-[#A8D5C2]/50 underline-offset-2 transition-colors hover:text-white hover:decoration-white"
+            >
+              Not sure where to start?
+            </a>
+            {" "}Happy to think through it with you.
+          </p>
         </div>
       </div>
     </section>
