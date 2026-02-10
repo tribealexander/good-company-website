@@ -107,10 +107,10 @@ export default function AboutPage() {
               {/* Story - flows directly from subhead */}
               <div className="space-y-6 text-lg leading-[1.8] text-text">
                 <p data-hero-animate className="first-letter:float-left first-letter:mr-3 first-letter:text-6xl first-letter:font-bold first-letter:leading-none first-letter:text-primary">
-                  I work with founders because they&apos;re the people I like to be around. People who take charge, figure things out, and don&apos;t wait for permission. That probably sounds like a platitude, but it&apos;s simpler than that—they&apos;re the people that energize me.
+                  I work with people who are on the hook for results. Business owners, operators, the exec who inherited a mess and has to fix it. What they have in common is an ownership mentality—they take charge, figure things out, and don&apos;t wait for permission. Those are the people that energize me.
                 </p>
                 <p data-hero-animate>
-                  I like to think of myself as a co-founder on retainer. An advisor who isn&apos;t trying to sell you something you don&apos;t need. When I start working with someone, I mostly just ask questions. A lot of them. I don&apos;t show up with answers—I show up trying to understand what&apos;s actually broken, what matters, and what&apos;s going to get ignored if we build it.
+                  I think of myself as a partner on retainer. An advisor who isn&apos;t trying to sell you something you don&apos;t need. When I start working with a new team, I mostly just ask questions. A lot of them. I don&apos;t show up with answers—I show up trying to understand what&apos;s actually broken, what matters, and what&apos;s going to get ignored if we build it.
                 </p>
                 <p data-hero-animate>
                   After years of doing this, a lot of the work comes down to the same things: don&apos;t drop leads, deliver a great customer experience, and make more money than you spend. Simple to say, hard to do consistently.
