@@ -45,51 +45,23 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-// Avatar placeholder SVG component
-function AvatarPlaceholder() {
-  return (
-    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#E5E5E5]">
-      <svg
-        className="h-5 w-5 text-[#9CA3AF]"
-        fill="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-      </svg>
-    </div>
-  );
-}
-
 // Single testimonial card component
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <div className="relative flex h-full flex-col rounded-xl border border-[#D4CFC7] border-l-4 border-l-primary bg-white p-8 shadow-[0_2px_12px_rgba(0,0,0,0.04)] transition-all duration-300 hover:shadow-lg">
-      {/* Quote mark */}
-      <span className="absolute left-6 top-5 font-serif text-5xl leading-none text-primary/30">
-        &ldquo;
-      </span>
-
+    <div className="flex h-full flex-col">
       {/* Quote text */}
-      <div className="flex-1 pt-8">
-        <p
-          className="text-base italic leading-relaxed text-dark"
-          style={{ lineHeight: 1.75 }}
-        >
-          {testimonial.quote}
-        </p>
-      </div>
+      <p className="flex-1 text-base leading-relaxed text-text">
+        {testimonial.quote}
+      </p>
 
-      {/* Attribution with avatar */}
-      <div className="mt-6 flex items-center gap-3 border-t border-[#E5E5E5] pt-5">
-        <AvatarPlaceholder />
-        <div>
-          <h4 className="text-sm font-semibold text-dark">
-            {testimonial.name}
-          </h4>
-          <p className="text-xs text-[#6B6B6B]">
-            {testimonial.role}, {testimonial.company}
-          </p>
-        </div>
+      {/* Attribution */}
+      <div className="mt-6 border-t border-[#E5E5E5] pt-4">
+        <p className="text-sm font-semibold text-dark">
+          {testimonial.name}
+        </p>
+        <p className="text-xs text-text-light">
+          {testimonial.role}, {testimonial.company}
+        </p>
       </div>
     </div>
   );
