@@ -107,13 +107,16 @@ export default function AboutPage() {
               {/* Story - flows directly from subhead */}
               <div className="space-y-6 text-lg leading-[1.8] text-text">
                 <p data-hero-animate className="first-letter:float-left first-letter:mr-3 first-letter:text-6xl first-letter:font-bold first-letter:leading-none first-letter:text-primary">
-                  This means I work directly with business owners, operators, and the people running the day-to-day. No handoffs, no juniors. I think of myself as a partner on retainer. An advisor who isn&apos;t trying to sell you something you don&apos;t need.
+                  This means I work directly with business owners, operators, and the people running the day-to-day. I think of myself as a partner on retainer. An advisor who isn&apos;t trying to sell you something you don&apos;t need.
                 </p>
                 <p data-hero-animate>
-                  When I start working with a new team, I mostly just ask questions. A lot of them. I don&apos;t show up with answers. I show up trying to understand what&apos;s actually broken, what matters, and what&apos;s going to get ignored if we build it.
+                  As a business operator myself, I know the difference between what&apos;s actually ROI-generating and what just sounds good on paper. I&apos;ve seen too many systems fail because someone was optimistic about adoption or chose the most professional-sounding option.
                 </p>
                 <p data-hero-animate>
                   After years of doing this, a lot of the work comes down to the same things: don&apos;t drop leads, deliver a great customer experience, and make more money than you spend. Simple to say, hard to do consistently.
+                </p>
+                <p data-hero-animate>
+                  When I start working with a new team, I mostly just ask questions. A lot of them. I don&apos;t show up with answers. I show up trying to understand what&apos;s actually broken, what matters, and what&apos;s going to get ignored if we build it.
                 </p>
                 <p data-hero-animate>
                   How I help is usually some combination of automation, visibility, and accountability. Tech that handles the repetitive stuff, dashboards that show what&apos;s actually happening, and systems that make sure people follow through.
