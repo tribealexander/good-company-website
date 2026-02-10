@@ -266,9 +266,8 @@ A horizontal carousel displaying client testimonials with navigation:
 - **Navigation arrows**: Left/right buttons with disabled states when at boundaries
 - **Dot indicators**: Clickable dots showing current position
 - **Touch/swipe support**: Drag to navigate on mobile and desktop
-- **Avatar placeholders**: SVG silhouette icons (40x40px)
 - **Accessibility**: ARIA labels, reduced motion support
-- **Card design**: Quote mark decoration, left green border accent, subtle shadow
+- **Card design**: Minimal - just quote text, name, role/company, thin separator line (no borders, shadows, or decorative elements)
 
 ```tsx
 import { TestimonialsCarousel } from "@/components";
@@ -276,7 +275,11 @@ import { TestimonialsCarousel } from "@/components";
 <TestimonialsCarousel />
 ```
 
-Testimonials are hardcoded in the component with placeholder names (`[CLIENT NAME]`, `[ROLE]`, `[COMPANY]`).
+**Current testimonials** (real clients):
+- Mitch Starkman, Owner, Movement Sports Medicine + Physiotherapy
+- Andrew Miller, President, Purple Frog Products
+- Aden Smith, Marketing Consultant, Independent
+- Marko Lindhe, Founder, Marlin Capital
 
 ---
 
@@ -289,13 +292,13 @@ The homepage (`/src/app/page.tsx`) follows this section order:
 | 1 | Hero | Deep Green (`#004D36`) | - |
 | 2 | Problems We Solve | White/Dynamic (earth tones) | `#problems` |
 | 3 | What We Build | White/Dynamic | `#solutions` |
-| 4 | From Build to Buy-In | White | - |
-| 5 | How We Work | Cream textured | `#how-we-work` |
-| 6 | Testimonials | White | `#testimonials` |
-| 7 | Investment | Cream textured | - |
-| 8 | FAQ | White | `#faq` |
-| 9 | Final CTA | Cream textured | `#contact` |
-| 10 | Contact Form | White | `#contact-form` |
+| 4 | "Not sure where to start?" | White | - |
+| 5 | From Build to Buy-In | White | - |
+| 6 | How We Work | Cream textured | `#how-we-work` |
+| 7 | Testimonials | White | `#testimonials` |
+| 8 | Investment | Cream textured | - |
+| 9 | FAQ | White | `#faq` |
+| 10 | Final CTA | Cream textured | `#contact` |
 
 ### Hero Section
 
@@ -304,8 +307,11 @@ The homepage (`/src/app/page.tsx`) follows this section order:
 - **Headline**: White text with gold rough-notation underline on "automate"
 - **Subhead**: Light green text (`#A8D5C2`) - concise version
 - **CTA**: White button that turns gold on hover (`variant="hero"`)
+- **Secondary CTA**: "Not sure where to start? Happy to think through it with you." - subtle link below main button
 
 ### What We Build Section
+
+**Intro**: "We don't build and disappear. Everything we build serves one of three goals:"
 
 Three service cards with dynamic background colors on hover:
 1. **Automate Manual Work** - light sage
@@ -342,10 +348,20 @@ Explains why implementations stick, addressing common objections:
 
 The About page (`/src/app/about/page.tsx`) has 4 sections:
 
-1. **Hero + Story** (unified) - Photo integration, "Hi, I'm Alex", subhead, story about working with founders, standalone closer
+1. **Hero + Story** (unified) - Photo integration, "Hi, I'm Alex", subhead, story with operator positioning
 2. **If You Want to Go Deeper** - Prose with newsletter links + dinner series mention
 3. **Got a Project in Mind?** - Transition section before CTA
 4. **CTA** - Dark green section with just the button
+
+**Story structure** (Hero section):
+- Subhead: "I build automation systems for growing businesses."
+- Paragraph 1: "This means I work directly with business owners, operators..." (partner on retainer, advisor positioning)
+- Paragraph 2: Operator credibility - "As a business operator myself, I know the difference between what's actually ROI-generating and what just sounds good on paper."
+- Paragraph 3: "After years of doing this..." (don't drop leads, great CX, make more than you spend)
+- Paragraph 4: "When I start working with a new team, I mostly just ask questions..."
+- Paragraph 5: "How I help is usually some combination of automation, visibility, and accountability..."
+- Paragraph 6: "I've built my career on doing more with less. Tools as leverage, not headcount."
+- Standalone statement: "I work directly with every client. That means I take on fewer engagements, but the ones I take get my full attention."
 
 Photo is integrated into the hero with:
 - Desktop: Right half of screen with gradient overlay fading into beige
