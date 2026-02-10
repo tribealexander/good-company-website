@@ -136,7 +136,7 @@ export default function AboutPage() {
                 >
                   directly
                 </RoughAnnotation>{" "}
-                with every client. No handoffs, no juniors.
+                with every client. That means I take on fewer engagements, but the ones I take get my full attention.
               </p>
             </div>
           </div>
