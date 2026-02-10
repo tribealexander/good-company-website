@@ -22,7 +22,7 @@ const testimonials: Testimonial[] = [
   {
     id: 2,
     quote:
-      "Alex blends the rare ability to capture a client's needs and trust with the organizational aptitude to deliver results. People and process; sales and strategy. He thinks like a visionary and executes like an implementor. During an extremely fluid COVID period, he was instrumental in helping our organization achieve milestone sales. It was a privilege to work with Alex during this time and I continue to rely on his unique business acumen today.",
+      "Alex blends the rare ability to capture a client's needs and trust with the organizational aptitude to deliver results. People and process; sales and strategy. He thinks like a visionary and executes like an implementor. During an extremely fluid COVID period, he was instrumental in helping our organization achieve milestone sales. I continue to rely on his unique business acumen today.",
     name: "Andrew Miller",
     role: "President",
     company: "Purple Frog Products",
@@ -38,7 +38,7 @@ const testimonials: Testimonial[] = [
   {
     id: 4,
     quote:
-      "I've worked with Alex for a few months now, and he has opened insights for me with a nimble and strategic way of thinking that I had been missing as an entrepreneur. Conversations with Alex, whether 20 minutes or 2 hours, leave me with enthusiasm and insight in ways that I wouldn't have discovered on my own. Great dude with a big brain who has a penchant for helping.",
+      "Alex has opened insights for me with a nimble and strategic way of thinking that I had been missing as an entrepreneur. Conversations with Alex, whether 20 minutes or 2 hours, leave me with enthusiasm and insight in ways that I wouldn't have discovered on my own. Great dude with a big brain who has a penchant for helping.",
     name: "Marko Lindhe",
     role: "Founder",
     company: "Marlin Capital",
@@ -61,7 +61,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
       </div>
 
       {/* Quote text */}
-      <p className="flex-1 text-base leading-relaxed text-text">
+      <p className="flex-1 text-[15px] leading-[1.8] text-text">
         &ldquo;{testimonial.quote}&rdquo;
       </p>
 
