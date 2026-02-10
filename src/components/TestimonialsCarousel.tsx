@@ -35,6 +35,14 @@ const testimonials: Testimonial[] = [
     role: "Marketing Consultant",
     company: "Independent",
   },
+  {
+    id: 4,
+    quote:
+      "I've worked with Alex for a few months now, and he has opened insights for me with a nimble and strategic way of thinking that I had been missing as an entrepreneur. Conversations with Alex, whether 20 minutes or 2 hours, leave me with enthusiasm and insight in ways that I wouldn't have discovered on my own. Great dude with a big brain who has a penchant for helping.",
+    name: "Marko Lindhe",
+    role: "Founder",
+    company: "Marlin Capital",
+  },
 ];
 
 // Avatar placeholder SVG component
