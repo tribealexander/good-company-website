@@ -11,9 +11,6 @@ export default function ThreeColumnMindMap({ mindMap }: Props) {
     <div className="min-h-screen bg-cream py-16 px-6">
       {/* Header */}
       <div className="mx-auto max-w-6xl mb-12 text-center">
-        <p className="mb-2 text-xs font-medium uppercase tracking-widest text-text-light">
-          Case Study Visualization
-        </p>
         <h1 className="font-serif text-3xl font-bold text-dark lg:text-4xl">
           {mindMap.title}
         </h1>
