@@ -57,7 +57,7 @@ const problems: Problem[] = [
       "Project profitability is calculated manually in spreadsheets weeks after work completes. Teams don't know if they're making money or losing it until it's too late to fix.",
     whatWeBuild:
       "Real-time tracking of time, costs, and margins per project with alerts when budgets are trending off-track—visibility while you can still act.",
-    result: "Course-correct during projects instead of doing autopsy reports after.",
+    result: "Know your margins in real-time. Stop bleeding money on projects you thought were profitable.",
     Icon: TrendingUp,
   },
   {
