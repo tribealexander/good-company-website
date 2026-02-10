@@ -48,20 +48,37 @@ const testimonials: Testimonial[] = [
 // Single testimonial card component
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex h-full flex-col rounded-xl border border-border bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary/20 hover:-translate-y-1">
+      {/* Quote icon */}
+      <div className="mb-4">
+        <svg
+          className="h-8 w-8 text-primary/20"
+          fill="currentColor"
+          viewBox="0 0 32 32"
+        >
+          <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H6c0-2.2 1.8-4 4-4V8zm14 0c-3.3 0-6 2.7-6 6v10h10V14h-8c0-2.2 1.8-4 4-4V8z" />
+        </svg>
+      </div>
+
       {/* Quote text */}
       <p className="flex-1 text-base leading-relaxed text-text">
-        {testimonial.quote}
+        &ldquo;{testimonial.quote}&rdquo;
       </p>
 
       {/* Attribution */}
-      <div className="mt-6 border-t border-[#E5E5E5] pt-4">
-        <p className="text-sm font-semibold text-dark">
-          {testimonial.name}
-        </p>
-        <p className="text-xs text-text-light">
-          {testimonial.role}, {testimonial.company}
-        </p>
+      <div className="mt-6 flex items-center gap-4 border-t border-border pt-5">
+        {/* Avatar placeholder with initials */}
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">
+          {testimonial.name.split(" ").map(n => n[0]).join("")}
+        </div>
+        <div>
+          <p className="text-sm font-semibold text-dark">
+            {testimonial.name}
+          </p>
+          <p className="text-xs text-text-light">
+            {testimonial.role}, {testimonial.company}
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -72,9 +89,11 @@ export default function TestimonialsCarousel() {
   const [cardsPerView, setCardsPerView] = useState(3);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const [startX, setStartX] = useState(0);
   const [translateX, setTranslateX] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const autoScrollRef = useRef<NodeJS.Timeout | null>(null);
 
   // Check for reduced motion preference
   useEffect(() => {
@@ -117,12 +136,37 @@ export default function TestimonialsCarousel() {
   const goToNext = useCallback(() => {
     if (canGoNext) {
       setCurrentIndex((prev) => prev + 1);
+    } else {
+      // Loop back to start
+      setCurrentIndex(0);
     }
   }, [canGoNext]);
+
+  // Auto-scroll functionality
+  useEffect(() => {
+    if (prefersReducedMotion || isPaused) {
+      if (autoScrollRef.current) {
+        clearInterval(autoScrollRef.current);
+        autoScrollRef.current = null;
+      }
+      return;
+    }
+
+    autoScrollRef.current = setInterval(() => {
+      goToNext();
+    }, 5000); // Scroll every 5 seconds
+
+    return () => {
+      if (autoScrollRef.current) {
+        clearInterval(autoScrollRef.current);
+      }
+    };
+  }, [goToNext, prefersReducedMotion, isPaused, currentIndex]);
 
   // Touch/swipe handlers
   const handleTouchStart = (e: React.TouchEvent) => {
     setIsDragging(true);
+    setIsPaused(true);
     setStartX(e.touches[0].clientX);
     setTranslateX(0);
   };
@@ -141,16 +185,19 @@ export default function TestimonialsCarousel() {
     // Threshold for swipe (50px)
     if (translateX > 50 && canGoPrev) {
       goToPrev();
-    } else if (translateX < -50 && canGoNext) {
+    } else if (translateX < -50) {
       goToNext();
     }
 
     setTranslateX(0);
+    // Resume auto-scroll after a delay
+    setTimeout(() => setIsPaused(false), 3000);
   };
 
   // Mouse drag handlers for desktop
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
+    setIsPaused(true);
     setStartX(e.clientX);
     setTranslateX(0);
   };
@@ -167,11 +214,13 @@ export default function TestimonialsCarousel() {
 
     if (translateX > 50 && canGoPrev) {
       goToPrev();
-    } else if (translateX < -50 && canGoNext) {
+    } else if (translateX < -50) {
       goToNext();
     }
 
     setTranslateX(0);
+    // Resume auto-scroll after a delay
+    setTimeout(() => setIsPaused(false), 3000);
   };
 
   const handleMouseLeave = () => {
@@ -179,6 +228,11 @@ export default function TestimonialsCarousel() {
       setIsDragging(false);
       setTranslateX(0);
     }
+    setIsPaused(false);
+  };
+
+  const handleMouseEnter = () => {
+    setIsPaused(true);
   };
 
   // Calculate the width percentage for each card based on cards per view
@@ -190,15 +244,21 @@ export default function TestimonialsCarousel() {
       className="relative"
       aria-label="Client testimonials"
       role="region"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {/* Navigation arrows */}
       <button
-        onClick={goToPrev}
+        onClick={() => {
+          goToPrev();
+          setIsPaused(true);
+          setTimeout(() => setIsPaused(false), 3000);
+        }}
         disabled={!canGoPrev}
         aria-label="Previous testimonials"
-        className={`absolute -left-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border-2 border-primary bg-white text-primary shadow-md transition-all duration-200 lg:-left-6 ${
+        className={`absolute -left-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-white text-text-light shadow-md transition-all duration-200 lg:-left-6 ${
           canGoPrev
-            ? "hover:bg-primary hover:text-white hover:scale-105"
+            ? "hover:bg-primary hover:text-white hover:border-primary hover:scale-105"
             : "cursor-not-allowed opacity-40"
         }`}
       >
@@ -217,14 +277,13 @@ export default function TestimonialsCarousel() {
       </button>
 
       <button
-        onClick={goToNext}
-        disabled={!canGoNext}
+        onClick={() => {
+          goToNext();
+          setIsPaused(true);
+          setTimeout(() => setIsPaused(false), 3000);
+        }}
         aria-label="Next testimonials"
-        className={`absolute -right-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border-2 border-primary bg-white text-primary shadow-md transition-all duration-200 lg:-right-6 ${
-          canGoNext
-            ? "hover:bg-primary hover:text-white hover:scale-105"
-            : "cursor-not-allowed opacity-40"
-        }`}
+        className="absolute -right-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-white text-text-light shadow-md transition-all duration-200 lg:-right-6 hover:bg-primary hover:text-white hover:border-primary hover:scale-105"
       >
         <svg
           width="20"
@@ -250,12 +309,11 @@ export default function TestimonialsCarousel() {
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseLeave}
         style={{ cursor: isDragging ? "grabbing" : "grab" }}
       >
         <div
           className={`flex gap-6 ${
-            prefersReducedMotion ? "" : "transition-transform duration-400 ease-out"
+            prefersReducedMotion ? "" : "transition-transform duration-500 ease-out"
           }`}
           style={{
             transform: `translateX(calc(-${currentIndex * cardWidthPercent}% - ${currentIndex * 24}px + ${isDragging ? translateX : 0}px))`,
@@ -275,17 +333,21 @@ export default function TestimonialsCarousel() {
         </div>
       </div>
 
-      {/* Dots indicator */}
+      {/* Progress dots with auto-scroll indicator */}
       <div className="mt-8 flex justify-center gap-2">
         {Array.from({ length: maxIndex + 1 }).map((_, index) => (
           <button
             key={index}
-            onClick={() => setCurrentIndex(index)}
+            onClick={() => {
+              setCurrentIndex(index);
+              setIsPaused(true);
+              setTimeout(() => setIsPaused(false), 3000);
+            }}
             aria-label={`Go to testimonial set ${index + 1}`}
             className={`h-2 rounded-full transition-all duration-300 ${
               index === currentIndex
-                ? "w-6 bg-primary"
-                : "w-2 bg-[#D4CFC7] hover:bg-primary/50"
+                ? "w-8 bg-primary"
+                : "w-2 bg-border hover:bg-primary/50"
             }`}
           />
         ))}
