@@ -121,6 +121,9 @@ export default function AboutPage() {
                 <p data-hero-animate>
                   How I help is usually some combination of automation, visibility, and accountability. Tech that handles the repetitive stuff, dashboards that show what&apos;s actually happening, and systems that make sure people follow through.
                 </p>
+                <p data-hero-animate>
+                  I&apos;ve built my career on doing more with less. Tools as leverage, not headcount. It&apos;s how I work, and it&apos;s what I help others do.
+                </p>
               </div>
 
               {/* Standalone statement */}
