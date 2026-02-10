@@ -14,50 +14,26 @@ const testimonials: Testimonial[] = [
   {
     id: 1,
     quote:
-      "We were drowning in manual reporting. Every week, managers spent hours pulling data from three different systems just to know what was happening. Now it's automated, and we actually have time to act on the insights.",
-    name: "[CLIENT NAME]",
-    role: "[ROLE]",
-    company: "[COMPANY]",
+      "Alex is always a level-headed sounding board and the best kind of pressure cooker - someone who helps you formulate, execute, and perfect your ideas. Whether it's automations that streamline onboarding or introducing tech innovations to our team, Alex has consistently saved us time and, more importantly, saved me money.",
+    name: "Mitch Starkman",
+    role: "Owner",
+    company: "Movement Sports Medicine + Physiotherapy",
   },
   {
     id: 2,
     quote:
-      "Before Good Company, we had no idea which clients were actually happy. Customer success made calls, but nothing was tracked. Now we catch at-risk accounts before they churn. It's already paid for itself three times over.",
-    name: "[CLIENT NAME]",
-    role: "[ROLE]",
-    company: "[COMPANY]",
+      "Alex blends the rare ability to capture a client's needs and trust with the organizational aptitude to deliver results. People and process; sales and strategy. He thinks like a visionary and executes like an implementor. During an extremely fluid COVID period, he was instrumental in helping our organization achieve milestone sales. It was a privilege to work with Alex during this time and I continue to rely on his unique business acumen today.",
+    name: "Andrew Miller",
+    role: "President",
+    company: "Purple Frog Products",
   },
   {
     id: 3,
     quote:
-      "Our project margins were a black box. We'd find out we lost money on a project weeks after it ended. Now we see burn rate in real-time and can course-correct mid-project. Game changer for profitability.",
-    name: "[CLIENT NAME]",
-    role: "[ROLE]",
-    company: "[COMPANY]",
-  },
-  {
-    id: 4,
-    quote:
-      "The biggest win wasn't the automation itself—it was finally having visibility. We can see where work is stuck, who's overloaded, and what's falling through the cracks. That clarity alone was worth the investment.",
-    name: "[CLIENT NAME]",
-    role: "[ROLE]",
-    company: "[COMPANY]",
-  },
-  {
-    id: 5,
-    quote:
-      "We tried building automations ourselves with Zapier. It worked for simple stuff, but the complex workflows always broke. Good Company built something that actually handles the edge cases.",
-    name: "[CLIENT NAME]",
-    role: "[ROLE]",
-    company: "[COMPANY]",
-  },
-  {
-    id: 6,
-    quote:
-      "I was skeptical about another consultant promising transformation. But they actually embedded with our team and stayed until things worked. Six months later, we're still using everything they built.",
-    name: "[CLIENT NAME]",
-    role: "[ROLE]",
-    company: "[COMPANY]",
+      "We hired Alex to integrate multiple platform customer data sets into a single client dashboard. He was thorough in his assessment of each platform's capabilities for automation and provided a solid recommendation with the associated development. Truly appreciate Alex's expertise and communication. We will definitely use his services in the future.",
+    name: "Aden Smith",
+    role: "Marketing Consultant",
+    company: "Independent",
   },
 ];
 

@@ -67,7 +67,7 @@ export default function WhatWeBuildSection() {
         <ScrollReveal>
           <SectionHeading className="mb-6">What We Build</SectionHeading>
           <p className="mb-12 text-xl text-text-light">
-            Everything we build serves one of three goals:
+            We don&apos;t build and disappear. Everything we build serves one of three goals:
           </p>
         </ScrollReveal>
 

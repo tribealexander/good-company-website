@@ -217,7 +217,6 @@ export default function Home() {
         </section>
 
         {/* Testimonials - White */}
-        {/* TODO: Unhide when testimonials are ready
         <section id="testimonials" className="bg-white py-12 lg:py-16">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             <ScrollReveal>
@@ -231,7 +230,6 @@ export default function Home() {
             </ScrollReveal>
           </div>
         </section>
-        */}
 
         {/* Investment - Beige with grain texture */}
         <InvestmentSection />

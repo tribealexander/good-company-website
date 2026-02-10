@@ -48,6 +48,11 @@ const faqData: FAQItem[] = [
     answer:
       "No. We work with non-technical operations managers, founders, and executives all the time. If you have technical people who want to be involved, great—but it's not required. We handle the technical complexity; you provide the business context.",
   },
+  {
+    question: "What makes your approach different from other automation consultants?",
+    answer:
+      "Most automation and change management fails because it's just tools and dashboards that nobody checks after the first week. We build systems with three things baked in: visibility, accountability, and consequence. Visibility means leadership can see what's happening without micromanaging or chasing updates. Accountability means that information gets used to hold people to clear standards. And consequence means the system actually does something (flags, escalations, incentives) rather than just displaying data and hoping someone acts on it. That's the difference between installing a tool and building a system that drives behavior.",
+  },
 ];
 
 export default function FAQ() {
