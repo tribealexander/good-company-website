@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import Image from "next/image";
 
 interface Testimonial {
   id: number;
@@ -8,6 +9,7 @@ interface Testimonial {
   name: string;
   role: string;
   company: string;
+  image?: string; // Optional headshot image path
 }
 
 const testimonials: Testimonial[] = [
@@ -18,6 +20,7 @@ const testimonials: Testimonial[] = [
     name: "Mitch Starkman",
     role: "Owner",
     company: "Movement Sports Medicine + Physiotherapy",
+    image: "/images/mitch headshot.jpeg",
   },
   {
     id: 2,
@@ -26,6 +29,7 @@ const testimonials: Testimonial[] = [
     name: "Andrew Miller",
     role: "President",
     company: "Purple Frog Products",
+    image: "/images/andrew headshot.jpeg",
   },
   {
     id: 3,
@@ -42,6 +46,7 @@ const testimonials: Testimonial[] = [
     name: "Marko Lindhe",
     role: "Founder",
     company: "Marlin Capital",
+    image: "/images/marko headshot.jpeg",
   },
 ];
 
@@ -67,10 +72,21 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
 
       {/* Attribution */}
       <div className="mt-6 flex items-center gap-4 border-t border-border pt-5">
-        {/* Avatar placeholder with initials */}
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">
-          {testimonial.name.split(" ").map(n => n[0]).join("")}
-        </div>
+        {/* Avatar - show image if provided, otherwise initials */}
+        {testimonial.image ? (
+          <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full">
+            <Image
+              src={testimonial.image}
+              alt={testimonial.name}
+              fill
+              className="object-cover grayscale-[85%] contrast-[1.1] brightness-[1.05]"
+            />
+          </div>
+        ) : (
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">
+            {testimonial.name.split(" ").map(n => n[0]).join("")}
+          </div>
+        )}
         <div>
           <p className="text-sm font-semibold text-dark">
             {testimonial.name}

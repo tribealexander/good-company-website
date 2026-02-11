@@ -263,13 +263,15 @@ export default function SomePage() {
 #### TestimonialsCarousel (`TestimonialsCarousel.tsx`)
 A horizontal carousel displaying client testimonials with navigation:
 - **Responsive layout**: 3 cards on desktop (lg+), 2 on tablet (sm-lg), 1 on mobile
-- **Card styling**: White background, border, shadow, quote icon, initials avatar
+- **Card styling**: White background, border, shadow, quote icon, avatar (photo or initials)
 - **Auto-scroll**: Advances every 5 seconds, loops infinitely, pauses on hover
 - **Navigation arrows**: Left/right buttons with hover effects
 - **Dot indicators**: Clickable dots showing current position
 - **Touch/swipe support**: Drag to navigate on mobile and desktop
 - **Hover effects**: Cards lift with shadow and border color change
 - **Accessibility**: ARIA labels, reduced motion support
+
+**Avatar images**: Testimonials support an optional `image` field for headshots. When provided, the image displays as a small circular avatar with the same greyed-out filter as the about page (`grayscale-[85%] contrast-[1.1] brightness-[1.05]`). When no image is provided, initials are shown instead. This keeps photos subtle and allows flexibility if someone prefers not to have their photo displayed.
 
 ```tsx
 import { TestimonialsCarousel } from "@/components";
@@ -278,10 +280,12 @@ import { TestimonialsCarousel } from "@/components";
 ```
 
 **Current testimonials** (real clients):
-- Mitch Starkman, Owner, Movement Sports Medicine + Physiotherapy
-- Andrew Miller, President, Purple Frog Products
-- Aden Smith, Marketing Consultant, Independent
-- Marko Lindhe, Founder, Marlin Capital
+- Mitch Starkman, Owner, Movement Sports Medicine + Physiotherapy (has photo)
+- Andrew Miller, President, Purple Frog Products (has photo)
+- Aden Smith, Marketing Consultant, Independent (initials only)
+- Marko Lindhe, Founder, Marlin Capital (has photo)
+
+**Headshot images** are stored in `/public/images/` (e.g., `mitch headshot.jpeg`).
 
 ---
 
