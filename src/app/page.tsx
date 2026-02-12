@@ -238,7 +238,7 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             <ScrollReveal>
               <SectionHeading className="mb-12">
-                From Chaos to Clockwork
+                Working With Good Company
               </SectionHeading>
             </ScrollReveal>
 

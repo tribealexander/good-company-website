@@ -45,28 +45,28 @@ const testimonials: Testimonial[] = [
   {
     id: 4,
     quote:
+      "Alex and the Good Company built a to-do list follow-up system that fits seamlessly into our existing processes and tools, namely Google Drive/Sheets and Slack. We'll keep working the way we already do, but now we have a bot that gently keeps tasks on our radar and keeps us on track without being obtrusive. It's perfect.",
+    name: "Chris Spoke",
+    role: "Partner",
+    company: "Toronto Standard",
+    image: "/images/chris spoke headshot.jpeg",
+  },
+  {
+    id: 5,
+    quote:
       "We hired Alex to integrate multiple platform customer data sets into a single client dashboard. He was thorough in his assessment of each platform's capabilities for automation and provided a solid recommendation with the associated development. Truly appreciate Alex's expertise and communication.",
     name: "Aden Smith",
     role: "Marketing Consultant",
     company: "Independent",
   },
   {
-    id: 5,
+    id: 6,
     quote:
       "Alex has opened insights for me with a nimble and strategic way of thinking that I had been missing as an entrepreneur. Conversations with Alex, whether 20 minutes or 2 hours, leave me with enthusiasm and insight in ways that I wouldn't have discovered on my own. Great dude with a big brain who has a penchant for helping.",
     name: "Marko Lindhe",
     role: "Founder",
     company: "Marlin Capital",
     image: "/images/marko headshot.jpeg",
-  },
-  {
-    id: 6,
-    quote:
-      "Alex and the Good Company built a to-do list follow-up system that fits seamlessly into our existing processes and tools, namely Google Drive/Sheets and Slack. We'll keep working the way we already do, but now we have a bot that gently keeps tasks on our radar and keeps us on track without being obtrusive. It's perfect.",
-    name: "Chris Spoke",
-    role: "Partner",
-    company: "Toronto Standard",
-    image: "/images/chris spoke headshot.jpeg",
   },
 ];
 
