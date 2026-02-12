@@ -28,7 +28,7 @@ async function appendToSheet(data: ContactFormData) {
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "Sheet1!A:F",
+      range: "Lead Form!A:F",
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [
