@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import TimeSlotPicker from "./TimeSlotPicker";
 
 interface FormData {
   name: string;
@@ -10,12 +11,16 @@ interface FormData {
   message: string;
 }
 
-interface FormStatus {
-  type: "idle" | "loading" | "success" | "error";
-  message: string;
+interface TimeSlot {
+  date: string;
+  time: string;
+  datetime: string;
 }
 
+type Step = "form" | "time" | "success";
+
 export default function ContactForm() {
+  const [step, setStep] = useState<Step>("form");
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -23,13 +28,10 @@ export default function ContactForm() {
     companySize: "",
     message: "",
   });
+  const [selectedSlot, setSelectedSlot] = useState<TimeSlot | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-  const [status, setStatus] = useState<FormStatus>({
-    type: "idle",
-    message: "",
-  });
-
-  // Store submitted name for success message
   const submittedName = useRef("");
 
   const handleChange = (
@@ -41,40 +43,46 @@ export default function ContactForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus({ type: "loading", message: "" });
+    setError("");
+    setIsSubmitting(true);
     submittedName.current = formData.name;
 
     try {
+      // Save form data first
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        setStatus({
-          type: "success",
-          message: "Thanks for reaching out!",
-        });
-        setFormData({
-          name: "",
-          email: "",
-          company: "",
-          companySize: "",
-          message: "",
-        });
+        setStep("time");
       } else {
-        throw new Error("Failed to send message");
+        throw new Error("Failed to submit");
       }
     } catch {
-      setStatus({
-        type: "error",
-        message: "Something went wrong. Please try again or email us directly.",
-      });
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleTimeSelect = async (slot: TimeSlot) => {
+    setSelectedSlot(slot);
+    setIsSubmitting(true);
+    setError("");
+
+    try {
+      // TODO: Replace with actual booking API call
+      // For now, simulate success
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      setStep("success");
+    } catch {
+      setError("Failed to book. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -82,8 +90,9 @@ export default function ContactForm() {
     "w-full rounded-lg border border-border bg-white px-4 py-3 text-text transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary";
   const labelStyles = "mb-2 block text-sm font-medium text-text";
 
-  // Success state - show calendar booking
-  if (status.type === "success") {
+  // Success state
+  if (step === "success" && selectedSlot) {
+    const slotDate = new Date(selectedSlot.datetime);
     return (
       <div className="text-center">
         <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
@@ -97,35 +106,59 @@ export default function ContactForm() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
+
         <h3 className="mb-2 text-2xl font-semibold text-dark">
-          Thanks{submittedName.current ? `, ${submittedName.current}` : ""}!
+          You&apos;re booked{submittedName.current ? `, ${submittedName.current}` : ""}!
         </h3>
-        <p className="mb-8 text-text-light">
-          We&apos;ve got your info. Now pick a time that works for you.
+
+        <div className="mb-6 rounded-lg border border-border bg-cream/50 p-4">
+          <p className="text-lg font-medium text-dark">
+            {slotDate.toLocaleDateString('en-US', {
+              weekday: 'long',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </p>
+          <p className="text-2xl font-semibold text-primary">
+            {selectedSlot.time}
+          </p>
+          <p className="mt-1 text-sm text-text-light">
+            60 minute Discovery Call
+          </p>
+        </div>
+
+        <p className="text-text-light">
+          A calendar invite has been sent to <span className="font-medium text-dark">{formData.email}</span>
         </p>
-        <a
-          href="https://calendar.app.google/gi1oCV2S8mcjTqRx7"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-primary-light hover:shadow-lg hover:shadow-primary/25"
-        >
-          <svg
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-          </svg>
-          Book a Time
-        </a>
       </div>
     );
   }
 
+  // Time picker step
+  if (step === "time") {
+    return (
+      <div>
+        {isSubmitting && (
+          <div className="absolute inset-0 z-10 flex items-center justify-center bg-white/80">
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+          </div>
+        )}
+        <TimeSlotPicker
+          onSelect={handleTimeSelect}
+          onBack={() => setStep("form")}
+        />
+        {error && (
+          <div className="mt-4 rounded-lg bg-red-50 p-4 text-red-800">
+            {error}
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // Form step
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleFormSubmit} className="space-y-6">
       <div>
         <label htmlFor="name" className={labelStyles}>
           Name
@@ -212,15 +245,15 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        disabled={status.type === "loading"}
+        disabled={isSubmitting}
         className="w-full rounded-lg bg-primary px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-primary-light hover:shadow-lg hover:shadow-primary/25 disabled:cursor-not-allowed disabled:opacity-50"
       >
-        {status.type === "loading" ? "Sending..." : "Submit & Book a Call"}
+        {isSubmitting ? "Submitting..." : "Next: Pick a Time"}
       </button>
 
-      {status.type === "error" && (
+      {error && (
         <div className="rounded-lg bg-red-50 p-4 text-red-800">
-          {status.message}
+          {error}
         </div>
       )}
     </form>
