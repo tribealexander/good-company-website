@@ -35,9 +35,7 @@ export default function Home() {
             <p className="text-lg text-text-light">
               Not sure where to start?{" "}
               <a
-                href="https://calendar.app.google/gi1oCV2S8mcjTqRx7"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#contact"
                 className="text-primary underline decoration-primary/30 underline-offset-2 transition-colors hover:decoration-primary"
               >
                 Happy to think through it with you.

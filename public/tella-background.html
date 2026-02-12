@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tella Background - Good Company</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 1920px;
+      height: 1080px;
+      background-color: #1B3A2D;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo {
+      position: absolute;
+      top: 60px;
+      left: 60px;
+      height: 50px;
+      /* Invert black to white */
+      filter: brightness(0) invert(1);
+    }
+
+    .pennant {
+      position: absolute;
+      bottom: 60px;
+      right: 60px;
+      height: 80px;
+      /* Invert black to white */
+      filter: brightness(0) invert(1);
+    }
+
+    /* Subtle texture/gradient for visual interest */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.03) 0%, transparent 50%),
+                  radial-gradient(ellipse at 80% 80%, rgba(0,0,0,0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <img src="/images/logos/script-inline.png" alt="Good Company" class="logo">
+  <img src="/images/logos/pennant.png" alt="Pennant" class="pennant">
+</body>
+</html>

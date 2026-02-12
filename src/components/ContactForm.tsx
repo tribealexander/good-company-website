@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 interface FormData {
   name: string;
@@ -29,6 +29,9 @@ export default function ContactForm() {
     message: "",
   });
 
+  // Store submitted name for success message
+  const submittedName = useRef("");
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -41,6 +44,7 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus({ type: "loading", message: "" });
+    submittedName.current = formData.name;
 
     try {
       const response = await fetch("/api/contact", {
@@ -54,8 +58,7 @@ export default function ContactForm() {
       if (response.ok) {
         setStatus({
           type: "success",
-          message:
-            "Thanks for reaching out! We'll get back to you within 24 hours.",
+          message: "Thanks for reaching out!",
         });
         setFormData({
           name: "",
@@ -78,6 +81,48 @@ export default function ContactForm() {
   const inputStyles =
     "w-full rounded-lg border border-border bg-white px-4 py-3 text-text transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary";
   const labelStyles = "mb-2 block text-sm font-medium text-text";
+
+  // Success state - show calendar booking
+  if (status.type === "success") {
+    return (
+      <div className="text-center">
+        <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+          <svg
+            className="h-8 w-8 text-primary"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h3 className="mb-2 text-2xl font-semibold text-dark">
+          Thanks{submittedName.current ? `, ${submittedName.current}` : ""}!
+        </h3>
+        <p className="mb-8 text-text-light">
+          We&apos;ve got your info. Now pick a time that works for you.
+        </p>
+        <a
+          href="https://calendar.app.google/gi1oCV2S8mcjTqRx7"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-primary-light hover:shadow-lg hover:shadow-primary/25"
+        >
+          <svg
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          Book a Time
+        </a>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -170,14 +215,8 @@ export default function ContactForm() {
         disabled={status.type === "loading"}
         className="w-full rounded-lg bg-primary px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-primary-light hover:shadow-lg hover:shadow-primary/25 disabled:cursor-not-allowed disabled:opacity-50"
       >
-        {status.type === "loading" ? "Sending..." : "Book a Discovery Call"}
+        {status.type === "loading" ? "Sending..." : "Submit & Book a Call"}
       </button>
-
-      {status.type === "success" && (
-        <div className="rounded-lg bg-green-50 p-4 text-green-800">
-          {status.message}
-        </div>
-      )}
 
       {status.type === "error" && (
         <div className="rounded-lg bg-red-50 p-4 text-red-800">

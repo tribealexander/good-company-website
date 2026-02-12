@@ -90,9 +90,7 @@ export default function Footer() {
             </div>
             <div className="flex flex-col items-center gap-2 md:items-end">
               <a
-                href="https://calendar.app.google/gi1oCV2S8mcjTqRx7"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#contact"
                 className="text-sm font-semibold text-gold transition-colors duration-200 hover:underline"
               >
                 Book a Discovery Call &rarr;
