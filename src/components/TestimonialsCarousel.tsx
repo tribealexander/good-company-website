@@ -10,6 +10,7 @@ interface Testimonial {
   role: string;
   company: string;
   image?: string; // Optional headshot image path
+  imageScale?: number; // Optional zoom level (e.g., 1.2 = 120%)
 }
 
 const testimonials: Testimonial[] = [
@@ -30,6 +31,7 @@ const testimonials: Testimonial[] = [
     role: "Founder",
     company: "Ella Events & Marketing",
     image: "/images/angella headshot.jpeg",
+    imageScale: 1.3,
   },
   {
     id: 3,
@@ -89,6 +91,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
               alt={testimonial.name}
               fill
               className="object-cover grayscale-[85%] contrast-[1.1] brightness-[1.05]"
+              style={testimonial.imageScale ? { transform: `scale(${testimonial.imageScale})` } : undefined}
             />
           </div>
         ) : (
