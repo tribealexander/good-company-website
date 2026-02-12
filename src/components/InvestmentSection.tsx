@@ -209,6 +209,21 @@ export default function InvestmentSection() {
             cover.
           </p>
         </ScrollReveal>
+
+        {/* Not sure CTA */}
+        <ScrollReveal>
+          <p className="mt-8 text-center text-base text-text-light">
+            Not sure which option fits?{" "}
+            <a
+              href="https://calendar.app.google/gi1oCV2S8mcjTqRx7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary underline decoration-primary/30 underline-offset-2 transition-colors hover:decoration-primary"
+            >
+              Let&apos;s figure it out together.
+            </a>
+          </p>
+        </ScrollReveal>
       </div>
     </section>
   );

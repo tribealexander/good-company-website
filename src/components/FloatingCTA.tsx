@@ -3,8 +3,15 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+const messages = [
+  "Got questions? Let's talk.",
+  "Not sure where to start? Let's chat.",
+  "Feeling overwhelmed? We can help.",
+];
+
 export default function FloatingCTA() {
   const [visible, setVisible] = useState(false);
+  const [messageIndex, setMessageIndex] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +30,14 @@ export default function FloatingCTA() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Cycle through messages
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMessageIndex((prev) => (prev + 1) % messages.length);
+    }, 4000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -47,7 +62,9 @@ export default function FloatingCTA() {
           height={20}
           className="h-5 w-auto brightness-0 invert"
         />
-        Book a Brainstorm
+        <span className="transition-opacity duration-300">
+          {messages[messageIndex]}
+        </span>
       </a>
 
       {/* Mobile bottom bar */}
@@ -65,7 +82,7 @@ export default function FloatingCTA() {
             height={18}
             className="h-[18px] w-auto brightness-0 invert"
           />
-          Book a Brainstorm
+          <span>{messages[messageIndex]}</span>
         </a>
       </div>
     </div>
