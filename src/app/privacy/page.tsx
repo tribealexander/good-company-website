@@ -73,8 +73,8 @@ export default function PrivacyPage() {
               </ul>
               <p>
                 To exercise any of these rights, please contact us at{" "}
-                <a href="mailto:alex@goodcompany.works" className="text-primary hover:underline">
-                  alex@goodcompany.works
+                <a href="mailto:alex@yourgoodcompany.com" className="text-primary hover:underline">
+                  alex@yourgoodcompany.com
                 </a>
               </p>
 
@@ -112,8 +112,8 @@ export default function PrivacyPage() {
               </h2>
               <p>
                 If you have questions about this privacy policy or how we handle your information, please contact us at{" "}
-                <a href="mailto:alex@goodcompany.works" className="text-primary hover:underline">
-                  alex@goodcompany.works
+                <a href="mailto:alex@yourgoodcompany.com" className="text-primary hover:underline">
+                  alex@yourgoodcompany.com
                 </a>
               </p>
             </div>

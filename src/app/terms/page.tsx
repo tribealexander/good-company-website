@@ -89,8 +89,8 @@ export default function TermsPage() {
               </h2>
               <p>
                 Questions about these Terms of Use may be directed to{" "}
-                <a href="mailto:alex@goodcompany.works" className="text-primary hover:underline">
-                  alex@goodcompany.works
+                <a href="mailto:alex@yourgoodcompany.com" className="text-primary hover:underline">
+                  alex@yourgoodcompany.com
                 </a>
               </p>
             </div>
