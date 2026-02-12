@@ -25,6 +25,15 @@ const testimonials: Testimonial[] = [
   {
     id: 2,
     quote:
+      "Alex has a rare ability to take chaotic, half-formed thoughts and pinpoint the real bottleneck hiding in plain sight. He diagnoses the root issue and translates overwhelming goals into clear, strategic micro-steps. If you're building something big and feel stuck, Alex will bring clarity and real momentum.",
+    name: "Angella Fajardo",
+    role: "Founder",
+    company: "Ella Events & Marketing",
+    image: "/images/angella headshot.jpeg",
+  },
+  {
+    id: 3,
+    quote:
       "Alex blends the rare ability to capture a client's needs and trust with the organizational aptitude to deliver results. People and process; sales and strategy. He thinks like a visionary and executes like an implementor. During an extremely fluid COVID period, he was instrumental in helping our organization achieve milestone sales. I continue to rely on his unique business acumen today.",
     name: "Andrew Miller",
     role: "President",
@@ -32,7 +41,7 @@ const testimonials: Testimonial[] = [
     image: "/images/andrew headshot.jpeg",
   },
   {
-    id: 3,
+    id: 4,
     quote:
       "We hired Alex to integrate multiple platform customer data sets into a single client dashboard. He was thorough in his assessment of each platform's capabilities for automation and provided a solid recommendation with the associated development. Truly appreciate Alex's expertise and communication.",
     name: "Aden Smith",
@@ -40,22 +49,13 @@ const testimonials: Testimonial[] = [
     company: "Independent",
   },
   {
-    id: 4,
+    id: 5,
     quote:
       "Alex has opened insights for me with a nimble and strategic way of thinking that I had been missing as an entrepreneur. Conversations with Alex, whether 20 minutes or 2 hours, leave me with enthusiasm and insight in ways that I wouldn't have discovered on my own. Great dude with a big brain who has a penchant for helping.",
     name: "Marko Lindhe",
     role: "Founder",
     company: "Marlin Capital",
     image: "/images/marko headshot.jpeg",
-  },
-  {
-    id: 5,
-    quote:
-      "Alex has a rare ability to take chaotic, half-formed thoughts and pinpoint the real bottleneck hiding in plain sight. He diagnoses the root issue and translates overwhelming goals into clear, strategic micro-steps. If you're building something big and feel stuck, Alex will bring clarity and real momentum.",
-    name: "Angella Fajardo",
-    role: "Founder",
-    company: "Ella Events & Marketing",
-    image: "/images/angella headshot.jpeg",
   },
 ];
 
