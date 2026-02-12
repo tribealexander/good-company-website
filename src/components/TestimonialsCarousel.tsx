@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
 
 interface Testimonial {
@@ -72,7 +72,7 @@ const testimonials: Testimonial[] = [
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <div className="flex h-[420px] w-[350px] shrink-0 flex-col rounded-xl border border-border bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary/20 sm:w-[400px]">
+    <div className="flex h-[420px] w-[350px] shrink-0 flex-col rounded-xl border border-border bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-primary/20 hover:-translate-y-2 sm:w-[400px]">
       <div className="mb-3">
         <svg
           className="h-7 w-7 text-primary/20"
@@ -118,94 +118,25 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
 
 export default function TestimonialsCarousel() {
   const [isPaused, setIsPaused] = useState(false);
-  const [isfast, setIsFast] = useState<"left" | "right" | null>(null);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
-
-    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
-    mediaQuery.addEventListener("change", handler);
-    return () => mediaQuery.removeEventListener("change", handler);
-  }, []);
-
-  const handleFastScroll = (direction: "left" | "right") => {
-    setIsFast(direction);
-    setIsPaused(false);
-    setTimeout(() => {
-      setIsFast(null);
-    }, 1500);
-  };
 
   // Duplicate testimonials for seamless loop
   const duplicatedTestimonials = [...testimonials, ...testimonials];
-
-  const getAnimationClass = () => {
-    if (prefersReducedMotion) return "";
-    if (isfast === "right") return "animate-scroll-fast";
-    if (isfast === "left") return "animate-scroll-fast-reverse";
-    return "animate-scroll";
-  };
 
   return (
     <div
       className="relative overflow-hidden"
       aria-label="Client testimonials"
       role="region"
-      onMouseEnter={() => !isfast && setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Navigation arrows */}
-      <button
-        onClick={() => handleFastScroll("left")}
-        aria-label="Scroll left faster"
-        className="absolute -left-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-white text-text-light shadow-md transition-all duration-200 hover:bg-primary hover:text-white hover:border-primary hover:scale-105 lg:-left-6"
-      >
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="15 18 9 12 15 6" />
-        </svg>
-      </button>
-
-      <button
-        onClick={() => handleFastScroll("right")}
-        aria-label="Scroll right faster"
-        className="absolute -right-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-white text-text-light shadow-md transition-all duration-200 hover:bg-primary hover:text-white hover:border-primary hover:scale-105 lg:-right-6"
-      >
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
-      </button>
-
       {/* Gradient masks for smooth edges */}
-      <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-16 bg-gradient-to-r from-white to-transparent" />
-      <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-16 bg-gradient-to-l from-white to-transparent" />
+      <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-white to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-white to-transparent" />
 
       <div
-        ref={scrollRef}
-        className={`flex gap-6 ${getAnimationClass()}`}
-        style={{
-          animationPlayState: isPaused && !isfast ? "paused" : "running",
-        }}
+        className="animate-scroll flex gap-6 py-4 pl-20"
+        style={{ animationPlayState: isPaused ? "paused" : "running" }}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
       >
         {duplicatedTestimonials.map((testimonial, index) => (
           <TestimonialCard
@@ -224,22 +155,8 @@ export default function TestimonialsCarousel() {
             transform: translateX(-50%);
           }
         }
-        @keyframes scroll-reverse {
-          0% {
-            transform: translateX(-50%);
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
         .animate-scroll {
-          animation: scroll 60s linear infinite;
-        }
-        .animate-scroll-fast {
-          animation: scroll 8s linear infinite;
-        }
-        .animate-scroll-fast-reverse {
-          animation: scroll-reverse 8s linear infinite;
+          animation: scroll 45s linear infinite;
         }
       `}</style>
     </div>

@@ -23,6 +23,7 @@
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* Account for fixed header (80px) */
 }
 
 body {

@@ -30,31 +30,31 @@ export default function Footer() {
           <div>
             <nav className="flex flex-col gap-2">
               <Link
-                href="#solutions"
+                href="/#solutions"
                 className="text-sm text-[#A8D5C2] transition-colors duration-200 hover:text-gold"
               >
                 What We Build
               </Link>
               <Link
-                href="#problems"
+                href="/#problems"
                 className="text-sm text-[#A8D5C2] transition-colors duration-200 hover:text-gold"
               >
                 Problems We Solve
               </Link>
               <Link
-                href="#how-we-work"
+                href="/#how-we-work"
                 className="text-sm text-[#A8D5C2] transition-colors duration-200 hover:text-gold"
               >
                 How We Work
               </Link>
               <Link
-                href="#investment"
+                href="/#investment"
                 className="text-sm text-[#A8D5C2] transition-colors duration-200 hover:text-gold"
               >
                 Pricing
               </Link>
               <Link
-                href="#faq"
+                href="/#faq"
                 className="text-sm text-[#A8D5C2] transition-colors duration-200 hover:text-gold"
               >
                 FAQ
@@ -90,7 +90,7 @@ export default function Footer() {
             </div>
             <div className="flex flex-col items-center gap-2 md:items-end">
               <a
-                href="#contact"
+                href="/#contact"
                 className="text-sm font-semibold text-gold transition-colors duration-200 hover:underline"
               >
                 Book a Discovery Call &rarr;
