@@ -48,6 +48,15 @@ const testimonials: Testimonial[] = [
     company: "Marlin Capital",
     image: "/images/marko headshot.jpeg",
   },
+  {
+    id: 5,
+    quote:
+      "Alex has a rare ability to take chaotic, half-formed thoughts and pinpoint the real bottleneck hiding in plain sight. He diagnoses the root issue and translates overwhelming goals into clear, strategic micro-steps. If you're building something big and feel stuck, Alex will bring clarity and real momentum.",
+    name: "Angella Fajardo",
+    role: "Founder",
+    company: "Ella Events & Marketing",
+    image: "/images/angella headshot.jpeg",
+  },
 ];
 
 // Single testimonial card component
