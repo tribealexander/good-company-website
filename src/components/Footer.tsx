@@ -104,6 +104,21 @@ export default function Footer() {
           <p className="text-center text-xs text-[#A8D5C2]">
             Building capacity through automation, visibility, and accountability.
           </p>
+          <div className="mt-4 flex justify-center gap-4">
+            <Link
+              href="/privacy"
+              className="text-xs text-[#A8D5C2]/60 transition-colors duration-200 hover:text-[#A8D5C2]"
+            >
+              Privacy Policy
+            </Link>
+            <span className="text-[#A8D5C2]/30">|</span>
+            <Link
+              href="/terms"
+              className="text-xs text-[#A8D5C2]/60 transition-colors duration-200 hover:text-[#A8D5C2]"
+            >
+              Terms of Use
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
