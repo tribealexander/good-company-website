@@ -72,10 +72,10 @@ const testimonials: Testimonial[] = [
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <div className="flex h-[340px] w-[350px] shrink-0 flex-col rounded-xl border border-border bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary/20 sm:w-[400px]">
-      <div className="mb-4">
+    <div className="flex h-[420px] w-[350px] shrink-0 flex-col rounded-xl border border-border bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary/20 sm:w-[400px]">
+      <div className="mb-3">
         <svg
-          className="h-8 w-8 text-primary/20"
+          className="h-7 w-7 text-primary/20"
           fill="currentColor"
           viewBox="0 0 32 32"
         >
@@ -83,7 +83,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
         </svg>
       </div>
 
-      <p className="flex-1 text-[15px] leading-[1.8] text-text">
+      <p className="flex-1 text-[14px] leading-[1.75] text-text">
         &ldquo;{testimonial.quote}&rdquo;
       </p>
 
