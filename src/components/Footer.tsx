@@ -26,11 +26,8 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Column 2 - Quick Links */}
+          {/* Column 2 - Links */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
-              Quick Links
-            </h4>
             <nav className="flex flex-col gap-2">
               <Link
                 href="#solutions"
