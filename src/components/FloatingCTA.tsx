@@ -38,7 +38,7 @@ export default function FloatingCTA() {
         href="https://calendar.app.google/gi1oCV2S8mcjTqRx7"
         target="_blank"
         rel="noopener noreferrer"
-        className="btn-press hidden items-center gap-2 rounded-lg bg-primary px-6 py-3 text-[15px] font-semibold text-white shadow-[0_4px_16px_rgba(0,103,71,0.2)] transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-primary-light hover:shadow-[0_6px_24px_rgba(0,103,71,0.25)] md:inline-flex"
+        className="btn-press hidden items-center gap-3 rounded-lg bg-primary px-5 py-3 text-white shadow-[0_4px_16px_rgba(0,103,71,0.2)] transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-primary-light hover:shadow-[0_6px_24px_rgba(0,103,71,0.25)] md:inline-flex"
       >
         <Image
           src="/images/logos/pennant.png"
@@ -47,7 +47,10 @@ export default function FloatingCTA() {
           height={20}
           className="h-5 w-auto brightness-0 invert"
         />
-Not sure where to start? Let&apos;s chat.
+        <span className="text-left text-[14px] leading-tight">
+          <span className="block font-medium">Not sure where to start?</span>
+          <span className="block text-white/80">Let&apos;s chat.</span>
+        </span>
       </a>
 
       {/* Mobile bottom bar */}
