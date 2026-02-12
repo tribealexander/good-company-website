@@ -281,9 +281,11 @@ import { TestimonialsCarousel } from "@/components";
 
 **Current testimonials** (real clients):
 - Mitch Starkman, Owner, Movement Sports Medicine + Physiotherapy (has photo)
+- Angella Fajardo, Founder, Ella Events & Marketing (has photo)
 - Andrew Miller, President, Purple Frog Products (has photo)
 - Aden Smith, Marketing Consultant, Independent (initials only)
 - Marko Lindhe, Founder, Marlin Capital (has photo)
+- Chris Spoke, Partner, Toronto Standard (has photo)
 
 **Headshot images** are stored in `/public/images/` (e.g., `mitch headshot.jpeg`).
 

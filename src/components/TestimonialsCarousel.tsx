@@ -59,6 +59,15 @@ const testimonials: Testimonial[] = [
     company: "Marlin Capital",
     image: "/images/marko headshot.jpeg",
   },
+  {
+    id: 6,
+    quote:
+      "Alex and the Good Company built a to-do list follow-up system that fits seamlessly into our existing processes and tools, namely Google Drive/Sheets and Slack. We'll keep working the way we already do, but now we have a bot that gently keeps tasks on our radar and keeps us on track without being obtrusive. It's perfect.",
+    name: "Chris Spoke",
+    role: "Partner",
+    company: "Toronto Standard",
+    image: "/images/chris spoke headshot.jpeg",
+  },
 ];
 
 // Single testimonial card component
