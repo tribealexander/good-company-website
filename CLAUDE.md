@@ -15,6 +15,7 @@ This is the marketing website for **Good Company**, a boutique operational effic
 **Key files**:
 - `/src/app/page.tsx` - Homepage (main landing page)
 - `/src/app/about/page.tsx` - About page with founder bio
+- `/src/app/contact/page.tsx` - Contact page with form → booking flow
 - `/src/app/acquisitions/page.tsx` - Acquisitions & Partnerships page
 - `/src/app/case-studies/page.tsx` - Case studies listing with video lightbox
 - `/src/app/referrals/page.tsx` - Referrals program page
@@ -279,13 +280,14 @@ import { TestimonialsCarousel } from "@/components";
 <TestimonialsCarousel />
 ```
 
-**Current testimonials** (real clients):
+**Current testimonials**:
 - Mitch Starkman, Owner, Movement Sports Medicine + Physiotherapy (has photo)
 - Angella Fajardo, Founder, Ella Events & Marketing (has photo)
 - Andrew Miller, President, Purple Frog Products (has photo)
 - Aden Smith, Marketing Consultant, Independent (initials only)
 - Marko Lindhe, Founder, Marlin Capital (has photo)
 - Chris Spoke, Partner, Toronto Standard (has photo)
+- Taylor Scollon, Co-founder, The Peak (has photo)
 
 **Headshot images** are stored in `/public/images/` (e.g., `mitch headshot.jpeg`).
 
@@ -304,7 +306,7 @@ The homepage (`/src/app/page.tsx`) follows this section order:
 | 5 | From Build to Buy-In | White | - |
 | 6 | How We Work | Cream textured | `#how-we-work` |
 | 7 | Testimonials | White | `#testimonials` |
-| 8 | Investment | Cream textured | - |
+| 8 | How We Work (Process) | Cream textured | `#investment` |
 | 9 | FAQ | White | `#faq` |
 | 10 | Final CTA | Cream textured | `#contact` |
 
@@ -349,6 +351,23 @@ Explains why implementations stick, addressing common objections:
 - **Your Team Owns It**: "We train your people and document everything"
 - **We Don't Disappear**: "60 days of support after launch, plus ongoing retainer options"
 - Closing statement: "That's why our work sticks." (simple centered text, no box)
+
+### How We Work Section (formerly Investment)
+
+Two-step engagement process (no pricing displayed):
+
+1. **Discovery & Automation Roadmap** (collapsible)
+   - Stakeholder interviews, workflow mapping, data audit, tool evaluation
+   - Deliverables: prioritized opportunities, implementation recommendations, ROI estimates, 90-day action plan
+   - "Standalone value whether or not you continue with us"
+
+2. **Ongoing Partnership** (highlighted card)
+   - New system builds
+   - Maintenance & support
+   - Tuning & optimization
+   - Expansion to new areas
+
+CTA: "Let's talk about what makes sense for you."
 
 ---
 
@@ -887,7 +906,9 @@ npm run lint
 | `src/components/WhatWeBuildSection.tsx` | Services with dynamic backgrounds |
 | `src/components/ProblemsSectionWrapper.tsx` | Problems with dynamic backgrounds |
 | `src/components/TestimonialsCarousel.tsx` | Testimonials carousel with navigation |
-| `src/components/InvestmentSection.tsx` | Pricing section with collapsible Discovery & Automation Roadmap |
+| `src/components/InvestmentSection.tsx` | How We Work section (Discovery → Partnership, no pricing) |
+| `src/components/BookingInterface.tsx` | Custom booking UI shown after contact form submission |
+| `src/app/contact/page.tsx` | Dedicated contact page with form |
 | `src/components/RoughAnnotation.tsx` | Rough notation wrapper |
 | `src/components/PageTransition.tsx` | Page navigation fade-in animations |
 | `src/components/ScrollReveal.tsx` | Scroll-triggered animations |
