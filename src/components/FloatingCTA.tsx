@@ -35,7 +35,7 @@ export default function FloatingCTA() {
     >
       {/* Desktop floating button with pennant */}
       <a
-        href="#contact"
+        href="/contact"
         className="btn-press hidden items-center gap-3 rounded-lg bg-primary px-5 py-3 text-white shadow-[0_4px_16px_rgba(0,103,71,0.2)] transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-primary-light hover:shadow-[0_6px_24px_rgba(0,103,71,0.25)] md:inline-flex"
       >
         <Image
@@ -54,7 +54,7 @@ export default function FloatingCTA() {
       {/* Mobile bottom bar */}
       <div className="fixed inset-x-0 bottom-0 border-t border-border bg-white p-4 shadow-[0_-4px_16px_rgba(0,0,0,0.08)] md:hidden">
         <a
-          href="#contact"
+          href="/contact"
           className="btn-press flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3 text-center text-[15px] font-semibold text-white shadow-[0_4px_16px_rgba(0,103,71,0.2)] transition-all duration-200 ease-out"
         >
           <Image

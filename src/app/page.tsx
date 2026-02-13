@@ -35,7 +35,7 @@ export default function Home() {
             <p className="text-lg text-text-light">
               Not sure where to start?{" "}
               <a
-                href="#contact"
+                href="/contact"
                 className="text-primary underline decoration-primary/30 underline-offset-2 transition-colors hover:decoration-primary"
               >
                 Happy to think through it with you.

@@ -23,7 +23,7 @@ export default function InvestmentSection() {
 
         {/* Automation Roadmap - Collapsible */}
         <ScrollReveal>
-          <div className="mx-auto mb-8 max-w-2xl">
+          <div className="mx-auto mb-6 max-w-2xl lg:mb-8">
             <button
               onClick={() => setIsRoadmapOpen(!isRoadmapOpen)}
               className="w-full rounded-2xl border-2 border-dashed border-[#D4CFC7] bg-white p-5 lg:p-6 text-left transition-all duration-300 hover:border-primary/50"
@@ -215,7 +215,7 @@ export default function InvestmentSection() {
           <p className="mt-8 text-center text-base text-text-light">
             Not sure which option fits?{" "}
             <a
-              href="#contact"
+              href="/contact"
               className="text-primary underline decoration-primary/30 underline-offset-2 transition-colors hover:decoration-primary"
             >
               Let&apos;s figure it out together.

@@ -70,9 +70,11 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
+function TestimonialCard({ testimonial, isMobile = false }: { testimonial: Testimonial; isMobile?: boolean }) {
   return (
-    <div className="flex h-[420px] w-[350px] shrink-0 flex-col rounded-xl border border-border bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-primary/20 hover:-translate-y-2 sm:w-[400px]">
+    <div className={`flex flex-col rounded-xl border border-border bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-primary/20 hover:-translate-y-2 ${
+      isMobile ? "w-full" : "h-[420px] w-[350px] shrink-0 sm:w-[400px]"
+    }`}>
       <div className="mb-3">
         <svg
           className="h-7 w-7 text-primary/20"
@@ -119,46 +121,60 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
 export default function TestimonialsCarousel() {
   const [isPaused, setIsPaused] = useState(false);
 
-  // Duplicate testimonials for seamless loop
+  // Duplicate testimonials for seamless loop (desktop only)
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <div
-      className="relative overflow-hidden"
-      aria-label="Client testimonials"
-      role="region"
-    >
-      {/* Gradient masks for smooth edges */}
-      <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-white to-transparent" />
-      <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-white to-transparent" />
-
-      <div
-        className="animate-scroll flex gap-6 py-4 pl-20"
-        style={{ animationPlayState: isPaused ? "paused" : "running" }}
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        {duplicatedTestimonials.map((testimonial, index) => (
+    <>
+      {/* Mobile: Stacked vertical layout */}
+      <div className="space-y-4 md:hidden" aria-label="Client testimonials" role="region">
+        {testimonials.map((testimonial) => (
           <TestimonialCard
-            key={`${testimonial.id}-${index}`}
+            key={testimonial.id}
             testimonial={testimonial}
+            isMobile={true}
           />
         ))}
       </div>
 
-      <style jsx>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
+      {/* Desktop: Horizontal scrolling carousel */}
+      <div
+        className="relative hidden overflow-hidden md:block"
+        aria-label="Client testimonials"
+        role="region"
+      >
+        {/* Gradient masks for smooth edges */}
+        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-white to-transparent" />
+        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-white to-transparent" />
+
+        <div
+          className="animate-scroll flex gap-6 py-4 pl-20"
+          style={{ animationPlayState: isPaused ? "paused" : "running" }}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          {duplicatedTestimonials.map((testimonial, index) => (
+            <TestimonialCard
+              key={`${testimonial.id}-${index}`}
+              testimonial={testimonial}
+            />
+          ))}
+        </div>
+
+        <style jsx>{`
+          @keyframes scroll {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
           }
-          100% {
-            transform: translateX(-50%);
+          .animate-scroll {
+            animation: scroll 45s linear infinite;
           }
-        }
-        .animate-scroll {
-          animation: scroll 45s linear infinite;
-        }
-      `}</style>
-    </div>
+        `}</style>
+      </div>
+    </>
   );
 }

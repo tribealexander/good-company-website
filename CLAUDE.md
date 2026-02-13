@@ -920,6 +920,52 @@ When writing or editing copy, follow these terminology rules:
 
 ---
 
+## TODO / Future Work
+
+### Mobile Bugs (Fixed Feb 2026)
+
+The following mobile bugs were identified and fixed:
+
+1. **White bar on right side** - Fixed by adding `overflow-x: hidden` to body in `globals.css`
+2. **Problems tabs cut off** - Fixed by using shorter `shortLabel` for mobile tabs in `ProblemSelector.tsx`
+3. **Pricing spacing** - Fixed by reducing `mb-8` to `mb-6 lg:mb-8` in `InvestmentSection.tsx`
+4. **Testimonials broken** - Fixed by showing stacked vertical cards on mobile (`md:hidden` vs `hidden md:block`) in `TestimonialsCarousel.tsx`
+
+---
+
+### Booking System - Google Calendar Integration
+
+The contact form flow currently shows a custom booking UI after form submission, but doesn't actually create calendar events. The UI is complete, but the backend integration is needed.
+
+**Current flow**:
+1. User fills out contact form (name, email, company, size, message)
+2. Form submits to `/api/contact` (logs to console, optionally sends to Google Sheets/Resend)
+3. User sees custom Calendly-style booking interface (`BookingInterface.tsx`)
+4. User selects date and time
+5. User clicks "Confirm Booking" → sees confirmation screen
+6. **Missing**: Actual calendar event creation
+
+**What needs to be built**:
+1. **Google Calendar API integration** - Create a service account, enable Calendar API, store credentials
+2. **API endpoint** - `POST /api/booking` that:
+   - Receives: name, email, selectedDate, selectedTime
+   - Creates a Google Calendar event with Google Meet link
+   - Sends calendar invite to the user's email
+   - Returns success/failure
+3. **Update BookingInterface** - Call the API in `handleConfirm()` instead of just updating state
+
+**Alternative approaches**:
+- Use Cal.com API (simpler, paid service)
+- Use Calendly API (requires paid plan)
+- Simple email notification (send booking request to owner, they manually create invite)
+
+**Files to modify**:
+- `/src/components/BookingInterface.tsx` - Add API call in `handleConfirm()`
+- `/src/app/api/booking/route.ts` - New API endpoint (to be created)
+- Environment variables needed: `GOOGLE_CALENDAR_CREDENTIALS`, `GOOGLE_CALENDAR_ID`
+
+---
+
 ## Troubleshooting
 
 **Header flashing/hydration error**: The header uses a `mounted` state to prevent hydration mismatch. The pattern is:

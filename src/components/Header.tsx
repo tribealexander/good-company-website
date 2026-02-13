@@ -118,14 +118,14 @@ export default function Header() {
             {/* CTA Button - different styling for inner pages */}
             {showDarkStyles ? (
               <a
-                href="#contact"
+                href="/contact"
                 className="rounded-full bg-[#004D36] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-gold hover:shadow-[0_4px_12px_rgba(184,134,11,0.3)]"
               >
                 Book a Brainstorm →
               </a>
             ) : (
               <a
-                href="#contact"
+                href="/contact"
                 className="group inline-flex items-center text-sm font-medium nav-link-light"
               >
                 Book a Brainstorm
@@ -195,7 +195,7 @@ export default function Header() {
               ))}
               {/* Mobile CTA */}
               <a
-                href="#contact"
+                href="/contact"
                 className="btn-press mt-2 block rounded-full bg-primary px-6 py-3 text-center text-base font-semibold text-white transition-all duration-200 hover:bg-[#2D8659]"
                 onClick={() => setMobileMenuOpen(false)}
               >

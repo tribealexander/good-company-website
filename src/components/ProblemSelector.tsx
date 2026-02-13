@@ -14,6 +14,7 @@ import {
 interface Problem {
   id: number;
   headline: string;
+  shortLabel: string;
   brief: string;
   whatWeFind: string;
   whatWeBuild: string;
@@ -29,6 +30,7 @@ const problems: Problem[] = [
   {
     id: 1,
     headline: "The \"It's All in Their Head\" Problem",
+    shortLabel: "Knowledge Silos",
     brief: "Critical information trapped in someone's head",
     whatWeFind:
       "Critical information lives in someone's head or scattered across email threads and Slack channels. When key people are out or leave, operations slow to a crawl.",
@@ -40,6 +42,7 @@ const problems: Problem[] = [
   {
     id: 2,
     headline: "The Reporting Treadmill",
+    shortLabel: "Manual Reporting",
     brief: "Teams spend 8-15 hours/week manually pulling data",
     whatWeFind:
       "Teams spend 8-15 hours per week manually pulling data from multiple systems to create reports that arrive too late to act on. By the time you see it, it's history.",
@@ -52,6 +55,7 @@ const problems: Problem[] = [
   {
     id: 3,
     headline: "The \"Are We Profitable?\" Problem",
+    shortLabel: "Profitability",
     brief: "Profitability calculated weeks after work completes",
     whatWeFind:
       "Project profitability is calculated manually in spreadsheets weeks after work completes. Teams don't know if they're making money or losing it until it's too late to fix.",
@@ -63,6 +67,7 @@ const problems: Problem[] = [
   {
     id: 4,
     headline: "The Invisible Work",
+    shortLabel: "Hidden Delays",
     brief: "Work sits waiting 20-40% of cycle time",
     whatWeFind:
       "Work sits waiting in approval queues, handoff points, and email threads that nobody's monitoring. 20-40% of cycle time is just waiting. Nobody sees it.",
@@ -75,6 +80,7 @@ const problems: Problem[] = [
   {
     id: 5,
     headline: "The Fire Drill Culture",
+    shortLabel: "Fire Drills",
     brief: "Always reacting, catching issues after complaints",
     whatWeFind:
       "Teams are always reacting. They catch client issues after complaints come in, discover problems during review meetings, and operate blind between check-ins.",
@@ -86,6 +92,7 @@ const problems: Problem[] = [
   {
     id: 6,
     headline: "Flying Blind on Client Health",
+    shortLabel: "Client Health",
     brief: "No visibility into who's happy until they leave",
     whatWeFind:
       "You don't know which clients are happy and which are at risk until they complain or churn. Customer success runs on gut feel, not data. Surprises are common.",
@@ -310,8 +317,8 @@ export default function ProblemSelector({
       {/* Mobile: Horizontal tabs + content below */}
       <div className="overflow-hidden rounded-xl border border-border lg:hidden">
         {/* Horizontal scrollable tabs */}
-        <div className="scrollbar-hide overflow-x-auto border-b border-border bg-white px-4">
-          <div className="flex gap-2 py-4">
+        <div className="scrollbar-hide overflow-x-auto border-b border-border bg-white">
+          <div className="flex gap-2 px-4 py-4">
             {problems.map((problem) => (
               <button
                 key={problem.id}
@@ -322,7 +329,7 @@ export default function ProblemSelector({
                     : "bg-cream text-text hover:bg-cream/80"
                 }`}
               >
-                {problem.headline}
+                {problem.shortLabel}
               </button>
             ))}
           </div>

@@ -226,7 +226,7 @@ export default function AboutPage() {
                 I&apos;m always happy to talk through what you&apos;re working on, even if it goes nowhere. No pressure, no pitch.
               </p>
               <a
-                href="/#contact"
+                href="/contact"
                 className="inline-block rounded-full bg-white px-8 py-4 font-semibold text-[#004D36] transition-all duration-300 hover:bg-gold hover:text-white hover:shadow-[0_4px_20px_rgba(184,134,11,0.3)]"
               >
                 Book a Brainstorm →

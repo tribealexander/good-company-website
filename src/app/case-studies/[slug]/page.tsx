@@ -108,7 +108,7 @@ export default async function CaseStudyPage({ params }: Props) {
                   Let&apos;s talk through it. We&apos;ll help you identify the root cause and map out a solution—no pressure, no pitch.
                 </p>
                 <a
-                  href="/#contact"
+                  href="/contact"
                   className="inline-block rounded-full bg-white px-10 py-4 text-lg font-semibold text-[#004D36] transition-all duration-300 hover:bg-gold hover:text-white hover:shadow-[0_4px_30px_rgba(184,134,11,0.4)] hover:scale-105"
                 >
                   Book a Brainstorm →
