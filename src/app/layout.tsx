@@ -83,9 +83,11 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${sourceSans.variable} ${jetbrainsMono.variable} ${caveat.variable} ${lora.variable} font-sans antialiased`}
+        className={`${inter.variable} ${sourceSans.variable} ${jetbrainsMono.variable} ${caveat.variable} ${lora.variable} font-sans antialiased overflow-x-hidden`}
       >
-        {children}
+        <div className="overflow-x-hidden min-h-screen">
+          {children}
+        </div>
         <Analytics />
         <SpeedInsights />
       </body>
