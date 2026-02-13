@@ -81,8 +81,8 @@ const testimonials: Testimonial[] = [
 
 function TestimonialCard({ testimonial, isMobile = false }: { testimonial: Testimonial; isMobile?: boolean }) {
   return (
-    <div className={`flex flex-col rounded-xl border border-border bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-primary/20 hover:-translate-y-2 ${
-      isMobile ? "w-full" : "h-[420px] w-[350px] shrink-0 sm:w-[400px]"
+    <div className={`flex flex-col rounded-xl border border-border bg-white p-6 shadow-sm transition-all duration-300 ${
+      isMobile ? "w-full" : ""
     }`}>
       <div className="mb-3">
         <svg
@@ -94,13 +94,13 @@ function TestimonialCard({ testimonial, isMobile = false }: { testimonial: Testi
         </svg>
       </div>
 
-      <p className="flex-1 text-[14px] leading-[1.75] text-text">
+      <p className="flex-1 text-base leading-relaxed text-text">
         &ldquo;{testimonial.quote}&rdquo;
       </p>
 
       <div className="mt-6 flex items-center gap-4 border-t border-border pt-5">
         {testimonial.image ? (
-          <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full">
+          <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full">
             <Image
               src={testimonial.image}
               alt={testimonial.name}
@@ -110,15 +110,15 @@ function TestimonialCard({ testimonial, isMobile = false }: { testimonial: Testi
             />
           </div>
         ) : (
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">
             {testimonial.name.split(" ").map(n => n[0]).join("")}
           </div>
         )}
         <div>
-          <p className="text-sm font-semibold text-dark">
+          <p className="font-semibold text-dark">
             {testimonial.name}
           </p>
-          <p className="text-xs text-text-light">
+          <p className="text-sm text-text-light">
             {testimonial.role}, {testimonial.company}
           </p>
         </div>
@@ -128,10 +128,15 @@ function TestimonialCard({ testimonial, isMobile = false }: { testimonial: Testi
 }
 
 export default function TestimonialsCarousel() {
-  const [isPaused, setIsPaused] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Duplicate testimonials for seamless loop (desktop only)
-  const duplicatedTestimonials = [...testimonials, ...testimonials];
+  const goToPrevious = () => {
+    setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+  };
 
   return (
     <>
@@ -146,43 +151,70 @@ export default function TestimonialsCarousel() {
         ))}
       </div>
 
-      {/* Desktop: Horizontal scrolling carousel */}
+      {/* Desktop: Single testimonial with arrows */}
       <div
-        className="relative hidden overflow-hidden md:block"
+        className="relative hidden md:block"
         aria-label="Client testimonials"
         role="region"
       >
-        {/* Gradient masks for smooth edges */}
-        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-white to-transparent" />
-        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-white to-transparent" />
+        <div className="mx-auto max-w-3xl">
+          {/* Testimonial card with fade transition */}
+          <div className="relative min-h-[280px]">
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={testimonial.id}
+                className={`transition-all duration-500 ${
+                  index === currentIndex
+                    ? "opacity-100"
+                    : "opacity-0 absolute inset-0 pointer-events-none"
+                }`}
+              >
+                <TestimonialCard testimonial={testimonial} />
+              </div>
+            ))}
+          </div>
 
-        <div
-          className="animate-scroll flex gap-6 py-4 pl-20"
-          style={{ animationPlayState: isPaused ? "paused" : "running" }}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          {duplicatedTestimonials.map((testimonial, index) => (
-            <TestimonialCard
-              key={`${testimonial.id}-${index}`}
-              testimonial={testimonial}
-            />
-          ))}
+          {/* Navigation */}
+          <div className="mt-8 flex items-center justify-center gap-4">
+            {/* Previous button */}
+            <button
+              onClick={goToPrevious}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-white text-text-light transition-all hover:border-primary hover:text-primary"
+              aria-label="Previous testimonial"
+            >
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            {/* Dot indicators */}
+            <div className="flex items-center gap-2">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`h-2 w-2 rounded-full transition-all ${
+                    index === currentIndex
+                      ? "bg-primary w-6"
+                      : "bg-border hover:bg-text-light"
+                  }`}
+                  aria-label={`Go to testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Next button */}
+            <button
+              onClick={goToNext}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-white text-text-light transition-all hover:border-primary hover:text-primary"
+              aria-label="Next testimonial"
+            >
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
         </div>
-
-        <style jsx>{`
-          @keyframes scroll {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(-50%);
-            }
-          }
-          .animate-scroll {
-            animation: scroll 45s linear infinite;
-          }
-        `}</style>
       </div>
     </>
   );
