@@ -24,6 +24,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem; /* Account for fixed header (80px) */
+  overflow-x: hidden;
 }
 
 body {

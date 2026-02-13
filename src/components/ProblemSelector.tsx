@@ -314,74 +314,57 @@ export default function ProblemSelector({
         </div>
       </div>
 
-      {/* Mobile: Horizontal tabs + content below */}
-      <div className="overflow-hidden rounded-xl border border-border lg:hidden">
-        {/* Horizontal scrollable tabs */}
-        <div className="scrollbar-hide overflow-x-auto border-b border-border bg-white">
-          <div className="flex gap-2 px-4 py-4">
-            {problems.map((problem) => (
+      {/* Mobile: Accordion style */}
+      <div className="space-y-3 lg:hidden">
+        {problems.map((problem) => {
+          const isOpen = selectedId === problem.id;
+          const IconComponent = problem.Icon;
+          return (
+            <div
+              key={problem.id}
+              className="overflow-hidden rounded-xl border border-border bg-white"
+            >
               <button
-                key={problem.id}
                 onClick={() => handleSelect(problem.id)}
-                className={`shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
-                  selectedId === problem.id
-                    ? "bg-primary text-white shadow-md"
-                    : "bg-cream text-text hover:bg-cream/80"
+                className="flex w-full items-center gap-3 p-4 text-left"
+              >
+                <IconComponent
+                  size={20}
+                  strokeWidth={1.5}
+                  className={`shrink-0 ${isOpen ? "text-primary" : "text-text-light"}`}
+                />
+                <span className={`flex-1 font-medium ${isOpen ? "text-primary" : "text-dark"}`}>
+                  {problem.shortLabel}
+                </span>
+                <svg
+                  className={`h-5 w-5 shrink-0 text-text-light transition-transform duration-300 ${
+                    isOpen ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              <div
+                className={`grid transition-all duration-300 ease-out ${
+                  isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                 }`}
               >
-                {problem.shortLabel}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Mobile content */}
-        <div className="bg-cream/50 p-4">
-          {displayedProblem ? (
-            <div
-              className={`rounded-xl border border-border bg-white p-5 shadow-[0_2px_12px_rgba(0,0,0,0.04)] ${getContentClasses()}`}
-            >
-              <h3 className="mb-5 text-xl font-bold text-dark">
-                {displayedProblem.headline}
-              </h3>
-
-              <div className="space-y-4">
-                <div>
-                  <h4 className="mb-2 font-mono text-xs font-semibold uppercase tracking-wider text-primary">
-                    What we find
-                  </h4>
-                  <p className="leading-relaxed text-text">
-                    {displayedProblem.whatWeFind}
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="mb-2 font-mono text-xs font-semibold uppercase tracking-wider text-primary">
-                    What we build
-                  </h4>
-                  <p className="leading-relaxed text-text">
-                    {displayedProblem.whatWeBuild}
-                  </p>
-                </div>
-
-                <div className="rounded-lg border border-primary/30 bg-[#E5F0E8] p-4">
-                  <h4 className="mb-2 font-mono text-xs font-semibold uppercase tracking-wider text-primary">
-                    Result
-                  </h4>
-                  <p className="font-medium text-primary">
-                    {displayedProblem.result}
-                  </p>
+                <div className="overflow-hidden">
+                  <div className="border-t border-border p-4 pt-3">
+                    <p className="mb-3 text-sm text-text-light">{problem.brief}</p>
+                    <div className="rounded-lg border border-primary/30 bg-[#E5F0E8] p-3">
+                      <p className="text-sm font-medium text-primary">{problem.result}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          ) : (
-            <div className="flex items-center justify-center rounded-xl border border-dashed border-border bg-white/50 p-5 text-center">
-              <p className="text-text-light">
-                Select a problem to see how we solve it
-              </p>
-            </div>
-          )}
-        </div>
+          );
+        })}
       </div>
     </div>
   );

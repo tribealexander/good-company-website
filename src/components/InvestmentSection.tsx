@@ -42,7 +42,7 @@ export default function InvestmentSection() {
                       We start with a focused engagement to understand your operations, identify high-impact opportunities, and build a prioritized action plan. Standalone value whether or not you continue with us.
                     </p>
 
-                    <div className="mt-4 inline-flex items-center gap-2 text-sm text-primary">
+                    <div className="mt-4 hidden items-center gap-2 text-sm text-primary md:inline-flex">
                       <span>See what&apos;s included</span>
                       <svg
                         className={`h-4 w-4 transition-transform duration-300 ${
@@ -63,9 +63,9 @@ export default function InvestmentSection() {
                   </div>
                 </div>
 
-                {/* Expandable content */}
+                {/* Expandable content - hidden on mobile */}
                 <div
-                  className={`grid transition-all duration-300 ease-out ${
+                  className={`hidden md:grid transition-all duration-300 ease-out ${
                     isRoadmapOpen
                       ? "mt-6 grid-rows-[1fr] opacity-100"
                       : "grid-rows-[0fr] opacity-0"
