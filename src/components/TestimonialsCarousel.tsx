@@ -68,6 +68,15 @@ const testimonials: Testimonial[] = [
     company: "Marlin Capital",
     image: "/images/marko headshot.jpeg",
   },
+  {
+    id: 7,
+    quote:
+      "Alex is one of the sharpest operators I know. Every conversation with him leaves me with a clearer picture of what's actually important and what's just noise. He thinks in systems, cuts through complexity, and genuinely wants to see the people around him win.",
+    name: "Taylor Scollon",
+    role: "Co-founder",
+    company: "The Peak",
+    image: "/images/taylor headshot.jpeg",
+  },
 ];
 
 function TestimonialCard({ testimonial, isMobile = false }: { testimonial: Testimonial; isMobile?: boolean }) {
