@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 
 interface Testimonial {
@@ -81,8 +81,8 @@ const testimonials: Testimonial[] = [
 
 function TestimonialCard({ testimonial, isMobile = false }: { testimonial: Testimonial; isMobile?: boolean }) {
   return (
-    <div className={`flex flex-col rounded-xl border border-border bg-white p-6 shadow-sm transition-all duration-300 ${
-      isMobile ? "w-full" : ""
+    <div className={`flex flex-col rounded-xl border border-border bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-primary/20 hover:-translate-y-1 ${
+      isMobile ? "w-full" : "h-[400px] w-[380px] shrink-0"
     }`}>
       <div className="mb-3">
         <svg
@@ -94,13 +94,13 @@ function TestimonialCard({ testimonial, isMobile = false }: { testimonial: Testi
         </svg>
       </div>
 
-      <p className="flex-1 text-base leading-relaxed text-text">
+      <p className="flex-1 text-[14px] leading-[1.75] text-text">
         &ldquo;{testimonial.quote}&rdquo;
       </p>
 
       <div className="mt-6 flex items-center gap-4 border-t border-border pt-5">
         {testimonial.image ? (
-          <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full">
+          <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full">
             <Image
               src={testimonial.image}
               alt={testimonial.name}
@@ -110,15 +110,15 @@ function TestimonialCard({ testimonial, isMobile = false }: { testimonial: Testi
             />
           </div>
         ) : (
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">
             {testimonial.name.split(" ").map(n => n[0]).join("")}
           </div>
         )}
         <div>
-          <p className="font-semibold text-dark">
+          <p className="text-sm font-semibold text-dark">
             {testimonial.name}
           </p>
-          <p className="text-sm text-text-light">
+          <p className="text-xs text-text-light">
             {testimonial.role}, {testimonial.company}
           </p>
         </div>
@@ -128,14 +128,24 @@ function TestimonialCard({ testimonial, isMobile = false }: { testimonial: Testi
 }
 
 export default function TestimonialsCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
-  const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  const checkScrollButtons = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
   };
 
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const scrollAmount = 400; // roughly one card width
+      const newScrollLeft = scrollRef.current.scrollLeft + (direction === "left" ? -scrollAmount : scrollAmount);
+      scrollRef.current.scrollTo({ left: newScrollLeft, behavior: "smooth" });
+    }
   };
 
   return (
@@ -151,69 +161,60 @@ export default function TestimonialsCarousel() {
         ))}
       </div>
 
-      {/* Desktop: Single testimonial with arrows */}
+      {/* Desktop: Horizontal scroll with side arrows */}
       <div
         className="relative hidden md:block"
         aria-label="Client testimonials"
         role="region"
       >
-        <div className="mx-auto max-w-3xl">
-          {/* Testimonial card with fade transition */}
-          <div className="relative min-h-[280px]">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={testimonial.id}
-                className={`transition-all duration-500 ${
-                  index === currentIndex
-                    ? "opacity-100"
-                    : "opacity-0 absolute inset-0 pointer-events-none"
-                }`}
-              >
-                <TestimonialCard testimonial={testimonial} />
-              </div>
-            ))}
-          </div>
+        {/* Left arrow */}
+        <button
+          onClick={() => scroll("left")}
+          disabled={!canScrollLeft}
+          className={`absolute left-0 top-1/2 z-20 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full border border-border bg-white shadow-lg transition-all ${
+            canScrollLeft
+              ? "text-text hover:border-primary hover:text-primary hover:shadow-xl"
+              : "text-border cursor-not-allowed opacity-50"
+          }`}
+          aria-label="Previous testimonials"
+        >
+          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
 
-          {/* Navigation */}
-          <div className="mt-8 flex items-center justify-center gap-4">
-            {/* Previous button */}
-            <button
-              onClick={goToPrevious}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-white text-text-light transition-all hover:border-primary hover:text-primary"
-              aria-label="Previous testimonial"
-            >
-              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
+        {/* Right arrow */}
+        <button
+          onClick={() => scroll("right")}
+          disabled={!canScrollRight}
+          className={`absolute right-0 top-1/2 z-20 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full border border-border bg-white shadow-lg transition-all ${
+            canScrollRight
+              ? "text-text hover:border-primary hover:text-primary hover:shadow-xl"
+              : "text-border cursor-not-allowed opacity-50"
+          }`}
+          aria-label="Next testimonials"
+        >
+          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
 
-            {/* Dot indicators */}
-            <div className="flex items-center gap-2">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`h-2 w-2 rounded-full transition-all ${
-                    index === currentIndex
-                      ? "bg-primary w-6"
-                      : "bg-border hover:bg-text-light"
-                  }`}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                />
-              ))}
-            </div>
+        {/* Gradient masks */}
+        <div className="pointer-events-none absolute left-12 top-0 z-10 h-full w-16 bg-gradient-to-r from-white to-transparent" />
+        <div className="pointer-events-none absolute right-12 top-0 z-10 h-full w-16 bg-gradient-to-l from-white to-transparent" />
 
-            {/* Next button */}
-            <button
-              onClick={goToNext}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-white text-text-light transition-all hover:border-primary hover:text-primary"
-              aria-label="Next testimonial"
-            >
-              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
+        {/* Scrollable container */}
+        <div
+          ref={scrollRef}
+          onScroll={checkScrollButtons}
+          className="scrollbar-hide flex gap-6 overflow-x-auto px-16 py-4"
+        >
+          {testimonials.map((testimonial) => (
+            <TestimonialCard
+              key={testimonial.id}
+              testimonial={testimonial}
+            />
+          ))}
         </div>
       </div>
     </>
