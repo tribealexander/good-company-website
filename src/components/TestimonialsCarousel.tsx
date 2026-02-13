@@ -150,9 +150,9 @@ export default function TestimonialsCarousel() {
 
   return (
     <>
-      {/* Mobile: Stacked vertical layout */}
+      {/* Mobile: Show just first 2 testimonials */}
       <div className="space-y-4 md:hidden" aria-label="Client testimonials" role="region">
-        {testimonials.map((testimonial) => (
+        {testimonials.slice(0, 2).map((testimonial) => (
           <TestimonialCard
             key={testimonial.id}
             testimonial={testimonial}
@@ -163,7 +163,7 @@ export default function TestimonialsCarousel() {
 
       {/* Desktop: Horizontal scroll with side arrows */}
       <div
-        className="relative hidden md:block"
+        className="relative hidden overflow-hidden md:block"
         aria-label="Client testimonials"
         role="region"
       >
@@ -171,7 +171,7 @@ export default function TestimonialsCarousel() {
         <button
           onClick={() => scroll("left")}
           disabled={!canScrollLeft}
-          className={`absolute left-0 top-1/2 z-20 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full border border-border bg-white shadow-lg transition-all ${
+          className={`absolute left-4 top-1/2 z-20 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full border border-border bg-white shadow-lg transition-all ${
             canScrollLeft
               ? "text-text hover:border-primary hover:text-primary hover:shadow-xl"
               : "text-border cursor-not-allowed opacity-50"
@@ -187,7 +187,7 @@ export default function TestimonialsCarousel() {
         <button
           onClick={() => scroll("right")}
           disabled={!canScrollRight}
-          className={`absolute right-0 top-1/2 z-20 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full border border-border bg-white shadow-lg transition-all ${
+          className={`absolute right-4 top-1/2 z-20 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full border border-border bg-white shadow-lg transition-all ${
             canScrollRight
               ? "text-text hover:border-primary hover:text-primary hover:shadow-xl"
               : "text-border cursor-not-allowed opacity-50"
@@ -203,7 +203,7 @@ export default function TestimonialsCarousel() {
         <div
           ref={scrollRef}
           onScroll={checkScrollButtons}
-          className="scrollbar-hide flex gap-6 overflow-x-auto px-16 py-4"
+          className="scrollbar-hide flex gap-6 overflow-x-auto px-20 py-4"
         >
           {testimonials.map((testimonial) => (
             <TestimonialCard
