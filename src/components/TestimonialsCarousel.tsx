@@ -81,7 +81,7 @@ const testimonials: Testimonial[] = [
 
 function TestimonialCard({ testimonial, isMobile = false }: { testimonial: Testimonial; isMobile?: boolean }) {
   return (
-    <div className={`flex flex-col rounded-xl border border-border bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-primary/20 hover:-translate-y-1 ${
+    <div className={`flex flex-col rounded-xl border border-border bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-primary hover:bg-primary/5 hover:-translate-y-1 ${
       isMobile ? "w-full" : "h-[400px] w-[380px] shrink-0"
     }`}>
       <div className="mb-3">
@@ -198,10 +198,6 @@ export default function TestimonialsCarousel() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
         </button>
-
-        {/* Gradient masks */}
-        <div className="pointer-events-none absolute left-12 top-0 z-10 h-full w-16 bg-gradient-to-r from-white to-transparent" />
-        <div className="pointer-events-none absolute right-12 top-0 z-10 h-full w-16 bg-gradient-to-l from-white to-transparent" />
 
         {/* Scrollable container */}
         <div
