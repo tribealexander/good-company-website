@@ -26,33 +26,41 @@ export default function FloatingCTA() {
   }, []);
 
   return (
-    <div
-      className={`fixed bottom-6 right-6 z-50 transition-all duration-300 md:bottom-6 md:right-6 ${
-        visible
-          ? "translate-y-0 opacity-100"
-          : "pointer-events-none translate-y-4 opacity-0"
-      }`}
-    >
+    <>
       {/* Desktop floating button with pennant */}
-      <a
-        href="/contact"
-        className="btn-press hidden items-center gap-3 rounded-lg bg-primary px-5 py-3 text-white shadow-[0_4px_16px_rgba(0,103,71,0.2)] transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-primary-light hover:shadow-[0_6px_24px_rgba(0,103,71,0.25)] md:inline-flex"
+      <div
+        className={`fixed bottom-6 right-6 z-50 hidden transition-all duration-300 md:block ${
+          visible
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-4 opacity-0"
+        }`}
       >
-        <Image
-          src="/images/logos/pennant.png"
-          alt=""
-          width={20}
-          height={20}
-          className="h-5 w-auto brightness-0 invert"
-        />
-        <span className="text-left text-[14px] leading-tight">
-          <span className="block font-medium">Not sure where to start?</span>
-          <span className="block text-white/80">Let&apos;s chat.</span>
-        </span>
-      </a>
+        <a
+          href="/contact"
+          className="btn-press inline-flex items-center gap-3 rounded-lg bg-primary px-5 py-3 text-white shadow-[0_4px_16px_rgba(0,103,71,0.2)] transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-primary-light hover:shadow-[0_6px_24px_rgba(0,103,71,0.25)]"
+        >
+          <Image
+            src="/images/logos/pennant.png"
+            alt=""
+            width={20}
+            height={20}
+            className="h-5 w-auto brightness-0 invert"
+          />
+          <span className="text-left text-[14px] leading-tight">
+            <span className="block font-medium">Not sure where to start?</span>
+            <span className="block text-white/80">Let&apos;s chat.</span>
+          </span>
+        </a>
+      </div>
 
       {/* Mobile bottom bar */}
-      <div className="fixed inset-x-0 bottom-0 border-t border-border bg-white p-4 shadow-[0_-4px_16px_rgba(0,0,0,0.08)] md:hidden">
+      <div
+        className={`fixed inset-x-0 bottom-0 z-50 border-t border-border bg-white p-4 shadow-[0_-4px_16px_rgba(0,0,0,0.08)] transition-all duration-300 md:hidden ${
+          visible
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-full opacity-0"
+        }`}
+      >
         <a
           href="/contact"
           className="btn-press flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3 text-center text-[15px] font-semibold text-white shadow-[0_4px_16px_rgba(0,103,71,0.2)] transition-all duration-200 ease-out"
@@ -67,6 +75,6 @@ export default function FloatingCTA() {
           Not sure where to start? Let&apos;s chat.
         </a>
       </div>
-    </div>
+    </>
   );
 }
