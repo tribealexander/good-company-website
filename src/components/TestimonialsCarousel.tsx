@@ -26,11 +26,11 @@ const testimonials: Testimonial[] = [
   {
     id: 2,
     quote:
-      "Alex is always a level-headed sounding board and the best kind of pressure cooker - someone who helps you formulate, execute, and perfect your ideas. Whether it's automations that streamline onboarding or introducing tech innovations to our team, Alex has consistently saved us time and, more importantly, saved me money.",
-    name: "Mitch Starkman",
-    role: "Owner",
-    company: "Movement Sports Medicine + Physiotherapy",
-    image: "/images/mitch headshot.jpeg",
+      "If you have the chance to work with Alex, take it. He's a rare breed of person who has varied lived experience, endless curiosity and the ability to provide thoughtful, frank and actionable advice you actually want to do something with.",
+    name: "Iain Montgomery",
+    role: "Founder",
+    company: "Now or Never Ventures",
+    image: "/images/Iain headshot.jpeg",
   },
   {
     id: 3,
@@ -45,15 +45,6 @@ const testimonials: Testimonial[] = [
   {
     id: 4,
     quote:
-      "Alex blends the rare ability to capture a client's needs and trust with the organizational aptitude to deliver results. People and process; sales and strategy. He thinks like a visionary and executes like an implementor. During an extremely fluid COVID period, he was instrumental in helping our organization achieve milestone sales. I continue to rely on his unique business acumen today.",
-    name: "Andrew Miller",
-    role: "President",
-    company: "Purple Frog Products",
-    image: "/images/andrew headshot.jpeg",
-  },
-  {
-    id: 5,
-    quote:
       "Alex and the Good Company built a to-do list follow-up system that fits seamlessly into our existing processes and tools, namely Google Drive/Sheets and Slack. We'll keep working the way we already do, but now we have a bot that gently keeps tasks on our radar and keeps us on track without being obtrusive. It's perfect.",
     name: "Chris Spoke",
     role: "Partner",
@@ -61,7 +52,25 @@ const testimonials: Testimonial[] = [
     image: "/images/chris spoke headshot.jpeg",
   },
   {
+    id: 5,
+    quote:
+      "Alex is always a level-headed sounding board and the best kind of pressure cooker - someone who helps you formulate, execute, and perfect your ideas. Whether it's automations that streamline onboarding or introducing tech innovations to our team, Alex has consistently saved us time and, more importantly, saved me money.",
+    name: "Mitch Starkman",
+    role: "Owner",
+    company: "Movement Sports Medicine + Physiotherapy",
+    image: "/images/mitch headshot.jpeg",
+  },
+  {
     id: 6,
+    quote:
+      "Alex blends the rare ability to capture a client's needs and trust with the organizational aptitude to deliver results. People and process; sales and strategy. He thinks like a visionary and executes like an implementor. During an extremely fluid COVID period, he was instrumental in helping our organization achieve milestone sales. I continue to rely on his unique business acumen today.",
+    name: "Andrew Miller",
+    role: "President",
+    company: "Purple Frog Products",
+    image: "/images/andrew headshot.jpeg",
+  },
+  {
+    id: 7,
     quote:
       "We hired Alex to integrate multiple platform customer data sets into a single client dashboard. He was thorough in his assessment of each platform's capabilities for automation and provided a solid recommendation with the associated development. Truly appreciate Alex's expertise and communication.",
     name: "Aden Smith",
@@ -69,7 +78,7 @@ const testimonials: Testimonial[] = [
     company: "Independent",
   },
   {
-    id: 7,
+    id: 8,
     quote:
       "Alex has opened insights for me with a nimble and strategic way of thinking that I had been missing as an entrepreneur. Conversations with Alex, whether 20 minutes or 2 hours, leave me with enthusiasm and insight in ways that I wouldn't have discovered on my own. Great dude with a big brain who has a penchant for helping.",
     name: "Marko Lindhe",

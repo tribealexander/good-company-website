@@ -262,14 +262,11 @@ export default function SomePage() {
 **Note**: Wrap the `<main>` element, not the entire page. Header and Footer should be outside the transition.
 
 #### TestimonialsCarousel (`TestimonialsCarousel.tsx`)
-A horizontal carousel displaying client testimonials with navigation:
-- **Responsive layout**: 3 cards on desktop (lg+), 2 on tablet (sm-lg), 1 on mobile
+A carousel displaying client testimonials:
+- **Desktop**: Multiple cards visible, manual navigation with left/right arrows on sides, no auto-scroll
+- **Mobile**: Shows only first 2 testimonials stacked vertically (to avoid excessive scrolling)
 - **Card styling**: White background, border, shadow, quote icon, avatar (photo or initials)
-- **Auto-scroll**: Advances every 5 seconds, loops infinitely, pauses on hover
-- **Navigation arrows**: Left/right buttons with hover effects
-- **Dot indicators**: Clickable dots showing current position
-- **Touch/swipe support**: Drag to navigate on mobile and desktop
-- **Hover effects**: Cards lift with shadow and border color change
+- **Hover effects**: Cards turn green (border + light green background) on hover
 - **Accessibility**: ARIA labels, reduced motion support
 
 **Avatar images**: Testimonials support an optional `image` field for headshots. When provided, the image displays as a small circular avatar with the same greyed-out filter as the about page (`grayscale-[85%] contrast-[1.1] brightness-[1.05]`). When no image is provided, initials are shown instead. This keeps photos subtle and allows flexibility if someone prefers not to have their photo displayed.
@@ -947,10 +944,10 @@ When writing or editing copy, follow these terminology rules:
 
 The following mobile bugs were identified and fixed:
 
-1. **White bar on right side** - Fixed by adding `overflow-x: hidden` to body in `globals.css`
-2. **Problems tabs cut off** - Fixed by using shorter `shortLabel` for mobile tabs in `ProblemSelector.tsx`
-3. **Pricing spacing** - Fixed by reducing `mb-8` to `mb-6 lg:mb-8` in `InvestmentSection.tsx`
-4. **Testimonials broken** - Fixed by showing stacked vertical cards on mobile (`md:hidden` vs `hidden md:block`) in `TestimonialsCarousel.tsx`
+1. **White bar on right side** - Root cause was nested fixed positioning in `FloatingCTA.tsx`. Fixed by separating desktop and mobile CTAs into sibling elements. Also added multiple layers of overflow protection in `globals.css` and `layout.tsx`.
+2. **Problems section** - Replaced horizontal scrolling tabs with accordion on mobile in `ProblemSelector.tsx`. Each problem expands on tap.
+3. **How We Work section** - Hide "See what's included" collapsible on mobile in `InvestmentSection.tsx`.
+4. **Testimonials** - Show only first 2 testimonials on mobile (was showing all 7). Desktop uses manual arrow navigation instead of auto-scroll.
 
 ---
 
