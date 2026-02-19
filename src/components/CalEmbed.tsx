@@ -1,6 +1,6 @@
 "use client";
 
-import Cal, { getCalApi } from "@calcom/embed-react";
+import { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
 
 export default function CalEmbed() {
@@ -13,18 +13,20 @@ export default function CalEmbed() {
           light: { "cal-brand": "#006747" },
           dark: { "cal-brand": "#006747" },
         },
-        hideEventTypeDetails: true,
+        hideEventTypeDetails: false,
         layout: "month_view",
       });
     })();
   }, []);
 
   return (
-    <Cal
-      namespace="good-company-discovery-call"
-      calLink="alex-tribe-pzou91/good-company-discovery-call"
-      style={{ width: "100%", height: "450px", overflow: "hidden" }}
-      config={{ layout: "month_view", theme: "light", hideEventTypeDetails: "true" }}
-    />
+    <button
+      data-cal-namespace="good-company-discovery-call"
+      data-cal-link="alex-tribe-pzou91/good-company-discovery-call"
+      data-cal-config='{"layout":"month_view","theme":"light"}'
+      className="w-full rounded-lg bg-primary px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-primary-light hover:shadow-lg hover:shadow-primary/25"
+    >
+      Book a Discovery Call
+    </button>
   );
 }
