@@ -23,8 +23,8 @@ export default function CalEmbed() {
     <Cal
       namespace="good-company-discovery-call"
       calLink="alex-tribe-pzou91/good-company-discovery-call"
-      style={{ width: "100%", height: "500px", overflow: "scroll" }}
-      config={{ layout: "month_view", theme: "light" }}
+      style={{ width: "100%", height: "450px", overflow: "hidden" }}
+      config={{ layout: "month_view", theme: "light", hideEventTypeDetails: "true" }}
     />
   );
 }
