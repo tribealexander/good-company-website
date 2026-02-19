@@ -15,13 +15,11 @@ This is the marketing website for **Good Company**, a boutique operational effic
 **Key files**:
 - `/src/app/page.tsx` - Homepage (main landing page)
 - `/src/app/about/page.tsx` - About page with founder bio
-- `/src/app/contact/page.tsx` - Contact page with form → booking flow
 - `/src/app/acquisitions/page.tsx` - Acquisitions & Partnerships page
 - `/src/app/case-studies/page.tsx` - Case studies listing with video lightbox
 - `/src/app/referrals/page.tsx` - Referrals program page
-- `/src/app/api/contact/route.ts` - Contact form API
 - `/src/app/globals.css` - Global styles and Tailwind theme
-- `/src/app/layout.tsx` - Root layout with fonts and metadata
+- `/src/app/layout.tsx` - Root layout with fonts, metadata, and CalProvider
 
 ---
 
@@ -151,7 +149,8 @@ src/components/
 ├── Footer.tsx              # Site footer
 ├── Button.tsx              # CTA buttons (primary, secondary, outline, hero variants)
 ├── Card.tsx                # Card variants
-├── ContactForm.tsx         # Contact form with validation
+├── CalProvider.tsx         # Cal.com API initialization (wraps app in layout.tsx)
+├── CalEmbed.tsx            # Cal.com booking button component
 ├── ProblemSelector.tsx     # Interactive split-screen problem selector
 ├── ProblemsSectionWrapper.tsx # Problems section with dynamic backgrounds
 ├── WhatWeBuildSection.tsx  # Services section with dynamic backgrounds
@@ -159,7 +158,7 @@ src/components/
 ├── RoughAnnotation.tsx     # Wrapper for rough-notation library (supports padding prop)
 ├── ScrollReveal.tsx        # Scroll-triggered animations (AnimeJS v4) + StaggerContainer, TextReveal, CountUp
 ├── SectionHeading.tsx      # Consistent section headings with Lora font + green underline
-├── FloatingCTA.tsx         # Floating CTA button
+├── FloatingCTA.tsx         # Floating CTA button (triggers Cal.com popup)
 ├── InvestmentSection.tsx   # Pricing section with collapsible Discovery & Automation Roadmap
 ├── FAQ.tsx                 # FAQ accordion
 ├── PageTransition.tsx      # Page transition animations (fade-in + scroll to top on navigation)
@@ -304,7 +303,6 @@ The homepage (`/src/app/page.tsx`) follows this section order:
 | 6 | Testimonials | White | `#testimonials` |
 | 7 | What Working Together Looks Like | Cream textured | `#investment` |
 | 8 | FAQ | White | `#faq` |
-| 9 | Contact Form | Cream textured | `#contact` |
 
 ### Hero Section
 
@@ -405,7 +403,7 @@ Sections:
 1. **Hero** - Dark green, "Thinking About an Exit?"
 2. **The Pitch** - 3 cards: You Want Out, You Want Help, You Want a Partner
 3. **What I Look For** - Checklist of criteria (service businesses, $500K-$10M, etc.)
-4. **CTA** - "Interested?" with email link (different from main site CTA)
+4. **CTA** - "Interested?" with Cal.com popup (uses separate acquisitions calendar)
 
 Footer link: "Acquisitions & Partnerships" under Quick Links
 
@@ -699,12 +697,6 @@ import RoughAnnotation from "@/components/RoughAnnotation";
 Required environment variables. Create `.env.local` from `.env.example`:
 
 ```bash
-# Resend.com API key for sending emails
-RESEND_API_KEY=re_xxxxxxxx
-
-# Email address to receive form submissions
-CONTACT_EMAIL=hello@goodcompany.com
-
 # Strapi CMS URL (optional - has hardcoded fallback)
 STRAPI_URL=https://your-strapi-instance.strapiapp.com
 ```
@@ -892,8 +884,6 @@ npm run lint
 | `src/app/mind-maps/[slug]/page.tsx` | Mind map page server component (private, unlisted) |
 | `src/app/mind-maps/[slug]/MindMapContent.tsx` | Mind map client component with tabbed visualization |
 | `src/app/robots.ts` | Robots.txt (disallows /proposals/ and /mind-maps/) |
-| `src/app/api/contact/route.ts` | Contact form API endpoint |
-| `src/app/api/booking/route.ts` | Booking API - creates Google Calendar events with Meet links |
 | `src/lib/strapi.ts` | Strapi CMS API client (case studies) |
 | `src/lib/proposals.ts` | Local proposals data (add new proposals here) |
 | `src/lib/mindmaps.ts` | Local mind maps data (add new mind maps here) |
@@ -903,8 +893,8 @@ npm run lint
 | `src/components/ProblemsSectionWrapper.tsx` | Problems with dynamic backgrounds |
 | `src/components/TestimonialsCarousel.tsx` | Testimonials carousel with navigation |
 | `src/components/InvestmentSection.tsx` | "What Working Together Looks Like" section (Discovery → Partnership) |
-| `src/components/BookingInterface.tsx` | Custom booking UI shown after contact form submission |
-| `src/app/contact/page.tsx` | Dedicated contact page with form |
+| `src/components/CalProvider.tsx` | Cal.com API initialization for booking popups |
+| `src/components/CalEmbed.tsx` | Cal.com booking button component |
 | `src/components/RoughAnnotation.tsx` | Rough notation wrapper |
 | `src/components/PageTransition.tsx` | Page navigation fade-in animations |
 | `src/components/ScrollReveal.tsx` | Scroll-triggered animations |
@@ -950,41 +940,52 @@ The following mobile bugs were identified and fixed:
 
 ---
 
-### Booking System - Google Calendar Integration
+## Cal.com Booking Integration
 
-The contact form includes a custom booking UI that creates real Google Calendar events with Google Meet links.
+All CTA buttons across the site trigger Cal.com popup modals for booking discovery calls. No contact form - booking happens directly through Cal.com.
 
-**Flow**:
-1. User fills out contact form (name, email, company, size, message)
-2. Form submits to `/api/contact` (sends to Google Sheets + Resend email)
-3. User sees custom Calendly-style booking interface (`BookingInterface.tsx`)
-4. User selects date and time (weekdays only, 9am-4pm slots)
-5. User clicks "Confirm Booking"
-6. `/api/booking` creates a Google Calendar event with:
-   - 60-minute duration
-   - Google Meet link auto-generated
-   - Calendar invite sent to user's email
-7. User sees confirmation screen
+### Architecture
 
-**Architecture**:
-- `/src/components/ContactForm.tsx` - Contact form, passes data to BookingInterface on success
-- `/src/components/BookingInterface.tsx` - Calendar picker UI, calls /api/booking
-- `/src/app/api/booking/route.ts` - Creates Google Calendar events via service account
+**Components**:
+- `CalProvider.tsx` - Initializes Cal.com API at layout level (wraps app in `layout.tsx`)
+- `CalEmbed.tsx` - Reusable Cal.com button component
 
-**Environment Variables** (required in Vercel):
-```bash
-GOOGLE_CALENDAR_ID=your-email@domain.com
-GOOGLE_CALENDAR_CREDENTIALS={"type":"service_account","project_id":"...",...}
+**Calendars**:
+- **Main discovery call**: `alex-tribe-pzou91/good-company-discovery-call` (namespace: `good-company-discovery-call`)
+- **Acquisitions**: `alex-tribe-pzou91/acquisitions-discovery-call` (namespace: `acquisitions-discovery-call`)
+
+### How It Works
+
+1. `CalProvider` initializes both Cal.com namespaces on app load
+2. Any button with Cal.com data attributes triggers the popup:
+```tsx
+<button
+  data-cal-namespace="good-company-discovery-call"
+  data-cal-link="alex-tribe-pzou91/good-company-discovery-call"
+  data-cal-config='{"layout":"month_view","theme":"light"}'
+>
+  Book a Discovery Call
+</button>
 ```
 
-**Google Cloud Setup** (one-time):
-1. Create project at console.cloud.google.com
-2. Enable Google Calendar API
-3. Create Service Account → download JSON credentials
-4. Share your Google Calendar with the service account email (Make changes to events permission)
-5. If using Google Workspace: Admin console → Apps → Calendar → Sharing settings → Enable external sharing
+### Styling
 
-**Timezone**: Events are created in `America/Toronto` timezone (hardcoded in `/api/booking/route.ts`)
+Cal.com UI is customized in `CalProvider.tsx`:
+- Brand color: `#006747` (primary green)
+- Font: Inter
+- Layout: Month view
+- Theme: Light
+
+### CTA Locations
+
+All these buttons trigger the Cal.com popup:
+- Hero section "Book a Discovery Call"
+- Header "Book a Brainstorm" (desktop + mobile)
+- Footer "Book a Discovery Call"
+- FloatingCTA "Not sure where to start?"
+- About page CTA
+- Case studies CTAs
+- Acquisitions page (uses separate acquisitions calendar)
 
 ---
 
