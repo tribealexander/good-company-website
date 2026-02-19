@@ -13,7 +13,7 @@ export default function CalEmbed() {
           light: { "cal-brand": "#006747" },
           dark: { "cal-brand": "#006747" },
         },
-        hideEventTypeDetails: false,
+        hideEventTypeDetails: true,
         layout: "month_view",
       });
     })();
@@ -23,7 +23,7 @@ export default function CalEmbed() {
     <Cal
       namespace="good-company-discovery-call"
       calLink="alex-tribe-pzou91/good-company-discovery-call"
-      style={{ width: "100%", height: "700px", overflow: "scroll" }}
+      style={{ width: "100%", height: "500px", overflow: "scroll" }}
       config={{ layout: "month_view", theme: "light" }}
     />
   );
