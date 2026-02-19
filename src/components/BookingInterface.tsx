@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 
 interface BookingInterfaceProps {
   name: string;
@@ -31,6 +31,8 @@ export default function BookingInterface({ name, email, company, message }: Book
   const [isBooked, setIsBooked] = useState(false);
   const [isBooking, setIsBooking] = useState(false);
   const [bookingError, setBookingError] = useState<string | null>(null);
+  const [availableSlots, setAvailableSlots] = useState<string[]>([]);
+  const [isLoadingSlots, setIsLoadingSlots] = useState(false);
 
   const today = useMemo(() => {
     const d = new Date();
@@ -107,6 +109,39 @@ export default function BookingInterface({ name, email, company, message }: Book
     });
   };
 
+  // Fetch available time slots when date changes
+  useEffect(() => {
+    if (!selectedDate) return;
+
+    const fetchAvailability = async () => {
+      setIsLoadingSlots(true);
+      setSelectedTime(null);
+
+      try {
+        const response = await fetch("/api/availability", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ date: formatSelectedDate(selectedDate) }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setAvailableSlots(data.availableSlots || []);
+        } else {
+          // Fallback to all slots on error
+          setAvailableSlots(AVAILABLE_SLOTS.map(s => s.display));
+        }
+      } catch (error) {
+        console.error("Error fetching availability:", error);
+        setAvailableSlots(AVAILABLE_SLOTS.map(s => s.display));
+      } finally {
+        setIsLoadingSlots(false);
+      }
+    };
+
+    fetchAvailability();
+  }, [selectedDate]);
+
   const handleConfirm = async () => {
     if (!selectedDate || !selectedTime) return;
 
@@ -114,8 +149,6 @@ export default function BookingInterface({ name, email, company, message }: Book
     setBookingError(null);
 
     try {
-      const timeDisplay = AVAILABLE_SLOTS.find(s => s.time === selectedTime)?.display;
-
       const response = await fetch("/api/booking", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -125,7 +158,7 @@ export default function BookingInterface({ name, email, company, message }: Book
           company,
           message,
           selectedDate: formatSelectedDate(selectedDate),
-          selectedTime: timeDisplay,
+          selectedTime, // Already in display format like "11:00 AM"
         }),
       });
 
@@ -144,7 +177,6 @@ export default function BookingInterface({ name, email, company, message }: Book
 
   // Confirmation screen after booking
   if (isBooked && selectedDate && selectedTime) {
-    const timeDisplay = AVAILABLE_SLOTS.find(s => s.time === selectedTime)?.display;
     return (
       <div className="mx-auto max-w-2xl text-center">
         <div className="rounded-2xl border border-border bg-white p-12 shadow-lg">
@@ -166,7 +198,7 @@ export default function BookingInterface({ name, email, company, message }: Book
           <div className="mb-8 rounded-xl bg-light p-6">
             <p className="mb-1 text-sm font-medium text-muted">Your discovery call</p>
             <p className="text-lg font-semibold text-dark">
-              {formatSelectedDate(selectedDate)} at {timeDisplay}
+              {formatSelectedDate(selectedDate)} at {selectedTime}
             </p>
             <p className="mt-2 text-sm text-muted">60 minutes via Google Meet</p>
           </div>
@@ -233,7 +265,7 @@ export default function BookingInterface({ name, email, company, message }: Book
                   <div>
                     <p className="text-white font-medium">{formatSelectedDate(selectedDate)}</p>
                     {selectedTime && (
-                      <p>{AVAILABLE_SLOTS.find(s => s.time === selectedTime)?.display}</p>
+                      <p>{selectedTime}</p>
                     )}
                   </div>
                 </div>
@@ -307,23 +339,29 @@ export default function BookingInterface({ name, email, company, message }: Book
             {selectedDate && (
               <div className="border-t border-border pt-6">
                 <p className="mb-4 text-sm font-medium text-muted">Available times</p>
-                <div className="grid grid-cols-4 gap-2">
-                  {AVAILABLE_SLOTS.map((slot) => (
-                    <button
-                      key={slot.time}
-                      onClick={() => setSelectedTime(slot.time)}
-                      className={`
-                        rounded-lg border px-3 py-2.5 text-sm font-medium transition-all
-                        ${selectedTime === slot.time
-                          ? "border-primary bg-primary text-white"
-                          : "border-border text-dark hover:border-primary hover:bg-primary/5"
-                        }
-                      `}
-                    >
-                      {slot.display}
-                    </button>
-                  ))}
-                </div>
+                {isLoadingSlots ? (
+                  <p className="text-sm text-muted">Checking availability...</p>
+                ) : availableSlots.length === 0 ? (
+                  <p className="text-sm text-muted">No times available on this day. Please select another date.</p>
+                ) : (
+                  <div className="grid grid-cols-4 gap-2">
+                    {availableSlots.map((slot) => (
+                      <button
+                        key={slot}
+                        onClick={() => setSelectedTime(slot)}
+                        className={`
+                          rounded-lg border px-3 py-2.5 text-sm font-medium transition-all
+                          ${selectedTime === slot
+                            ? "border-primary bg-primary text-white"
+                            : "border-border text-dark hover:border-primary hover:bg-primary/5"
+                          }
+                        `}
+                      >
+                        {slot}
+                      </button>
+                    ))}
+                  </div>
+                )}
 
                 {selectedTime && (
                   <>
