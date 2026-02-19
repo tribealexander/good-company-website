@@ -136,7 +136,7 @@ export default function BookingInterface({ name, email, company, message }: Book
       setIsBooked(true);
     } catch (error) {
       console.error("Booking error:", error);
-      setBookingError("Something went wrong. Please try again or email us directly at hello@goodcompany.com");
+      setBookingError("Something went wrong. Please try again or email us directly at alex@yourgoodcompany.com");
     } finally {
       setIsBooking(false);
     }
@@ -172,7 +172,7 @@ export default function BookingInterface({ name, email, company, message }: Book
           </div>
 
           <p className="text-sm text-muted">
-            You'll receive a calendar invite at your email shortly.
+            We&apos;ll send you a confirmation email with the meeting details.
           </p>
         </div>
       </div>
