@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
-import BookingInterface from "./BookingInterface";
+import { useState } from "react";
+
+const CAL_COM_URL = "https://cal.com/alex-tribe-pzou91/good-company-discovery-call";
 
 interface FormData {
   name: string;
@@ -30,9 +31,6 @@ export default function ContactForm() {
     message: "",
   });
 
-  const submittedName = useRef("");
-  const submittedData = useRef({ email: "", company: "", message: "" });
-
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -45,15 +43,10 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus({ type: "loading", message: "" });
-    submittedName.current = formData.name.split(" ")[0];
-    submittedData.current = {
-      email: formData.email,
-      company: formData.company,
-      message: formData.message,
-    };
 
     try {
-      const response = await fetch("/api/contact", {
+      // Submit to contact API (for your records/notifications)
+      await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -61,21 +54,15 @@ export default function ContactForm() {
         body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
-        setStatus({
-          type: "success",
-          message: "Thanks for reaching out!",
-        });
-        setFormData({
-          name: "",
-          email: "",
-          company: "",
-          companySize: "",
-          message: "",
-        });
-      } else {
-        throw new Error("Failed to send message");
-      }
+      // Build Cal.com URL with pre-filled data
+      const notes = `Company: ${formData.company}\nSize: ${formData.companySize}\n\nChallenges:\n${formData.message}`;
+      const calUrl = new URL(CAL_COM_URL);
+      calUrl.searchParams.set("name", formData.name);
+      calUrl.searchParams.set("email", formData.email);
+      calUrl.searchParams.set("notes", notes);
+
+      // Redirect to Cal.com
+      window.location.href = calUrl.toString();
     } catch {
       setStatus({
         type: "error",
@@ -87,18 +74,6 @@ export default function ContactForm() {
   const inputStyles =
     "w-full rounded-lg border border-border bg-white px-4 py-3 text-text transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary";
   const labelStyles = "mb-2 block text-sm font-medium text-text";
-
-  // Success state - show calendar booking interface
-  if (status.type === "success") {
-    return (
-      <BookingInterface
-        name={submittedName.current}
-        email={submittedData.current.email}
-        company={submittedData.current.company}
-        message={submittedData.current.message}
-      />
-    );
-  }
 
   return (
     <div className="mx-auto max-w-xl rounded-2xl border border-[#D4CFC7] bg-white p-8 shadow-[0_2px_12px_rgba(0,0,0,0.04)] lg:p-10">
