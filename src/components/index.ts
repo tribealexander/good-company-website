@@ -16,3 +16,4 @@ export { default as TrustIndicators } from "./TrustIndicators";
 export { default as InvestmentSection } from "./InvestmentSection";
 export { default as PageTransition } from "./PageTransition";
 export { default as TestimonialsCarousel } from "./TestimonialsCarousel";
+export { default as CalEmbed } from "./CalEmbed";

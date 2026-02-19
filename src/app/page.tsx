@@ -1,17 +1,16 @@
 import {
   Header,
   Footer,
-  Button,
   ProblemsSectionWrapper,
   FloatingCTA,
   ScrollReveal,
   FAQ,
   SectionHeading,
   WhatWeBuildSection,
-  TrustIndicators,
   InvestmentSection,
   HeroSection,
   TestimonialsCarousel,
+  CalEmbed,
 } from "@/components";
 
 export default function Home() {
@@ -248,20 +247,20 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contact Form Section - Beige with grain texture */}
+        {/* Book a Call Section - Beige with grain texture */}
         <section id="contact" className="bg-cream-textured py-12 lg:py-16">
-          <div className="mx-auto max-w-2xl px-6 lg:px-10">
+          <div className="mx-auto max-w-4xl px-6 lg:px-10">
             <ScrollReveal>
               <SectionHeading centered className="mb-4">
                 Ready to reclaim your capacity?
               </SectionHeading>
               <p className="mb-10 text-center text-text-light">
-                Book a call and let&apos;s talk about what&apos;s slowing you down.
+                Book a discovery call and let&apos;s talk about what&apos;s slowing you down.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={100}>
-              <div className="rounded-2xl border border-[#D4CFC7] bg-white p-8 shadow-[0_2px_12px_rgba(0,0,0,0.04)] lg:p-10">
-                <ContactFormWrapper />
+              <div className="rounded-2xl border border-[#D4CFC7] bg-white p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] lg:p-6">
+                <CalEmbed />
               </div>
             </ScrollReveal>
           </div>
@@ -270,11 +269,4 @@ export default function Home() {
       <Footer />
     </>
   );
-}
-
-// Separate client component for the contact form
-import ContactForm from "@/components/ContactForm";
-
-function ContactFormWrapper() {
-  return <ContactForm />;
 }
