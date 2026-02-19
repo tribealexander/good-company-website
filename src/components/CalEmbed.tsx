@@ -8,6 +8,7 @@ export default function CalEmbed() {
     (async function () {
       const cal = await getCalApi({ namespace: "good-company-discovery-call" });
       cal("ui", {
+        theme: "light",
         cssVarsPerTheme: {
           light: { "cal-brand": "#006747" },
           dark: { "cal-brand": "#006747" },
@@ -23,7 +24,7 @@ export default function CalEmbed() {
       namespace="good-company-discovery-call"
       calLink="alex-tribe-pzou91/good-company-discovery-call"
       style={{ width: "100%", height: "100%", overflow: "scroll" }}
-      config={{ layout: "month_view" }}
+      config={{ layout: "month_view", theme: "light" }}
     />
   );
 }
