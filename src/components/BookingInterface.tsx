@@ -4,7 +4,9 @@ import { useState, useMemo } from "react";
 
 interface BookingInterfaceProps {
   name: string;
-  email?: string;
+  email: string;
+  company?: string;
+  message?: string;
 }
 
 interface TimeSlot {
@@ -23,10 +25,12 @@ const AVAILABLE_SLOTS: TimeSlot[] = [
   { time: "16:00", display: "4:00 PM" },
 ];
 
-export default function BookingInterface({ name }: BookingInterfaceProps) {
+export default function BookingInterface({ name, email, company, message }: BookingInterfaceProps) {
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [isBooked, setIsBooked] = useState(false);
+  const [isBooking, setIsBooking] = useState(false);
+  const [bookingError, setBookingError] = useState<string | null>(null);
 
   const today = useMemo(() => {
     const d = new Date();
@@ -104,10 +108,37 @@ export default function BookingInterface({ name }: BookingInterfaceProps) {
   };
 
   const handleConfirm = async () => {
-    if (selectedDate && selectedTime) {
-      // TODO: Integrate with Google Calendar API to create actual booking
-      // For now, just show confirmation UI
+    if (!selectedDate || !selectedTime) return;
+
+    setIsBooking(true);
+    setBookingError(null);
+
+    try {
+      const timeDisplay = AVAILABLE_SLOTS.find(s => s.time === selectedTime)?.display;
+
+      const response = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          company,
+          message,
+          selectedDate: formatSelectedDate(selectedDate),
+          selectedTime: timeDisplay,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create booking");
+      }
+
       setIsBooked(true);
+    } catch (error) {
+      console.error("Booking error:", error);
+      setBookingError("Something went wrong. Please try again or email us directly at hello@goodcompany.com");
+    } finally {
+      setIsBooking(false);
     }
   };
 
@@ -295,12 +326,18 @@ export default function BookingInterface({ name }: BookingInterfaceProps) {
                 </div>
 
                 {selectedTime && (
-                  <button
-                    onClick={handleConfirm}
-                    className="mt-6 w-full rounded-lg bg-primary px-6 py-3.5 text-base font-semibold text-white transition-all hover:bg-primary-light hover:shadow-lg hover:shadow-primary/25"
-                  >
-                    Confirm Booking
-                  </button>
+                  <>
+                    <button
+                      onClick={handleConfirm}
+                      disabled={isBooking}
+                      className="mt-6 w-full rounded-lg bg-primary px-6 py-3.5 text-base font-semibold text-white transition-all hover:bg-primary-light hover:shadow-lg hover:shadow-primary/25 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                      {isBooking ? "Booking..." : "Confirm Booking"}
+                    </button>
+                    {bookingError && (
+                      <p className="mt-3 text-sm text-red-600">{bookingError}</p>
+                    )}
+                  </>
                 )}
               </div>
             )}

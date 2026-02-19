@@ -12,7 +12,7 @@ export default function InvestmentSection() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <ScrollReveal>
           <SectionHeading centered className="mb-6">
-            How We Work
+            What Working Together Looks Like
           </SectionHeading>
 
           {/* ICP Note */}
@@ -174,18 +174,6 @@ export default function InvestmentSection() {
           </ScrollReveal>
         </div>
 
-        {/* CTA */}
-        <ScrollReveal>
-          <p className="mt-10 text-center text-base text-text-light">
-            Want to learn more?{" "}
-            <a
-              href="/contact"
-              className="text-primary underline decoration-primary/30 underline-offset-2 transition-colors hover:decoration-primary"
-            >
-              Let&apos;s talk about what makes sense for you.
-            </a>
-          </p>
-        </ScrollReveal>
       </div>
     </section>
   );

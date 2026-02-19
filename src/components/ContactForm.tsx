@@ -31,6 +31,7 @@ export default function ContactForm() {
   });
 
   const submittedName = useRef("");
+  const submittedData = useRef({ email: "", company: "", message: "" });
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -45,6 +46,11 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus({ type: "loading", message: "" });
     submittedName.current = formData.name.split(" ")[0];
+    submittedData.current = {
+      email: formData.email,
+      company: formData.company,
+      message: formData.message,
+    };
 
     try {
       const response = await fetch("/api/contact", {
@@ -84,7 +90,14 @@ export default function ContactForm() {
 
   // Success state - show calendar booking interface
   if (status.type === "success") {
-    return <BookingInterface name={submittedName.current} />;
+    return (
+      <BookingInterface
+        name={submittedName.current}
+        email={submittedData.current.email}
+        company={submittedData.current.company}
+        message={submittedData.current.message}
+      />
+    );
   }
 
   return (
