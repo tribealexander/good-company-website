@@ -149,12 +149,14 @@ export default function AcquisitionsPage() {
               <p className="mb-8 text-lg text-[#A8D5C2]">
                 No pressure, no pitch. Just a conversation to see if there&apos;s a fit.
               </p>
-              <a
-                href="mailto:hello@goodcompany.ca?subject=Acquisitions%20%26%20Partnerships%20Inquiry"
+              <button
+                data-cal-namespace="acquisitions-discovery-call"
+                data-cal-link="alex-tribe-pzou91/acquisitions-discovery-call"
+                data-cal-config='{"layout":"month_view","theme":"light"}'
                 className="inline-block rounded-full bg-white px-8 py-4 font-semibold text-[#004D36] transition-all duration-300 hover:bg-gold hover:text-white hover:shadow-[0_4px_20px_rgba(184,134,11,0.3)]"
               >
                 Start a Conversation →
-              </a>
+              </button>
             </ScrollReveal>
           </div>
         </section>

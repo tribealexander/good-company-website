@@ -117,22 +117,26 @@ export default function Header() {
             ))}
             {/* CTA Button - different styling for inner pages */}
             {showDarkStyles ? (
-              <a
-                href="/contact"
+              <button
+                data-cal-namespace="good-company-discovery-call"
+                data-cal-link="alex-tribe-pzou91/good-company-discovery-call"
+                data-cal-config='{"layout":"month_view","theme":"light"}'
                 className="rounded-full bg-[#004D36] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-gold hover:shadow-[0_4px_12px_rgba(184,134,11,0.3)]"
               >
                 Book a Brainstorm →
-              </a>
+              </button>
             ) : (
-              <a
-                href="/contact"
+              <button
+                data-cal-namespace="good-company-discovery-call"
+                data-cal-link="alex-tribe-pzou91/good-company-discovery-call"
+                data-cal-config='{"layout":"month_view","theme":"light"}'
                 className="group inline-flex items-center text-sm font-medium nav-link-light"
               >
                 Book a Brainstorm
                 <span className="ml-1 inline-block transition-all duration-300 ease-out group-hover:ml-2 group-hover:text-white">
                   →
                 </span>
-              </a>
+              </button>
             )}
           </nav>
 
@@ -194,13 +198,15 @@ export default function Header() {
                 </Link>
               ))}
               {/* Mobile CTA */}
-              <a
-                href="/contact"
-                className="btn-press mt-2 block rounded-full bg-primary px-6 py-3 text-center text-base font-semibold text-white transition-all duration-200 hover:bg-[#2D8659]"
+              <button
+                data-cal-namespace="good-company-discovery-call"
+                data-cal-link="alex-tribe-pzou91/good-company-discovery-call"
+                data-cal-config='{"layout":"month_view","theme":"light"}'
+                className="btn-press mt-2 block w-full rounded-full bg-primary px-6 py-3 text-center text-base font-semibold text-white transition-all duration-200 hover:bg-[#2D8659]"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Book a Brainstorm →
-              </a>
+              </button>
             </div>
           </div>
         )}

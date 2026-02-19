@@ -3,6 +3,7 @@ import { Inter, Source_Sans_3, JetBrains_Mono, Caveat, Lora } from "next/font/go
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
+import CalProvider from "@/components/CalProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -85,9 +86,11 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${sourceSans.variable} ${jetbrainsMono.variable} ${caveat.variable} ${lora.variable} font-sans antialiased overflow-x-hidden`}
       >
-        <div className="overflow-x-hidden min-h-screen">
-          {children}
-        </div>
+        <CalProvider>
+          <div className="overflow-x-hidden min-h-screen">
+            {children}
+          </div>
+        </CalProvider>
         <Analytics />
         <SpeedInsights />
       </body>

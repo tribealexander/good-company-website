@@ -89,12 +89,14 @@ export default function Footer() {
               </h4>
             </div>
             <div className="flex flex-col items-center gap-2 md:items-end">
-              <a
-                href="/contact"
+              <button
+                data-cal-namespace="good-company-discovery-call"
+                data-cal-link="alex-tribe-pzou91/good-company-discovery-call"
+                data-cal-config='{"layout":"month_view","theme":"light"}'
                 className="text-sm font-semibold text-gold transition-colors duration-200 hover:underline"
               >
                 Book a Discovery Call &rarr;
-              </a>
+              </button>
             </div>
           </div>
         </div>

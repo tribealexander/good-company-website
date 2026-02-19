@@ -225,12 +225,14 @@ export default function AboutPage() {
               <p className="mb-8 text-lg text-[#A8D5C2]">
                 I&apos;m always happy to talk through what you&apos;re working on, even if it goes nowhere. No pressure, no pitch.
               </p>
-              <a
-                href="/contact"
+              <button
+                data-cal-namespace="good-company-discovery-call"
+                data-cal-link="alex-tribe-pzou91/good-company-discovery-call"
+                data-cal-config='{"layout":"month_view","theme":"light"}'
                 className="inline-block rounded-full bg-white px-8 py-4 font-semibold text-[#004D36] transition-all duration-300 hover:bg-gold hover:text-white hover:shadow-[0_4px_20px_rgba(184,134,11,0.3)]"
               >
                 Book a Brainstorm →
-              </a>
+              </button>
             </ScrollReveal>
           </div>
         </section>

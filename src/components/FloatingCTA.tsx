@@ -35,8 +35,10 @@ export default function FloatingCTA() {
             : "pointer-events-none translate-y-4 opacity-0"
         }`}
       >
-        <a
-          href="/contact"
+        <button
+          data-cal-namespace="good-company-discovery-call"
+          data-cal-link="alex-tribe-pzou91/good-company-discovery-call"
+          data-cal-config='{"layout":"month_view","theme":"light"}'
           className="btn-press inline-flex items-center gap-3 rounded-lg bg-primary px-5 py-3 text-white shadow-[0_4px_16px_rgba(0,103,71,0.2)] transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-primary-light hover:shadow-[0_6px_24px_rgba(0,103,71,0.25)]"
         >
           <Image
@@ -50,7 +52,7 @@ export default function FloatingCTA() {
             <span className="block font-medium">Not sure where to start?</span>
             <span className="block text-white/80">Let&apos;s chat.</span>
           </span>
-        </a>
+        </button>
       </div>
 
       {/* Mobile bottom bar */}
@@ -61,8 +63,10 @@ export default function FloatingCTA() {
             : "pointer-events-none translate-y-full opacity-0"
         }`}
       >
-        <a
-          href="/contact"
+        <button
+          data-cal-namespace="good-company-discovery-call"
+          data-cal-link="alex-tribe-pzou91/good-company-discovery-call"
+          data-cal-config='{"layout":"month_view","theme":"light"}'
           className="btn-press flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3 text-center text-[15px] font-semibold text-white shadow-[0_4px_16px_rgba(0,103,71,0.2)] transition-all duration-200 ease-out"
         >
           <Image
@@ -73,7 +77,7 @@ export default function FloatingCTA() {
             className="h-[18px] w-auto brightness-0 invert"
           />
           Not sure where to start? Let&apos;s chat.
-        </a>
+        </button>
       </div>
     </>
   );

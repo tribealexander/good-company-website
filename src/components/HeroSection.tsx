@@ -116,12 +116,14 @@ export default function HeroSection() {
 
         {/* CTA Button */}
         <div data-hero-cta className="mt-10">
-          <a
-            href="/contact"
+          <button
+            data-cal-namespace="good-company-discovery-call"
+            data-cal-link="alex-tribe-pzou91/good-company-discovery-call"
+            data-cal-config='{"layout":"month_view","theme":"light"}'
             className="btn-press inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-semibold text-[#004D36] shadow-[0_4px_20px_rgba(0,0,0,0.15)] transition-all duration-300 hover:bg-gold hover:text-white hover:shadow-[0_4px_30px_rgba(184,134,11,0.4)]"
           >
             Book a Discovery Call
-          </a>
+          </button>
         </div>
       </div>
     </section>
