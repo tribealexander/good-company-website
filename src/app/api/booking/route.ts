@@ -1,15 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
 import { google } from "googleapis";
 
-// Initialize Google Calendar API with service account
+// Initialize Google Calendar API with service account + domain-wide delegation
 function getCalendarClient() {
   const credentials = JSON.parse(
     process.env.GOOGLE_CALENDAR_CREDENTIALS || "{}"
   );
+  const calendarId = process.env.GOOGLE_CALENDAR_ID;
 
+  // Use domain-wide delegation to impersonate the calendar owner
   const auth = new google.auth.GoogleAuth({
     credentials,
     scopes: ["https://www.googleapis.com/auth/calendar"],
+    clientOptions: {
+      subject: calendarId, // Impersonate this user
+    },
   });
 
   return google.calendar({ version: "v3", auth });
@@ -92,8 +97,7 @@ export async function POST(request: NextRequest) {
         dateTime: endDateTime.toISOString(),
         timeZone: "America/Toronto",
       },
-      // Note: Service accounts can't invite external attendees without Domain-Wide Delegation
-      // The event is created on the calendar, and we send a confirmation email separately
+      attendees: [{ email }],
       conferenceData: {
         createRequest: {
           requestId: `booking-${Date.now()}`,
@@ -113,6 +117,7 @@ export async function POST(request: NextRequest) {
       calendarId,
       requestBody: event,
       conferenceDataVersion: 1, // Required for Google Meet link
+      sendUpdates: "all", // Send calendar invite to attendee
     });
 
     console.log("Calendar event created:", response.data.id);

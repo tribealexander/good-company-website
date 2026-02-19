@@ -172,7 +172,7 @@ export default function BookingInterface({ name, email, company, message }: Book
           </div>
 
           <p className="text-sm text-muted">
-            We&apos;ll send you a confirmation email with the meeting details.
+            You&apos;ll receive a calendar invite at your email shortly.
           </p>
         </div>
       </div>
