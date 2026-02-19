@@ -2,7 +2,6 @@ export { default as Header } from "./Header";
 export { default as Footer } from "./Footer";
 export { default as Button } from "./Button";
 export { default as Card, SolutionCard, ServiceCard, InvestmentCard } from "./Card";
-export { default as ContactForm } from "./ContactForm";
 export { default as ProblemSelector } from "./ProblemSelector";
 export { default as ProblemsSectionWrapper } from "./ProblemsSectionWrapper";
 export { default as FloatingCTA } from "./FloatingCTA";
