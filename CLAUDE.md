@@ -299,13 +299,12 @@ The homepage (`/src/app/page.tsx`) follows this section order:
 | 1 | Hero | Deep Green (`#004D36`) | - |
 | 2 | Problems We Solve | White/Dynamic (earth tones) | `#problems` |
 | 3 | What We Build | White/Dynamic | `#solutions` |
-| 4 | "Not sure where to start?" | White | - |
-| 5 | From Build to Buy-In | White | - |
-| 6 | How We Work | Cream textured | `#how-we-work` |
-| 7 | Testimonials | White | `#testimonials` |
-| 8 | How We Work (Process) | Cream textured | `#investment` |
-| 9 | FAQ | White | `#faq` |
-| 10 | Final CTA | Cream textured | `#contact` |
+| 4 | From Build to Buy-In | White | - |
+| 5 | How We Work | Cream textured | `#how-we-work` |
+| 6 | Testimonials | White | `#testimonials` |
+| 7 | What Working Together Looks Like | Cream textured | `#investment` |
+| 8 | FAQ | White | `#faq` |
+| 9 | Contact Form | Cream textured | `#contact` |
 
 ### Hero Section
 
@@ -314,7 +313,6 @@ The homepage (`/src/app/page.tsx`) follows this section order:
 - **Headline**: White text with gold rough-notation underline on "automate"
 - **Subhead**: Light green text (`#A8D5C2`) - concise version
 - **CTA**: White button that turns gold on hover (`variant="hero"`)
-- **Secondary CTA**: "Not sure where to start? Happy to think through it with you." - subtle link below main button
 
 ### What We Build Section
 
@@ -895,6 +893,7 @@ npm run lint
 | `src/app/mind-maps/[slug]/MindMapContent.tsx` | Mind map client component with tabbed visualization |
 | `src/app/robots.ts` | Robots.txt (disallows /proposals/ and /mind-maps/) |
 | `src/app/api/contact/route.ts` | Contact form API endpoint |
+| `src/app/api/booking/route.ts` | Booking API - creates Google Calendar events with Meet links |
 | `src/lib/strapi.ts` | Strapi CMS API client (case studies) |
 | `src/lib/proposals.ts` | Local proposals data (add new proposals here) |
 | `src/lib/mindmaps.ts` | Local mind maps data (add new mind maps here) |
@@ -903,7 +902,7 @@ npm run lint
 | `src/components/WhatWeBuildSection.tsx` | Services with dynamic backgrounds |
 | `src/components/ProblemsSectionWrapper.tsx` | Problems with dynamic backgrounds |
 | `src/components/TestimonialsCarousel.tsx` | Testimonials carousel with navigation |
-| `src/components/InvestmentSection.tsx` | How We Work section (Discovery → Partnership, no pricing) |
+| `src/components/InvestmentSection.tsx` | "What Working Together Looks Like" section (Discovery → Partnership) |
 | `src/components/BookingInterface.tsx` | Custom booking UI shown after contact form submission |
 | `src/app/contact/page.tsx` | Dedicated contact page with form |
 | `src/components/RoughAnnotation.tsx` | Rough notation wrapper |
@@ -953,34 +952,39 @@ The following mobile bugs were identified and fixed:
 
 ### Booking System - Google Calendar Integration
 
-The contact form flow currently shows a custom booking UI after form submission, but doesn't actually create calendar events. The UI is complete, but the backend integration is needed.
+The contact form includes a custom booking UI that creates real Google Calendar events with Google Meet links.
 
-**Current flow**:
+**Flow**:
 1. User fills out contact form (name, email, company, size, message)
-2. Form submits to `/api/contact` (logs to console, optionally sends to Google Sheets/Resend)
+2. Form submits to `/api/contact` (sends to Google Sheets + Resend email)
 3. User sees custom Calendly-style booking interface (`BookingInterface.tsx`)
-4. User selects date and time
-5. User clicks "Confirm Booking" → sees confirmation screen
-6. **Missing**: Actual calendar event creation
+4. User selects date and time (weekdays only, 9am-4pm slots)
+5. User clicks "Confirm Booking"
+6. `/api/booking` creates a Google Calendar event with:
+   - 60-minute duration
+   - Google Meet link auto-generated
+   - Calendar invite sent to user's email
+7. User sees confirmation screen
 
-**What needs to be built**:
-1. **Google Calendar API integration** - Create a service account, enable Calendar API, store credentials
-2. **API endpoint** - `POST /api/booking` that:
-   - Receives: name, email, selectedDate, selectedTime
-   - Creates a Google Calendar event with Google Meet link
-   - Sends calendar invite to the user's email
-   - Returns success/failure
-3. **Update BookingInterface** - Call the API in `handleConfirm()` instead of just updating state
+**Architecture**:
+- `/src/components/ContactForm.tsx` - Contact form, passes data to BookingInterface on success
+- `/src/components/BookingInterface.tsx` - Calendar picker UI, calls /api/booking
+- `/src/app/api/booking/route.ts` - Creates Google Calendar events via service account
 
-**Alternative approaches**:
-- Use Cal.com API (simpler, paid service)
-- Use Calendly API (requires paid plan)
-- Simple email notification (send booking request to owner, they manually create invite)
+**Environment Variables** (required in Vercel):
+```bash
+GOOGLE_CALENDAR_ID=your-email@domain.com
+GOOGLE_CALENDAR_CREDENTIALS={"type":"service_account","project_id":"...",...}
+```
 
-**Files to modify**:
-- `/src/components/BookingInterface.tsx` - Add API call in `handleConfirm()`
-- `/src/app/api/booking/route.ts` - New API endpoint (to be created)
-- Environment variables needed: `GOOGLE_CALENDAR_CREDENTIALS`, `GOOGLE_CALENDAR_ID`
+**Google Cloud Setup** (one-time):
+1. Create project at console.cloud.google.com
+2. Enable Google Calendar API
+3. Create Service Account → download JSON credentials
+4. Share your Google Calendar with the service account email (Make changes to events permission)
+5. If using Google Workspace: Admin console → Apps → Calendar → Sharing settings → Enable external sharing
+
+**Timezone**: Events are created in `America/Toronto` timezone (hardcoded in `/api/booking/route.ts`)
 
 ---
 
