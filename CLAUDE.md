@@ -569,15 +569,28 @@ The Case Studies listing page displays work examples.
 - **Page transitions**: Smooth fade-in animation via PageTransition component
 
 **Current Case Studies** (in `src/lib/case-studies.ts`):
-- `the-come-up` - Automating the Editing Process for My Interview Series
-- `technician-note-compliance` - AI-Powered Technician Note Compliance
+- `the-come-up` - Automating the Editing Process for My Interview Series (Marketing)
+- `technician-note-compliance` - AI-Powered Technician Note Compliance (Operations)
+
+**Unpublished** (commented out, waiting for video):
 - `customer-success-workflow-automation` - Customer Success Workflow Automation
+
+**Blocked Slugs** (in `src/lib/strapi.ts`):
+- Strapi entries with these slugs are filtered out even if they exist in CMS
+- Currently blocking: `customer-success-workflow-automation`, `case-study`
 
 **Adding a New Case Study**:
 1. Open `src/lib/case-studies.ts`
 2. Add a new object to `LOCAL_CASE_STUDIES` array
 3. Include `thumbnailUrl` with YouTube thumbnail (format: `https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg`)
-4. Deploy - case study will be live immediately
+4. Note: `maxresdefault.jpg` may not exist for all videos - try `sddefault.jpg` or `hqdefault.jpg` as fallbacks
+5. Deploy - case study will be live immediately
+
+**Publishing an Unpublished Case Study**:
+1. Uncomment the case study from the "UNPUBLISHED" section
+2. Add video URL and thumbnail
+3. Move to `LOCAL_CASE_STUDIES` array
+4. Remove slug from `BLOCKED_SLUGS` in `strapi.ts` if present
 
 ### Detail Page (`/case-studies/[slug]`)
 
