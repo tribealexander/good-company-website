@@ -95,11 +95,11 @@ export async function getCaseStudies(): Promise<CaseStudy[]> {
     // Map Strapi data to our component format and merge with local case studies
     const strapiCaseStudies = data.data.map((study) => mapStrapiToCaseStudy(study));
 
-    // Merge: local case studies first (by order), then Strapi, avoiding duplicates
-    const strapiSlugs = new Set(strapiCaseStudies.map((cs) => cs.slug));
-    const localOnly = LOCAL_CASE_STUDIES.filter((cs) => !strapiSlugs.has(cs.slug));
+    // Merge: local takes priority, then Strapi (excluding duplicates)
+    const localSlugs = new Set(LOCAL_CASE_STUDIES.map((cs) => cs.slug));
+    const strapiOnly = strapiCaseStudies.filter((cs) => !localSlugs.has(cs.slug));
 
-    return [...localOnly, ...strapiCaseStudies].sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
+    return [...LOCAL_CASE_STUDIES, ...strapiOnly].sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
   } catch (error) {
     console.error('Error fetching case studies:', error);
     return LOCAL_CASE_STUDIES;
