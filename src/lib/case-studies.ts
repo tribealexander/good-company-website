@@ -7,7 +7,7 @@ export const LOCAL_CASE_STUDIES: CaseStudy[] = [
     id: "the-come-up",
     slug: "the-come-up",
     department: "Operations",
-    title: "The Come Up: Interview-to-Article Pipeline",
+    title: "Automating the Editing Process for My Interview Series",
     description:
       "An AI editing pipeline that turns hour-long interviews into polished articles. Not AI writing — AI editing. Preserves voice, removes the rambles.",
     problem:
@@ -15,12 +15,13 @@ export const LOCAL_CASE_STUDIES: CaseStudy[] = [
     solution:
       "I replaced the contractor with an AI editing pipeline. Not AI writing — editing.\n\nThe system takes a raw transcript, identifies the key themes, cleans up the rambles and repetition, and formats it into a polished article. Then it quality-checks its own work against style guidelines.\n\nThe whole process is automated. A guest books, we record, the transcript gets processed, and a finished draft lands in my inbox ready for review.\n\nMy only job now is the part I actually enjoy: having the conversation, reviewing the draft, and hitting send.",
     results: [
-      { text: "monthly savings", stat: "$500+" },
-      { text: "turnaround", stat: "Minutes" },
-      { text: "throughput", stat: "Unlimited" },
+      { text: "$500+/month saved", stat: "$500+" },
+      { text: "Turnaround in minutes, not weeks", stat: "Minutes" },
+      { text: "No limit on throughput", stat: "Unlimited" },
     ],
     videoUrl: "https://youtu.be/GczG77hxGPI",
     videoType: "youtube",
+    thumbnailUrl: "https://img.youtube.com/vi/GczG77hxGPI/maxresdefault.jpg",
     featured: true,
     order: 0,
   },

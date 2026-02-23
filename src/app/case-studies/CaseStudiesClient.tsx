@@ -109,23 +109,6 @@ export default function CaseStudiesClient({ initialCaseStudies }: CaseStudiesCli
           {/* Filters + Case Studies Grid */}
           <section className="bg-cream pb-16 pt-6 lg:pb-20">
             <div className="mx-auto max-w-7xl px-6 lg:px-10">
-              {/* Department Filters - Left aligned, tight spacing */}
-              <div className="mb-6 flex flex-wrap gap-2">
-                {departments.map((department) => (
-                  <button
-                    key={department}
-                    onClick={() => handleFilterChange(department)}
-                    className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 ${
-                      activeFilter === department
-                        ? "bg-[#004D36] text-white"
-                        : "border border-[#E0DBD3] bg-white text-dark hover:bg-[#E8EDE9]"
-                    }`}
-                  >
-                    {department}
-                  </button>
-                ))}
-              </div>
-
               {/* Case Study Cards Grid */}
               {visibleCaseStudies.length > 0 ? (
                 <div ref={gridRef} className="grid gap-x-8 gap-y-12 md:grid-cols-2">
