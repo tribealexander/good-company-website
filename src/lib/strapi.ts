@@ -1,5 +1,11 @@
 import { LOCAL_CASE_STUDIES, getLocalCaseStudyBySlug } from "./case-studies";
 
+// Case studies to block from Strapi (unpublished or deprecated)
+const BLOCKED_SLUGS = new Set([
+  "customer-success-workflow-automation", // Waiting for video
+  "case-study", // Test/duplicate entry
+]);
+
 // Strapi Cloud URL - hardcoded for now until env var issue is resolved
 const STRAPI_CLOUD_URL = 'https://supportive-blessing-06262181b8.strapiapp.com';
 
@@ -95,9 +101,11 @@ export async function getCaseStudies(): Promise<CaseStudy[]> {
     // Map Strapi data to our component format and merge with local case studies
     const strapiCaseStudies = data.data.map((study) => mapStrapiToCaseStudy(study));
 
-    // Merge: local takes priority, then Strapi (excluding duplicates)
+    // Merge: local takes priority, then Strapi (excluding duplicates and blocked)
     const localSlugs = new Set(LOCAL_CASE_STUDIES.map((cs) => cs.slug));
-    const strapiOnly = strapiCaseStudies.filter((cs) => !localSlugs.has(cs.slug));
+    const strapiOnly = strapiCaseStudies.filter(
+      (cs) => !localSlugs.has(cs.slug) && !BLOCKED_SLUGS.has(cs.slug)
+    );
 
     return [...LOCAL_CASE_STUDIES, ...strapiOnly].sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
   } catch (error) {

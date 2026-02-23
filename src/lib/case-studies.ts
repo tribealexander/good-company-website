@@ -26,28 +26,6 @@ export const LOCAL_CASE_STUDIES: CaseStudy[] = [
     order: 1,
   },
   {
-    id: "customer-success-workflow-automation",
-    slug: "customer-success-workflow-automation",
-    department: "Operations",
-    title: "Customer Success Workflow Automation",
-    description:
-      "Automated reporting and early warning system for a managed services provider with 200+ clients.",
-    problem:
-      "This MSP had 200+ clients and a three-person customer success team. Every week, they spent 10+ hours manually pulling reports from ConnectWise—digging through ticket data, response times, and client feedback to figure out which accounts needed attention.\n\nBy the time they spotted a problem, the client was usually already frustrated. One CS manager described it as \"constantly playing defense.\" They were always reacting to fires instead of preventing them.\n\nThe data existed to catch problems early. It just wasn't surfaced in a way anyone could actually use.",
-    solution:
-      "We built an automated early warning system that pulls data from ConnectWise every night and flags accounts based on three risk factors: ticket volume trending up, response times slowing down, and satisfaction scores dropping.\n\nEvery Monday morning, the CS team gets a single report showing:\n- Accounts trending negative (7-day and 30-day view)\n- Accounts with no proactive contact in 30+ days\n- Accounts with open escalations or unresolved complaints\n\nNo more pulling reports. No more guessing. The system surfaces problems before clients have to complain.\n\nWe also built a simple Slack integration—when an account crosses a risk threshold, the assigned CS rep gets a DM with context and suggested next steps.",
-    results: [
-      { text: "Reduction in reporting time", stat: "80%" },
-      { text: "At-risk accounts caught before churn", stat: "3" },
-      { text: "Hours saved per week", stat: "10+" },
-    ],
-    videoUrl: "https://www.youtube.com/watch?v=okF5gOTX9uM",
-    videoType: "youtube",
-    thumbnailUrl: "https://img.youtube.com/vi/okF5gOTX9uM/maxresdefault.jpg",
-    featured: true,
-    order: 2,
-  },
-  {
     id: "the-come-up",
     slug: "the-come-up",
     department: "Marketing",
@@ -70,6 +48,36 @@ export const LOCAL_CASE_STUDIES: CaseStudy[] = [
     order: 0,
   },
 ];
+
+// ============================================
+// UNPUBLISHED - Waiting for video
+// ============================================
+// Uncomment and add to LOCAL_CASE_STUDIES when ready to publish
+
+/*
+{
+  id: "customer-success-workflow-automation",
+  slug: "customer-success-workflow-automation",
+  department: "Customer Success",
+  title: "Customer Success Workflow Automation",
+  description:
+    "Automated reporting and early warning system for a managed services provider with 200+ clients.",
+  problem:
+    "This MSP had 200+ clients and a three-person customer success team. Every week, they spent 10+ hours manually pulling reports from ConnectWise—digging through ticket data, response times, and client feedback to figure out which accounts needed attention.\n\nBy the time they spotted a problem, the client was usually already frustrated. One CS manager described it as \"constantly playing defense.\" They were always reacting to fires instead of preventing them.\n\nThe data existed to catch problems early. It just wasn't surfaced in a way anyone could actually use.",
+  solution:
+    "We built an automated early warning system that pulls data from ConnectWise every night and flags accounts based on three risk factors: ticket volume trending up, response times slowing down, and satisfaction scores dropping.\n\nEvery Monday morning, the CS team gets a single report showing:\n- Accounts trending negative (7-day and 30-day view)\n- Accounts with no proactive contact in 30+ days\n- Accounts with open escalations or unresolved complaints\n\nNo more pulling reports. No more guessing. The system surfaces problems before clients have to complain.\n\nWe also built a simple Slack integration—when an account crosses a risk threshold, the assigned CS rep gets a DM with context and suggested next steps.",
+  results: [
+    { text: "Reduction in reporting time", stat: "80%" },
+    { text: "At-risk accounts caught before churn", stat: "3" },
+    { text: "Hours saved per week", stat: "10+" },
+  ],
+  videoUrl: "", // TODO: Add video URL
+  videoType: "youtube",
+  thumbnailUrl: "", // TODO: Add thumbnail
+  featured: true,
+  order: 2,
+},
+*/
 
 export function getLocalCaseStudyBySlug(slug: string): CaseStudy | undefined {
   return LOCAL_CASE_STUDIES.find((cs) => cs.slug === slug);
