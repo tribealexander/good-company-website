@@ -551,21 +551,33 @@ The Mind Maps system (`/mind-maps/[slug]`) is a private archive for case study v
 
 ### List Page (`/case-studies`)
 
-The Case Studies listing page displays work examples organized by department.
+The Case Studies listing page displays work examples.
 
 **Architecture**:
-- `page.tsx` - Server component that fetches data from Strapi CMS
-- `CaseStudiesClient.tsx` - Client component with filters and card grid
+- `page.tsx` - Server component that fetches data
+- `CaseStudiesClient.tsx` - Client component with card grid
 - `loading.tsx` - Skeleton UI shown during navigation/loading
+- `src/lib/case-studies.ts` - **Local case studies data (primary source)**
+- `src/lib/strapi.ts` - Strapi CMS client (fallback, local takes priority)
 
 **Features**:
-- **Department filters**: All, Operations, Sales, Customer Success, Finance, Marketing, HR, Field Services
-- **Strapi CMS integration**: Fetches case studies from Strapi Cloud with ISR (60s revalidation)
-- **Fallback data**: If Strapi is unavailable, falls back to hardcoded case studies
+- **Local-first**: Case studies in `case-studies.ts` take priority over Strapi CMS
 - **Card links**: Clicking a card navigates to `/case-studies/[slug]` detail page
 - **Video badge**: Cards with videos show a "Video" indicator
+- **YouTube thumbnails**: Extracted automatically from video URLs
 - **Load More**: Shows 6 case studies initially, with button to load more
 - **Page transitions**: Smooth fade-in animation via PageTransition component
+
+**Current Case Studies** (in `src/lib/case-studies.ts`):
+- `the-come-up` - Automating the Editing Process for My Interview Series
+- `technician-note-compliance` - AI-Powered Technician Note Compliance
+- `customer-success-workflow-automation` - Customer Success Workflow Automation
+
+**Adding a New Case Study**:
+1. Open `src/lib/case-studies.ts`
+2. Add a new object to `LOCAL_CASE_STUDIES` array
+3. Include `thumbnailUrl` with YouTube thumbnail (format: `https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg`)
+4. Deploy - case study will be live immediately
 
 ### Detail Page (`/case-studies/[slug]`)
 
@@ -888,6 +900,7 @@ npm run lint
 | `src/app/mind-maps/[slug]/MindMapContent.tsx` | Mind map client component with tabbed visualization |
 | `src/app/robots.ts` | Robots.txt (disallows /proposals/ and /mind-maps/) |
 | `src/lib/strapi.ts` | Strapi CMS API client (case studies) |
+| `src/lib/case-studies.ts` | Local case studies data (add new case studies here) |
 | `src/lib/proposals.ts` | Local proposals data (add new proposals here) |
 | `src/lib/mindmaps.ts` | Local mind maps data (add new mind maps here) |
 | `src/components/Header.tsx` | Navigation (adapts to dark hero) |
