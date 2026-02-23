@@ -91,6 +91,69 @@ const MIND_MAPS: MindMap[] = [
   // THREE-COLUMN LAYOUTS
   // ===========================================
   {
+    slug: "the-come-up",
+    title: "The Come Up: Interview-to-Article Pipeline",
+    caseStudy: "the-come-up",
+    createdAt: "2026-02-23",
+    layout: "three-column",
+    solutionEmphasis: "AI editing with human oversight",
+    problems: [
+      {
+        label: "$500/Month + Overhead",
+        description:
+          "Contractor cost plus constant management: tracking, assigning, coaching, following up",
+      },
+      {
+        label: "One Per Week Max",
+        description:
+          "Low-paid subcontractor = delays. Your side project isn't their priority. Scaling means scaling fees.",
+      },
+      {
+        label: "Hard to Justify",
+        description:
+          "No revenue from this project. $500/month is hard to defend for a passion project.",
+      },
+    ],
+    solution: [
+      {
+        label: "AI Editing, Not Writing",
+        description:
+          "18K words → 4K. Removes ums, rambles, repetition. Preserves voice exactly.",
+      },
+      {
+        label: "Three Steps + Oversight",
+        description:
+          "1. Identify themes\n2. Edit into polished format\n3. Quality check\nHuman reviews before publish.",
+      },
+      {
+        label: "Fully Automated Pipeline",
+        description:
+          "Guest books → transcript ready → AI processes → doc ready. Status tracked automatically.",
+      },
+    ],
+    results: [
+      {
+        label: "Cost & Management",
+        description: "From $500 + hours to near-zero",
+        metric: "$0",
+      },
+      {
+        label: "Throughput",
+        description: "No longer bottlenecked by contractor",
+        metric: "Unlimited",
+      },
+      {
+        label: "My Only Touchpoints",
+        description:
+          "1. Conduct interview\n2. Review and send email\n3. Mark approved",
+      },
+    ],
+    tagline: {
+      text: "The 'passive' content project",
+      emphasis: "is finally passive.",
+    },
+  },
+  {
     slug: "task-pinger",
     title: "Task Pinger",
     caseStudy: "task-pinger",

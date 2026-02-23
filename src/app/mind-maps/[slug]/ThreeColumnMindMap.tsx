@@ -43,7 +43,7 @@ export default function ThreeColumnMindMap({ mindMap }: Props) {
                 <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#c9403a] mb-2">
                   {problem.label}
                 </p>
-                <p className="text-sm leading-relaxed text-text-light">
+                <p className="text-sm leading-relaxed text-text-light whitespace-pre-line">
                   {problem.description}
                 </p>
               </div>
@@ -89,7 +89,7 @@ export default function ThreeColumnMindMap({ mindMap }: Props) {
                 <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-primary mb-2">
                   {step.label}
                 </p>
-                <p className="text-sm leading-relaxed text-text-light">
+                <p className="text-sm leading-relaxed text-text-light whitespace-pre-line">
                   {step.description}
                 </p>
               </div>
@@ -147,7 +147,7 @@ export default function ThreeColumnMindMap({ mindMap }: Props) {
                     <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#2a7d5c] mb-2">
                       {result.label}
                     </p>
-                    <p className="text-sm leading-relaxed text-text-light">
+                    <p className="text-sm leading-relaxed text-text-light whitespace-pre-line">
                       {result.description}
                     </p>
                   </>
