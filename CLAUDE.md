@@ -6,6 +6,8 @@ This is the marketing website for **Good Company**, a boutique operational effic
 
 **Target audience**: Founders scaling their first business, PE-backed companies, second-generation owners, and service businesses with distributed teams.
 
+**Production URL**: https://yourgoodcompany.com
+
 **Tech stack**:
 - Next.js 16+ (App Router)
 - TypeScript
