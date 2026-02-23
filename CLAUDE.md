@@ -541,7 +541,7 @@ The Mind Maps system (`/mind-maps/[slug]`) is a private archive for case study v
 ```
 
 **Current Mind Maps**:
-- `/mind-maps/the-come-up` - Interview-to-article pipeline (three-column layout)
+- `/mind-maps/the-come-up` - AI-Powered Editing for a Newsletter Publication (three-column layout)
 - `/mind-maps/task-pinger` - Task Pinger case study (three-column layout)
 - `/mind-maps/field-tech-compliance` - Field Tech Compliance case study (vertical layout)
 
@@ -569,7 +569,7 @@ The Case Studies listing page displays work examples.
 - **Page transitions**: Smooth fade-in animation via PageTransition component
 
 **Current Case Studies** (in `src/lib/case-studies.ts`):
-- `the-come-up` - Automating the Editing Process for My Interview Series (Marketing)
+- `the-come-up` - AI-Powered Editing for a Newsletter Publication (Marketing)
 - `technician-note-compliance` - AI-Powered Technician Note Compliance (Operations)
 
 **Unpublished** (commented out, waiting for video):
