@@ -29,7 +29,7 @@ export default function ThreeColumnMindMap({ mindMap }: Props) {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
               </div>
-              <h2 className="font-mono text-xs font-bold uppercase tracking-widest text-[#c9403a]">
+              <h2 className="font-mono text-base font-bold uppercase tracking-widest text-[#c9403a]">
                 Problem
               </h2>
             </div>
@@ -40,7 +40,7 @@ export default function ThreeColumnMindMap({ mindMap }: Props) {
                 key={i}
                 className="rounded-lg border border-border bg-white p-5 shadow-sm transition-all duration-200 hover:shadow-md hover:border-[#f85149]/30 hover:-translate-y-0.5"
               >
-                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#c9403a] mb-2">
+                <p className="font-mono text-sm font-bold uppercase tracking-widest text-[#c9403a] mb-2">
                   {problem.label}
                 </p>
                 <p className="text-sm leading-relaxed text-text-light whitespace-pre-line">
@@ -75,7 +75,7 @@ export default function ThreeColumnMindMap({ mindMap }: Props) {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
               </div>
-              <h2 className="font-mono text-xs font-bold uppercase tracking-widest text-primary">
+              <h2 className="font-mono text-base font-bold uppercase tracking-widest text-primary">
                 Solution
               </h2>
             </div>
@@ -86,7 +86,7 @@ export default function ThreeColumnMindMap({ mindMap }: Props) {
                 key={i}
                 className="rounded-lg border border-border bg-white p-5 shadow-sm transition-all duration-200 hover:shadow-md hover:border-primary/30 hover:-translate-y-0.5"
               >
-                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-primary mb-2">
+                <p className="font-mono text-sm font-bold uppercase tracking-widest text-primary mb-2">
                   {step.label}
                 </p>
                 <p className="text-sm leading-relaxed text-text-light whitespace-pre-line">
@@ -121,7 +121,7 @@ export default function ThreeColumnMindMap({ mindMap }: Props) {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h2 className="font-mono text-xs font-bold uppercase tracking-widest text-[#2a7d5c]">
+              <h2 className="font-mono text-base font-bold uppercase tracking-widest text-[#2a7d5c]">
                 Results
               </h2>
             </div>
@@ -144,7 +144,7 @@ export default function ThreeColumnMindMap({ mindMap }: Props) {
                   </>
                 ) : (
                   <>
-                    <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#2a7d5c] mb-2">
+                    <p className="font-mono text-sm font-bold uppercase tracking-widest text-[#2a7d5c] mb-2">
                       {result.label}
                     </p>
                     <p className="text-sm leading-relaxed text-text-light whitespace-pre-line">
