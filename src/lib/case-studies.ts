@@ -50,7 +50,7 @@ export const LOCAL_CASE_STUDIES: CaseStudy[] = [
   {
     id: "the-come-up",
     slug: "the-come-up",
-    department: "Operations",
+    department: "Marketing",
     title: "Automating the Editing Process for My Interview Series",
     description:
       "An AI editing pipeline that turns hour-long interviews into polished articles. Not AI writing — AI editing. Preserves voice, removes the rambles.",
