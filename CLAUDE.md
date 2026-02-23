@@ -541,6 +541,7 @@ The Mind Maps system (`/mind-maps/[slug]`) is a private archive for case study v
 ```
 
 **Current Mind Maps**:
+- `/mind-maps/the-come-up` - Interview-to-article pipeline (three-column layout)
 - `/mind-maps/task-pinger` - Task Pinger case study (three-column layout)
 - `/mind-maps/field-tech-compliance` - Field Tech Compliance case study (vertical layout)
 
