@@ -92,7 +92,7 @@ const MIND_MAPS: MindMap[] = [
   // ===========================================
   {
     slug: "the-come-up",
-    title: "The Come Up: Interview-to-Article Pipeline",
+    title: "AI-Powered Editing for a Newsletter Publication",
     caseStudy: "the-come-up",
     createdAt: "2026-02-23",
     layout: "three-column",

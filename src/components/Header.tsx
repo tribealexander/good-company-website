@@ -54,7 +54,7 @@ export default function Header() {
 
   const navLinks = [
     { href: "/about", label: "About" },
-    // { href: "/case-studies", label: "Case Studies" }, // TODO: Unhide when case studies are populated
+    { href: "/case-studies", label: "Case Studies" },
   ];
 
   // Determine styling mode:
