@@ -1,3 +1,5 @@
+import { LOCAL_CASE_STUDIES, getLocalCaseStudyBySlug } from "./case-studies";
+
 // Strapi Cloud URL - hardcoded for now until env var issue is resolved
 const STRAPI_CLOUD_URL = 'https://supportive-blessing-06262181b8.strapiapp.com';
 
@@ -84,20 +86,31 @@ export async function getCaseStudies(): Promise<CaseStudy[]> {
 
     if (!res.ok) {
       console.error('Failed to fetch case studies:', res.status, res.statusText);
-      return [];
+      // Return local case studies as fallback
+      return LOCAL_CASE_STUDIES;
     }
 
     const data: StrapiResponse<StrapiCaseStudy> = await res.json();
 
-    // Map Strapi data to our component format
-    return data.data.map((study) => mapStrapiToCaseStudy(study));
+    // Map Strapi data to our component format and merge with local case studies
+    const strapiCaseStudies = data.data.map((study) => mapStrapiToCaseStudy(study));
+
+    // Merge: local case studies first (by order), then Strapi, avoiding duplicates
+    const strapiSlugs = new Set(strapiCaseStudies.map((cs) => cs.slug));
+    const localOnly = LOCAL_CASE_STUDIES.filter((cs) => !strapiSlugs.has(cs.slug));
+
+    return [...localOnly, ...strapiCaseStudies].sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
   } catch (error) {
     console.error('Error fetching case studies:', error);
-    return [];
+    return LOCAL_CASE_STUDIES;
   }
 }
 
 export async function getCaseStudyBySlug(slug: string): Promise<CaseStudy | null> {
+  // Check local case studies first
+  const localStudy = getLocalCaseStudyBySlug(slug);
+  if (localStudy) return localStudy;
+
   const strapiUrl = getStrapiUrl();
 
   try {
@@ -125,6 +138,7 @@ export async function getCaseStudyBySlug(slug: string): Promise<CaseStudy | null
 
 export async function getAllCaseStudySlugs(): Promise<string[]> {
   const strapiUrl = getStrapiUrl();
+  const localSlugs = LOCAL_CASE_STUDIES.map((cs) => cs.slug);
 
   try {
     const res = await fetch(
@@ -133,14 +147,17 @@ export async function getAllCaseStudySlugs(): Promise<string[]> {
     );
 
     if (!res.ok) {
-      return [];
+      return localSlugs;
     }
 
     const data: StrapiResponse<{ slug: string }> = await res.json();
-    return data.data.map((study) => study.slug).filter(Boolean);
+    const strapiSlugs = data.data.map((study) => study.slug).filter(Boolean);
+
+    // Combine and dedupe
+    return [...new Set([...localSlugs, ...strapiSlugs])];
   } catch (error) {
     console.error('Error fetching case study slugs:', error);
-    return [];
+    return localSlugs;
   }
 }
 
