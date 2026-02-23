@@ -11,15 +11,14 @@ export const LOCAL_CASE_STUDIES: CaseStudy[] = [
     description:
       "An AI editing pipeline that turns hour-long interviews into polished articles. Not AI writing — AI editing. Preserves voice, removes the rambles.",
     problem:
-      "I run an interview series called The Come Up. I sit down with business owners for about an hour, we talk the ins and outs of their business, and it gets published as a written article.\n\nTurning those conversations into published work was costing about $500 a month. It required constant project management, and I'd still be waiting weeks — sometimes months — to get a finished piece back.\n\nFor a passion project with no revenue, it was hard to justify. Especially if I wanted to scale it up.",
+      "The Come Up is an interview series where I sit down with business owners for an hour, talk through the ins and outs of their business, and publish it as a written article.\n\nI was paying an editor $500+ a month to turn transcripts into finished pieces. But even with a dedicated contractor, I'd wait weeks — sometimes months — to get something back.\n\nThe delay was embarrassing. I'd have a great conversation, build real rapport, and then go silent for weeks. By the time I sent them the finished article, the momentum was gone. It undid the relationship-building the interview was supposed to create.\n\nAnd for a passion project generating no revenue, $500/month plus constant project management was hard to justify.",
     solution:
-      "I built an AI editing pipeline. Not AI writing — just editing.\n\nIt takes the full transcript, identifies the themes, edits it to a polished format, and quality checks its own work.\n\nThe whole thing is automated end to end. Guest books, we record, AI processes it, and a finished draft lands in my inbox.\n\nThe only thing I have to do is what I like doing: interview, review the draft, hit send.",
+      "I replaced the contractor with an AI editing pipeline. Not AI writing — editing.\n\nThe system takes a raw transcript, identifies the key themes, cleans up the rambles and repetition, and formats it into a polished article. Then it quality-checks its own work against style guidelines.\n\nThe whole process is automated. A guest books, we record, the transcript gets processed, and a finished draft lands in my inbox ready for review.\n\nMy only job now is the part I actually enjoy: having the conversation, reviewing the draft, and hitting send.",
     results: [
-      { text: "monthly cost", stat: "$0" },
-      { text: "turnaround time", stat: "Minutes" },
+      { text: "monthly savings", stat: "$500+" },
+      { text: "turnaround", stat: "Minutes" },
       { text: "throughput", stat: "Unlimited" },
     ],
-    resultsTimeframe: "immediately",
     videoUrl: "https://youtu.be/GczG77hxGPI",
     videoType: "youtube",
     featured: true,
