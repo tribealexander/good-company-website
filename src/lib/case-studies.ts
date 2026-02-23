@@ -21,7 +21,7 @@ export const LOCAL_CASE_STUDIES: CaseStudy[] = [
     ],
     videoUrl: "https://youtu.be/TgYH2Vi-yrM",
     videoType: "youtube",
-    thumbnailUrl: "https://img.youtube.com/vi/TgYH2Vi-yrM/hqdefault.jpg",
+    thumbnailUrl: "https://img.youtube.com/vi/TgYH2Vi-yrM/sddefault.jpg",
     featured: false,
     order: 1,
   },
