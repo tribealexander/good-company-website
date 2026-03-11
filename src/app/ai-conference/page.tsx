@@ -431,7 +431,7 @@ export default function AIConferenceDashboard() {
     };
   }, []);
 
-  // Save to Supabase when state changes (debounced)
+  // Save to Supabase when state changes (short debounce)
   useEffect(() => {
     if (!isLoaded) return;
 
@@ -441,13 +441,24 @@ export default function AIConferenceDashboard() {
 
     saveTimeoutRef.current = setTimeout(() => {
       saveToSupabase(categories, venues, expandedCategories);
-    }, 500);
+    }, 150); // Reduced from 500ms for faster saves
 
     return () => {
       if (saveTimeoutRef.current) {
         clearTimeout(saveTimeoutRef.current);
       }
     };
+  }, [categories, venues, expandedCategories, isLoaded, saveToSupabase]);
+
+  // Save immediately when leaving the page
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      if (isLoaded) {
+        saveToSupabase(categories, venues, expandedCategories);
+      }
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
   }, [categories, venues, expandedCategories, isLoaded, saveToSupabase]);
 
   const toggleCategory = (categoryId: string) => {
