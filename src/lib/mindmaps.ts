@@ -227,6 +227,84 @@ const MIND_MAPS: MindMap[] = [
       },
     ],
   },
+  {
+    slug: "ai-operating-system",
+    title: "AI Operating System for Knowledge Compounding",
+    caseStudy: "ai-operating-system",
+    createdAt: "2026-03-02",
+    layout: "three-column",
+    solutionEmphasis: "explicit context routing, not magic AI",
+    problems: [
+      {
+        label: "Knowledge Evaporation",
+        description:
+          "Strategic conversations disappeared when threads closed. Chamber prospecting ideas, client solutions — all gone.",
+      },
+      {
+        label: "Rebuild, Don't Reuse",
+        description:
+          "Built same solutions for different clients. Call transcripts sat unused. Patterns never extracted.",
+      },
+      {
+        label: "Inconsistent Voice",
+        description:
+          "Professional emails sounded different from blog posts. No documented guidelines for AI to follow.",
+      },
+      {
+        label: "Context Chaos",
+        description:
+          "AI couldn't find the right information. Hoped it would 'figure out' what to read — it didn't.",
+      },
+    ],
+    solution: [
+      {
+        label: "Master Context Router",
+        description:
+          "Central README routes tasks to correct context. Email → professional voice. Blog → storytelling voice. Explicit, not magic.",
+      },
+      {
+        label: "Knowledge Indexes",
+        description:
+          "Extracted 59 Come Up interviews → 10 patterns + pain points. 83 blog posts → frameworks + stories + voice guidelines.",
+      },
+      {
+        label: "Pattern Templates",
+        description:
+          "Client solutions → reusable templates. Task Pinger: full documentation + pricing + when NOT to use.",
+      },
+      {
+        label: "Three-Level System",
+        description:
+          "Task → Master README → Specific Context → Generated Output. Every conversation archives back to system.",
+      },
+    ],
+    results: [
+      {
+        label: "Proposal Time",
+        description: "Projected savings on repeat work",
+        metric: "90%",
+      },
+      {
+        label: "Pattern Reuse",
+        description: "Solutions become templates, not one-offs",
+        metric: "Infinite",
+      },
+      {
+        label: "Context Access",
+        description: "AI can instantly read 59 interviews vs manual recall",
+        metric: "Instant",
+      },
+      {
+        label: "Knowledge Preserved",
+        description:
+          "Every call, conversation, solution → captured and searchable instead of evaporated",
+      },
+    ],
+    tagline: {
+      text: "Knowledge that compounds",
+      emphasis: "instead of evaporates.",
+    },
+  },
 
   // ===========================================
   // VERTICAL LAYOUTS

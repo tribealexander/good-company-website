@@ -1,4 +1,4 @@
-import { LOCAL_CASE_STUDIES, getLocalCaseStudyBySlug } from "./case-studies";
+import { LOCAL_CASE_STUDIES, getLocalCaseStudyBySlug, getAllLocalCaseStudies } from "./case-studies";
 
 // Case studies to block from Strapi (unpublished or deprecated)
 const BLOCKED_SLUGS = new Set([
@@ -50,6 +50,17 @@ export interface StrapiCaseStudy {
   publishedAt: string;
 }
 
+export interface LongFormSection {
+  heading: string;
+  content: string;
+  subsections?: { subheading: string; content: string }[];
+}
+
+export interface FAQ {
+  question: string;
+  answer: string;
+}
+
 export interface CaseStudy {
   id: string;
   slug: string;
@@ -65,6 +76,12 @@ export interface CaseStudy {
   thumbnailUrl?: string;
   featured?: boolean;
   order?: number;
+  // SEO-optimized long-form content sections
+  seoTitle?: string; // Custom title for SEO (if different from title)
+  seoDescription?: string; // Custom meta description
+  longFormSections?: LongFormSection[]; // Additional content sections
+  faqs?: FAQ[]; // FAQ section for featured snippets
+  keyTakeaways?: string[]; // Bullet points of key insights
 }
 
 interface StrapiResponse<T> {
@@ -92,8 +109,8 @@ export async function getCaseStudies(): Promise<CaseStudy[]> {
 
     if (!res.ok) {
       console.error('Failed to fetch case studies:', res.status, res.statusText);
-      // Return local case studies as fallback
-      return LOCAL_CASE_STUDIES;
+      // Return all local case studies (including SEO versions) as fallback
+      return getAllLocalCaseStudies();
     }
 
     const data: StrapiResponse<StrapiCaseStudy> = await res.json();
@@ -101,13 +118,14 @@ export async function getCaseStudies(): Promise<CaseStudy[]> {
     // Map Strapi data to our component format and merge with local case studies
     const strapiCaseStudies = data.data.map((study) => mapStrapiToCaseStudy(study));
 
-    // Merge: local takes priority, then Strapi (excluding duplicates and blocked)
-    const localSlugs = new Set(LOCAL_CASE_STUDIES.map((cs) => cs.slug));
+    // Merge: local takes priority (including SEO versions), then Strapi (excluding duplicates and blocked)
+    const allLocalCaseStudies = getAllLocalCaseStudies();
+    const localSlugs = new Set(allLocalCaseStudies.map((cs) => cs.slug));
     const strapiOnly = strapiCaseStudies.filter(
       (cs) => !localSlugs.has(cs.slug) && !BLOCKED_SLUGS.has(cs.slug)
     );
 
-    return [...LOCAL_CASE_STUDIES, ...strapiOnly].sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
+    return [...allLocalCaseStudies, ...strapiOnly].sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
   } catch (error) {
     console.error('Error fetching case studies:', error);
     return LOCAL_CASE_STUDIES;
@@ -146,7 +164,8 @@ export async function getCaseStudyBySlug(slug: string): Promise<CaseStudy | null
 
 export async function getAllCaseStudySlugs(): Promise<string[]> {
   const strapiUrl = getStrapiUrl();
-  const localSlugs = LOCAL_CASE_STUDIES.map((cs) => cs.slug);
+  // Include both regular and SEO-optimized case studies
+  const localSlugs = getAllLocalCaseStudies().map((cs) => cs.slug);
 
   try {
     const res = await fetch(

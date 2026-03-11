@@ -1,6 +1,7 @@
 // Local case studies - hardcoded for cases not in Strapi CMS
 
 import type { CaseStudy } from "./strapi";
+import { SEO_CASE_STUDIES, getSEOCaseStudyBySlug } from "./case-studies-seo";
 
 export const LOCAL_CASE_STUDIES: CaseStudy[] = [
   {
@@ -80,5 +81,15 @@ export const LOCAL_CASE_STUDIES: CaseStudy[] = [
 */
 
 export function getLocalCaseStudyBySlug(slug: string): CaseStudy | undefined {
+  // Check SEO case studies first (they have more content)
+  const seoStudy = getSEOCaseStudyBySlug(slug);
+  if (seoStudy) return seoStudy;
+
+  // Fall back to regular case studies
   return LOCAL_CASE_STUDIES.find((cs) => cs.slug === slug);
+}
+
+// Export all local case studies including SEO versions
+export function getAllLocalCaseStudies(): CaseStudy[] {
+  return [...SEO_CASE_STUDIES, ...LOCAL_CASE_STUDIES];
 }

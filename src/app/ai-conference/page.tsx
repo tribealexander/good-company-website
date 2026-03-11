@@ -361,6 +361,7 @@ export default function AIConferenceDashboard() {
 
   // Save to Supabase (debounced)
   const saveToSupabase = useCallback(async (cats: Category[], vens: Venue[], expanded: Set<string>) => {
+    if (!supabase) return;
     setIsSaving(true);
     try {
       await supabase
@@ -380,8 +381,15 @@ export default function AIConferenceDashboard() {
 
   // Load from Supabase on mount
   useEffect(() => {
+    if (!supabase) {
+      setIsLoaded(true);
+      return;
+    }
+
+    const db = supabase; // TypeScript narrowing
+
     const loadData = async () => {
-      const { data, error } = await supabase
+      const { data, error } = await db
         .from('conference_data')
         .select('*')
         .eq('id', 1)
@@ -404,7 +412,7 @@ export default function AIConferenceDashboard() {
     loadData();
 
     // Subscribe to real-time changes
-    const channel = supabase
+    const channel = db
       .channel('conference_changes')
       .on(
         'postgres_changes',
@@ -419,7 +427,7 @@ export default function AIConferenceDashboard() {
       .subscribe();
 
     return () => {
-      supabase.removeChannel(channel);
+      db.removeChannel(channel);
     };
   }, []);
 

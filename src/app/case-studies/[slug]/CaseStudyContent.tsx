@@ -175,6 +175,92 @@ export default function CaseStudyContent({ caseStudy }: Props) {
           </div>
         </section>
       )}
+
+      {/* Long-Form Content Sections - SEO-optimized content */}
+      {caseStudy.longFormSections && caseStudy.longFormSections.length > 0 && (
+        <section className="py-12 lg:py-16">
+          <div className="mx-auto max-w-4xl px-6 lg:px-10">
+            {caseStudy.longFormSections.map((section, sectionIndex) => (
+              <ScrollReveal key={sectionIndex} delay={sectionIndex * 100}>
+                <div className="mb-12 lg:mb-16">
+                  <h2 className="font-serif text-3xl font-bold text-dark mb-8 lg:text-4xl">
+                    {section.heading}
+                  </h2>
+
+                  {section.content && (
+                    <div
+                      className="prose prose-lg max-w-none text-text leading-[1.8] mb-8 prose-p:text-text prose-strong:text-dark prose-ul:text-text prose-ol:text-text prose-li:text-text"
+                      dangerouslySetInnerHTML={{ __html: section.content }}
+                    />
+                  )}
+
+                  {section.subsections && section.subsections.map((subsection, subIndex) => (
+                    <div key={subIndex} className="mb-12">
+                      <h3 className="font-serif text-2xl font-semibold text-dark mb-6 mt-8">
+                        {subsection.subheading}
+                      </h3>
+                      <div
+                        className="prose prose-lg max-w-none text-text leading-[1.8] prose-p:mb-6 prose-strong:text-dark prose-ul:mb-6 prose-ul:space-y-3 prose-ol:mb-6 prose-ol:space-y-3 prose-li:text-text prose-li:leading-relaxed"
+                        dangerouslySetInnerHTML={{ __html: subsection.content }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Key Takeaways Section */}
+      {caseStudy.keyTakeaways && caseStudy.keyTakeaways.length > 0 && (
+        <section className="bg-cream py-12 lg:py-16">
+          <div className="mx-auto max-w-4xl px-6 lg:px-10">
+            <ScrollReveal>
+              <h2 className="font-serif text-3xl font-bold text-dark mb-8 lg:text-4xl">
+                Key Takeaways for Service Business Owners
+              </h2>
+              <div className="grid gap-4">
+                {caseStudy.keyTakeaways.map((takeaway, index) => (
+                  <div key={index} className="flex items-start gap-4 bg-white p-6 rounded-lg border border-border">
+                    <div className="flex-shrink-0 mt-1">
+                      <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <p className="text-lg text-text leading-relaxed">{takeaway}</p>
+                  </div>
+                ))}
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+      )}
+
+      {/* FAQ Section - Optimized for featured snippets */}
+      {caseStudy.faqs && caseStudy.faqs.length > 0 && (
+        <section className="py-12 lg:py-16">
+          <div className="mx-auto max-w-4xl px-6 lg:px-10">
+            <ScrollReveal>
+              <h2 className="font-serif text-3xl font-bold text-dark mb-8 lg:text-4xl text-center">
+                Frequently Asked Questions
+              </h2>
+              <div className="space-y-6">
+                {caseStudy.faqs.map((faq, index) => (
+                  <div key={index} className="bg-white border border-border rounded-lg p-8">
+                    <h3 className="font-serif text-xl font-semibold text-dark mb-4">
+                      {faq.question}
+                    </h3>
+                    <p className="text-lg text-text leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+      )}
     </div>
   );
 }

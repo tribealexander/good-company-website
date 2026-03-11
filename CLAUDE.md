@@ -549,6 +549,14 @@ The Mind Maps system (`/mind-maps/[slug]`) is a private archive for case study v
 
 ## Case Studies
 
+### Overview
+
+Good Company uses two case study formats:
+1. **Short video case studies** (500-800 words) - Quick trust-building examples
+2. **SEO-optimized written case studies** (2,500-3,000 words) - Long-form content designed to rank for problem-focused keywords
+
+Both formats coexist. Video case studies provide quick social proof, while SEO case studies drive organic traffic by targeting specific problems business owners search for.
+
 ### List Page (`/case-studies`)
 
 The Case Studies listing page displays work examples.
@@ -557,20 +565,30 @@ The Case Studies listing page displays work examples.
 - `page.tsx` - Server component that fetches data
 - `CaseStudiesClient.tsx` - Client component with card grid
 - `loading.tsx` - Skeleton UI shown during navigation/loading
-- `src/lib/case-studies.ts` - **Local case studies data (primary source)**
+- `src/lib/case-studies.ts` - **Local short case studies data**
+- `src/lib/case-studies-seo.ts` - **SEO-optimized case studies data**
 - `src/lib/strapi.ts` - Strapi CMS client (fallback, local takes priority)
 
 **Features**:
-- **Local-first**: Case studies in `case-studies.ts` take priority over Strapi CMS
+- **Local-first**: Case studies in `case-studies.ts` and `case-studies-seo.ts` take priority over Strapi CMS
 - **Card links**: Clicking a card navigates to `/case-studies/[slug]` detail page
 - **Video badge**: Cards with videos show a "Video" indicator
 - **YouTube thumbnails**: Extracted automatically from video URLs
 - **Load More**: Shows 6 case studies initially, with button to load more
 - **Page transitions**: Smooth fade-in animation via PageTransition component
 
-**Current Case Studies** (in `src/lib/case-studies.ts`):
+**Current Case Studies**:
+
+*Short Format* (in `src/lib/case-studies.ts`):
 - `the-come-up` - AI-Powered Editing for a Newsletter Publication (Marketing)
 - `technician-note-compliance` - AI-Powered Technician Note Compliance (Operations)
+
+*SEO-Optimized Format* (in `src/lib/case-studies-seo.ts`):
+- `eliminate-invoice-writeoffs-service-business` - How a Toronto Service Company Eliminated Six Figures in Invoice Write-Offs (Operations)
+  - **Status**: Complete, not yet deployed to production
+  - 2,500+ words optimized for "eliminate invoice write-offs", "service business documentation", "Toronto/GTA"
+  - Includes: long-form sections, FAQs, key takeaways, results cards
+  - Follows principles-focused approach (visibility, accountability, incentives)
 
 **Unpublished** (commented out, waiting for video):
 - `customer-success-workflow-automation` - Customer Success Workflow Automation
@@ -579,12 +597,19 @@ The Case Studies listing page displays work examples.
 - Strapi entries with these slugs are filtered out even if they exist in CMS
 - Currently blocking: `customer-success-workflow-automation`, `case-study`
 
-**Adding a New Case Study**:
+**Adding a Short Video Case Study**:
 1. Open `src/lib/case-studies.ts`
 2. Add a new object to `LOCAL_CASE_STUDIES` array
 3. Include `thumbnailUrl` with YouTube thumbnail (format: `https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg`)
 4. Note: `maxresdefault.jpg` may not exist for all videos - try `sddefault.jpg` or `hqdefault.jpg` as fallbacks
 5. Deploy - case study will be live immediately
+
+**Adding an SEO-Optimized Case Study**:
+1. **READ THE GUIDES FIRST**: See "Case Study Writing Guidelines" section below
+2. Open `src/lib/case-studies-seo.ts`
+3. Add a new object to `SEO_CASE_STUDIES` array
+4. Follow the comprehensive format with all SEO fields
+5. Deploy - case study will be statically generated
 
 **Publishing an Unpublished Case Study**:
 1. Uncomment the case study from the "UNPUBLISHED" section
@@ -626,6 +651,202 @@ Individual case study pages with full content.
 The detail page auto-detects video type from URL if `videoType` is set to "none":
 - YouTube URLs → YouTube embed
 - Loom URLs → Loom embed
+
+### Case Study Writing Guidelines
+
+Good Company has a **principles-focused, anti-jargon approach** to case studies. The goal is to speak to skeptical business owners who care about outcomes, not technology.
+
+#### Core Principles
+
+**DO:**
+- Lead with business outcomes, not technical features
+- Focus on **visibility, accountability, and incentives** (the three principles of behavior change)
+- Use ranges instead of fabricated exact numbers ("six figures" not "$200,000", "90%+" not "94.73%")
+- Show you understand why previous solutions failed
+- Call out what doesn't work, directly
+- Use client's actual words where possible
+- Be specific about results
+
+**DON'T:**
+- ❌ Mention pricing (implementation costs, monthly fees)
+- ❌ Use technical jargon (API calls, Python scripts, GitHub Actions, platform names)
+- ❌ Try to sound smart with corporate speak ("leverage", "synergize", "value-add")
+- ❌ Oversell or guarantee outcomes
+- ❌ Hide the difficulty of implementation
+- ❌ Use vague claims ("significant improvement", "better outcomes")
+- ❌ Mention specific tools/platforms (Zapier, Make, Claude, etc.)
+
+**Tone:** Professional not corporate, confident not cocky, direct not verbose, honest not salesy.
+
+#### Comprehensive Guides
+
+The following comprehensive guides exist in the project root to ensure consistency across all case studies:
+
+1. **CASE-STUDY-WRITING-GUIDE.md** (13,000+ words)
+   - Complete 7-step writing process (interview → draft → edit → publish)
+   - Core principles (principles over tools, value over features)
+   - Content structure templates
+   - SEO guidelines and keyword research
+   - Common mistakes and how to avoid them
+   - Final checklist before publishing
+
+2. **CASE-STUDY-TONE-GUIDE.md** (9,000+ words)
+   - Professional voice adapted from personal writing
+   - Core characteristics: confident not cocky, direct not verbose, honest about difficulty
+   - Language patterns for openings, problem framing, solutions
+   - Translation examples: personal voice → professional voice
+   - Section-specific guidelines (Problem, Solution, Results, FAQ)
+   - The final test: 5 questions to ask before publishing
+
+3. **TONE-ANALYSIS-FROM-PERSONAL-WRITING.md** (15,000+ words)
+   - 17 specific writing patterns extracted from personal blog posts
+   - Each pattern includes: direct quote from article, why it works, how to translate to case studies
+   - Examples: vulnerable opening hook, self-deprecating commentary, painful truth confession
+   - Meta-principle: "You're always admitting something" (failure, misconception, or embarrassment)
+   - Translation cheat sheet for converting personal writing to professional case study voice
+
+4. **CASE-STUDY-TEMPLATE.md**
+   - Full example SEO-optimized case study
+   - Shows structure and all SEO elements
+   - Based on Technician Note Compliance case study
+
+5. **CASE-STUDY-SEO-STRATEGY.md**
+   - Why written beats video for SEO
+   - Problem-first keyword research approach
+   - Content structure that ranks
+   - Distribution channels and success metrics
+
+6. **CASE-STUDY-QUICK-START.md**
+   - 30-day action plan
+   - Week-by-week production schedule
+   - Time estimates and tools needed
+
+7. **UPDATES-SUMMARY.md**
+   - Summary of changes made to first SEO case study
+   - Before/after examples
+   - How to use the guides
+
+#### The Three Principles Framework
+
+Every case study should emphasize these three principles of behavior change:
+
+**1. Visibility**
+- Creates awareness of a problem that was previously invisible
+- "When technicians can see exactly what's missing—in real-time, not weeks later—they fix it."
+- Not: "Data collection via API"
+
+**2. Accountability**
+- Clear, specific, actionable feedback (not vague "do better" conversations)
+- "Technicians with incomplete notes get immediate, specific feedback on what's missing. Not vague 'document better' conversations. Just: 'Job #4721 is missing materials used—here's the link to add it.'"
+- Not: "Automated compliance scoring"
+
+**3. Incentives**
+- Align incentives with outcomes (team-based bonuses create peer accountability)
+- "Quarterly bonus tied to team compliance rate (not individual). Creates peer accountability."
+- Not: "Gamification and reward systems"
+
+**Closing line for solution sections:**
+> "This isn't about technology. It's about visibility, accountability, and incentives. The tool is irrelevant. The principles are what matter."
+
+#### SEO-Optimized Case Study Format
+
+SEO case studies include these sections (2,500-3,000 words total):
+
+**Required Sections:**
+1. **Hero** - Dark green background, department tag, title, description
+2. **Video** (if exists) - Embedded YouTube/Loom video
+3. **Problem** - "The Problem" section with gold accent (side-by-side with Solution on desktop)
+4. **Solution** - "What We Built" section with green accent (principles-focused, NOT technical)
+5. **Results** - Beige background, stat cards with metrics
+
+**SEO Sections** (unique to long-form case studies):
+6. **Long-Form Sections** - Multiple H2 sections with subsections for depth
+   - Example sections: "Why This Approach Works", "Why Systems Beat Training Every Time"
+   - Focus on principles, not implementation details
+7. **Key Takeaways** - Bulleted insights for service business owners
+8. **FAQs** - Optimized for featured snippets (H3 questions + answers)
+
+**Important:** No pricing information in FAQs or anywhere else in case studies.
+
+#### Extended Type System
+
+SEO case studies use extended TypeScript types (in `src/lib/strapi.ts`):
+
+```typescript
+export interface LongFormSection {
+  heading: string;
+  content: string;
+  subsections?: { subheading: string; content: string }[];
+}
+
+export interface FAQ {
+  question: string;
+  answer: string;
+}
+
+export interface CaseStudy {
+  // ... existing fields
+
+  // SEO-optimized fields:
+  seoTitle?: string;           // Optimized for search
+  seoDescription?: string;     // Meta description
+  longFormSections?: LongFormSection[];  // Deep content
+  faqs?: FAQ[];                // Featured snippet optimization
+  keyTakeaways?: string[];     // Bulleted insights
+}
+```
+
+#### Example: Before vs. After
+
+**BEFORE (Technical):**
+> "We built an automated documentation compliance system that runs every evening at 5 PM. System pulls all work orders via API, extracts technician notes using Claude AI, and scores them using a Python script..."
+
+**AFTER (Principles):**
+> "We built a system that creates visibility, accountability, and incentive alignment. Every evening, the system reviews each work order completed that day and scores it against a compliance checklist: time stamps logged, contact person documented, work performed described, materials used listed, customer sign-off captured."
+
+#### Process for Creating an SEO Case Study
+
+1. **Read CASE-STUDY-WRITING-GUIDE.md fully** (required before starting)
+2. **Interview the client** using provided question list
+3. **Identify target keywords** - Problem-focused, not company-focused
+   - Good: "eliminate invoice write-offs", "reduce editorial costs"
+   - Bad: "case study", "automation services"
+4. **Draft using templates** - Fill in sections with client's actual words
+5. **Edit for principles** - Search for technical terms and remove them
+6. **Run through checklist** - Does it pass "Would I believe this?" test?
+7. **Client approval** - Get written approval before publishing
+
+#### Quality Checklist
+
+Before publishing, every case study must pass these tests:
+
+- [ ] No technical jargon (API, Python, platforms, tool names)
+- [ ] No pricing information anywhere
+- [ ] No exact fabricated numbers (use ranges: "six figures", "90%+")
+- [ ] Focuses on visibility, accountability, incentives (principles, not tech)
+- [ ] Client approved content
+- [ ] Would pass "would I believe this?" test (not oversold)
+- [ ] Targets specific problem keywords
+- [ ] 2,500+ words for SEO case studies
+- [ ] Includes FAQs optimized for featured snippets
+- [ ] Geographic keywords included if relevant (Toronto, GTA, Ontario)
+
+#### Current State
+
+**Completed:**
+- 1 SEO-optimized case study written and ready (`eliminate-invoice-writeoffs-service-business`)
+- 37,000+ words of comprehensive writing guides created
+- Type system extended for long-form content
+- Components updated to render SEO sections
+
+**Not Yet Deployed:**
+- SEO case study exists in `src/lib/case-studies-seo.ts` but has not been pushed to production
+- Waiting for final review before going live
+
+**Next Case Studies to Create:**
+- "The Come Up" (AI Editing for Newsletter) - SEO-optimized version
+- Choose 2-3 more from different verticals (Sales, Support, Finance)
+- Target: 5-7 SEO case studies for launch
 
 ---
 
@@ -892,6 +1113,8 @@ npm run lint
 
 ## File Reference
 
+### Core Application Files
+
 | File | Purpose |
 |------|---------|
 | `src/app/page.tsx` | Homepage - all main content sections |
@@ -903,7 +1126,8 @@ npm run lint
 | `src/app/case-studies/CaseStudiesClient.tsx` | Case studies list client component (UI/filters) |
 | `src/app/case-studies/loading.tsx` | Case studies list skeleton loading state |
 | `src/app/case-studies/[slug]/page.tsx` | Case study detail server component |
-| `src/app/case-studies/[slug]/CaseStudyContent.tsx` | Case study detail client component (video/content) |
+| `src/app/case-studies/[slug]/CaseStudyContent.tsx` | Case study detail client component (video/content/SEO sections) |
+| `src/app/case-studies/[slug]/ResultCard.tsx` | Result stat card component |
 | `src/app/case-studies/[slug]/loading.tsx` | Case study detail skeleton loading state |
 | `src/app/acquisitions/page.tsx` | Acquisitions & partnerships page |
 | `src/app/referrals/page.tsx` | Referrals program page |
@@ -912,10 +1136,21 @@ npm run lint
 | `src/app/mind-maps/[slug]/page.tsx` | Mind map page server component (private, unlisted) |
 | `src/app/mind-maps/[slug]/MindMapContent.tsx` | Mind map client component with tabbed visualization |
 | `src/app/robots.ts` | Robots.txt (disallows /proposals/ and /mind-maps/) |
-| `src/lib/strapi.ts` | Strapi CMS API client (case studies) |
-| `src/lib/case-studies.ts` | Local case studies data (add new case studies here) |
+
+### Data & Content Files
+
+| File | Purpose |
+|------|---------|
+| `src/lib/strapi.ts` | Strapi CMS API client + extended types for SEO case studies |
+| `src/lib/case-studies.ts` | Local short video case studies data |
+| `src/lib/case-studies-seo.ts` | **SEO-optimized long-form case studies data (add new SEO case studies here)** |
 | `src/lib/proposals.ts` | Local proposals data (add new proposals here) |
 | `src/lib/mindmaps.ts` | Local mind maps data (add new mind maps here) |
+
+### Component Files
+
+| File | Purpose |
+|------|---------|
 | `src/components/Header.tsx` | Navigation (adapts to dark hero) |
 | `src/components/Button.tsx` | CTA button styles (including hero variant) |
 | `src/components/WhatWeBuildSection.tsx` | Services with dynamic backgrounds |
@@ -927,6 +1162,19 @@ npm run lint
 | `src/components/RoughAnnotation.tsx` | Rough notation wrapper |
 | `src/components/PageTransition.tsx` | Page navigation fade-in animations |
 | `src/components/ScrollReveal.tsx` | Scroll-triggered animations |
+
+### Case Study Writing Guides (Project Root)
+
+| File | Purpose |
+|------|---------|
+| `CASE-STUDY-WRITING-GUIDE.md` | **Comprehensive 13,000+ word guide - READ THIS FIRST before creating case studies** |
+| `CASE-STUDY-TONE-GUIDE.md` | Professional voice guidelines adapted from personal writing (9,000+ words) |
+| `TONE-ANALYSIS-FROM-PERSONAL-WRITING.md` | 17 specific writing patterns extracted from personal blog posts (15,000+ words) |
+| `CASE-STUDY-TEMPLATE.md` | Full example SEO-optimized case study showing structure |
+| `CASE-STUDY-SEO-STRATEGY.md` | SEO strategy, keyword research, content structure that ranks |
+| `CASE-STUDY-QUICK-START.md` | 30-day action plan with week-by-week production schedule |
+| `UPDATES-SUMMARY.md` | Summary of changes made to first SEO case study (before/after examples) |
+| `SEO-CASE-STUDY-IMPLEMENTATION-SUMMARY.md` | Implementation overview and expected performance metrics |
 
 ---
 
@@ -953,6 +1201,26 @@ When writing or editing copy, follow these terminology rules:
 1. Automate Manual Work
 2. Create Better Visibility
 3. Improve Employee Performance
+
+### Case Study Specific Terminology
+
+When writing case studies, emphasize **principles over technology**:
+
+**The Three Principles Framework:**
+1. **Visibility** - Creates awareness of problems that were previously invisible
+2. **Accountability** - Clear, specific, actionable feedback (not vague conversations)
+3. **Incentives** - Align incentives with outcomes to drive behavior change
+
+**Key closing line for solutions:**
+> "This isn't about technology. It's about visibility, accountability, and incentives. The tool is irrelevant. The principles are what matter."
+
+**What NOT to mention in case studies:**
+- ❌ Pricing (implementation costs, monthly fees, hourly rates)
+- ❌ Technical implementation (API calls, Python scripts, platform names)
+- ❌ Specific tools/services (Claude, Zapier, Make, GitHub Actions)
+- ❌ Exact fabricated numbers (use ranges: "six figures" not "$200,000")
+
+**See CASE-STUDY-WRITING-GUIDE.md for complete guidelines.**
 
 ---
 
