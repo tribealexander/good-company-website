@@ -309,6 +309,16 @@ const initialVenues: Venue[] = [
     status: 'considering',
     notes: 'LEED Platinum, BMO Atrium, indoor/outdoor, $2K-10K'
   },
+  {
+    id: '19',
+    name: 'Ace Hotel Toronto',
+    type: 'Hotel',
+    capacity: '50-100',
+    location: 'Camden St (Fashion District)',
+    link: 'https://acehotel.com/toronto/private-spaces/rooms-specs/',
+    status: 'considering',
+    notes: 'Interspace (1,352 sq ft), Form (834 sq ft), boutique/creative vibe'
+  },
 ];
 
 const statusColors = {
