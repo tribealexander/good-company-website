@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
+import { supabase } from '@/lib/supabase';
 
 type Owner = 'TBD' | 'Alex' | 'Andrew' | 'Anna' | 'Christine' | 'Ian' | 'Jacob' | 'Jalen';
 
@@ -349,55 +350,97 @@ const ownerColors: Record<Owner, string> = {
   Jalen: 'bg-purple-500',
 };
 
-const STORAGE_KEYS = {
-  categories: 'aiconf_categories',
-  venues: 'aiconf_venues',
-  expanded: 'aiconf_expanded',
-};
-
 export default function AIConferenceDashboard() {
   const [categories, setCategories] = useState<Category[]>(initialCategories);
   const [venues, setVenues] = useState<Venue[]>(initialVenues);
   const [activeTab, setActiveTab] = useState<'tasks' | 'venues'>('tasks');
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set(['branding', 'venue']));
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Load from localStorage on mount
-  useEffect(() => {
-    const savedCategories = localStorage.getItem(STORAGE_KEYS.categories);
-    const savedVenues = localStorage.getItem(STORAGE_KEYS.venues);
-    const savedExpanded = localStorage.getItem(STORAGE_KEYS.expanded);
-
-    if (savedCategories) {
-      try { setCategories(JSON.parse(savedCategories)); } catch {}
+  // Save to Supabase (debounced)
+  const saveToSupabase = useCallback(async (cats: Category[], vens: Venue[], expanded: Set<string>) => {
+    setIsSaving(true);
+    try {
+      await supabase
+        .from('conference_data')
+        .upsert({
+          id: 1,
+          categories: cats,
+          venues: vens,
+          expanded_categories: [...expanded],
+          updated_at: new Date().toISOString(),
+        });
+    } catch (error) {
+      console.error('Error saving to Supabase:', error);
     }
-    if (savedVenues) {
-      try { setVenues(JSON.parse(savedVenues)); } catch {}
-    }
-    if (savedExpanded) {
-      try { setExpandedCategories(new Set(JSON.parse(savedExpanded))); } catch {}
-    }
-    setIsLoaded(true);
+    setIsSaving(false);
   }, []);
 
-  // Save to localStorage when state changes
+  // Load from Supabase on mount
   useEffect(() => {
-    if (isLoaded) {
-      localStorage.setItem(STORAGE_KEYS.categories, JSON.stringify(categories));
-    }
-  }, [categories, isLoaded]);
+    const loadData = async () => {
+      const { data, error } = await supabase
+        .from('conference_data')
+        .select('*')
+        .eq('id', 1)
+        .single();
 
-  useEffect(() => {
-    if (isLoaded) {
-      localStorage.setItem(STORAGE_KEYS.venues, JSON.stringify(venues));
-    }
-  }, [venues, isLoaded]);
+      if (data && !error) {
+        if (data.categories && data.categories.length > 0) {
+          setCategories(data.categories);
+        }
+        if (data.venues && data.venues.length > 0) {
+          setVenues(data.venues);
+        }
+        if (data.expanded_categories && data.expanded_categories.length > 0) {
+          setExpandedCategories(new Set(data.expanded_categories));
+        }
+      }
+      setIsLoaded(true);
+    };
 
+    loadData();
+
+    // Subscribe to real-time changes
+    const channel = supabase
+      .channel('conference_changes')
+      .on(
+        'postgres_changes',
+        { event: 'UPDATE', schema: 'public', table: 'conference_data' },
+        (payload) => {
+          const newData = payload.new as { categories: Category[]; venues: Venue[]; expanded_categories: string[] };
+          if (newData.categories) setCategories(newData.categories);
+          if (newData.venues) setVenues(newData.venues);
+          if (newData.expanded_categories) setExpandedCategories(new Set(newData.expanded_categories));
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, []);
+
+  // Save to Supabase when state changes (debounced)
   useEffect(() => {
-    if (isLoaded) {
-      localStorage.setItem(STORAGE_KEYS.expanded, JSON.stringify([...expandedCategories]));
+    if (!isLoaded) return;
+
+    if (saveTimeoutRef.current) {
+      clearTimeout(saveTimeoutRef.current);
     }
-  }, [expandedCategories, isLoaded]);
+
+    saveTimeoutRef.current = setTimeout(() => {
+      saveToSupabase(categories, venues, expandedCategories);
+    }, 500);
+
+    return () => {
+      if (saveTimeoutRef.current) {
+        clearTimeout(saveTimeoutRef.current);
+      }
+    };
+  }, [categories, venues, expandedCategories, isLoaded, saveToSupabase]);
 
   const toggleCategory = (categoryId: string) => {
     setExpandedCategories(prev => {
@@ -419,14 +462,12 @@ export default function AIConferenceDashboard() {
     setExpandedCategories(new Set());
   };
 
-  const resetToDefaults = () => {
+  const resetToDefaults = async () => {
     if (confirm('Reset all tasks and venues to defaults? This cannot be undone.')) {
-      localStorage.removeItem(STORAGE_KEYS.categories);
-      localStorage.removeItem(STORAGE_KEYS.venues);
-      localStorage.removeItem(STORAGE_KEYS.expanded);
       setCategories(initialCategories);
       setVenues(initialVenues);
       setExpandedCategories(new Set(['branding', 'venue']));
+      await saveToSupabase(initialCategories, initialVenues, new Set(['branding', 'venue']));
     }
   };
 
@@ -487,6 +528,9 @@ export default function AIConferenceDashboard() {
                 <h1 className="text-xl font-semibold text-text">AI Conference</h1>
                 <p className="text-sm text-text-light">Toronto - July 8th</p>
               </div>
+              {isSaving && (
+                <span className="text-xs text-primary animate-pulse">Saving...</span>
+              )}
               <button
                 onClick={resetToDefaults}
                 className="text-xs text-text-light hover:text-red-600 transition-colors"
