@@ -54,6 +54,20 @@ export interface FlowCard {
   metric?: string; // For results like "100%", "1–2 hrs"
 }
 
+export interface AutonomyLevel {
+  level: number;
+  name: string;
+  description: string;
+  example: string;
+  trust: "none" | "monitored" | "full"; // controls visual styling
+}
+
+export interface AutonomySpectrum {
+  intro: string;
+  levels: AutonomyLevel[];
+  rule: string; // the governing principle
+}
+
 export interface ThreeColumnMindMap {
   slug: string;
   title: string;
@@ -68,6 +82,7 @@ export interface ThreeColumnMindMap {
     text: string;
     emphasis: string;
   };
+  autonomySpectrum?: AutonomySpectrum; // optional tabbed view
 }
 
 // Union type for all mind map layouts
@@ -191,7 +206,7 @@ const MIND_MAPS: MindMap[] = [
       {
         label: "Same Tools, One Tweak",
         description:
-          "Connected their existing Google Sheet to Slack — the two tools the team already lived in",
+          "Connected their existing Google Sheet to Slack. The two tools the team already lived in.",
       },
       {
         label: "Auto-Ping + Auto-Capture",
@@ -223,7 +238,7 @@ const MIND_MAPS: MindMap[] = [
       {
         label: "Clear Record",
         description:
-          "Every update timestamped and attributed — who said what, and when",
+          "Every update timestamped and attributed. Who said what, and when.",
       },
     ],
   },
@@ -238,7 +253,7 @@ const MIND_MAPS: MindMap[] = [
       {
         label: "Knowledge Evaporation",
         description:
-          "Strategic conversations disappeared when threads closed. Chamber prospecting ideas, client solutions — all gone.",
+          "Strategic conversations disappeared when threads closed. Chamber prospecting ideas, client solutions, all gone.",
       },
       {
         label: "Rebuild, Don't Reuse",
@@ -253,7 +268,7 @@ const MIND_MAPS: MindMap[] = [
       {
         label: "Context Chaos",
         description:
-          "AI couldn't find the right information. Hoped it would 'figure out' what to read — it didn't.",
+          "AI couldn't find the right information. Hoped it would 'figure out' what to read. It didn't.",
       },
     ],
     solution: [
@@ -303,6 +318,109 @@ const MIND_MAPS: MindMap[] = [
     tagline: {
       text: "Knowledge that compounds",
       emphasis: "instead of evaporates.",
+    },
+  },
+
+  {
+    slug: "ai-executive-assistant",
+    title: "AI Operations Coordinator for a Creative Services Firm",
+    caseStudy: "ai-executive-assistant",
+    createdAt: "2026-03-17",
+    layout: "three-column",
+    solutionEmphasis: "Peter handles the uncomfortable stuff so the founder doesn't have to",
+    problems: [
+      {
+        label: "The Bad Guy Problem",
+        description:
+          "The founder is the client relationship. But the same person also chases late invoices, nags subcontractors, and sends the 'just following up' emails. You can't be the creative partner and the collections department.",
+      },
+      {
+        label: "Can't Justify the Hire",
+        description:
+          "An office manager costs $3,000-$4,000/month. For a 3-person team, that's a real line item for someone who'd spend half their time waiting for things to do.",
+      },
+      {
+        label: "Death by Context Switching",
+        description:
+          "Every time the founder sits down for deep client work, there's a pile of low-stakes admin pulling attention away. Reply to the vendor. Chase the subcontractor. Follow up on the invoice.",
+      },
+    ],
+    solution: [
+      {
+        label: "Meet Peter",
+        description:
+          "Peter has his own company email, calendar, and workspace. Team members CC Peter. Clients and vendors correspond with Peter directly. He's not a chatbot. He's a team member.",
+      },
+      {
+        label: "The Autonomy Dial",
+        description:
+          "Every task starts at Level 1 (draft & wait). Earns its way to Level 2 (send & CC) or Level 3 (fully autonomous). Same way you'd onboard a real hire.",
+      },
+      {
+        label: "Built-In Guardrails",
+        description:
+          "Can't access the founder's inbox. Every email CC'd automatically. No admin privileges. Can't commit to pricing or terms. Disclosure on every message.",
+      },
+    ],
+    results: [
+      {
+        label: "Founder Back-Office Time",
+        description: "From 10-15 hrs/week to 2-3 hrs/week",
+        metric: "80%",
+      },
+      {
+        label: "Invoice Collection",
+        description: "Average days to collect dropped significantly",
+        metric: "<15 days",
+      },
+      {
+        label: "Cost vs. Office Manager",
+        description: "$3,000-$4,000/mo replaced by ~$200/mo",
+        metric: "95%",
+      },
+      {
+        label: "Compounds Over Time",
+        description:
+          "As Peter accumulates context (tone, contacts, preferences, processes) he handles more with less oversight. The founder's involvement shrinks, not grows.",
+      },
+    ],
+    tagline: {
+      text: "It's not automation. It's a new team member",
+      emphasis: "who actually shows up every day.",
+    },
+    autonomySpectrum: {
+      intro:
+        "Not everything gets the same level of trust. We built this as a dial, not a switch.",
+      levels: [
+        {
+          level: 1,
+          name: "Draft & Wait",
+          description:
+            "Peter drafts a message. The founder reviews and approves before anything goes out. Zero risk. This is where every new task type starts.",
+          example:
+            "A subcontractor missed a deadline. Peter drafts a firm but professional follow-up. The founder reads it, tweaks the tone, approves it. The subcontractor hears from Peter, not from the person who hired them.",
+          trust: "none",
+        },
+        {
+          level: 2,
+          name: "Send & CC",
+          description:
+            "Peter sends on his own, but the founder gets a copy of everything. If something looks off, they catch it in real time.",
+          example:
+            "Invoice is 15 days overdue. Peter sends the second reminder automatically, CC's the founder. Standard language, standard cadence. The founder sees it land and moves on.",
+          trust: "monitored",
+        },
+        {
+          level: 3,
+          name: "Fully Autonomous",
+          description:
+            "Peter handles it end-to-end. The founder doesn't see it unless they go looking.",
+          example:
+            "Confirming a meeting time with a subcontractor. Sending project files someone requested. Responding to a vendor asking for the mailing address.",
+          trust: "full",
+        },
+      ],
+      rule: "Every task starts at Level 1. It only moves up after the founder has seen enough drafts to trust the pattern. Invoice follow-ups might reach Level 2. Client-facing communications might never leave Level 1. That's by design.",
     },
   },
 
