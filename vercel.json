@@ -1,0 +1,26 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "tribealexander.com"
+        }
+      ],
+      "destination": "https://yourgoodcompany.com/about",
+      "permanent": false
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.tribealexander.com"
+        }
+      ],
+      "destination": "https://yourgoodcompany.com/about",
+      "permanent": false
+    }
+  ]
+}
