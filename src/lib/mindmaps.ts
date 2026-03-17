@@ -54,6 +54,16 @@ export interface FlowCard {
   metric?: string; // For results like "100%", "1–2 hrs"
 }
 
+export interface PeterAction {
+  type: "sent" | "cc" | "calendar" | "slack";
+  to?: string;
+  from: string;
+  subject: string;
+  preview: string;
+  time: string;
+  autonomyLevel: 1 | 2 | 3;
+}
+
 export interface AutonomyLevel {
   level: number;
   name: string;
@@ -83,6 +93,7 @@ export interface ThreeColumnMindMap {
     emphasis: string;
   };
   autonomySpectrum?: AutonomySpectrum; // optional tabbed view
+  peterActions?: PeterAction[]; // optional "Peter in Action" tab
 }
 
 // Union type for all mind map layouts
@@ -337,7 +348,7 @@ const MIND_MAPS: MindMap[] = [
       {
         label: "Can't Justify the Hire",
         description:
-          "An office manager costs $3,000-$4,000/month. For a 3-person team, that's a real line item for someone who'd spend half their time waiting for things to do.",
+          "An office manager costs $3,000-$4,000/month. For a 10-person team, that's a real line item for someone who'd spend half their time waiting for things to do.",
       },
       {
         label: "Death by Context Switching",
@@ -385,8 +396,8 @@ const MIND_MAPS: MindMap[] = [
       },
     ],
     tagline: {
-      text: "It's not automation. It's a new team member",
-      emphasis: "who actually shows up every day.",
+      text: "A 10-person team gets the back-office",
+      emphasis: "a 50-person firm gets for free.",
     },
     autonomySpectrum: {
       intro:
@@ -422,6 +433,68 @@ const MIND_MAPS: MindMap[] = [
       ],
       rule: "Every task starts at Level 1. It only moves up after the founder has seen enough drafts to trust the pattern. Invoice follow-ups might reach Level 2. Client-facing communications might never leave Level 1. That's by design.",
     },
+    peterActions: [
+      {
+        type: "sent",
+        from: "peter@studioname.com",
+        to: "marcus@clientco.com",
+        subject: "Invoice #1047 — Follow-up",
+        preview:
+          "Hi Marcus, just following up on Invoice #1047 (issued Feb 18). This was due on March 3rd. Let me know if there's anything holding this up or if you need me to resend.",
+        time: "9:02 AM",
+        autonomyLevel: 2,
+      },
+      {
+        type: "cc",
+        from: "peter@studioname.com",
+        to: "jess@freelancer.com",
+        subject: "Brand assets — Friday deadline",
+        preview:
+          "Hey Jess, wanted to confirm we're still on track for the brand assets by Friday. The client kick-off is Monday so we'll need final files by EOD. Let me know if anything's changed.",
+        time: "9:15 AM",
+        autonomyLevel: 2,
+      },
+      {
+        type: "calendar",
+        from: "peter@studioname.com",
+        to: "founder",
+        subject: "PrintHouse meeting confirmed",
+        preview:
+          "Meeting confirmed with PrintHouse for March 24 at 2pm. Added to your calendar. They'll have proofs ready for review.",
+        time: "10:30 AM",
+        autonomyLevel: 3,
+      },
+      {
+        type: "sent",
+        from: "peter@studioname.com",
+        to: "founder",
+        subject: "Jess wants to move your Thursday meeting",
+        preview:
+          "Hey, Jess was wondering if we could move your meeting to 2pm. I've got her CC'd. Let me know and I'll update the calendar.",
+        time: "11:45 AM",
+        autonomyLevel: 1,
+      },
+      {
+        type: "sent",
+        from: "peter@studioname.com",
+        to: "anna@vendor.com",
+        subject: "Re: Equipment rental quote",
+        preview:
+          "Thanks Anna. The March 28-30 dates work. Can you confirm availability for two LED panels and the 10x10 backdrop? I'll send over the PO once confirmed.",
+        time: "1:20 PM",
+        autonomyLevel: 3,
+      },
+      {
+        type: "cc",
+        from: "peter@studioname.com",
+        to: "marcus@clientco.com",
+        subject: "Re: Invoice #1047 — Follow-up",
+        preview:
+          "Thanks Marcus, confirmed. We'll watch for the payment by Friday. Appreciate the quick reply.",
+        time: "2:45 PM",
+        autonomyLevel: 2,
+      },
+    ],
   },
 
   // ===========================================

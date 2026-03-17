@@ -4,6 +4,7 @@ import { useState } from "react";
 import type {
   ThreeColumnMindMap as ThreeColumnMindMapType,
   AutonomySpectrum,
+  PeterAction,
 } from "@/lib/mindmaps";
 
 interface Props {
@@ -11,8 +12,10 @@ interface Props {
 }
 
 export default function ThreeColumnMindMap({ mindMap }: Props) {
-  const hasTabs = !!mindMap.autonomySpectrum;
-  const [activeTab, setActiveTab] = useState<"mindmap" | "autonomy">("mindmap");
+  const hasTabs = !!(mindMap.autonomySpectrum || mindMap.peterActions);
+  const [activeTab, setActiveTab] = useState<
+    "mindmap" | "autonomy" | "actions"
+  >("mindmap");
 
   return (
     <div className="min-h-screen bg-cream py-16 px-6">
@@ -46,6 +49,18 @@ export default function ThreeColumnMindMap({ mindMap }: Props) {
           >
             Autonomy Spectrum
           </button>
+          {mindMap.peterActions && (
+            <button
+              onClick={() => setActiveTab("actions")}
+              className={`rounded-md border-2 px-6 py-3 text-sm font-medium transition-all ${
+                activeTab === "actions"
+                  ? "border-primary bg-primary text-white"
+                  : "border-primary bg-white text-primary hover:bg-gray-50"
+              }`}
+            >
+              Peter in Action
+            </button>
+          )}
         </div>
       )}
 
@@ -55,6 +70,11 @@ export default function ThreeColumnMindMap({ mindMap }: Props) {
       {/* Autonomy Spectrum Panel */}
       {activeTab === "autonomy" && mindMap.autonomySpectrum && (
         <AutonomySpectrumView spectrum={mindMap.autonomySpectrum} />
+      )}
+
+      {/* Peter in Action Panel */}
+      {activeTab === "actions" && mindMap.peterActions && (
+        <PeterActionsView actions={mindMap.peterActions} />
       )}
 
       {/* Back link */}
@@ -451,6 +471,145 @@ function AutonomySpectrumView({ spectrum }: { spectrum: AutonomySpectrum }) {
             {spectrum.rule}
           </p>
         </div>
+      </div>
+    </div>
+  );
+}
+
+// ============================================
+// Peter in Action — Mock Inbox
+// ============================================
+
+const actionTypeConfig = {
+  sent: {
+    label: "Sent",
+    icon: (
+      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+      </svg>
+    ),
+    color: "text-primary",
+    bg: "bg-primary/10",
+  },
+  cc: {
+    label: "CC'd to you",
+    icon: (
+      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    ),
+    color: "text-gold",
+    bg: "bg-gold/10",
+  },
+  calendar: {
+    label: "Calendar",
+    icon: (
+      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+    ),
+    color: "text-[#2a7d5c]",
+    bg: "bg-[#2a7d5c]/10",
+  },
+  slack: {
+    label: "Slack",
+    icon: (
+      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+      </svg>
+    ),
+    color: "text-[#611f69]",
+    bg: "bg-[#611f69]/10",
+  },
+};
+
+const levelBadge = {
+  1: { label: "L1", color: "text-[#c9403a]", border: "border-[#c9403a]/30", bg: "bg-[#c9403a]/5" },
+  2: { label: "L2", color: "text-gold", border: "border-gold/30", bg: "bg-gold/5" },
+  3: { label: "L3", color: "text-[#2a7d5c]", border: "border-[#2a7d5c]/30", bg: "bg-[#2a7d5c]/5" },
+};
+
+function PeterActionsView({ actions }: { actions: PeterAction[] }) {
+  return (
+    <div className="mx-auto max-w-3xl">
+      <p className="text-center text-lg text-text-light mb-3">
+        A typical Tuesday in Peter&apos;s outbox.
+      </p>
+      <p className="text-center text-sm text-text-light/70 mb-10">
+        Real examples of what Peter sends, schedules, and coordinates.
+      </p>
+
+      {/* Inbox container */}
+      <div className="rounded-xl border border-border bg-white shadow-sm overflow-hidden">
+        {/* Inbox header */}
+        <div className="flex items-center gap-3 border-b border-border bg-gray-50/80 px-6 py-3">
+          <div className="h-3 w-3 rounded-full bg-[#c9403a]/60" />
+          <div className="h-3 w-3 rounded-full bg-gold/60" />
+          <div className="h-3 w-3 rounded-full bg-[#2a7d5c]/60" />
+          <span className="ml-3 font-mono text-xs text-text-light">
+            peter@studioname.com — Sent
+          </span>
+        </div>
+
+        {/* Email rows */}
+        {actions.map((action, i) => {
+          const typeConf = actionTypeConfig[action.type];
+          const badge = levelBadge[action.autonomyLevel];
+          return (
+            <div
+              key={i}
+              className={`flex gap-4 px-6 py-4 transition-colors hover:bg-gray-50/50 ${
+                i < actions.length - 1 ? "border-b border-border/60" : ""
+              }`}
+            >
+              {/* Type icon */}
+              <div
+                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${typeConf.bg} ${typeConf.color} mt-0.5`}
+              >
+                {typeConf.icon}
+              </div>
+
+              {/* Content */}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="font-medium text-sm text-dark truncate">
+                    {action.subject}
+                  </span>
+                  <span
+                    className={`shrink-0 inline-flex items-center rounded px-1.5 py-0.5 font-mono text-[10px] font-bold ${badge.color} ${badge.border} ${badge.bg} border`}
+                  >
+                    {badge.label}
+                  </span>
+                  <span
+                    className={`shrink-0 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${typeConf.color} ${typeConf.bg}`}
+                  >
+                    {typeConf.label}
+                  </span>
+                </div>
+                <p className="text-xs text-text-light leading-relaxed">
+                  {action.to && (
+                    <span className="text-text-light/60">
+                      To: {action.to} ·{" "}
+                    </span>
+                  )}
+                  {action.preview}
+                </p>
+              </div>
+
+              {/* Time */}
+              <span className="shrink-0 font-mono text-xs text-text-light/50 mt-0.5">
+                {action.time}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Footer note */}
+      <div className="mt-8 text-center">
+        <p className="text-xs text-text-light/60">
+          The founder saw 2 CC&apos;s in their inbox. Everything else just happened.
+        </p>
       </div>
     </div>
   );
