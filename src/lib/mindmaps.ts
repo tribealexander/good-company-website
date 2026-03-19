@@ -497,6 +497,156 @@ const MIND_MAPS: MindMap[] = [
     ],
   },
 
+  {
+    slug: "james-for-clients",
+    title: "AI Executive Assistant for Accountability & Task Management",
+    caseStudy: "james-for-clients",
+    createdAt: "2026-03-19",
+    layout: "three-column",
+    solutionEmphasis: "a persistent, stateful assistant that manages itself on behalf of people who would never set up an AI workflow",
+    problems: [
+      {
+        label: "Everything Lives in Their Head",
+        description:
+          "The operator keeps their commitments, deadlines, and to-dos in their head or scattered across emails, texts, and sticky notes. There's no single place where everything lives. Things get forgotten. Not because they don't care, but because no system is doing the remembering for them.",
+      },
+      {
+        label: "Tools Require the User to Show Up",
+        description:
+          "Project management tools like Asana, Todoist, and Monday require the user to maintain the system. They need to log in, update tasks, reorganize priorities. For someone who's already overwhelmed, adding another tool to manage is the last thing they need. The tool becomes one more thing that falls behind.",
+      },
+      {
+        label: "AI Is Powerful but Inaccessible",
+        description:
+          "Tools like ChatGPT and Claude are incredibly capable, but they require the user to know how to prompt them, and they start fresh every conversation. They don't remember what you said yesterday. They don't message you in the morning. They don't track your commitments across sessions. For someone who isn't technical, they're a blank page every time.",
+      },
+      {
+        label: "No One Is Following Up",
+        description:
+          "Without a system or a person keeping track, tasks slip quietly. There's no daily check-in, no morning reminder, no one saying 'this was due Friday, is it still on your radar?' The operator is both the doer and the accountability layer, and one of those always loses.",
+      },
+    ],
+    solution: [
+      {
+        label: "Talk to James, Wherever You Are",
+        description:
+          "James lives in the channels the user already uses. Email today, WhatsApp tomorrow, Teams next week. The user doesn't install anything, learn anything, or change their behavior. They just talk to an email address the way they'd talk to a real assistant. James understands natural language and responds in seconds.",
+      },
+      {
+        label: "The System Maintains Itself",
+        description:
+          "When the user says 'the permit thing is done and remind me to call the inspector Friday,' James marks the permit complete, creates the inspector task with a Friday due date, and confirms. The user never sees a database, a task board, or a settings page. They just talk. James organizes everything behind the scenes.",
+      },
+      {
+        label: "Daily Briefing, Every Morning",
+        description:
+          "At 8am every day, James sends a morning briefing. What's due today. What's overdue. What's coming up. Prioritized by urgency. The user doesn't have to remember to check anything. The system reaches out to them. That's the entire accountability value: the assistant initiates, not the user.",
+      },
+      {
+        label: "James Gets Smarter Over Time",
+        description:
+          "As we connect more systems — calendar, email summaries, CRM, even ERP data — James sees more context and gives better answers. The user doesn't need to know anything changed. They talk the same way they always have. James just understands more. Adding a data source is a backend configuration, not a user training session.",
+      },
+    ],
+    results: [
+      {
+        label: "Zero Learning Curve",
+        description: "No app, no login, no training. User emails or texts James from day one.",
+        metric: "0",
+      },
+      {
+        label: "Nothing Falls Through the Cracks",
+        description: "Every commitment tracked, every deadline surfaced, every update logged automatically.",
+        metric: "100%",
+      },
+      {
+        label: "Daily Accountability",
+        description: "Morning briefing delivered every day without the user having to do anything.",
+        metric: "8am",
+      },
+      {
+        label: "Cost vs. a Real EA",
+        description: "A human executive assistant costs $3,000-5,000/month. James runs on AI infrastructure at a fraction of that, available 24/7, never forgets, never takes a day off.",
+      },
+    ],
+    tagline: {
+      text: "The user doesn't need to learn how to use AI.",
+      emphasis: "They just need someone who remembers everything.",
+    },
+    peterActions: [
+      {
+        type: "sent",
+        from: "james@assist.company.com",
+        to: "zack@company.com",
+        subject: "Your daily briefing — March 19",
+        preview:
+          "Good morning, Zack. Here's your briefing for Wednesday.\n\nDUE TODAY\n- Send updated proposal to Metalex\n\nUP NEXT\n- Follow up with Dave on compliance docs (HIGH) — due tomorrow\n- Review conference venue options — due Friday\n\n5 items on your plate today.",
+        time: "8:00 AM",
+        autonomyLevel: 3,
+      },
+      {
+        type: "sent",
+        from: "zack@company.com",
+        to: "james@assist.company.com",
+        subject: "Re: Your daily briefing — March 19",
+        preview:
+          "metalex proposal is done. also need to call simon about the site visit and push the venue thing to next week",
+        time: "8:12 AM",
+        autonomyLevel: 1,
+      },
+      {
+        type: "sent",
+        from: "james@assist.company.com",
+        to: "zack@company.com",
+        subject: "Re: Your daily briefing — March 19",
+        preview:
+          "Metalex proposal marked done. Added the Simon call and pushed venue options to next week. 4 items left.",
+        time: "8:12 AM",
+        autonomyLevel: 3,
+      },
+      {
+        type: "sent",
+        from: "zack@company.com",
+        to: "james@assist.company.com",
+        subject: "quick q",
+        preview:
+          "what do i have left this week?",
+        time: "2:30 PM",
+        autonomyLevel: 1,
+      },
+      {
+        type: "sent",
+        from: "james@assist.company.com",
+        to: "zack@company.com",
+        subject: "Re: quick q",
+        preview:
+          "3 items this week:\n1. Follow up with Dave on compliance docs (HIGH) — due tomorrow\n2. Call Simon about the site visit — no due date\n3. Promise Supply API integration — no due date\n\nVenue options pushed to next week.",
+        time: "2:30 PM",
+        autonomyLevel: 3,
+      },
+      {
+        type: "sent",
+        from: "zack@company.com",
+        to: "james@assist.company.com",
+        subject: "Re: quick q",
+        preview:
+          "simon call is done. and actually drop the promise supply thing for now",
+        time: "4:45 PM",
+        autonomyLevel: 1,
+      },
+      {
+        type: "sent",
+        from: "james@assist.company.com",
+        to: "zack@company.com",
+        subject: "Re: quick q",
+        preview:
+          "Simon call marked done, Promise Supply dropped. You've got 1 item left this week: compliance docs follow-up with Dave tomorrow.",
+        time: "4:45 PM",
+        autonomyLevel: 3,
+      },
+    ],
+  },
+
   // ===========================================
   // VERTICAL LAYOUTS
   // ===========================================
