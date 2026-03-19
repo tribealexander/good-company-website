@@ -92,15 +92,15 @@ export default function JamesStackPage() {
               <h2 className="mb-8 text-3xl font-semibold text-dark">
                 Architecture Overview
               </h2>
-              <div className="mb-10 rounded-xl border border-border bg-cream p-6 font-mono text-sm leading-relaxed text-text lg:p-8">
-                <pre className="overflow-x-auto whitespace-pre">{`Inbound Channels          Message Router         AI Processing          Data Store
-─────────────────         ──────────────         ─────────────          ──────────
-Email (Resend)     ──►    Express.js      ──►    Claude API      ──►   Supabase
-WhatsApp (Twilio)  ──►    on Railway             (Anthropic)            (Postgres)
-Teams (future)     ──►                                            ◄──
-                                                                   │
-                          Scheduler (cron)  ──►  Claude API      ──►   Resend
-                          Daily digest           Digest generation      (outbound)`}</pre>
+              <div className="mb-10 rounded-xl border border-border bg-cream p-6 font-mono text-xs leading-relaxed text-text lg:p-8 lg:text-sm">
+                <pre className="overflow-x-auto whitespace-pre">{`Channels        Router        AI            Storage
+────────        ──────        ──            ───────
+Email    ──►    Express ──►   Claude  ──►   Supabase
+WhatsApp ──►    (Railway)     (Anthropic)   (Postgres)
+Teams    ──►                          ◄──
+                                       │
+                Cron    ──►   Claude  ──►   Resend
+                (daily)       (digest)      (email)`}</pre>
               </div>
               <div className="space-y-4 text-lg leading-relaxed text-text">
                 <p>
