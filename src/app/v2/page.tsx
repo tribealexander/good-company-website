@@ -1,19 +1,21 @@
 import {
   Header,
   Footer,
+  // ProblemsSectionWrapper, // using V2 version
   FloatingCTA,
   ScrollReveal,
+  // FAQ, // using V2 version
   SectionHeading,
   WhatWeBuildSection,
   InvestmentSection,
   TestimonialsCarousel,
   CalEmbed,
-  HeroSection,
-  ProblemsSectionWrapperV2,
-  FAQV2,
 } from "@/components";
+import { HeroSection } from "@/components";
+import ProblemsSectionWrapperV2 from "./ProblemsSectionWrapperV2";
+import FAQV2 from "./FAQV2";
 
-export default function Home() {
+export default function HomeV2() {
   return (
     <>
       <Header />
@@ -33,7 +35,7 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             <ScrollReveal>
               <SectionHeading className="mb-10">
-                Change is constant. We help you navigate it.
+                The tools change. Your operations can&apos;t afford to.
               </SectionHeading>
             </ScrollReveal>
 
@@ -51,25 +53,25 @@ export default function Home() {
                       <svg className="mt-0.5 h-5 w-5 shrink-0 text-[#9B9080]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                       </svg>
-                      <span>You might have tech-savvy people, but no one dedicated to orchestrating it all for maximum impact</span>
+                      <span>AI tools change weekly. You hear about it months later</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="mt-0.5 h-5 w-5 shrink-0 text-[#9B9080]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                       </svg>
-                      <span>You know these tools could help, but separating hype from reality isn&apos;t anyone&apos;s day job</span>
+                      <span>You invest in a solution that&apos;s outdated before your team adopts it</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="mt-0.5 h-5 w-5 shrink-0 text-[#9B9080]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                       </svg>
-                      <span>Data ends up in tools you don&apos;t fully understand or control</span>
+                      <span>No one internal knows what&apos;s hype and what&apos;s worth pursuing</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="mt-0.5 h-5 w-5 shrink-0 text-[#9B9080]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                       </svg>
-                      <span>One-off projects go stale the moment something changes</span>
+                      <span>Data ends up in tools you don&apos;t control or fully understand</span>
                     </li>
                   </ul>
                 </div>
@@ -87,19 +89,19 @@ export default function Home() {
                       <svg className="mt-0.5 h-5 w-5 shrink-0 text-[#4ADE80]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
-                      <span>We guide your business to the right systems — and keep them current as things evolve</span>
+                      <span>We monitor the landscape and upgrade your systems when it makes sense</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="mt-0.5 h-5 w-5 shrink-0 text-[#4ADE80]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
-                      <span>You don&apos;t need to become an expert. That&apos;s our job</span>
+                      <span>When something better comes along, we swap it in. You don&apos;t even notice</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="mt-0.5 h-5 w-5 shrink-0 text-[#4ADE80]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
-                      <span>We cut through the noise so you only invest in what actually works</span>
+                      <span>We separate hype from reality so you invest in what actually works</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="mt-0.5 h-5 w-5 shrink-0 text-[#4ADE80]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -128,7 +130,7 @@ export default function Home() {
                 How We Work
               </SectionHeading>
               <p className="mb-12 max-w-3xl text-xl text-text-light">
-                Six principles that shape every engagement.
+                We don&apos;t hand you a system and disappear. We embed with your team and stay until it works.
               </p>
             </ScrollReveal>
 

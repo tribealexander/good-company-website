@@ -16,3 +16,6 @@ export { default as InvestmentSection } from "./InvestmentSection";
 export { default as PageTransition } from "./PageTransition";
 export { default as TestimonialsCarousel } from "./TestimonialsCarousel";
 export { default as CalEmbed } from "./CalEmbed";
+export { default as ProblemSelectorV2 } from "./ProblemSelectorV2";
+export { default as ProblemsSectionWrapperV2 } from "./ProblemsSectionWrapperV2";
+export { default as FAQV2 } from "./FAQV2";
