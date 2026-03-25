@@ -1,7 +1,6 @@
 "use client";
 
 import { Header, Footer, ScrollReveal, PageTransition } from "@/components";
-import RoughAnnotation from "@/components/RoughAnnotation";
 import type { Presentation } from "@/lib/presentations";
 
 export default function PresentationContent({
@@ -28,19 +27,10 @@ export default function PresentationContent({
               <p className="mb-3 text-xs font-medium uppercase tracking-wider text-[#A8D5C2]">
                 {presentation.clientName} &middot; {formattedDate}
               </p>
-              <h1 className="mb-6 text-3xl font-bold text-white md:text-4xl lg:text-[48px] lg:leading-tight">
-                <RoughAnnotation
-                  type="underline"
-                  color="#B8860B"
-                  strokeWidth={3}
-                  animationDuration={800}
-                  showOnScroll={false}
-                  delay={400}
-                >
-                  Paul
-                </RoughAnnotation>
-                : AI-Powered Operations for KCS
-              </h1>
+              <h1
+                className="mb-6 text-3xl font-bold text-white md:text-4xl lg:text-[48px] lg:leading-tight"
+                dangerouslySetInnerHTML={{ __html: presentation.title }}
+              />
               <p className="text-base leading-[1.7] text-[#A8D5C2] lg:text-lg">
                 {presentation.subtitle}
               </p>
