@@ -29,102 +29,72 @@ const PRESENTATIONS: Presentation[] = [
       {
         title: "What came out of the calls",
         subtitle:
-          "We sat down with Catarina and David separately in February, and again with Catarina in November. Here's what we heard.",
+          "Based on calls with Catarina and David over the past several months. Their feedback, along with some of our observations.",
         content: `
-          <p>Every problem traces back to the same thing: <strong>information doesn't get where it needs to go.</strong> The work gets done, but the record of it ends up scattered across Halo, Teams, email, phone, and DMs.</p>
-          <div class="grid gap-4 md:grid-cols-2 mt-6">
-            <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-              <p class="text-sm font-semibold text-[#006747] mb-1">Information lives everywhere</p>
-              <p class="text-sm text-[#555]">Halo, Teams, email, OpenPhone. Nobody has the full picture on any ticket. David said he has to check all four before he can even start on something new.</p>
+          <div class="space-y-5">
+            <div>
+              <p class="font-semibold text-[#1A1A1A]">Cross-channel problem</p>
+              <p class="text-sm text-[#555] mt-1">David said he has to check Halo, Teams, email, and OpenPhone before he can start on anything new. His words: "there's a whole other universe you need to check." This is fair feedback. Technician note quality has improved dramatically (from 8% compliance to 90%+ since the compliance report started), so on-ticket information is much better. The remaining gap is work happening in Teams, phone, and email that never makes it to the ticket.</p>
             </div>
-            <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-              <p class="text-sm font-semibold text-[#006747] mb-1">No structure to the day</p>
-              <p class="text-sm text-[#555]">Neither Catarina nor David could describe a typical day. Some of that is the nature of the work. But some of it is a lack of discipline around time-blocking. They've drifted from the structured schedule they were onboarded with into a fully reactive mode.</p>
+            <div>
+              <p class="font-semibold text-[#1A1A1A]">Chasing techs for missing info</p>
+              <p class="text-sm text-[#555] mt-1">Catarina told us she asked Angel for a part name <strong>five days in a row</strong> before he gave it to her. This isn't a one-off. It happens with multiple techs, multiple tickets, every week.</p>
             </div>
-            <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-              <p class="text-sm font-semibold text-[#006747] mb-1">Invoicing has gone off-plan</p>
-              <p class="text-sm text-[#555]">Catarina was onboarded with a set invoicing schedule: same day, same time, every week. Instead, she's doing it ad hoc during lunch (12:00-1:30) in between other tasks because that's "when it's calm." This explains a lot of the invoice errors. She's doing the most important revenue task in fragmented windows while context-switching between other work.</p>
+            <div>
+              <p class="font-semibold text-[#1A1A1A]">Daily dispatch can't keep up</p>
+              <p class="text-sm text-[#555] mt-1">Catarina and David adopted a system of unassigning and reassigning tickets daily based on who's available. We let them run with it knowing it wasn't a long-term fix. They can't keep up with it at this volume, so it's not even being followed consistently, and the board is messier than if they'd never tried it. We've raised that tickets should be assigned immediately when they come in, with scheduling handled through appointments and calendar, but that shift hasn't happened yet. On top of that, someone manually messages every technician their assignments each morning, which is 10-15 messages before the day even starts.</p>
             </div>
-            <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-              <p class="text-sm font-semibold text-[#006747] mb-1">Tech leads find out too late</p>
-              <p class="text-sm text-[#555]">No QC on field work. When something goes wrong, David described being stuck in "limbo" because it's too technical for him but Jeff or Danny don't know about it yet.</p>
+            <div>
+              <p class="font-semibold text-[#1A1A1A]">Invoicing has gone off-plan</p>
+              <p class="text-sm text-[#555] mt-1">Catarina was onboarded with a set invoicing schedule: same day, same time, every week. Instead, she's doing it ad hoc during lunch (12:00-1:30) in between other tasks because that's "when it's calm." This explains a lot of the invoice errors. She's doing the most important revenue task in fragmented windows while context-switching.</p>
             </div>
-            <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-              <p class="text-sm font-semibold text-[#006747] mb-1">North is still rough</p>
-              <p class="text-sm text-[#555]">Adrian handles 90% of North tickets. Keys is stabilizing under David, but North doesn't have the same structure yet.</p>
+            <div>
+              <p class="font-semibold text-[#1A1A1A]">Tech leads find out too late</p>
+              <p class="text-sm text-[#555] mt-1">This is fair feedback. David described being stuck in "limbo" when something is too technical for him but Jeff or Danny don't know about it yet. Ideally David grows into being able to triage basic technical issues without needing a lead, but there are also things we can do: involve tech leads earlier through structured check-ins, or potentially give technicians on-the-field AI support so they can get walk-throughs without always needing to reach Eddy or Jeff. That last idea is something I've been thinking about but haven't discussed with anyone yet.</p>
             </div>
-            <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-              <p class="text-sm font-semibold text-[#006747] mb-1">Nowhere to park non-urgent stuff</p>
-              <p class="text-sm text-[#555]">Halo bugs, process improvements, training ideas. They come up during the day but there's no system for them. They end up getting discussed at 6pm because there's no other time.</p>
+            <div>
+              <p class="font-semibold text-[#1A1A1A]">Materials showing up with no context</p>
+              <p class="text-sm text-[#555] mt-1">Something arrives at a property. It's noted on a ticket. But nobody knows who ordered it, where it came from, or whether to bill the client for it.</p>
+            </div>
+            <div>
+              <p class="font-semibold text-[#1A1A1A]">North is still rough</p>
+              <p class="text-sm text-[#555] mt-1">Adrian handles 90% of North tickets. Keys is stabilizing under David, but North doesn't have the same structure yet.</p>
+            </div>
+            <div>
+              <p class="font-semibold text-[#1A1A1A]">Nowhere to park non-urgent stuff</p>
+              <p class="text-sm text-[#555] mt-1">Halo bugs, process improvements, training ideas. They come up during the day but there's no system for them. We set up a backlog in Notion but they abandoned it because they didn't want another tool. Fair enough. There have also been instances where they've spent 60-90 minutes each on the phone with Halo support for something that was absolutely non-critical.</p>
             </div>
           </div>
         `,
       },
       {
-        title: "The busy work",
-        subtitle:
-          "These are specific things Catarina and David described spending their time on, every day.",
+        title: "Accountability",
+        subtitle: "Something we noticed across the calls.",
         content: `
-          <div class="space-y-4">
-            <div class="flex gap-4 items-start">
-              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#FDF2F2] flex items-center justify-center">
-                <span class="text-sm">1</span>
-              </div>
-              <div>
-                <p class="font-semibold text-[#1A1A1A]">Chasing techs for missing info</p>
-                <p class="text-sm text-[#555] mt-1">Catarina told us she asked Angel for a part name <strong>five days in a row</strong> before he gave it to her. This isn't a one-off. It happens with multiple techs, multiple tickets, every week.</p>
-              </div>
-            </div>
-            <div class="flex gap-4 items-start">
-              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#FDF2F2] flex items-center justify-center">
-                <span class="text-sm">2</span>
-              </div>
-              <div>
-                <p class="font-semibold text-[#1A1A1A]">Checking four systems before doing anything</p>
-                <p class="text-sm text-[#555] mt-1">David has to check Teams, email, OpenPhone, and other Halo tickets before he touches anything new. He said email replies come through as the individual person, not the company. His words: "there's a whole other universe you need to check."</p>
-              </div>
-            </div>
-            <div class="flex gap-4 items-start">
-              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#FDF2F2] flex items-center justify-center">
-                <span class="text-sm">3</span>
-              </div>
-              <div>
-                <p class="font-semibold text-[#1A1A1A]">Assigning tickets by hand every morning</p>
-                <p class="text-sm text-[#555] mt-1">Tickets sit in an unassigned backlog overnight. Every morning, Catarina and David go through them one by one, figuring out who's available, who's at which site, what skills are needed. Techs don't know their schedule until they're told.</p>
-              </div>
-            </div>
-            <div class="flex gap-4 items-start">
-              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#FDF2F2] flex items-center justify-center">
-                <span class="text-sm">4</span>
-              </div>
-              <div>
-                <p class="font-semibold text-[#1A1A1A]">Materials showing up with no context</p>
-                <p class="text-sm text-[#555] mt-1">Something arrives at a property. It's noted on a ticket. But nobody knows who ordered it, where it came from, or whether to bill the client for it.</p>
-              </div>
-            </div>
-            <div class="flex gap-4 items-start">
-              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#FDF2F2] flex items-center justify-center">
-                <span class="text-sm">5</span>
-              </div>
-              <div>
-                <p class="font-semibold text-[#1A1A1A]">Manually correcting Halo automation errors on invoices</p>
-                <p class="text-sm text-[#555] mt-1">Catarina catches cases where Halo adds wrong hours to invoices. The automation tool that's supposed to save time is creating more QC work.</p>
-              </div>
-            </div>
-          </div>
+          <p>Across all three calls, there's a consistent pattern in how Catarina and David describe problems. The framing is almost always about what other people aren't doing: techs don't write good notes, tech leads aren't checking work, information comes in through the wrong channel.</p>
+          <p class="mt-4">Some of that is real. But their job is to make operations run smoothly. When Angel doesn't give Catarina a part name for five days, the real question is what system is in place to make sure he does, and if it's not working, what's been done about it.</p>
+          <p class="mt-4">David's role is one example. He was brought on to answer phones and get back to clients. Over time, Catarina has pulled him into operations work to the point where he says he often doesn't have time to do the client-facing work he was hired for. That may or may not be the right call, but it happened organically, not by design. The same applies to the invoicing schedule, the daily dispatch, the time-blocking. These were set up. They've drifted.</p>
+          <p class="mt-4">There's also a question of ownership. Catarina's role is Operations Manager. When a technician isn't following a process, getting them to follow it is the job. As an example, Catarina flagged that a technician wasn't using the Start Journey feature and said she didn't have the capacity to keep following up on it. That's understandable when it's one of many things. But getting technicians to follow operational processes is the core of the role. Escalating it upward instead of owning it suggests the role boundaries aren't clear enough, or the expectation of what "operations manager" means hasn't fully landed.</p>
+          <p class="mt-4">Some people on the team are harder to manage than others. That's real. But the response to that can't be to give up on the process and default to working around people. The automation and tooling we're recommending will help, but it won't fix an accountability gap on its own. The tools need to come alongside a reset on what's expected.</p>
         `,
       },
       {
         title: "The prioritization problem",
         subtitle:
-          "There's no system for it, and the workarounds they've come up with are making things worse.",
+          "KCS has never had defined SLAs or priority criteria. Here's what that looks like in practice.",
         variant: "highlight",
         content: `
-          <p>David described his daily triage as: new tickets first, client replies second, yesterday's backlog third. Invoicing and feedback only happen "if time allows." There's no framework for separating urgent from non-urgent. <strong>Everything feels equally important because nothing is classified.</strong></p>
-          <p class="mt-4">The invoicing situation is a good example. Catarina was given a clear schedule: same day, same time, every week. Instead she's made her own system where she does it ad hoc during lunch in between other tasks. The result is mistakes that could be avoided, and the most revenue-critical task being treated like something to squeeze in.</p>
-          <p class="mt-4">More broadly, non-urgent items (Halo bugs, process improvements, training needs) get discussed at 6pm because there's literally nowhere to park them during the day. There's no internal backlog, no "important but not today" list. So everything competes for attention at the same level.</p>
-          <p class="mt-4">And when a ticket gets stuck because it's too technical for David but the tech leads don't know about it, it just sits. There's no escalation path. David called it being in "limbo."</p>
-          <p class="mt-4">Some of this is structural (the tools don't support prioritization well). But some of it is people drifting from the processes they were given. Both need to be addressed.</p>
+          <p>David described his daily triage as: new tickets first, client replies second, yesterday's backlog third. Invoicing and feedback only happen "if time allows." <strong>Everything feels equally important because nothing is classified.</strong></p>
+
+          <p class="mt-4">Here's what the board actually looks like:</p>
+          <div class="mt-3 mb-4 rounded-xl border border-[#E0DBD3] bg-white p-5">
+            <p class="text-sm text-[#555]"><strong class="text-[#1A1A1A]">Example 1:</strong> An unassigned ticket marked "New" with high priority. Last action was March 11th. It's 162 days old. Whatever the context is, a high-priority ticket shouldn't sit unassigned for five months with a status of "New." It makes it impossible for anyone else to step in, look at the board, and trust that things aren't getting dropped.</p>
+          </div>
+          <div class="mb-4 rounded-xl border border-[#E0DBD3] bg-white p-5">
+            <p class="text-sm text-[#555]"><strong class="text-[#1A1A1A]">Example 2:</strong> Nearly every ticket in the queue is triaged as "Medium." When everything is medium, nothing is. This isn't a Catarina or David problem specifically. KCS has never operated with defined SLA terms or priority criteria. Without clear rules for what's high vs. low, defaulting to medium is what you'd expect. That's what the work with Eddy is meant to fix.</p>
+          </div>
+
+          <p>Halo has the features to support prioritization (priority fields, SLA rules, escalation). They just haven't been configured. Part of the work Zack is doing with Eddy right now is downloading the institutional knowledge needed to create firm rules for priority: which clients are always urgent, what types of issues need same-day response, and what can wait. Once those rules exist, we can configure SLAs in Halo so the system enforces them instead of relying on individual judgment.</p>
         `,
       },
       {
@@ -141,15 +111,25 @@ const PRESENTATIONS: Presentation[] = [
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
                   <p class="font-semibold text-[#1A1A1A] text-sm">SLA escalation rules for priority classification</p>
-                  <p class="text-sm text-[#555] mt-1">Tickets can auto-classify by priority with defined response and resolution targets. When a threshold is about to breach, Halo escalates automatically. This gives them the urgent vs. non-urgent framework they're missing.</p>
+                  <p class="text-sm text-[#555] mt-1">Halo supports auto-classifying tickets by priority with response and resolution targets that escalate when thresholds are about to breach. KCS doesn't have defined SLAs today, so the first step is establishing them. A lot of the priority knowledge lives in Eddy's head. Things like "if Joe calls from XYZ, that's super important, he never calls unless it is." Zack is working on getting that institutional knowledge out of Eddy through dedicated calls. Once it's captured, it becomes the foundation for SLA rules, priority criteria, and eventually a knowledge base that Catarina and David can reference instead of guessing.</p>
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">Technician calendar view</p>
-                  <p class="text-sm text-[#555] mt-1">When tickets auto-assign, they can also appear on the tech's calendar in Halo. Eddie would know what he's doing tomorrow before he leaves the house. No morning briefing needed.</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm">Technician calendar + automatic daily schedule message</p>
+                  <p class="text-sm text-[#555] mt-1">When tickets auto-assign, they appear on the tech's calendar in Halo. On top of that, we could configure it so each tech gets an automatic message in Teams at 7am with their schedule for the day. Right now someone has to manually message every technician their assignments each morning, which is 10-15 messages before the day even starts. With auto-assign + auto-notify, all they'd need to do is set the calendar and the comms go out on their own.</p>
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">Recurring tickets for scheduled maintenance</p>
-                  <p class="text-sm text-[#555] mt-1">Things like monthly camera checks or quarterly network reviews can auto-create at set intervals. Nobody has to remember to make the ticket.</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm">OpenPhone auto-creates tickets</p>
+                  <p class="text-sm text-[#555] mt-1">The team has pushed back on this because of duplicate concerns. Here's the actual volume from the past month:</p>
+                  <ul class="text-sm text-[#555] mt-2 ml-4 space-y-1 list-disc">
+                    <li>~14 calls per day (7 incoming, 7 outgoing)</li>
+                    <li>31% of incoming calls missed (89 out of 288 total)</li>
+                    <li>4-5 missed calls per day, trending up weekly (0 → 17 → 32 → 40)</li>
+                  </ul>
+                  <p class="text-sm text-[#555] mt-2">At 7 incoming calls per day, auto-creating tickets won't flood the system. Merging a duplicate is faster than switching screens to manually copy and paste info into a new ticket. And duplicates are actually useful: if a client calls three times about the same thing, you can see that urgency instead of it being buried in one ticket.</p>
+                </div>
+                <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
+                  <p class="font-semibold text-[#1A1A1A] text-sm">Proactive tickets</p>
+                  <p class="text-sm text-[#555] mt-1">Two flavors. First, scheduled: monthly camera checks, quarterly network reviews, any recurring maintenance auto-creates at set intervals so nobody has to remember. Second, smart: if a client hasn't had any activity in three months, the system creates a check-in ticket automatically. This turns maintenance from something that gets forgotten into something that just shows up in the queue.</p>
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
                   <p class="font-semibold text-[#1A1A1A] text-sm">Internal backlog ticket type</p>
@@ -159,7 +139,7 @@ const PRESENTATIONS: Presentation[] = [
             </div>
 
             <div>
-              <p class="font-semibold text-[#006747] text-lg mb-3">Things that need AI</p>
+              <p class="font-semibold text-[#006747] text-lg mb-3">Ideas that need AI</p>
               <div class="space-y-3">
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
                   <p class="font-semibold text-[#1A1A1A] text-sm">Ticket completeness scoring</p>
@@ -170,8 +150,8 @@ const PRESENTATIONS: Presentation[] = [
                   <p class="text-sm text-[#555] mt-1">AI reads the client-facing messages on every open ticket and identifies commitments: delivery dates, follow-ups promised, callbacks scheduled. Flags anything overdue or at risk. This is the stuff that damages client relationships when it slips through.</p>
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">Capturing tech updates from Teams</p>
-                  <p class="text-sm text-[#555] mt-1">The team tried automated notes in Halo in November 2025 and the techs pushed back. They won't fill out forms. But they already message in Teams. AI can read a Teams message like "Three Waters done, 2 hours, left old unit with front desk," match it to the right ticket, extract the structured data, and write it to Halo. The tech never opens Halo. Catarina doesn't chase them.</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm">Faster note entry for ops team</p>
+                  <p class="text-sm text-[#555] mt-1">Technicians should still be working in Halo directly. But when Catarina or David get a verbal update or a Teams message from a tech, they can tell Paul to log it instead of switching to Halo and typing it up manually. Paul extracts the structured data (time, status, materials, next steps) and writes it to the ticket. Saves the back-office team time without letting techs off the hook.</p>
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
                   <p class="font-semibold text-[#1A1A1A] text-sm">Material and purchase tracking</p>
@@ -185,68 +165,17 @@ const PRESENTATIONS: Presentation[] = [
                   <p class="font-semibold text-[#1A1A1A] text-sm">Email-to-ticket matching</p>
                   <p class="text-sm text-[#555] mt-1">Incoming emails that land in Halo but aren't linked to a ticket (because the sender shows as an individual, not a company) can be auto-matched by domain and linked to the right open ticket. Cuts down on David's cross-checking.</p>
                 </div>
+                <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
+                  <p class="font-semibold text-[#1A1A1A] text-sm">On-the-field AI support for technicians</p>
+                  <p class="text-sm text-[#555] mt-1">This is an early idea I've been thinking about but haven't discussed with anyone yet. Instead of technicians always needing to call Eddy, Jeff, or Danny when they get stuck on something technical, they could ask an AI assistant for walk-throughs and troubleshooting help. It wouldn't replace the tech leads, but it could handle the routine questions and free them up for the harder stuff. Would also help David, who gets stuck when things are too technical for him but the leads aren't available.</p>
+                </div>
+                <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
+                  <p class="font-semibold text-[#1A1A1A] text-sm">AI executive assistant in Teams</p>
+                  <p class="text-sm text-[#555] mt-1">Many of the ideas above (ticket scoring, promise tracking, tech updates from Teams, smart dispatch) can be delivered through a single AI assistant that lives in Microsoft Teams and connects to Halo through API calls. Instead of building separate tools, the team would interact with one assistant that can answer questions, capture information, and flag risks. We've already started building this for Zack. Expanding it to the operations team and connecting it to Halo is the natural next step. Happy to walk through the details if helpful.</p>
+                </div>
               </div>
             </div>
           </div>
-        `,
-      },
-      {
-        title: "One important thing to understand",
-        subtitle: "Catarina and David close tickets. The technicians don't.",
-        variant: "highlight",
-        content: `
-          <p>The obvious answer to "how do we get better tech notes?" is "make them fill out required fields." But the techs don't close tickets. Catarina and David do. Required fields on close just adds more work to the two people who are already overloaded.</p>
-          <p class="mt-4">Whatever we build has to catch the information <strong>when the tech finishes the work</strong>, not when Catarina tries to invoice it days later. That's why the Teams capture approach matters. It meets the techs where they already are.</p>
-        `,
-      },
-      {
-        title: "How all of this connects",
-        subtitle: "Instead of building six separate tools, we put one AI assistant in Teams that ties everything together.",
-        content: `
-          <p>We've been calling it Paul. It's the same assistant we've been building for Zack, but with access to Halo and available to the whole operations team through Microsoft Teams.</p>
-
-          <div class="overflow-x-auto mt-6">
-            <table class="w-full text-sm">
-              <thead>
-                <tr class="border-b border-[#E0DBD3]">
-                  <th class="text-left py-3 pr-4 font-semibold text-[#1A1A1A]">Today</th>
-                  <th class="text-left py-3 font-semibold text-[#1A1A1A]">With Paul in Teams</th>
-                </tr>
-              </thead>
-              <tbody class="text-[#555]">
-                <tr class="border-b border-[#F0EBE3]">
-                  <td class="py-3 pr-4">Catarina chases Angel for days for a part name</td>
-                  <td class="py-3 text-[#006747]">Angel tells Paul in Teams when he finishes. It's on the ticket before Catarina looks at it.</td>
-                </tr>
-                <tr class="border-b border-[#F0EBE3]">
-                  <td class="py-3 pr-4">David checks Teams, email, phone before touching any ticket</td>
-                  <td class="py-3 text-[#006747]">Teams messages are already on the ticket. Nothing to cross-check.</td>
-                </tr>
-                <tr class="border-b border-[#F0EBE3]">
-                  <td class="py-3 pr-4">Catarina manually reviews every ticket to figure out what's ready</td>
-                  <td class="py-3 text-[#006747]">"Paul, what's ready to close?" Pre-sorted list.</td>
-                </tr>
-                <tr class="border-b border-[#F0EBE3]">
-                  <td class="py-3 pr-4">Manual ticket assignment every morning</td>
-                  <td class="py-3 text-[#006747]">80% auto-assigned by rules. "Paul, handle the rest" for edge cases.</td>
-                </tr>
-                <tr class="border-b border-[#F0EBE3]">
-                  <td class="py-3 pr-4">Client promises slip through and nobody notices until they complain</td>
-                  <td class="py-3 text-[#006747]">Paul flags unfulfilled commitments before they become problems.</td>
-                </tr>
-                <tr class="border-b border-[#F0EBE3]">
-                  <td class="py-3 pr-4">Need a report to see where the backlog stands</td>
-                  <td class="py-3 text-[#006747]">"Paul, how's this week vs last?" Instant.</td>
-                </tr>
-                <tr>
-                  <td class="py-3 pr-4">"What did we tell the client?" requires reading every note on the ticket</td>
-                  <td class="py-3 text-[#006747]">"Paul, what was promised on ticket 4521?" Paul reads the whole thread and summarizes.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p class="mt-6 text-sm text-[#555]">The daily compliance email stays. That's not going anywhere. It's the audit trail. Paul is the live, interactive layer on top of everything else.</p>
         `,
       },
       {
@@ -308,7 +237,7 @@ const PRESENTATIONS: Presentation[] = [
                 <span class="font-mono text-sm font-bold text-[#006747] bg-[#E8EDE9] px-2 py-0.5 rounded">Phase 3</span>
                 <p class="font-semibold text-[#1A1A1A]">Paul writes to Halo (with confirmation)</p>
               </div>
-              <p class="text-sm text-[#555]">"Assign ticket 4521 to Eddie." Paul shows what it's about to do, you confirm, it does it. Nothing changes without approval.</p>
+              <p class="text-sm text-[#555]">"Assign ticket 4521 to Eddy." Paul shows what it's about to do, you confirm, it does it. Nothing changes without approval.</p>
             </div>
             <div class="rounded-xl border border-[#E0DBD3] bg-white p-6">
               <div class="flex items-center gap-3 mb-3">
@@ -363,6 +292,358 @@ const PRESENTATIONS: Presentation[] = [
               <p class="text-sm text-[#555]"><strong class="text-[#1A1A1A]">AI doesn't keep your data.</strong> Same setup as the compliance report. The AI processes what it needs and doesn't store or learn from it.</p>
             </div>
           </div>
+        `,
+      },
+    ],
+  },
+  {
+    slug: "kcs-paul-triage-assistant",
+    clientName: "KCS",
+    title: "Paul: How It Works",
+    subtitle:
+      "An AI assistant in Microsoft Teams that connects to Halo. Here's what it does and how.",
+    date: "2026-03-26",
+    sections: [
+      {
+        title: "What Paul is",
+        content: `
+          <div class="space-y-3">
+            <div>
+              <p class="font-semibold text-[#1A1A1A]">An AI assistant that lives in a Teams channel and has access to Halo through the API.</p>
+            </div>
+            <ul class="text-sm text-[#555] ml-4 space-y-1 list-disc">
+              <li>Already built and running for Zack as a personal task assistant</li>
+              <li>Next step is giving it Halo access and putting it in a shared Teams channel</li>
+              <li>Uses the same Halo API and AI setup as the daily compliance report</li>
+              <li>Sits in a private channel. Only people you add can use it</li>
+            </ul>
+          </div>
+        `,
+      },
+      {
+        title: "Architecture",
+        content: `
+          <div class="rounded-xl border border-[#E0DBD3] bg-[#F7F5F0] p-6 font-mono text-sm">
+            <div class="flex flex-col items-center space-y-3">
+              <div class="rounded-lg bg-white border border-[#E0DBD3] px-6 py-3 text-center">
+                <p class="font-semibold text-[#1A1A1A]">Microsoft Teams</p>
+                <p class="text-xs text-[#555]">Private channel</p>
+                <p class="text-xs text-[#555]">Zack, Eddy, Catarina, David</p>
+              </div>
+              <p class="text-[#555]">&darr; &uarr;</p>
+              <div class="rounded-lg bg-white border border-[#E0DBD3] px-6 py-3 text-center">
+                <p class="font-semibold text-[#006747]">Paul</p>
+                <p class="text-xs text-[#555]">Hosted agent (Railway/Vercel)</p>
+                <p class="text-xs text-[#555]">Routes messages, manages context</p>
+              </div>
+              <div class="flex gap-8 mt-1">
+                <div class="flex flex-col items-center space-y-2">
+                  <p class="text-[#555]">&darr; &uarr;</p>
+                  <div class="rounded-lg bg-white border border-[#E0DBD3] px-4 py-2 text-center">
+                    <p class="font-semibold text-[#1A1A1A] text-xs">Halo PSA API</p>
+                    <p class="text-xs text-[#555]">Tickets, actions, agents</p>
+                    <p class="text-xs text-[#555]">clients, appointments</p>
+                  </div>
+                </div>
+                <div class="flex flex-col items-center space-y-2">
+                  <p class="text-[#555]">&darr; &uarr;</p>
+                  <div class="rounded-lg bg-white border border-[#E0DBD3] px-4 py-2 text-center">
+                    <p class="font-semibold text-[#1A1A1A] text-xs">Claude API</p>
+                    <p class="text-xs text-[#555]">Natural language</p>
+                    <p class="text-xs text-[#555]">processing</p>
+                  </div>
+                </div>
+                <div class="flex flex-col items-center space-y-2">
+                  <p class="text-[#555]">&darr; &uarr;</p>
+                  <div class="rounded-lg bg-white border border-[#E0DBD3] px-4 py-2 text-center">
+                    <p class="font-semibold text-[#1A1A1A] text-xs">Knowledge Base</p>
+                    <p class="text-xs text-[#555]">Client tiers, tech skills</p>
+                    <p class="text-xs text-[#555]">priority rules</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 space-y-1">
+            <p class="text-sm text-[#555]"><strong class="text-[#1A1A1A]">Halo API:</strong> OAuth 2.0, same credentials as compliance report. Read tickets, actions, agents, clients, appointments. Write notes, assign tickets, create appointments.</p>
+            <p class="text-sm text-[#555]"><strong class="text-[#1A1A1A]">Claude API:</strong> Processes queries, extracts structured data, identifies promises. Enterprise agreement, no data retention or training.</p>
+            <p class="text-sm text-[#555]"><strong class="text-[#1A1A1A]">Knowledge base:</strong> Built from Eddy's institutional knowledge. Client tiers, tech skills, priority rules. Grows over time.</p>
+          </div>
+        `,
+      },
+      {
+        title: "What operators can ask it",
+        subtitle: "Zack, Catarina, David type in Teams. Paul pulls answers from Halo.",
+        content: `
+          <div class="space-y-2">
+            <div class="rounded-lg bg-[#F7F5F0] px-4 py-2 text-sm border border-[#E0DBD3]">"What's sitting unassigned right now?"</div>
+            <div class="rounded-lg bg-[#F7F5F0] px-4 py-2 text-sm border border-[#E0DBD3]">"What did we tell the client on ticket 4521?"</div>
+            <div class="rounded-lg bg-[#F7F5F0] px-4 py-2 text-sm border border-[#E0DBD3]">"What's ready for me to close and invoice?"</div>
+            <div class="rounded-lg bg-[#F7F5F0] px-4 py-2 text-sm border border-[#E0DBD3]">"How are Angel's notes looking this week?"</div>
+            <div class="rounded-lg bg-[#F7F5F0] px-4 py-2 text-sm border border-[#E0DBD3]">"What should the field team's schedule look like today?"</div>
+            <div class="rounded-lg bg-[#F7F5F0] px-4 py-2 text-sm border border-[#E0DBD3]">"How's the backlog this week vs last?"</div>
+            <div class="rounded-lg bg-[#F7F5F0] px-4 py-2 text-sm border border-[#E0DBD3]">"Which tickets are older than 7 days with no update?"</div>
+          </div>
+          <p class="text-sm text-[#555] mt-4">Paul reads Halo in real time. No reports to build, no dashboards to check.</p>
+        `,
+      },
+      {
+        title: "What operators can tell it to do",
+        subtitle: "Paul confirms before doing anything.",
+        content: `
+          <div class="space-y-3">
+            <div class="rounded-lg bg-[#F7F5F0] px-4 py-3 text-sm border border-[#E0DBD3]">
+              <p class="text-[#555]"><strong class="text-[#1A1A1A]">You:</strong> "Assign ticket 4521 to Eddy"</p>
+              <p class="text-[#555] mt-1"><strong class="text-[#006747]">Paul:</strong> "Ticket #4521 — AP install at Three Waters. Assign to Eddy Worthington? [Yes / No]"</p>
+            </div>
+            <div class="rounded-lg bg-[#F7F5F0] px-4 py-3 text-sm border border-[#E0DBD3]">
+              <p class="text-[#555]"><strong class="text-[#1A1A1A]">You:</strong> "Add a note to 4533: waiting on client approval for materials"</p>
+              <p class="text-[#555] mt-1"><strong class="text-[#006747]">Paul:</strong> "Add private note to #4533? [Yes / No]"</p>
+            </div>
+          </div>
+          <p class="text-sm text-[#555] mt-4">Nothing changes in Halo without explicit approval. Paul can't delete anything.</p>
+        `,
+      },
+      {
+        title: "Who has access",
+        subtitle: "Leadership and back office only. Not technicians.",
+        content: `
+          <div class="space-y-3">
+            <p class="text-sm text-[#555]"><strong class="text-[#1A1A1A]">Core access:</strong> Zack, Eddy, Catarina, David</p>
+            <p class="text-sm text-[#555]"><strong class="text-[#1A1A1A]">Potential expansion:</strong> Danny, Jeff (if it makes sense)</p>
+            <p class="text-sm text-[#555]"><strong class="text-[#1A1A1A]">Not technicians.</strong> Paul is an operations tool, not a field tool. Techs continue using Halo and Teams as they do now.</p>
+          </div>
+        `,
+      },
+      {
+        title: "Example: tech update flow",
+        subtitle: "An operator gets a message from a tech and tells Paul to log it.",
+        content: `
+          <div class="space-y-3">
+            <div class="rounded-lg bg-[#F7F5F0] px-4 py-3 text-sm border border-[#E0DBD3]">
+              <p class="text-[#555]"><strong class="text-[#1A1A1A]">Catarina to Paul:</strong> "Eddy just told me Three Waters AP install is done, took 2 hours, left old unit with front desk, needs to come back Thursday for second floor. Put it on the ticket."</p>
+            </div>
+            <div class="rounded-lg bg-[#F7F5F0] px-4 py-3 text-sm border border-[#E0DBD3]">
+              <p class="text-[#555]"><strong class="text-[#006747]">Paul:</strong> "Adding to ticket #4521 (Three Waters - AP Install):</p>
+              <ul class="text-[#555] mt-1 ml-4 list-disc text-sm">
+                <li>Time: 2 hours</li>
+                <li>Status: Partial (second floor remaining)</li>
+                <li>Materials: Old unit left with front desk</li>
+                <li>Next: Return Thursday</li>
+              </ul>
+              <p class="text-[#555] mt-1">Confirm? [Yes / Edit]"</p>
+            </div>
+          </div>
+          <p class="text-sm text-[#555] mt-4">Paul matches to the right ticket by checking what's assigned to that tech today. Faster than switching to Halo and typing it up manually.</p>
+        `,
+      },
+      {
+        title: "Promise tracking",
+        subtitle: "Paul reads ticket threads and flags commitments that are coming due.",
+        content: `
+          <div class="rounded-lg bg-[#F7F5F0] px-4 py-3 text-sm border border-[#E0DBD3]">
+            <p class="text-[#006747] font-semibold">Paul (daily, 3pm):</p>
+            <p class="text-[#555] mt-1">"3 tickets have commitments coming due:</p>
+            <ul class="text-[#555] mt-1 ml-4 list-disc">
+              <li>#4521 — Eddy told client replacement AP by end of week. No update since Mar 12.</li>
+              <li>#4498 — Catarina promised follow-up call to Melissa (Three Waters). Due today.</li>
+              <li>#4510 — Jeff said network config would be done by Thursday. No notes since Tuesday.</li>
+            </ul>
+            <p class="text-[#555] mt-1">"</p>
+          </div>
+          <p class="text-sm text-[#555] mt-4">Paul reads the client-facing messages on every open ticket using the Actions API. Identifies delivery dates, follow-ups promised, callbacks scheduled. Flags anything overdue or at risk.</p>
+        `,
+      },
+      {
+        title: "How Eddy's knowledge makes Paul smarter",
+        subtitle: "The institutional knowledge Zack is downloading from Eddy feeds directly into Paul.",
+        content: `
+          <div class="space-y-3">
+            <p class="text-sm text-[#555]">Right now, priority decisions live in Eddy's head. Things like:</p>
+            <ul class="text-sm text-[#555] ml-4 space-y-1 list-disc">
+              <li>Which clients are always urgent (they never call unless it's serious)</li>
+              <li>Which techs are best for which types of work</li>
+              <li>Which sites have quirks that affect scheduling</li>
+              <li>What response times are expected by client tier</li>
+            </ul>
+            <p class="text-sm text-[#555] mt-3">Once captured, this knowledge does three things:</p>
+            <ul class="text-sm text-[#555] ml-4 space-y-1 list-disc">
+              <li><strong class="text-[#1A1A1A]">Feeds Halo SLA rules</strong> — auto-classify priority based on client, issue type, urgency signals</li>
+              <li><strong class="text-[#1A1A1A]">Feeds Halo auto-assign rules</strong> — right tech for the right job, automatically</li>
+              <li><strong class="text-[#1A1A1A]">Feeds Paul's context</strong> — when Paul suggests assignments or flags risks, it's using Eddy's judgment, not guessing</li>
+            </ul>
+            <p class="text-sm text-[#555] mt-3">We have an interview script ready for this. Covers: VIP clients, tech strengths and weaknesses, decision heuristics, urgency signals, unwritten rules.</p>
+          </div>
+        `,
+      },
+      {
+        title: "What Paul connects to",
+        subtitle: "Technical overview.",
+        content: `
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-[#E0DBD3]">
+                  <th class="text-left py-2 pr-4 font-semibold text-[#1A1A1A]">System</th>
+                  <th class="text-left py-2 font-semibold text-[#1A1A1A]">What Paul does with it</th>
+                </tr>
+              </thead>
+              <tbody class="text-[#555]">
+                <tr class="border-b border-[#F0EBE3]">
+                  <td class="py-2 pr-4 font-semibold">Halo PSA (API)</td>
+                  <td class="py-2">Reads tickets, actions, agents, clients, SLAs, appointments. Writes notes, assigns tickets, creates appointments. OAuth 2.0, same credentials as compliance report.</td>
+                </tr>
+                <tr class="border-b border-[#F0EBE3]">
+                  <td class="py-2 pr-4 font-semibold">Microsoft Teams</td>
+                  <td class="py-2">Lives in a private channel. Receives messages, responds. Can monitor a #field-updates channel for tech posts.</td>
+                </tr>
+                <tr class="border-b border-[#F0EBE3]">
+                  <td class="py-2 pr-4 font-semibold">Claude API</td>
+                  <td class="py-2">Processes natural language, extracts structured data from tech messages, scores ticket completeness, identifies promises in threads.</td>
+                </tr>
+                <tr>
+                  <td class="py-2 pr-4 font-semibold">Knowledge base</td>
+                  <td class="py-2">Client tiers, tech skills, priority rules. Starts with Eddy's institutional knowledge. Grows over time.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        `,
+      },
+      {
+        title: "Data privacy and PII",
+        content: `
+          <div class="space-y-4">
+            <div>
+              <p class="font-semibold text-[#1A1A1A]">No sensitive client data is accessed</p>
+              <ul class="text-sm text-[#555] ml-4 mt-2 space-y-1 list-disc">
+                <li>Paul works with ticket metadata: ticket numbers, statuses, priorities, agent names, work descriptions, time entries</li>
+                <li>It does not access or process: client billing information, payment details, credit card numbers, banking info, SSNs, or any financial records</li>
+                <li>Client contact details (names, emails, phone numbers) can be stripped at the API layer so the AI never sees them if preferred</li>
+                <li>No client passwords, credentials, or access keys are ever touched</li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-semibold text-[#1A1A1A]">How the AI handles data</p>
+              <ul class="text-sm text-[#555] ml-4 mt-2 space-y-1 list-disc">
+                <li>AI processes data in memory to respond to a query, then discards it. Nothing is stored.</li>
+                <li>Anthropic (the AI provider) does not train on API data. This is contractual, not just a policy.</li>
+                <li>Same setup as the daily compliance report that's been running for weeks</li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-semibold text-[#1A1A1A]">Access controls</p>
+              <ul class="text-sm text-[#555] ml-4 mt-2 space-y-1 list-disc">
+                <li>Paul lives in a private Teams channel. Only Zack, Eddy, Catarina, David (and potentially Danny/Jeff) can interact with it</li>
+                <li>Technicians do not have access</li>
+                <li>Paul confirms before writing anything to Halo. Nothing changes without approval.</li>
+                <li>Paul cannot delete any data. Read, add notes, update tickets only.</li>
+              </ul>
+            </div>
+          </div>
+        `,
+      },
+      {
+        title: "The one failure point",
+        variant: "highlight",
+        content: `
+          <p>Paul only works if people use it. The compliance report works because it runs automatically. Nobody has to remember to do anything. Paul requires people to actually interact with it in Teams.</p>
+          <p class="mt-4">If the team doesn't ask Paul questions, doesn't tell it to log updates, doesn't act on the flags it raises, it's just another tool collecting dust. Adoption by Zack, Eddy, Catarina, and David is the make-or-break.</p>
+        `,
+      },
+      {
+        title: "Expected time savings",
+        content: `
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-[#E0DBD3]">
+                  <th class="text-left py-2 pr-4 font-semibold text-[#1A1A1A]">Task</th>
+                  <th class="text-left py-2 pr-4 font-semibold text-[#1A1A1A]">Today</th>
+                  <th class="text-left py-2 pr-4 font-semibold text-[#1A1A1A]">With Paul</th>
+                  <th class="text-left py-2 font-semibold text-[#1A1A1A]">Saved</th>
+                </tr>
+              </thead>
+              <tbody class="text-[#555]">
+                <tr class="border-b border-[#F0EBE3]">
+                  <td class="py-2 pr-4">Cross-checking Teams/email/phone</td>
+                  <td class="py-2 pr-4">45-60 min/day</td>
+                  <td class="py-2 pr-4">5-10 min</td>
+                  <td class="py-2">~45 min</td>
+                </tr>
+                <tr class="border-b border-[#F0EBE3]">
+                  <td class="py-2 pr-4">Morning dispatch + messaging techs</td>
+                  <td class="py-2 pr-4">30-45 min/day</td>
+                  <td class="py-2 pr-4">5-10 min</td>
+                  <td class="py-2">~30 min</td>
+                </tr>
+                <tr class="border-b border-[#F0EBE3]">
+                  <td class="py-2 pr-4">Chasing techs for missing info</td>
+                  <td class="py-2 pr-4">30-60 min/day</td>
+                  <td class="py-2 pr-4">Flagged automatically</td>
+                  <td class="py-2">~25 min</td>
+                </tr>
+                <tr class="border-b border-[#F0EBE3]">
+                  <td class="py-2 pr-4">Reviewing tickets for invoice readiness</td>
+                  <td class="py-2 pr-4">30-45 min/day</td>
+                  <td class="py-2 pr-4">Pre-sorted list</td>
+                  <td class="py-2">~25 min</td>
+                </tr>
+                <tr class="border-b border-[#F0EBE3]">
+                  <td class="py-2 pr-4">Looking up what was promised to a client</td>
+                  <td class="py-2 pr-4">10-15 min/ticket</td>
+                  <td class="py-2 pr-4">Instant</td>
+                  <td class="py-2">~25 min</td>
+                </tr>
+                <tr>
+                  <td class="py-2 pr-4">Logging verbal/Teams updates into Halo</td>
+                  <td class="py-2 pr-4">15-20 min/day</td>
+                  <td class="py-2 pr-4">Tell Paul</td>
+                  <td class="py-2">~10 min</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="mt-4 rounded-xl border border-[#E0DBD3] bg-white p-5">
+            <p class="text-sm text-[#555]"><strong class="text-[#1A1A1A]">Conservative estimate:</strong> 1.5-2.5 hours/day combined between Catarina and David. ~30-50 hours/month. At ~$12-15/hr loaded cost, that's $360-750/month in recovered capacity.</p>
+            <p class="text-sm text-[#555] mt-2">The harder-to-quantify value: promises that don't get broken, tickets that don't sit for 162 days, and being able to look at the board and trust what you see.</p>
+          </div>
+        `,
+      },
+      {
+        title: "Rollout",
+        content: `
+          <div class="space-y-4">
+            <div class="flex gap-3 items-start">
+              <span class="font-mono text-sm font-bold text-[#006747] bg-[#E8EDE9] px-2 py-0.5 rounded flex-shrink-0">1</span>
+              <div>
+                <p class="font-semibold text-[#1A1A1A] text-sm">Read-only</p>
+                <p class="text-sm text-[#555]">Paul in a private Teams channel. Can query Halo: tickets, workloads, backlog, ticket histories, client info. Can't change anything.</p>
+              </div>
+            </div>
+            <div class="flex gap-3 items-start">
+              <span class="font-mono text-sm font-bold text-[#006747] bg-[#E8EDE9] px-2 py-0.5 rounded flex-shrink-0">2</span>
+              <div>
+                <p class="font-semibold text-[#1A1A1A] text-sm">Write with confirmation</p>
+                <p class="text-sm text-[#555]">Assign tickets, add notes, create appointments. Always confirms first.</p>
+              </div>
+            </div>
+            <div class="flex gap-3 items-start">
+              <span class="font-mono text-sm font-bold text-[#006747] bg-[#E8EDE9] px-2 py-0.5 rounded flex-shrink-0">3</span>
+              <div>
+                <p class="font-semibold text-[#1A1A1A] text-sm">Tech input</p>
+                <p class="text-sm text-[#555]">#field-updates channel. Techs post updates, Paul matches to tickets, confirms, writes to Halo.</p>
+              </div>
+            </div>
+            <div class="flex gap-3 items-start">
+              <span class="font-mono text-sm font-bold text-[#006747] bg-[#E8EDE9] px-2 py-0.5 rounded flex-shrink-0">4</span>
+              <div>
+                <p class="font-semibold text-[#1A1A1A] text-sm">Proactive</p>
+                <p class="text-sm text-[#555]">Promise tracking. Stuck ticket alerts. Schedule suggestions. Paul surfaces things before you think to ask.</p>
+              </div>
+            </div>
+          </div>
+          <p class="text-sm text-[#555] mt-6">Daily compliance email stays. That's the audit trail. Paul is the live layer on top.</p>
         `,
       },
     ],
