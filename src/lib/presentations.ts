@@ -38,12 +38,12 @@ const PRESENTATIONS: Presentation[] = [
               <p class="text-sm text-[#555]">Halo, Teams, email, OpenPhone. Nobody has the full picture on any ticket. David said he has to check all four before he can even start on something new.</p>
             </div>
             <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-              <p class="text-sm font-semibold text-[#006747] mb-1">The day is all reaction</p>
-              <p class="text-sm text-[#555]">Neither Catarina nor David could describe a typical day. First 2-3 hours and last 2-3 hours are the busiest. Everything in between depends on what blows up.</p>
+              <p class="text-sm font-semibold text-[#006747] mb-1">No structure to the day</p>
+              <p class="text-sm text-[#555]">Neither Catarina nor David could describe a typical day. Some of that is the nature of the work. But some of it is a lack of discipline around time-blocking. They've drifted from the structured schedule they were onboarded with into a fully reactive mode.</p>
             </div>
             <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-              <p class="text-sm font-semibold text-[#006747] mb-1">Invoicing gets squeezed</p>
-              <p class="text-sm text-[#555]">Catarina does invoicing during lunch (12:00-1:30) because that's the only calm window. The most important revenue task happens in whatever time is left over.</p>
+              <p class="text-sm font-semibold text-[#006747] mb-1">Invoicing has gone off-plan</p>
+              <p class="text-sm text-[#555]">Catarina was onboarded with a set invoicing schedule: same day, same time, every week. Instead, she's doing it ad hoc during lunch (12:00-1:30) in between other tasks because that's "when it's calm." This explains a lot of the invoice errors. She's doing the most important revenue task in fragmented windows while context-switching between other work.</p>
             </div>
             <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
               <p class="text-sm font-semibold text-[#006747] mb-1">Tech leads find out too late</p>
@@ -117,13 +117,14 @@ const PRESENTATIONS: Presentation[] = [
       {
         title: "The prioritization problem",
         subtitle:
-          "They don't have a system. It's not a training issue, it's a structural one.",
+          "There's no system for it, and the workarounds they've come up with are making things worse.",
         variant: "highlight",
         content: `
-          <p>David described his daily triage as: new tickets first, client replies second, yesterday's backlog third. Invoicing and feedback only happen "if time allows."</p>
-          <p class="mt-4">There's no framework for separating urgent from non-urgent. <strong>Everything feels equally important because nothing is classified.</strong></p>
-          <p class="mt-4">Non-urgent improvements (Halo bugs, process changes, training needs) get discussed at 6pm because there's literally nowhere to park them during the day. There's no internal backlog, no "important but not today" list.</p>
+          <p>David described his daily triage as: new tickets first, client replies second, yesterday's backlog third. Invoicing and feedback only happen "if time allows." There's no framework for separating urgent from non-urgent. <strong>Everything feels equally important because nothing is classified.</strong></p>
+          <p class="mt-4">The invoicing situation is a good example. Catarina was given a clear schedule: same day, same time, every week. Instead she's made her own system where she does it ad hoc during lunch in between other tasks. The result is mistakes that could be avoided, and the most revenue-critical task being treated like something to squeeze in.</p>
+          <p class="mt-4">More broadly, non-urgent items (Halo bugs, process improvements, training needs) get discussed at 6pm because there's literally nowhere to park them during the day. There's no internal backlog, no "important but not today" list. So everything competes for attention at the same level.</p>
           <p class="mt-4">And when a ticket gets stuck because it's too technical for David but the tech leads don't know about it, it just sits. There's no escalation path. David called it being in "limbo."</p>
+          <p class="mt-4">Some of this is structural (the tools don't support prioritization well). But some of it is people drifting from the processes they were given. Both need to be addressed.</p>
         `,
       },
       {
