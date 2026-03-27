@@ -223,35 +223,35 @@ const PRESENTATIONS: Presentation[] = [
               <p class="font-semibold text-[#006747] text-lg mb-3">Halo automation (no AI required)</p>
               <div class="space-y-3">
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">Auto-assign tickets</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm"><span class="font-mono text-xs text-[#006747] bg-[#E8EDE9] px-1.5 py-0.5 rounded mr-2">1</span>Auto-assign tickets</p>
                   <p class="text-sm text-[#555] mt-1">Rules-based routing by site, client, and category. Hawks Key wifi issue → goes straight to the assigned tech. Eliminates 70-80% of manual dispatch. Frees Katarina and David to handle exceptions only.</p>
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">SLA escalation rules</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm"><span class="font-mono text-xs text-[#006747] bg-[#E8EDE9] px-1.5 py-0.5 rounded mr-2">2</span>SLA escalation rules</p>
                   <p class="text-sm text-[#555] mt-1">Define urgency tiers: internet down at a hotel = drop everything. Printer issue = next day. Currently no SLAs exist. Priority knowledge lives in Eddy's head. Monday's knowledge capture session is the foundation for this.</p>
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">Technician calendar auto-notify</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm"><span class="font-mono text-xs text-[#006747] bg-[#E8EDE9] px-1.5 py-0.5 rounded mr-2">3</span>Technician calendar auto-notify</p>
                   <p class="text-sm text-[#555] mt-1">Daily schedule pushed to each tech via Teams automatically. Katarina currently messages every technician individually each morning — 10-15 messages before the day starts.</p>
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">OpenPhone → Halo auto-ticket creation + AI deduplication</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm"><span class="font-mono text-xs text-[#006747] bg-[#E8EDE9] px-1.5 py-0.5 rounded mr-2">4</span>OpenPhone → Halo auto-ticket creation + AI deduplication</p>
                   <p class="text-sm text-[#555] mt-1">31% of incoming calls on the main line are missed. Auto-creating tickets ensures nothing slips through. The duplicate concern is solved with AI: when a ticket is auto-created, AI checks recent open tickets for the same client and similar issue. Duplicates get merged as a note ("client called again re: same issue"). Ambiguous matches get flagged for Katarina or David to decide. This is the enabler that makes auto-ticket creation viable.</p>
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">Voicemail → auto-create ticket</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm"><span class="font-mono text-xs text-[#006747] bg-[#E8EDE9] px-1.5 py-0.5 rounded mr-2">5</span>Voicemail → auto-create ticket</p>
                   <p class="text-sm text-[#555] mt-1">Same logic as above. Adrian's idea. If the phone isn't answered and a voicemail is left, a ticket gets created automatically. Deduplication handles the noise.</p>
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">Stale ticket reminders</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm"><span class="font-mono text-xs text-[#006747] bg-[#E8EDE9] px-1.5 py-0.5 rounded mr-2">6</span>Stale ticket reminders</p>
                   <p class="text-sm text-[#555] mt-1">If there's been no action on a ticket for 3+ days, Paul messages the assigned tech in Teams: "What's going on with this?" The tech can reply naturally. Adrian's #1 request — he said if his last action date is older than three days, he should be reminded. This closes the loop without anyone having to manually check.</p>
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">Real-time "job not done" ping to Eddy and Jeff</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm"><span class="font-mono text-xs text-[#006747] bg-[#E8EDE9] px-1.5 py-0.5 rounded mr-2">7</span>Real-time "job not done" ping to Eddy and Jeff</p>
                   <p class="text-sm text-[#555] mt-1">When a tech marks a ticket as not complete or leaves a site with work unfinished, Eddy and Jeff get an instant Teams message: who, where, why. Lets them intervene while the tech is still nearby. Example: Thaddeus was about to leave Island Fish without replacing a camera. Eddy only caught it because he happened to call. With this system, Eddy would have known immediately and could have said "Jess is 5 minutes away with an AP in his truck."</p>
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">First-time fix rate tracking</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm"><span class="font-mono text-xs text-[#006747] bg-[#E8EDE9] px-1.5 py-0.5 rounded mr-2">8</span>First-time fix rate tracking</p>
                   <p class="text-sm text-[#555] mt-1">Add to the compliance report as a KPI. If a tech consistently can't finish jobs on the first visit, surface it. The data already exists — we just need to measure it.</p>
                 </div>
               </div>
@@ -261,19 +261,19 @@ const PRESENTATIONS: Presentation[] = [
               <p class="font-semibold text-[#006747] text-lg mb-3">AI-powered (requires policy + API work)</p>
               <div class="space-y-3">
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">Paul in Teams (executive assistant)</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm"><span class="font-mono text-xs text-[#006747] bg-[#E8EDE9] px-1.5 py-0.5 rounded mr-2">9</span>Paul in Teams (executive assistant)</p>
                   <p class="text-sm text-[#555] mt-1">Zack, Eddy, Katarina, and David can interact via Teams to update tickets, add notes, assign work, get summaries. Not for technicians. Full detail on the <a href="/presentations/kcs-paul-triage-assistant" class="text-[#006747] underline">Paul page</a>.</p>
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">AI field support for technicians</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm"><span class="font-mono text-xs text-[#006747] bg-[#E8EDE9] px-1.5 py-0.5 rounded mr-2">10</span>AI field support for technicians</p>
                   <p class="text-sm text-[#555] mt-1">"How do I reset this router?" — pulls from Hudu documentation. Reduces interrupts to Eddy, Jeff, and Adrian. Eddie said 75-85% of what they do could be handled if documentation was solid. This is the payoff for getting docs into Hudu. Adrian called it "a huge game changer."</p>
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">Zeman weekly report automation</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm"><span class="font-mono text-xs text-[#006747] bg-[#E8EDE9] px-1.5 py-0.5 rounded mr-2">11</span>Zeman weekly report automation</p>
                   <p class="text-sm text-[#555] mt-1">Zeman is requesting a weekly report. Currently Adrian and Katarina are filling out an Excel spreadsheet manually — ticket number, company, subject, summary. This can be fully automated via the Halo API: pull all Zeman tickets for the week, summarize actions taken, format into a report.</p>
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">Halo client response notifications</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm"><span class="font-mono text-xs text-[#006747] bg-[#E8EDE9] px-1.5 py-0.5 rounded mr-2">12</span>Halo client response notifications</p>
                   <p class="text-sm text-[#555] mt-1">Adrian's biggest pain point. When a client replies to a ticket in Halo, there's no notification — only when work is assigned. He has to go back and manually search for replies. Building a Teams notification for client responses would save significant time and prevent things from falling through the cracks.</p>
                 </div>
               </div>
@@ -283,15 +283,15 @@ const PRESENTATIONS: Presentation[] = [
               <p class="font-semibold text-[#006747] text-lg mb-3">Documentation & knowledge</p>
               <div class="space-y-3">
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">Hudu migration</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm"><span class="font-mono text-xs text-[#006747] bg-[#E8EDE9] px-1.5 py-0.5 rounded mr-2">13</span>Hudu migration</p>
                   <p class="text-sm text-[#555] mt-1">Documentation is scattered across Dropbox in Word and Notepad files, some dating back to 2020. Adrian only documents what he confirms still works — he doesn't want to waste time testing legacy procedures. Hudu is already integrated with Halo. The content just needs to get in there.</p>
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">Get Jeff contributing</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm"><span class="font-mono text-xs text-[#006747] bg-[#E8EDE9] px-1.5 py-0.5 rounded mr-2">14</span>Get Jeff contributing</p>
                   <p class="text-sm text-[#555] mt-1">Biggest documentation gap. Eddie's words: "We're constantly asking him for stuff that should be somewhere on a document." Jeff and Jess don't put anything in documentation. It's really just Adrian and Eddie maintaining it.</p>
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">Eddy knowledge capture session</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm"><span class="font-mono text-xs text-[#006747] bg-[#E8EDE9] px-1.5 py-0.5 rounded mr-2">15</span>Eddy knowledge capture session</p>
                   <p class="text-sm text-[#555] mt-1">Scheduled Monday March 30 at noon. Map out: which clients are always urgent, which techs handle what, unwritten rules, priority criteria, SLA expectations. This feeds auto-assign rules, SLA configuration, and Paul's knowledge base.</p>
                 </div>
               </div>
@@ -301,15 +301,15 @@ const PRESENTATIONS: Presentation[] = [
               <p class="font-semibold text-[#006747] text-lg mb-3">Camera monitoring (Adrian leading)</p>
               <div class="space-y-3">
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">System is built — blocked on messaging decisions</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm"><span class="font-mono text-xs text-[#006747] bg-[#E8EDE9] px-1.5 py-0.5 rounded mr-2">16</span>System is built — blocked on messaging decisions</p>
                   <p class="text-sm text-[#555] mt-1">Adrian has alert system working at Eddie's house on UniFi Protect. Two alert types: email (filtered through Power Automate to appear from KCS, not UniFi) and SMS (via webhook + Qo). Motion alerts, facial recognition, and license plate recognition all functional. What's missing: what does the client actually see when an alert triggers? What happens if they respond? Who is the human escalation point?</p>
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">Scrypted — potential cost savings</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm"><span class="font-mono text-xs text-[#006747] bg-[#E8EDE9] px-1.5 py-0.5 rounded mr-2">17</span>Scrypted — potential cost savings</p>
                   <p class="text-sm text-[#555] mt-1">Adrian discovered Scrypted, an AI camera solution that works with existing ONVIF cameras (not locked to UniFi). $3.75 per camera vs $500 per camera for UniFi AI Pro, which also requires a dream machine, POE switches, and dedicated storage. Could work with existing 2K cameras. Trial licenses already purchased. Needs testing to confirm detection quality.</p>
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">Production deployment</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm"><span class="font-mono text-xs text-[#006747] bg-[#E8EDE9] px-1.5 py-0.5 rounded mr-2">18</span>Production deployment</p>
                   <p class="text-sm text-[#555] mt-1">Adrian says the system is ready to go to production once messaging is defined and the Scrypted evaluation is complete. The overnight shift team is currently monitoring Dolphins Plus manually — lots of false alarms that a known-vehicle and known-personnel list would eliminate.</p>
                 </div>
               </div>
@@ -319,15 +319,15 @@ const PRESENTATIONS: Presentation[] = [
               <p class="font-semibold text-[#006747] text-lg mb-3">Policy & process</p>
               <div class="space-y-3">
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">AI and data privacy policy</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm"><span class="font-mono text-xs text-[#006747] bg-[#E8EDE9] px-1.5 py-0.5 rounded mr-2">19</span>AI and data privacy policy</p>
                   <p class="text-sm text-[#555] mt-1">Eddie's position: "Anything you wouldn't want laying on the side of the road" is off limits. Standard ticket data, documentation, troubleshooting info — all fine. No passwords, client credentials, serial numbers. A formal policy needs to be drafted so everyone's on the same page and clients can be communicated to properly.</p>
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">Journey tracking enforcement</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm"><span class="font-mono text-xs text-[#006747] bg-[#E8EDE9] px-1.5 py-0.5 rounded mr-2">20</span>Journey tracking enforcement</p>
                   <p class="text-sm text-[#555] mt-1">Techs must call the office before leaving a job that isn't 100% complete and explain why. This is the cultural change that makes the real-time alert system work. Eddie: "If the job's not complete, they need to call before they leave."</p>
                 </div>
                 <div class="rounded-xl border border-[#E0DBD3] bg-white p-5">
-                  <p class="font-semibold text-[#1A1A1A] text-sm">Client SLA tiers</p>
+                  <p class="font-semibold text-[#1A1A1A] text-sm"><span class="font-mono text-xs text-[#006747] bg-[#E8EDE9] px-1.5 py-0.5 rounded mr-2">21</span>Client SLA tiers</p>
                   <p class="text-sm text-[#555] mt-1">Which clients are always urgent? Which issues are drop-everything? Eddie: "Rainbow Ben had no wifi on a Friday afternoon. That can't wait until Monday. You can't have a hotel with no internet for a weekend." This gets defined in Monday's knowledge capture session and becomes the foundation for Halo SLA rules and Paul's prioritization logic.</p>
                 </div>
               </div>
