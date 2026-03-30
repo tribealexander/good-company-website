@@ -56,6 +56,10 @@ export const metadata: Metadata = {
     description:
       "We build systems that remove busywork, create visibility, and enable evidence-based management.",
     type: "website",
+    url: "https://yourgoodcompany.com",
+  },
+  twitter: {
+    card: "summary_large_image",
   },
 };
 
