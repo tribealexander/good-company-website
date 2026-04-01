@@ -131,6 +131,50 @@ export default function CaseStudiesClient({ initialCaseStudies }: CaseStudiesCli
                               className="object-cover"
                               sizes="(max-width: 768px) 100vw, 50vw"
                             />
+                          ) : study.slug === "intelligent-ticket-routing-service-business" ? (
+                            /* Mini dashboard thumbnail for routing case study */
+                            <div className="absolute inset-0 bg-[#FAF9F7] p-4 flex flex-col">
+                              <div className="flex items-center justify-between mb-3">
+                                <span className="text-[10px] font-bold text-[#004D36]">Routing Intelligence</span>
+                                <span className="bg-[#006747] text-white text-[7px] font-semibold px-1.5 py-0.5 rounded-full">LIVE</span>
+                              </div>
+                              <div className="grid grid-cols-4 gap-1.5 mb-3">
+                                {[
+                                  { label: "Accuracy", value: "97.9%", gold: true },
+                                  { label: "Routed", value: "2,347" },
+                                  { label: "Auto", value: "2,298" },
+                                  { label: "Override", value: "49" },
+                                ].map((m) => (
+                                  <div key={m.label} className="bg-white rounded p-1.5 border border-[#D4CFC7]">
+                                    <p className="text-[6px] text-[#6B6B6B] uppercase tracking-wider">{m.label}</p>
+                                    <p className={`text-[11px] font-bold ${m.gold ? "text-[#B8860B]" : "text-[#004D36]"}`}>{m.value}</p>
+                                  </div>
+                                ))}
+                              </div>
+                              <div className="flex-1 flex gap-1.5">
+                                <div className="flex-1 bg-white rounded border border-[#D4CFC7] p-2">
+                                  <p className="text-[7px] font-semibold text-[#3D3D3D] mb-1.5">Weekly Accuracy</p>
+                                  <div className="flex flex-col gap-1">
+                                    {[95.8, 96.2, 96.9, 97.4, 97.6, 98.1, 98.3, 98.5].map((pct, i) => (
+                                      <div key={i} className="flex items-center gap-1">
+                                        <div className="flex-1 h-1.5 bg-[#E8EDE9] rounded overflow-hidden">
+                                          <div className={`h-full rounded ${i === 7 ? "bg-[#B8860B]" : "bg-[#006747]"}`} style={{ width: `${pct}%` }} />
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                                <div className="flex-1 bg-white rounded border border-[#D4CFC7] p-2 flex items-center justify-center">
+                                  <svg className="w-16 h-16" viewBox="0 0 120 120">
+                                    <circle cx="60" cy="60" r="45" fill="none" stroke="#E8EDE9" strokeWidth="16" />
+                                    <circle cx="60" cy="60" r="45" fill="none" stroke="#006747" strokeWidth="16" strokeDasharray="277 283" strokeDashoffset="0" transform="rotate(-90 60 60)" />
+                                    <circle cx="60" cy="60" r="45" fill="none" stroke="#B8860B" strokeWidth="16" strokeDasharray="6 283" strokeDashoffset="-277" transform="rotate(-90 60 60)" />
+                                    <text x="60" y="58" textAnchor="middle" fontSize="16" fontWeight="700" fill="#004D36">97.9</text>
+                                    <text x="60" y="72" textAnchor="middle" fontSize="9" fill="#6B6B6B">%</text>
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
                           ) : (
                             /* Placeholder for no thumbnail */
                             <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#004D36] to-[#006747]">
