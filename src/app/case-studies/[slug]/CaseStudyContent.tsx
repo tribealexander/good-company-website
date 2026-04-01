@@ -204,7 +204,7 @@ export default function CaseStudyContent({ caseStudy }: Props) {
 
                   {section.content && (
                     <div
-                      className="prose prose-lg max-w-none text-text leading-[1.8] mb-8 prose-p:text-text prose-strong:text-dark prose-ul:text-text prose-ol:text-text prose-li:text-text"
+                      className="prose prose-lg max-w-none text-text leading-[1.8] mb-8 prose-p:mb-6 prose-p:text-text prose-strong:text-dark prose-ul:mb-6 prose-ul:space-y-3 prose-ol:mb-6 prose-ol:space-y-3 prose-li:text-text prose-li:leading-relaxed"
                       dangerouslySetInnerHTML={{ __html: section.content }}
                     />
                   )}
