@@ -3,6 +3,7 @@
 import { ScrollReveal, StaggerContainer } from "@/components";
 import { CaseStudy } from "@/lib/strapi";
 import ResultCard from "./ResultCard";
+import RoutingDashboard from "./RoutingDashboard";
 
 interface Props {
   caseStudy: CaseStudy;
@@ -79,6 +80,20 @@ export default function CaseStudyContent({ caseStudy }: Props) {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 />
+              </div>
+            </div>
+          </ScrollReveal>
+        </section>
+      )}
+
+      {/* Routing Dashboard - for intelligent ticket routing case study */}
+      {caseStudy.slug === "intelligent-ticket-routing-service-business" && (
+        <section className="relative mx-auto max-w-5xl px-6 lg:px-10 -mt-10 lg:-mt-16 pb-10">
+          <ScrollReveal duration={900} easing="easeOutExpo">
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-b from-[#004D36]/20 to-transparent rounded-3xl blur-2xl" />
+              <div className="relative bg-[#FAF9F7] rounded-2xl shadow-2xl ring-1 ring-black/5 p-6 lg:p-10">
+                <RoutingDashboard />
               </div>
             </div>
           </ScrollReveal>
