@@ -16,7 +16,6 @@ export default function WorkshopsPage() {
                 Workshops
               </p>
               <h1 className="mb-5 text-3xl font-bold text-white md:text-4xl lg:text-[42px] lg:leading-tight">
-                Hands-on learning for{" "}
                 <RoughAnnotation
                   type="underline"
                   color="#B8860B"
@@ -24,11 +23,12 @@ export default function WorkshopsPage() {
                   animationDuration={600}
                   showOnScroll={true}
                 >
-                  your team
+                  Practical workshops
                 </RoughAnnotation>
+                {" "}for your team
               </h1>
               <p className="text-base leading-[1.7] text-[#A8D5C2] lg:text-lg">
-                Practical, no-fluff sessions that help your people actually use the tools and processes we build together.
+                No-fluff sessions that help your people actually use the tools and processes we build together.
               </p>
             </div>
           </section>
