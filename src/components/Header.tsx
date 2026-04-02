@@ -55,6 +55,7 @@ export default function Header() {
   const navLinks = [
     { href: "/about", label: "About" },
     { href: "/case-studies", label: "Case Studies" },
+    { href: "/workshops", label: "Workshops" },
   ];
 
   // Determine styling mode:
