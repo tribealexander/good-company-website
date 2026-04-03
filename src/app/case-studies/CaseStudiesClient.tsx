@@ -175,6 +175,56 @@ export default function CaseStudiesClient({ initialCaseStudies }: CaseStudiesCli
                                 </div>
                               </div>
                             </div>
+                          ) : study.slug === "operations-command-center-automation-monitoring" ? (
+                            /* Mini ops monitor thumbnail */
+                            <div className="absolute inset-0 bg-[#FAF9F7] p-4 flex flex-col">
+                              <div className="flex items-center justify-between mb-3">
+                                <span className="text-[10px] font-bold text-[#004D36]">Operations Command Center</span>
+                                <span className="bg-[#006747] text-white text-[7px] font-semibold px-1.5 py-0.5 rounded-full">LIVE</span>
+                              </div>
+                              <div className="grid grid-cols-3 gap-1.5 mb-3">
+                                {[
+                                  { label: "Detection", value: "< 24h", gold: true },
+                                  { label: "Dashboards", value: "6 → 1" },
+                                  { label: "Log Checks", value: "0" },
+                                ].map((m) => (
+                                  <div key={m.label} className="bg-white rounded p-1.5 border border-[#D4CFC7]">
+                                    <p className="text-[6px] text-[#6B6B6B] uppercase tracking-wider">{m.label}</p>
+                                    <p className={`text-[11px] font-bold ${m.gold ? "text-[#B8860B]" : "text-[#004D36]"}`}>{m.value}</p>
+                                  </div>
+                                ))}
+                              </div>
+                              <div className="flex-1 flex gap-1.5 overflow-hidden">
+                                <div className="flex-[2] bg-white rounded border border-[#D4CFC7] p-2">
+                                  <p className="text-[7px] font-semibold text-[#3D3D3D] mb-1.5">Event Feed</p>
+                                  <div className="flex flex-col gap-1">
+                                    {[
+                                      { agent: "paul-kcs", status: "success", action: "message.processed" },
+                                      { agent: "compliance", status: "success", action: "report.delivered" },
+                                      { agent: "paul-kcs", status: "error", action: "mutation.failed" },
+                                      { agent: "fireflies", status: "success", action: "sync.completed" },
+                                      { agent: "paul-kcs", status: "success", action: "task.created" },
+                                      { agent: "digest", status: "success", action: "digest.sent" },
+                                    ].map((evt, i) => (
+                                      <div key={i} className="flex items-center gap-1.5 text-[6px]">
+                                        <span className={`w-1 h-1 rounded-full flex-shrink-0 ${evt.status === "error" ? "bg-red-400" : "bg-[#006747]"}`} />
+                                        <span className="text-[#6B6B6B] font-mono truncate">{evt.agent}</span>
+                                        <span className="text-[#999] truncate">{evt.action}</span>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                                <div className="flex-1 bg-white rounded border border-[#D4CFC7] p-2 flex flex-col items-center justify-center gap-1">
+                                  <p className="text-[7px] font-semibold text-[#3D3D3D]">24h Status</p>
+                                  <div className="grid grid-cols-3 gap-0.5">
+                                    {Array.from({ length: 9 }).map((_, i) => (
+                                      <div key={i} className={`w-2.5 h-2.5 rounded-sm ${i === 4 ? "bg-red-400/70" : i === 7 ? "bg-[#B8860B]/50" : "bg-[#006747]/60"}`} />
+                                    ))}
+                                  </div>
+                                  <p className="text-[6px] text-[#6B6B6B] mt-0.5">1 error · 1 warn</p>
+                                </div>
+                              </div>
+                            </div>
                           ) : (
                             /* Placeholder for no thumbnail */
                             <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#004D36] to-[#006747]">
