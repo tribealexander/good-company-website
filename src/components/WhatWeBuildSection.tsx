@@ -3,6 +3,8 @@
 import { useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 import SectionHeading from "./SectionHeading";
+import { Tilt } from "./unlumen/Tilt";
+import { ShimmeringText } from "./unlumen/ShimmeringText";
 
 interface ServiceCardData {
   id: number;
@@ -74,33 +76,42 @@ export default function WhatWeBuildSection() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
             <ScrollReveal key={service.id} delay={index * 100}>
-              <div
-                className={`flex h-full cursor-pointer flex-col rounded-xl border bg-white p-8 shadow-[0_2px_12px_rgba(0,0,0,0.04)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] ${
-                  activeId === service.id
-                    ? "border-primary shadow-[0_8px_24px_rgba(0,0,0,0.08)]"
-                    : "border-border hover:border-primary"
-                }`}
-                onMouseEnter={() => setActiveId(service.id)}
-                onMouseLeave={() => setActiveId(null)}
-                onClick={() =>
-                  setActiveId(activeId === service.id ? null : service.id)
-                }
-              >
-                <h3 className="mb-3 text-xl font-semibold text-dark">
-                  {service.title}
-                </h3>
-                <p className="mb-4 text-text-light">{service.description}</p>
-                <div className="mt-auto space-y-3 border-t border-border pt-4">
-                  <p className="font-mono text-sm text-text-light">
-                    <span className="font-semibold text-primary">Example:</span>{" "}
-                    {service.example}
-                  </p>
-                  <p className="font-mono text-sm">
-                    <span className="font-semibold text-gold">Impact:</span>{" "}
-                    {service.impact}
-                  </p>
+              <Tilt rotationFactor={6} springOptions={{ stiffness: 200, damping: 20 }}>
+                <div
+                  className={`flex h-full cursor-pointer flex-col rounded-xl border bg-white p-8 shadow-[0_4px_24px_rgba(0,0,0,0.08)] transition-all duration-300 ease-out hover:shadow-[0_12px_40px_rgba(0,0,0,0.13)] ${
+                    activeId === service.id
+                      ? "border-primary shadow-[0_8px_24px_rgba(0,0,0,0.08)]"
+                      : "border-border hover:border-primary"
+                  }`}
+                  onMouseEnter={() => setActiveId(service.id)}
+                  onMouseLeave={() => setActiveId(null)}
+                  onClick={() =>
+                    setActiveId(activeId === service.id ? null : service.id)
+                  }
+                >
+                  <h3 className="mb-3 text-xl font-semibold text-dark">
+                    {service.title}
+                  </h3>
+                  <p className="mb-4 text-text-light">{service.description}</p>
+                  <div className="mt-auto space-y-3 border-t border-border pt-4">
+                    <p className="font-mono text-sm text-text-light">
+                      <span className="font-semibold text-primary">Example:</span>{" "}
+                      {service.example}
+                    </p>
+                    <p className="font-mono text-sm">
+                      <span className="font-semibold text-gold">Impact:</span>{" "}
+                      <ShimmeringText
+                        text={service.impact}
+                        color="#B8860B"
+                        shimmerColor="#D4A843"
+                        duration={3}
+                        delay={0.5 + index * 0.3}
+                        spread={1.5}
+                      />
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Tilt>
             </ScrollReveal>
           ))}
         </div>

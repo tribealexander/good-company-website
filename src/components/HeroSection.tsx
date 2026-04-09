@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { animate, stagger, createTimeline } from "animejs";
+import { createTimeline } from "animejs";
 import RoughAnnotation from "./RoughAnnotation";
-import Button from "./Button";
+import { TextReveal } from "./unlumen/TextReveal";
+import { GlowButton } from "./unlumen/GlowButton";
+import { MagneticButton } from "./unlumen/MagneticButton";
 
 // Check for reduced motion preference
 function prefersReducedMotion(): boolean {
@@ -24,7 +26,6 @@ export default function HeroSection() {
     const cta = containerRef.current.querySelector("[data-hero-cta]");
 
     if (prefersReducedMotion()) {
-      // Show everything immediately
       [headline, subhead, cta].forEach((el) => {
         if (el) {
           (el as HTMLElement).style.opacity = "1";
@@ -42,14 +43,12 @@ export default function HeroSection() {
       }
     });
 
-    // Create staggered timeline animation
     const tl = createTimeline({
       defaults: {
         ease: "outExpo",
       },
     });
 
-    // Animate headline first (with slight delay for page load)
     if (headline) {
       tl.add(headline, {
         opacity: [0, 1],
@@ -58,7 +57,6 @@ export default function HeroSection() {
       }, 100);
     }
 
-    // Animate subhead
     if (subhead) {
       tl.add(subhead, {
         opacity: [0, 1],
@@ -67,7 +65,6 @@ export default function HeroSection() {
       }, "-=600");
     }
 
-    // Animate CTA button
     if (cta) {
       tl.add(cta, {
         opacity: [0, 1],
@@ -104,26 +101,40 @@ export default function HeroSection() {
           the work your team shouldn&apos;t be doing.
         </h1>
 
-        {/* Subhead */}
-        <p
-          data-hero-subhead
-          className="mx-auto max-w-[700px] text-lg leading-relaxed text-[#A8D5C2] md:text-xl"
-        >
-          Your team wastes hours on manual tasks, things slip through the
-          cracks, and problems stay hidden until they&apos;re fires. We build
-          systems that fix all three—so you can scale without adding headcount.
-        </p>
+        {/* Subhead with blur-to-focus text reveal */}
+        <div data-hero-subhead>
+          <TextReveal
+            text="Your team wastes hours on manual tasks, things slip through the cracks, and problems stay hidden until they're fires. We build systems that fix all three—so you can scale without adding headcount."
+            as="p"
+            splitBy="words"
+            staggerDelay={0.03}
+            duration={0.6}
+            className="mx-auto max-w-[700px] text-lg leading-relaxed text-[#A8D5C2] md:text-xl"
+          />
+        </div>
 
-        {/* CTA Button */}
+        {/* CTA Button with magnetic pull + glow */}
         <div data-hero-cta className="mt-10">
-          <button
-            data-cal-namespace="good-company-discovery-call"
-            data-cal-link="alex-tribe-pzou91/good-company-discovery-call"
-            data-cal-config='{"layout":"month_view","theme":"light"}'
-            className="btn-press inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-semibold text-[#004D36] shadow-[0_4px_20px_rgba(0,0,0,0.15)] transition-all duration-300 hover:bg-gold hover:text-white hover:shadow-[0_4px_30px_rgba(184,134,11,0.4)]"
+          <MagneticButton
+            className="inline-flex"
+            radius={120}
+            strength={0.4}
           >
-            Book a Discovery Call
-          </button>
+            <GlowButton
+              colors={["#006747", "#2D8659", "#B8860B", "#006747"]}
+              blur="8px"
+              opacity={0.5}
+            >
+              <button
+                data-cal-namespace="good-company-discovery-call"
+                data-cal-link="alex-tribe-pzou91/good-company-discovery-call"
+                data-cal-config='{"layout":"month_view","theme":"light"}'
+                className="btn-press inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-semibold text-[#004D36] shadow-[0_4px_20px_rgba(0,0,0,0.15)] transition-all duration-300 hover:bg-gold hover:text-white hover:shadow-[0_4px_30px_rgba(184,134,11,0.4)]"
+              >
+                Book a Discovery Call
+              </button>
+            </GlowButton>
+          </MagneticButton>
         </div>
       </div>
     </section>

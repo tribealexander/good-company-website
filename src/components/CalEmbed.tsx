@@ -2,6 +2,8 @@
 
 import { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
+import { GlowButton } from "./unlumen/GlowButton";
+import { MagneticButton } from "./unlumen/MagneticButton";
 
 export default function CalEmbed() {
   useEffect(() => {
@@ -26,13 +28,21 @@ export default function CalEmbed() {
   }, []);
 
   return (
-    <button
-      data-cal-namespace="good-company-discovery-call"
-      data-cal-link="alex-tribe-pzou91/good-company-discovery-call"
-      data-cal-config='{"layout":"month_view","theme":"light"}'
-      className="btn-press inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-lg font-semibold text-white shadow-[0_4px_20px_rgba(0,103,71,0.25)] transition-all duration-300 hover:bg-primary-light hover:shadow-[0_6px_24px_rgba(0,103,71,0.35)]"
-    >
-      Book a Discovery Call
-    </button>
+    <MagneticButton className="inline-flex" radius={100} strength={0.4}>
+      <GlowButton
+        colors={["#006747", "#2D8659", "#B8860B", "#006747"]}
+        blur="6px"
+        opacity={0.4}
+      >
+        <button
+          data-cal-namespace="good-company-discovery-call"
+          data-cal-link="alex-tribe-pzou91/good-company-discovery-call"
+          data-cal-config='{"layout":"month_view","theme":"light"}'
+          className="btn-press inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-lg font-semibold text-white shadow-[0_4px_20px_rgba(0,103,71,0.25)] transition-all duration-300 hover:bg-primary-light hover:shadow-[0_6px_24px_rgba(0,103,71,0.35)]"
+        >
+          Book a Discovery Call
+        </button>
+      </GlowButton>
+    </MagneticButton>
   );
 }

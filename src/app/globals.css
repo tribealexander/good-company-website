@@ -18,7 +18,7 @@
   --font-sans: var(--font-inter);
   --font-body: var(--font-source-sans);
   --font-mono: var(--font-jetbrains-mono);
-  --font-serif: var(--font-lora);
+  --font-serif: var(--font-instrument-serif);
 }
 
 /* Smooth scrolling */
@@ -54,9 +54,21 @@ body {
   }
 }
 
-/* Global heading styles - serif font for h1 and h2 */
+/* Global heading styles - display serif for h1 and h2 */
+/* Instrument Serif only ships weight 400 — its high stroke contrast
+   provides visual weight without needing bold. font-weight: 400 prevents
+   the browser from synthesizing a faux-bold. */
 h1, h2 {
-  font-family: var(--font-lora), Lora, serif !important;
+  font-family: var(--font-instrument-serif), Instrument Serif, var(--font-playfair), serif !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.02em;
+}
+
+/* h3 subheads — bump weight and tighten tracking to hold up
+   against the high-contrast Instrument Serif h1/h2 */
+h3 {
+  font-weight: 700 !important;
+  letter-spacing: -0.01em;
 }
 
 /* Proposal content list styles */
@@ -249,7 +261,7 @@ h1, h2 {
 
 .card-enhanced:hover {
   border-color: var(--color-primary);
-  box-shadow: 0 8px 32px rgba(0, 103, 71, 0.08);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
   transform: translateY(-4px);
 }
 
@@ -316,6 +328,9 @@ h1, h2 {
 /* Visible grain/noise texture for beige sections - heavy film grain effect */
 .bg-cream-textured {
   background-color: var(--color-cream);
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(0, 103, 71, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(184, 134, 11, 0.03) 0%, transparent 50%);
   position: relative;
 }
 .bg-cream-textured::before {

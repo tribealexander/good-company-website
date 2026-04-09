@@ -75,9 +75,10 @@ export default function Header() {
     <header
       className="fixed left-0 right-0 top-0 z-40 transition-all duration-500 ease-out"
       style={{
-        backgroundColor: showDarkStyles ? "rgba(255, 255, 255, 0.97)" : "transparent",
-        boxShadow: showDarkStyles ? "0 1px 12px rgba(0, 0, 0, 0.04)" : "none",
-        backdropFilter: showDarkStyles ? "blur(8px)" : "none",
+        backgroundColor: showDarkStyles ? "rgba(255, 255, 255, 0.82)" : "transparent",
+        boxShadow: showDarkStyles ? "0 1px 20px rgba(0, 0, 0, 0.08)" : "none",
+        backdropFilter: showDarkStyles ? "blur(12px)" : "none",
+        WebkitBackdropFilter: showDarkStyles ? "blur(12px)" : "none",
       }}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">

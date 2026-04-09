@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Source_Sans_3, JetBrains_Mono, Caveat, Lora } from "next/font/google";
+import { Inter, Source_Sans_3, JetBrains_Mono, Caveat, Lora, Playfair_Display, Instrument_Serif } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
@@ -38,6 +38,20 @@ const lora = Lora({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
+
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -88,7 +102,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${sourceSans.variable} ${jetbrainsMono.variable} ${caveat.variable} ${lora.variable} font-sans antialiased overflow-x-hidden`}
+        className={`${inter.variable} ${sourceSans.variable} ${jetbrainsMono.variable} ${caveat.variable} ${lora.variable} ${playfair.variable} ${instrumentSerif.variable} font-sans antialiased overflow-x-hidden`}
       >
         <CalProvider>
           <div className="overflow-x-hidden min-h-screen">

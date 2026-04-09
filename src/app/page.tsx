@@ -12,6 +12,8 @@ import {
   ProblemsSectionWrapperV2,
   FAQV2,
 } from "@/components";
+import { Tilt } from "@/components/unlumen/Tilt";
+
 
 export default function Home() {
   return (
@@ -134,7 +136,7 @@ export default function Home() {
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               <ScrollReveal delay={0}>
-                <div className="h-full rounded-2xl border border-[#E8E4DE] bg-white p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] card-breathe transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+                <Tilt rotationFactor={5} springOptions={{ stiffness: 200, damping: 20 }}><div className="h-full rounded-2xl border border-[#E8E4DE] bg-white p-7 shadow-[0_4px_24px_rgba(0,0,0,0.08)] transition-all duration-300 hover:border-primary/40 hover:shadow-[0_12px_40px_rgba(0,0,0,0.13)]">
                   <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
                     <svg className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -147,10 +149,11 @@ export default function Home() {
                     We work directly in your Slack, Teams, or whatever tools you use. We sit in your meetings—not once, but ongoing. We see problems at ground level.
                   </p>
                 </div>
+              </Tilt>
               </ScrollReveal>
 
               <ScrollReveal delay={50}>
-                <div className="h-full rounded-2xl border border-[#E8E4DE] bg-white p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] card-breathe transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+                <Tilt rotationFactor={5} springOptions={{ stiffness: 200, damping: 20 }}><div className="h-full rounded-2xl border border-[#E8E4DE] bg-white p-7 shadow-[0_4px_24px_rgba(0,0,0,0.08)] transition-all duration-300 hover:border-primary/40 hover:shadow-[0_12px_40px_rgba(0,0,0,0.13)]">
                   <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
                     <svg className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -163,10 +166,11 @@ export default function Home() {
                     Leadership sets strategy with us, but we also pull employees at every level for quick check-ins. We solve problems where they happen.
                   </p>
                 </div>
+              </Tilt>
               </ScrollReveal>
 
               <ScrollReveal delay={100}>
-                <div className="h-full rounded-2xl border border-[#E8E4DE] bg-white p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] card-breathe transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+                <Tilt rotationFactor={5} springOptions={{ stiffness: 200, damping: 20 }}><div className="h-full rounded-2xl border border-[#E8E4DE] bg-white p-7 shadow-[0_4px_24px_rgba(0,0,0,0.08)] transition-all duration-300 hover:border-primary/40 hover:shadow-[0_12px_40px_rgba(0,0,0,0.13)]">
                   <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
                     <svg className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
@@ -179,10 +183,11 @@ export default function Home() {
                     Before automation comes data consolidation. If your data is scattered, we create a single source of truth first. Clean data enables everything else.
                   </p>
                 </div>
+              </Tilt>
               </ScrollReveal>
 
               <ScrollReveal delay={150}>
-                <div className="h-full rounded-2xl border border-[#E8E4DE] bg-white p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] card-breathe transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+                <Tilt rotationFactor={5} springOptions={{ stiffness: 200, damping: 20 }}><div className="h-full rounded-2xl border border-[#E8E4DE] bg-white p-7 shadow-[0_4px_24px_rgba(0,0,0,0.08)] transition-all duration-300 hover:border-primary/40 hover:shadow-[0_12px_40px_rgba(0,0,0,0.13)]">
                   <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
                     <svg className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -195,10 +200,11 @@ export default function Home() {
                     V1, V2, V3. Take feedback, tune, expand, improve. Cancel what&apos;s not working and shift to new priorities. Continuous evolution as your business changes.
                   </p>
                 </div>
+              </Tilt>
               </ScrollReveal>
 
               <ScrollReveal delay={200}>
-                <div className="h-full rounded-2xl border border-[#E8E4DE] bg-white p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] card-breathe transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+                <Tilt rotationFactor={5} springOptions={{ stiffness: 200, damping: 20 }}><div className="h-full rounded-2xl border border-[#E8E4DE] bg-white p-7 shadow-[0_4px_24px_rgba(0,0,0,0.08)] transition-all duration-300 hover:border-primary/40 hover:shadow-[0_12px_40px_rgba(0,0,0,0.13)]">
                   <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
                     <svg className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -211,10 +217,11 @@ export default function Home() {
                     We&apos;re ahead of the curve on AI, agents, and automation. But we ground every solution in real-world problems and human behavior.
                   </p>
                 </div>
+              </Tilt>
               </ScrollReveal>
 
               <ScrollReveal delay={250}>
-                <div className="h-full rounded-2xl border border-[#E8E4DE] bg-white p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] card-breathe transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+                <Tilt rotationFactor={5} springOptions={{ stiffness: 200, damping: 20 }}><div className="h-full rounded-2xl border border-[#E8E4DE] bg-white p-7 shadow-[0_4px_24px_rgba(0,0,0,0.08)] transition-all duration-300 hover:border-primary/40 hover:shadow-[0_12px_40px_rgba(0,0,0,0.13)]">
                   <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
                     <svg className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -227,6 +234,7 @@ export default function Home() {
                     AI, Make, Zapier, custom code—whatever achieves the outcome. Every system serves one goal: eliminate tedious work, improve visibility, or create accountability.
                   </p>
                 </div>
+              </Tilt>
               </ScrollReveal>
             </div>
           </div>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { MagneticButton } from "./unlumen/MagneticButton";
 
 export default function FloatingCTA() {
   const [visible, setVisible] = useState(false);
@@ -12,10 +13,7 @@ export default function FloatingCTA() {
       const viewportHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
 
-      // Show after scrolling 50vh
       const shouldShow = scrollPosition > viewportHeight * 0.5;
-
-      // Hide when near the bottom (contact form section)
       const nearBottom = scrollPosition + viewportHeight > documentHeight - 400;
 
       setVisible(shouldShow && !nearBottom);
@@ -27,7 +25,7 @@ export default function FloatingCTA() {
 
   return (
     <>
-      {/* Desktop floating button with pennant */}
+      {/* Desktop floating button with pennant + magnetic pull */}
       <div
         className={`fixed bottom-6 right-6 z-50 hidden transition-all duration-300 md:block ${
           visible
@@ -35,27 +33,29 @@ export default function FloatingCTA() {
             : "pointer-events-none translate-y-4 opacity-0"
         }`}
       >
-        <button
-          data-cal-namespace="good-company-discovery-call"
-          data-cal-link="alex-tribe-pzou91/good-company-discovery-call"
-          data-cal-config='{"layout":"month_view","theme":"light"}'
-          className="btn-press inline-flex items-center gap-3 rounded-lg bg-primary px-5 py-3 text-white shadow-[0_4px_16px_rgba(0,103,71,0.2)] transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-primary-light hover:shadow-[0_6px_24px_rgba(0,103,71,0.25)]"
-        >
-          <Image
-            src="/images/logos/pennant.png"
-            alt=""
-            width={20}
-            height={20}
-            className="h-5 w-auto brightness-0 invert"
-          />
-          <span className="text-left text-[14px] leading-tight">
-            <span className="block font-medium">Not sure where to start?</span>
-            <span className="block text-white/80">Let&apos;s chat.</span>
-          </span>
-        </button>
+        <MagneticButton radius={80} strength={0.35}>
+          <button
+            data-cal-namespace="good-company-discovery-call"
+            data-cal-link="alex-tribe-pzou91/good-company-discovery-call"
+            data-cal-config='{"layout":"month_view","theme":"light"}'
+            className="btn-press inline-flex items-center gap-3 rounded-lg bg-primary px-5 py-3 text-white shadow-[0_4px_16px_rgba(0,103,71,0.2)] transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-primary-light hover:shadow-[0_6px_24px_rgba(0,103,71,0.25)]"
+          >
+            <Image
+              src="/images/logos/pennant.png"
+              alt=""
+              width={20}
+              height={20}
+              className="h-5 w-auto brightness-0 invert"
+            />
+            <span className="text-left text-[14px] leading-tight">
+              <span className="block font-medium">Not sure where to start?</span>
+              <span className="block text-white/80">Let&apos;s chat.</span>
+            </span>
+          </button>
+        </MagneticButton>
       </div>
 
-      {/* Mobile bottom bar */}
+      {/* Mobile bottom bar (no magnetic — touch devices) */}
       <div
         className={`fixed inset-x-0 bottom-0 z-50 border-t border-border bg-white p-4 shadow-[0_-4px_16px_rgba(0,0,0,0.08)] transition-all duration-300 md:hidden ${
           visible
