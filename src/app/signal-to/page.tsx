@@ -18,7 +18,7 @@ import { Tilt, GlowButton, PixelBackground, ShimmeringText } from "@/components/
 
 export default function SignalTO() {
   return (
-    <div className="min-h-screen bg-[#F4F0EB]" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+    <div className="min-h-screen bg-[#F4F0EB] [&_h1]:!font-sans [&_h2]:!font-sans [&_h3]:!font-sans [&_h1]:!font-bold [&_h2]:!font-bold" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
       {/* Nav — structured grid cells */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[#D9D2CA] bg-[#F4F0EB]/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center">
@@ -135,7 +135,7 @@ export default function SignalTO() {
             <div className="grid md:grid-cols-[1fr_2fr]">
               {/* Left cell — label */}
               <div className="border-b border-[#D9D2CA] px-6 py-12 md:border-b-0 md:border-r lg:py-16">
-                <h2 className="font-sans text-3xl font-semibold text-[#2C2420] lg:text-4xl">
+                <h2 className="font-sans text-4xl font-bold text-[#2C2420] lg:text-5xl">
                   What is<br />Signal TO?
                 </h2>
               </div>
@@ -162,7 +162,7 @@ export default function SignalTO() {
           <div className="mx-auto max-w-6xl">
             {/* Section header */}
             <div className="border-b border-[#D9D2CA] px-6 py-8">
-              <h2 className="font-sans text-3xl font-semibold text-[#2C2420] lg:text-4xl">
+              <h2 className="font-sans text-4xl font-bold text-[#2C2420] lg:text-5xl">
                 The Format
               </h2>
             </div>
@@ -203,7 +203,7 @@ export default function SignalTO() {
             <div className="grid md:grid-cols-[1fr_2fr]">
               {/* Left cell */}
               <div className="border-b border-[#D9D2CA] px-6 py-12 md:border-b-0 md:border-r lg:py-16">
-                <h2 className="font-sans text-3xl font-semibold text-[#2C2420] lg:text-4xl">
+                <h2 className="font-sans text-4xl font-bold text-[#2C2420] lg:text-5xl">
                   Who It&apos;s For
                 </h2>
               </div>
@@ -250,7 +250,7 @@ export default function SignalTO() {
                   <span className="text-[10px] font-medium uppercase tracking-widest text-[#C4713B]">
                     July 1 &ndash; 8
                   </span>
-                  <h2 className="mt-1 font-sans text-2xl font-semibold text-[#2C2420] lg:text-3xl">
+                  <h2 className="mt-1 font-sans text-3xl font-bold text-[#2C2420] lg:text-4xl">
                     The Signal<br />Hackathon
                   </h2>
                 </div>
@@ -271,7 +271,7 @@ export default function SignalTO() {
         {/* Register CTA */}
         <section id="register" className="bg-[#2C2420]">
           <div className="mx-auto max-w-6xl px-6 py-16 text-center lg:py-24">
-            <h2 className="mb-4 font-sans text-3xl font-semibold text-[#F4F0EB] lg:text-4xl">
+            <h2 className="mb-4 font-sans text-4xl font-bold text-[#F4F0EB] lg:text-5xl">
               Interested?
             </h2>
             <p className="mx-auto mb-8 max-w-lg text-[#A89E94]">
