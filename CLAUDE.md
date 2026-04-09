@@ -20,6 +20,7 @@ This is the marketing website for **Good Company**, a boutique operational effic
 - `/src/app/acquisitions/page.tsx` - Acquisitions & Partnerships page
 - `/src/app/case-studies/page.tsx` - Case studies listing with video lightbox
 - `/src/app/referrals/page.tsx` - Referrals program page
+- `/src/app/workshops/page.tsx` - Workshops page (built, nav link hidden — uncomment in Header.tsx to re-enable)
 - `/src/app/globals.css` - Global styles and Tailwind theme
 - `/src/app/layout.tsx` - Root layout with fonts, metadata, and CalProvider
 
@@ -67,18 +68,27 @@ Fonts are loaded in `/src/app/layout.tsx`:
 
 | Purpose | Font | Weights | CSS Variable |
 |---------|------|---------|--------------|
-| Headings (h1, h2) | Lora | 400, 500, 600, 700 | `--font-lora` |
+| Headings (h1, h2) | Instrument Serif | 400 | `--font-instrument-serif` |
+| Headings fallback | Playfair Display | 400, 500, 600, 700 | `--font-playfair` |
 | Body/UI | Inter | 400, 500, 600, 700 | `--font-inter` |
 | Body Text | Source Sans 3 | 400, 600 | `--font-source-sans` |
 | Technical/Data | JetBrains Mono | 400, 600 | `--font-jetbrains-mono` |
 | Handwritten | Caveat | 400-700 | `--font-caveat` |
+| Legacy headings | Lora | 400, 500, 600, 700 | `--font-lora` |
 
 **Usage**:
-- `font-serif` - Lora serif for headings (applied globally to h1, h2 via CSS)
-- `font-sans` - Default (Inter)
-- `font-mono` - Monospace for stats, prices, labels
+- `font-serif` → Instrument Serif (display serif for h1/h2, applied globally via CSS)
+- `font-sans` → Inter (default body/UI)
+- `font-mono` → JetBrains Mono (stats, prices, labels)
 
-**Note**: All h1 and h2 elements automatically use Lora via global CSS rule in `globals.css`.
+**Heading rules** (defined in `globals.css`):
+- h1, h2: Instrument Serif at `font-weight: 400` with `letter-spacing: -0.02em`. Instrument Serif only ships weight 400 — its high stroke contrast provides visual weight without needing bold. The CSS forces `font-weight: 400 !important` to prevent faux-bold.
+- h3: `font-weight: 700` with `letter-spacing: -0.01em` to hold visual weight against the display serif headings.
+
+**Font change history** (Apr 9, 2026):
+- **Before**: Lora was the heading font (`--font-serif: var(--font-lora)`). Lora is a body/reading serif with low stroke contrast — it looked flat at display sizes.
+- **After**: Instrument Serif as primary, Playfair Display as fallback, Lora still loaded as legacy fallback.
+- **To revert**: In `globals.css`, change `--font-serif` back to `var(--font-lora)`, change h1/h2 rule to use `var(--font-lora), Lora, serif`, and remove the `font-weight: 400 !important` override (Lora supports bold). Remove the h3 font-weight rule if reverting fully.
 
 ### Spacing Rules
 
@@ -128,14 +138,16 @@ The site uses a visible film grain effect on cream-colored sections:
 
 ```css
 .bg-cream-textured {
+  /* Subtle radial gradients for depth (green top-left, gold bottom-right) */
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(0, 103, 71, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(184, 134, 11, 0.03) 0%, transparent 50%);
   /* Heavy film grain overlay */
-  background-image: url("data:image/svg+xml,...");
-  opacity: 0.35;
-  mix-blend-mode: overlay;
+  /* ::before pseudo-element with SVG noise, opacity: 0.35, mix-blend-mode: overlay */
 }
 ```
 
-Apply with `bg-cream-textured` class on sections for the textured beige background with film grain.
+Apply with `bg-cream-textured` class on sections for the textured beige background with film grain + subtle tonal gradients.
 
 ---
 
@@ -153,23 +165,65 @@ src/components/
 ├── Card.tsx                # Card variants
 ├── CalProvider.tsx         # Cal.com API initialization (wraps app in layout.tsx)
 ├── CalEmbed.tsx            # Cal.com booking button component
-├── ProblemSelector.tsx     # Interactive split-screen problem selector
-├── ProblemsSectionWrapper.tsx # Problems section with dynamic backgrounds
+├── ProblemSelector.tsx     # Interactive split-screen problem selector (v1, unused on homepage)
+├── ProblemSelectorV2.tsx   # V2 problem selector with 6 problems, desktop split-screen + mobile accordion
+├── ProblemsSectionWrapper.tsx # Problems section with dynamic backgrounds (v1, unused on homepage)
+├── ProblemsSectionWrapperV2.tsx # V2 problems section (used on homepage)
 ├── WhatWeBuildSection.tsx  # Services section with dynamic backgrounds
-├── HeroSection.tsx         # Homepage hero with AnimeJS timeline animations
+├── HeroSection.tsx         # Homepage hero with AnimeJS + Unlumen (TextReveal, MagneticButton, GlowButton)
 ├── RoughAnnotation.tsx     # Wrapper for rough-notation library (supports padding prop)
 ├── ScrollReveal.tsx        # Scroll-triggered animations (AnimeJS v4) + StaggerContainer, TextReveal, CountUp
-├── SectionHeading.tsx      # Consistent section headings with Lora font + green underline
+├── SectionHeading.tsx      # Consistent section headings with Instrument Serif + green underline
 ├── FloatingCTA.tsx         # Floating CTA button (triggers Cal.com popup)
 ├── InvestmentSection.tsx   # Pricing section with collapsible Discovery & Automation Roadmap
-├── FAQ.tsx                 # FAQ accordion
+├── FAQ.tsx                 # FAQ accordion (v1, unused on homepage)
+├── FAQV2.tsx              # V2 FAQ with expanded questions, used on homepage
 ├── PageTransition.tsx      # Page transition animations (fade-in + scroll to top on navigation)
 ├── TestimonialsCarousel.tsx # 3-card carousel with navigation, touch/swipe support
+└── index.ts                # Barrel exports
+
+src/components/unlumen/     # Unlumen UI adapted components (ui.unlumen.com)
+├── TextReveal.tsx          # Blur-to-focus word/character animation on scroll
+├── MagneticButton.tsx      # Cursor-follow spring physics wrapper (div-based, works with any child)
+├── GlowButton.tsx          # Rotating conic-gradient glow behind CTAs (green/gold palette)
+├── Tilt.tsx                # 3D perspective tilt on mouse hover
+├── ShimmeringText.tsx      # Gradient shimmer sweep on text (gold by default)
+├── ProgressiveBlur.tsx     # CSS mask + backdrop blur for section edge transitions
+├── PixelBackground.tsx     # Interactive pixel particle background (ripple on hover)
 └── index.ts                # Barrel exports
 
 src/hooks/
 └── useAnimations.ts        # AnimeJS v4 animation hooks
 ```
+
+#### Unlumen UI Components (`src/components/unlumen/`)
+
+Adapted from [ui.unlumen.com](https://ui.unlumen.com/docs/ui). All components are standalone — no `cn()` or shadcn dependency. They use `motion/react` (the `motion` npm package).
+
+**Where they're used on the homepage:**
+
+| Component | Location | Config |
+|-----------|----------|--------|
+| TextReveal | Hero subhead paragraph | `splitBy="words"`, `staggerDelay={0.03}`, `duration={0.6}` |
+| MagneticButton | Hero CTA, FloatingCTA (desktop), CalEmbed bottom CTA | `radius={80-120}`, `strength={0.35-0.4}` |
+| GlowButton | Hero CTA, CalEmbed bottom CTA | Green/gold palette, `blur="6-8px"`, `opacity={0.4-0.5}` |
+| Tilt | "What We Build" cards (3), "How We Work" cards (6) | `rotationFactor={5-6}`, spring stiffness 200 |
+| ShimmeringText | "What We Build" impact metrics | Gold shimmer (`#B8860B` → `#D4A843`), staggered delays |
+| PixelBackground | Signal TO page hero | `pattern="cursor"`, custom warm colors |
+| ProgressiveBlur | Available but not currently placed | — |
+
+**Integration notes:**
+- Components use `motion/react` imports (from the `motion` npm package, v11+)
+- MagneticButton is a div wrapper (not a button) so it works with Cal.com data attributes and any child element
+- GlowButton wraps children — pass your button/link as children, the glow sits behind it
+- Tilt uses subtle rotation (5-6deg) for professional feel; Haven used 8deg
+- MagneticButton is desktop-only on FloatingCTA (no magnetic on mobile/touch)
+
+**Evaluated but not used:**
+- ScrambleText — too techy for consultancy audience
+- Cursor/ClippedCircle — custom cursors annoy on service sites
+- OrbittingSkills — too playful for professional tone
+- CommandMenu/Kbd — not relevant for marketing sites
 
 ### Import Pattern
 
@@ -183,16 +237,18 @@ import { Header, Footer, Button, ServiceCard, ProblemSelector } from "@/componen
 #### Header (`Header.tsx`)
 - Fixed navigation with multiple visual states based on page and scroll:
   - **Homepage over hero (dark background)**: Transparent background, white logo, white text
-  - **Homepage after scroll**: White background with blur, dark logo, dark text
-  - **Inner pages (About, Case Studies, Referrals, etc.)**: Dark logo, dark text, green CTA button (no transparent state)
+  - **Homepage after scroll**: Frosted glass (`rgba(255,255,255,0.82)` + `backdrop-blur: 12px`), dark logo, dark text, subtle shadow
+  - **Inner pages (About, Case Studies, Referrals, etc.)**: Same frosted glass, dark logo, dark text, green CTA button
 - Uses `usePathname()` to detect homepage vs inner pages
 - Uses `mounted` state to prevent hydration mismatch
 - Smooth 500ms transition between states
 - Compact height (h-16 / 64px)
-- Mobile hamburger menu (slides down)
+- Mobile hamburger menu (slides down, also uses frosted glass)
 - Nav links use `nav-link` (scrolled) or `nav-link-light` (hero) classes
 - Logo has easter egg: triple-click triggers wiggle animation
 - Logo turns green on hover (when scrolled)
+
+**Nav frosted glass change** (Apr 9, 2026): Was `rgba(255,255,255,0.97)` (basically opaque) with `blur(8px)`. Changed to `0.82` opacity with `blur(12px)` so the blur is actually visible. To revert: change opacity back to `0.97` in Header.tsx inline styles.
 
 #### Button (`Button.tsx`)
 Props:
@@ -240,7 +296,7 @@ Also exports:
 - `CountUp` - Animated number counting
 
 #### HeroSection (`HeroSection.tsx`)
-Homepage hero with AnimeJS timeline animations for headline, subhead, and CTA. Uses RoughAnnotation for the gold underline on "automate".
+Homepage hero with AnimeJS timeline animations for headline, subhead, and CTA. Uses RoughAnnotation for the gold underline on "automate". Subhead uses Unlumen TextReveal (blur-to-focus). CTA wraps Cal.com button in MagneticButton + GlowButton for magnetic pull and rotating green/gold glow.
 
 #### PageTransition (`PageTransition.tsx`)
 Provides smooth fade-in animations on page navigation. Uses `usePathname()` to detect route changes and re-trigger animation. Also scrolls to top on route change.
@@ -298,13 +354,14 @@ The homepage (`/src/app/page.tsx`) follows this section order:
 | # | Section | Background | ID |
 |---|---------|------------|-----|
 | 1 | Hero | Deep Green (`#004D36`) | - |
-| 2 | Problems We Solve | White/Dynamic (earth tones) | `#problems` |
+| 2 | Problems We Solve (V2) | White/Dynamic (earth tones) | `#problems` |
 | 3 | What We Build | White/Dynamic | `#solutions` |
-| 4 | From Build to Buy-In | White | - |
+| 4 | Why We Stay (before/after) | White | - |
 | 5 | How We Work | Cream textured | `#how-we-work` |
 | 6 | Testimonials | White | `#testimonials` |
 | 7 | What Working Together Looks Like | Cream textured | `#investment` |
-| 8 | FAQ | White | `#faq` |
+| 8 | FAQ (V2) | White | `#faq` |
+| 9 | Book a Call | Cream textured | `#contact` |
 
 ### Hero Section
 
@@ -339,30 +396,20 @@ Interactive split-screen layout with dynamic backgrounds:
 - Smooth 400ms transition between background colors
 - **Section order**: Appears before "What We Build" section
 
-### From Build to Buy-In Section
+### Why We Stay Section (before/after split)
 
-Explains why implementations stick, addressing common objections:
-- **Simple by Design**: "We build for non-technical teams"
-- **Your Team Owns It**: "We train your people and document everything"
-- **We Don't Disappear**: "60 days of support after launch, plus ongoing retainer options"
-- Closing statement: "That's why our work sticks." (simple centered text, no box)
+Heading: "Change is constant. We help you navigate it."
 
-### How We Work Section (formerly Investment)
+Two-column card: "Without a Partner" (muted beige) vs "With Good Company" (deep green):
+- **Without**: No orchestrator for max impact, hype vs reality isn't anyone's day job, data in tools you don't control, one-off projects go stale
+- **With**: We guide to the right systems and keep them current, you don't need to become an expert, we cut through noise, your data stays yours (privacy-first)
+- Closing: "That's why this is a partnership, not a project."
 
-Two-step engagement process (no pricing displayed):
+### How We Work Section
 
-1. **Discovery & Automation Roadmap** (collapsible)
-   - Stakeholder interviews, workflow mapping, data audit, tool evaluation
-   - Deliverables: prioritized opportunities, implementation recommendations, ROI estimates, 90-day action plan
-   - "Standalone value whether or not you continue with us"
+Subtitle: "Six principles that shape every engagement."
 
-2. **Ongoing Partnership** (highlighted card)
-   - New system builds
-   - Maintenance & support
-   - Tuning & optimization
-   - Expansion to new areas
-
-CTA: "Let's talk about what makes sense for you."
+Six cards: We Live in Your Systems, We Work with Everyone, We Build on Solid Foundations, We Iterate Not Prescribe, Technically Elite Business-Grounded, Principles Not Tools
 
 ---
 
@@ -585,10 +632,19 @@ The Case Studies listing page displays work examples.
 
 *SEO-Optimized Format* (in `src/lib/case-studies-seo.ts`):
 - `eliminate-invoice-writeoffs-service-business` - How a Toronto Service Company Eliminated Six Figures in Invoice Write-Offs (Operations)
-  - **Status**: Complete, not yet deployed to production
   - 2,500+ words optimized for "eliminate invoice write-offs", "service business documentation", "Toronto/GTA"
   - Includes: long-form sections, FAQs, key takeaways, results cards
   - Follows principles-focused approach (visibility, accountability, incentives)
+- `intelligent-ticket-routing-service-business` - How We Built an Intelligent Ticket Routing System That Gets It Right 97.9% of the Time (Operations)
+  - Has custom `RoutingDashboard.tsx` component rendered in place of video embed (slug-matched in `CaseStudyContent.tsx`)
+  - Mini dashboard thumbnail rendered inline in `CaseStudiesClient.tsx` listing page (also slug-matched)
+  - No video or thumbnail image — both are native React components
+- `operations-command-center-automation-monitoring` - Why We Built an Operations Command Center to Monitor Every Agent We Run (Operations)
+  - First-person case study about Good Company's own monitoring layer
+  - Hook: 3-day silent failure incident, scattered dashboards across 6 platforms
+  - Covers: self-reporting architecture, structured events, daily failure digest, managed vs self-hosted models
+  - Custom mini ops monitor thumbnail in `CaseStudiesClient.tsx` (event feed + status grid)
+  - No video or thumbnail image — both are native React components
 
 **Unpublished** (commented out, waiting for video):
 - `customer-success-workflow-automation` - Customer Success Workflow Automation
@@ -833,15 +889,15 @@ Before publishing, every case study must pass these tests:
 
 #### Current State
 
-**Completed:**
-- 1 SEO-optimized case study written and ready (`eliminate-invoice-writeoffs-service-business`)
+**Completed & Deployed:**
+- 3 SEO-optimized case studies live in production
+  - `eliminate-invoice-writeoffs-service-business` (invoice write-offs / compliance)
+  - `intelligent-ticket-routing-service-business` (ticket routing / dispatch)
+  - `operations-command-center-automation-monitoring` (agent monitoring / ops command center)
 - 37,000+ words of comprehensive writing guides created
 - Type system extended for long-form content
 - Components updated to render SEO sections
-
-**Not Yet Deployed:**
-- SEO case study exists in `src/lib/case-studies-seo.ts` but has not been pushed to production
-- Waiting for final review before going live
+- `@tailwindcss/typography` plugin added (Apr 3) — fixes prose paragraph/list styling across all case studies
 
 **Next Case Studies to Create:**
 - "The Come Up" (AI Editing for Newsletter) - SEO-optimized version
@@ -1121,6 +1177,7 @@ npm run lint
 | `src/app/about/page.tsx` | About page with founder bio |
 | `src/app/about/loading.tsx` | About page skeleton loading state |
 | `src/app/layout.tsx` | Root layout, fonts, SEO metadata |
+| `src/app/opengraph-image.tsx` | Dynamic OG image (1200x630) - pennant on deep green with tagline |
 | `src/app/globals.css` | Tailwind theme, animations, global styles |
 | `src/app/case-studies/page.tsx` | Case studies list server component (fetches from Strapi) |
 | `src/app/case-studies/CaseStudiesClient.tsx` | Case studies list client component (UI/filters) |
