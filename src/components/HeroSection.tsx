@@ -84,7 +84,7 @@ export default function HeroSection() {
         {/* Headline with Rough Notation */}
         <h1
           data-hero-headline
-          className="font-serif mx-auto mb-6 max-w-[900px] text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-white md:text-5xl lg:text-[64px]"
+          className="font-serif mx-auto mb-6 max-w-[900px] text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-white md:text-5xl lg:text-[72px]"
         >
           We help you{" "}
           <RoughAnnotation

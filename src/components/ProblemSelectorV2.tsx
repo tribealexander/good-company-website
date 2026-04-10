@@ -43,7 +43,7 @@ const problems: Problem[] = [
     id: 2,
     headline: "The Reporting Treadmill",
     shortLabel: "Manual Reporting",
-    brief: "Someone spends hours every week assembling numbers by hand",
+    brief: "Spending hours every week assembling numbers by hand",
     whatWeFind:
       "Someone on your team spends hours every week pulling numbers from different systems, copying them into spreadsheets, and assembling reports that are already outdated by the time anyone reads them.",
     whatWeBuild:
@@ -111,6 +111,7 @@ export default function ProblemSelectorV2({
   const [isExiting, setIsExiting] = useState(false);
   const [isEntering, setIsEntering] = useState(false);
   const [pressedId, setPressedId] = useState<number | null>(null);
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -222,15 +223,19 @@ export default function ProblemSelectorV2({
                 onClick={() => handleSelect(problem.id)}
                 onMouseDown={() => handleMouseDown(problem.id)}
                 onMouseUp={handleMouseUp}
-                onMouseLeave={handleMouseUp}
-                className={`w-full cursor-pointer px-5 py-4 text-left transition-all duration-200 ease-out ${
+                onMouseEnter={() => setHoveredId(problem.id)}
+                onMouseLeave={() => { handleMouseUp(); setHoveredId(null); }}
+                className={`w-full cursor-pointer px-5 py-4 text-left transition-all duration-300 ease-out ${
                   !isLast ? "border-b border-border" : ""
                 } ${
                   isActive
                     ? "border-l-4 border-l-primary bg-[#F0F7F4]"
                     : "border-l-4 border-l-transparent bg-white hover:bg-gray-50"
                 } ${isPressed && !prefersReducedMotion ? "scale-[0.98]" : "scale-100"}`}
-                style={{ transitionProperty: "background-color, border-color, transform" }}
+                style={{
+                  transitionProperty: "background-color, border-color, transform, opacity",
+                  opacity: isActive ? 1 : hoveredId === problem.id ? 0.85 : 0.5,
+                }}
               >
                 <div className="flex items-start gap-3">
                   <IconComponent

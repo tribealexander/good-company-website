@@ -18,7 +18,7 @@
   --font-sans: var(--font-inter);
   --font-body: var(--font-source-sans);
   --font-mono: var(--font-jetbrains-mono);
-  --font-serif: var(--font-instrument-serif);
+  --font-serif: var(--font-playfair);
 }
 
 /* Smooth scrolling */
@@ -55,12 +55,9 @@ body {
 }
 
 /* Global heading styles - display serif for h1 and h2 */
-/* Instrument Serif only ships weight 400 — its high stroke contrast
-   provides visual weight without needing bold. font-weight: 400 prevents
-   the browser from synthesizing a faux-bold. */
 h1, h2 {
-  font-family: var(--font-instrument-serif), Instrument Serif, var(--font-playfair), serif !important;
-  font-weight: 400 !important;
+  font-family: var(--font-playfair), Playfair Display, serif !important;
+  font-weight: 500 !important;
   letter-spacing: -0.02em;
 }
 

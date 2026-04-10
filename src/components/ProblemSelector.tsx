@@ -43,7 +43,7 @@ const problems: Problem[] = [
     id: 2,
     headline: "The Reporting Treadmill",
     shortLabel: "Manual Reporting",
-    brief: "Teams spend 8-15 hours/week manually pulling data",
+    brief: "Hours every week assembling numbers by hand",
     whatWeFind:
       "Teams spend 8-15 hours per week manually pulling data from multiple systems to create reports that arrive too late to act on. By the time you see it, it's history.",
     whatWeBuild:
@@ -56,7 +56,7 @@ const problems: Problem[] = [
     id: 3,
     headline: "The \"Are We Profitable?\" Problem",
     shortLabel: "Profitability",
-    brief: "Profitability calculated weeks after work completes",
+    brief: "No idea if a job made money until weeks later",
     whatWeFind:
       "Project profitability is calculated manually in spreadsheets weeks after work completes. Teams don't know if they're making money or losing it until it's too late to fix.",
     whatWeBuild:
@@ -210,7 +210,7 @@ export default function ProblemSelector({
       {/* Desktop: Split-screen layout - both columns equal height */}
       <div className="hidden lg:flex lg:gap-7">
         {/* Left Side - Problem List */}
-        <div className="w-2/5 shrink-0 overflow-hidden rounded-xl border border-border bg-white">
+        <div className="w-2/5 shrink-0 overflow-hidden rounded-2xl border border-border bg-white">
           {problems.map((problem, index) => {
             const IconComponent = problem.Icon;
             const isActive = selectedId === problem.id;
@@ -223,14 +223,18 @@ export default function ProblemSelector({
                 onMouseDown={() => handleMouseDown(problem.id)}
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseUp}
-                className={`w-full cursor-pointer px-5 py-4 text-left transition-all duration-200 ease-out ${
+                className={`w-full cursor-pointer px-5 py-4 text-left transition-all duration-300 ease-out ${
                   !isLast ? "border-b border-border" : ""
                 } ${
                   isActive
                     ? "border-l-4 border-l-primary bg-[#F0F7F4]"
                     : "border-l-4 border-l-transparent bg-white hover:bg-gray-50"
                 } ${isPressed && !prefersReducedMotion ? "scale-[0.98]" : "scale-100"}`}
-                style={{ transitionProperty: "background-color, border-color, transform" }}
+                style={{
+                  transitionProperty: "background-color, border-color, transform, filter, opacity",
+                  filter: isActive ? "blur(0px)" : "blur(1.5px)",
+                  opacity: isActive ? 1 : 0.3,
+                }}
               >
                 <div className="flex items-start gap-3">
                   <IconComponent
@@ -269,7 +273,7 @@ export default function ProblemSelector({
         >
           {displayedProblem ? (
             <div
-              className={`w-full rounded-xl border border-border bg-white p-7 shadow-[0_2px_12px_rgba(0,0,0,0.04)] ${getContentClasses()}`}
+              className={`w-full rounded-2xl border border-border bg-white p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] ${getContentClasses()}`}
             >
               <h3 className="mb-5 text-2xl font-bold text-dark">
                 {displayedProblem.headline}
@@ -322,7 +326,7 @@ export default function ProblemSelector({
           return (
             <div
               key={problem.id}
-              className="overflow-hidden rounded-xl border border-border bg-white"
+              className="overflow-hidden rounded-2xl border border-border bg-white"
             >
               <button
                 onClick={() => handleSelect(problem.id)}
