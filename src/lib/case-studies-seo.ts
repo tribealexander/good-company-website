@@ -839,6 +839,257 @@ export const SEO_CASE_STUDIES: CaseStudy[] = [
   },
 ];
 
+SEO_CASE_STUDIES.push({
+  id: "team-ai-shared-brain-small-business",
+  slug: "team-ai-shared-brain-small-business",
+  department: "Operations",
+  title: "How a Small Team Adopted AI Without Fragmenting Their Source of Truth",
+  description:
+    "Three operators each got faster with AI. Then the seams started showing. See how a small team built a shared brain that kept up with individual AI use instead of breaking under it.",
+
+  seoTitle: "How to Adopt AI as a Team Without Fragmenting Knowledge | Case Study",
+  seoDescription: "Three operators each got faster with AI, but the shared knowledge layer started fracturing. See how a small team built a shared brain that kept up with individual AI use.",
+
+  problem: `
+    <p>When the owner of a small distributed business asked a question that someone on the team had already worked through earlier in the week, the answer was: "I'll have to find their chat history." Three operators had each been moving fast with their own AI assistants. The work was getting done. The pace had stepped up noticeably. But the shared knowledge layer that used to hold the team together had quietly started falling apart.</p>
+
+    <p>The CRM hadn't been integrated. Decisions were getting made inside private chats that nobody else could see. When someone needed an answer, they were either pinging a teammate or worse, reading another person's AI chat history line by line, hoping the conclusion at the bottom was still true.</p>
+
+    <p>Individually, AI was making everyone faster. Collectively, the team had three different versions of the truth, each living inside a private session that the others couldn't read.</p>
+  `,
+
+  solution: `
+    <p>We rebuilt the team's source of truth around one principle: any decision, summary, or update produced by anyone, person or AI, has to land somewhere the rest of the team and their AI can read it. Not a private chat. Not a personal note. The shared brain.</p>
+
+    <p><strong>Create Visibility</strong><br/>
+    One shared place where work, context, and current state actually live. Documents, summaries, account notes, decisions. Both the team and their AI assistants can read from it. When someone has a question, they ask the shared brain, not a teammate, and not someone else's chat history.</p>
+
+    <p><strong>Build Accountability</strong><br/>
+    A routine for closing out a session. Before a window closes, the AI summarizes what changed and writes it back to the shared brain. The discipline that used to require humans to remember to update the wiki now happens because the AI is the one updating it.</p>
+
+    <p><strong>Connect the AI to the Systems That Already Hold the Truth</strong><br/>
+    The shared brain reads from and writes to the systems the team already runs the business on: CRM, inventory, project notes, shared documents. The AI doesn't have to be told where the truth lives. It can go check.</p>
+
+    <p><strong>The Compounding Twist</strong><br/>
+    The old company-wiki problem was that it was only as good as the discipline of the humans updating it. After three months everyone gave up and it went stale. When the AI is the one writing back to the shared brain, the discipline inverts. The brain gets more robust over time, not less, because it gets updated as a byproduct of work, not on top of it.</p>
+  `,
+
+  results: [
+    { text: "Sources of truth, after consolidation", stat: "3 → 1" },
+    { text: "Reading teammates' AI chat history", stat: "Eliminated" },
+    { text: "Shared brain refresh cadence", stat: "Continuous" },
+  ],
+  resultsTimeframe: "first quarter",
+
+  videoUrl: "",
+  videoType: "none",
+  thumbnailUrl: "",
+  featured: true,
+  order: 4,
+
+  longFormSections: [
+    {
+      heading: "The Problem: When Three Operators Start Outrunning the Shared Brain",
+      content: "",
+      subsections: [
+        {
+          subheading: "The Day Chat Archaeology Became a Daily Habit",
+          content: `
+            <p>The breaking point is always the same kind of moment. Someone needs an answer the team has already worked out. They ask. The response comes back: "I'll have to find their chat history." Five minutes later, the person looking is scrolling through pages of someone else's AI conversation from earlier in the week, trying to figure out what the conclusion was, whether that conclusion is still current, and whether the underlying facts have changed since.</p>
+
+            <p>This kind of friction was never the plan. Six months earlier, AI adoption looked like pure upside. Each operator was working faster. Tasks that used to take a day were taking an afternoon. Research that used to take an afternoon was taking twenty minutes. The owner could see the gains in everyone's output and felt good about the trajectory.</p>
+
+            <p>The problem was that the gains lived inside private sessions. Each operator's AI knew their own preferences, their own past work, their own threads. None of them knew anyone else's. The shared knowledge layer the team had relied on for years — call it the company brain — wasn't keeping up.</p>
+          `,
+        },
+        {
+          subheading: "Why Individual AI Use Breaks Shared Knowledge Faster Than Humans Alone Did",
+          content: `
+            <p>In the old world, three humans working in parallel produced a manageable amount of new context per week. If anything fell out of the shared brain, the gap was small enough that someone could fill it in by walking down the hall or sending a Slack.</p>
+
+            <p>AI changes the math. Forty minutes of focused work with an AI copilot now produces what used to take three days. Multiply that by three operators and the team is producing days of new context every day. The pile of unwritten knowledge — decisions made, summaries produced, customers researched, options considered — grows faster than any human discipline can keep up with.</p>
+
+            <p>This is the part most teams miss when they think about AI adoption. The faster everyone gets individually, the faster the shared layer falls behind. Without intervention, the gap widens until the team is six months in and operating off three different versions of the business.</p>
+          `,
+        },
+        {
+          subheading: "Why CRMs and Shared Docs Kept Failing",
+          content: `
+            <p>The standard answer to this problem for the last twenty years has been: keep the CRM up to date, write things down in the shared doc, file the meeting notes in the right folder. Most teams have a version of this playbook and most teams find it slips.</p>
+
+            <p>The reason it slips isn't laziness. It's that updating a shared system is overhead on top of the work, not a byproduct of it. The work happens in one place. The update happens in another. Whichever step is "extra" is the one that gets skipped when the day gets busy.</p>
+
+            <p>Three things this team had tried before:</p>
+
+            <p><strong>Attempt #1: "Just update the CRM."</strong><br/>
+            Worked for a month. Slipped quietly after that. Account notes drifted out of date. Whoever was using the CRM most actively still trusted it, the others stopped.</p>
+
+            <p><strong>Attempt #2: A shared doc for "decisions and summaries."</strong><br/>
+            Useful when remembered. Forgotten when the week got busy. The most important decisions were the ones least likely to make it into the doc, because they happened in the middle of high-pressure conversations where nobody was thinking about documentation.</p>
+
+            <p><strong>Attempt #3: "Just ask each other."</strong><br/>
+            Reasonable when the team was three people. Started cracking when the AI accelerated the volume of decisions each person was making per day. The number of small "wait, what did you decide on X?" interruptions climbed past the threshold where they were tolerable.</p>
+
+            <p>None of those failed because the people were undisciplined. They failed because the discipline was applied to the wrong layer. Humans were being asked to do the maintenance work that an AI could do faster, more consistently, and without forgetting.</p>
+          `,
+        },
+      ],
+    },
+    {
+      heading: "The Approach: One Shared Brain, Read and Write Access for the AI",
+      content: "",
+      subsections: [
+        {
+          subheading: "Visibility: One Place, Not Three Private Sessions",
+          content: `
+            <p>The first move was structural. The team picked one place where the source of truth would live — a shared knowledge layer the whole team and their AI could read from. Account notes, ongoing work, decisions, customer context, summaries. One layer, not three personal sessions.</p>
+
+            <p>From that day forward, the rule was simple. If a question's answer didn't live in the shared brain, the brain was the gap to close, not the teammate to interrupt. The shared brain became the first place to look, not the last.</p>
+
+            <p>This didn't change what tools each operator used day to day. People kept their own AI subscriptions, their own preferences, their own workflows. What changed was where the durable output of their work landed. The personal layer stayed personal. The shared layer became actually shared.</p>
+          `,
+        },
+        {
+          subheading: "Accountability: A Routine for Closing Out a Session",
+          content: `
+            <p>The second move was behavioral, but lighter than it sounds. At the end of any meaningful session — a research dive, a customer conversation, a decision worked through with an AI — the closing step is for the AI to summarize what changed and write it back to the shared brain.</p>
+
+            <p>This isn't a separate "now go update the wiki" task. It happens as part of wrapping up the work. The AI knows what was decided. The AI knows what was researched. The AI is the one positioned to write that down, not a tired human at the end of a long afternoon.</p>
+
+            <p>The team's role shifted from "remember to update the shared system" to "review what the AI wrote and approve it." Lower friction, higher reliability.</p>
+          `,
+        },
+        {
+          subheading: "Connecting the AI to the Systems That Already Hold the Truth",
+          content: `
+            <p>The third move was technical, but worth describing in business terms because the protocol is less important than the access.</p>
+
+            <p>The team's AI assistants got read and write access to the systems where the business actually runs: the CRM, the shared documents, the inventory and ticketing tools, the planning notes. Instead of an AI that lived in a sealed conversation and had to be told everything from scratch each time, the AI could go look. It could check the CRM for a customer's history. It could update an account note without being copy-pasted instructions. It could read this morning's inventory before answering a question about what's in stock.</p>
+
+            <p>What this meant practically: the answer to "do we have X in stock?" or "what did we last quote this client?" stopped being "let me find someone who knows" and started being a question the AI could answer for itself, against current data, in seconds.</p>
+
+            <p>The protocol used to wire this up matters less than the principle. The principle is that AI without access to your real systems is a sealed room. AI with access becomes part of the operating layer.</p>
+          `,
+        },
+        {
+          subheading: "The Compounding Twist: The Brain Maintains Itself",
+          content: `
+            <p>Here's the part that wasn't obvious until the system was running for a few weeks.</p>
+
+            <p>Every shared-knowledge system built in the last twenty years had the same fatal flaw. It was only as current as the humans were disciplined enough to keep it. After a month of fresh enthusiasm, every team's wiki, every team's CRM, every team's "single source of truth" started decaying. The information went stale. Trust in the system dropped. People stopped checking it because they couldn't trust it. The death spiral was predictable.</p>
+
+            <p>When the AI is the one writing back to the shared brain, that spiral inverts. The maintenance happens as a byproduct of work, not on top of it. The brain doesn't need a designated owner because every session contributes to it automatically. The more work the team does, the more current the shared layer becomes.</p>
+
+            <p>For the first time, the shared knowledge layer can keep up with the pace of the work, instead of lagging behind it.</p>
+          `,
+        },
+      ],
+    },
+    {
+      heading: "Why This Matters for Any Team Adopting AI",
+      content: "",
+      subsections: [
+        {
+          subheading: "The Individual-Productivity Paradox",
+          content: `
+            <p>The promise of AI at the individual level is real. People who learn how to use it well move three to ten times faster on certain kinds of work. That part isn't in dispute.</p>
+
+            <p>What gets missed is the second-order effect on teams. Speed at the individual level, without a corresponding upgrade to the shared layer, creates more fragmentation, not less. Three people moving fast in their own private sessions diverge faster than three people moving slowly with the same tools.</p>
+
+            <p>The teams that win the next decade aren't the ones with the best individual AI users. They're the ones whose shared layer keeps up with how fast their people are moving.</p>
+          `,
+        },
+        {
+          subheading: "Why 'Everyone Use the Same Tool' Doesn't Solve It",
+          content: `
+            <p>The intuitive answer to fragmentation is standardization. "Let's all use the same AI." But that solves the wrong half of the problem. Even with one shared tool, each person's session is private to them. Each conversation builds context that doesn't reach anyone else.</p>
+
+            <p>The fragmentation isn't caused by the tool choice. It's caused by where the durable output of the work lives. As long as that output sits inside private sessions, the team is fragmented no matter how aligned the tooling looks.</p>
+
+            <p>The fix isn't tool consolidation. It's investing in a shared layer that any tool, any AI, any teammate can read and write to.</p>
+          `,
+        },
+        {
+          subheading: "Why the Brain Has to Be Machine-Readable",
+          content: `
+            <p>Most "shared knowledge" systems were designed for humans to read. Notion pages. Google Docs. Slack channels. They work fine if a person is doing the lookup.</p>
+
+            <p>The shift is that increasingly, the entity doing the lookup is an AI working on behalf of a person. If the shared layer is shaped for humans only — long prose, scattered formatting, buried context — the AI has a hard time getting to the answer. The lookup degrades.</p>
+
+            <p>A shared brain that's designed for both humans and their AI to read is a different artifact. It's structured enough that a machine can navigate it, clear enough that a person can scan it. That dual-audience design is the unlock. It's what makes "ask the shared brain" a faster answer than "ask a teammate."</p>
+          `,
+        },
+        {
+          subheading: "Why Systems Beat Discipline, Every Time",
+          content: `
+            <p>The team principles around AI use — when to update, where to write summaries, how to close out a session — sound like a behavior change problem. They aren't, mostly. They're a system design problem.</p>
+
+            <p>If the design of the work means the AI naturally writes back to the shared brain at the end of every session, no behavior has to change. The discipline gets absorbed by the system. The humans review what the AI produced and approve it, which is a much easier ask than "remember to update the wiki at the end of every day."</p>
+
+            <p>This isn't about technology. It's about visibility into where the truth lives, accountability for keeping it current, and a system design that doesn't rely on human memory to stay updated. The tool is irrelevant. The principles are what matter.</p>
+          `,
+        },
+      ],
+    },
+    {
+      heading: "This Approach Works for Any Team With More Than One AI Operator",
+      content: `
+        <p>The pattern in this case study was a small distributed team adopting AI at the individual level. The same problem shows up across very different setups:</p>
+
+        <ul>
+          <li><strong>Founder-led businesses</strong> where the founder and one or two key operators are each using AI heavily, and the shared layer hasn't caught up</li>
+          <li><strong>Professional services firms</strong> where individual partners or consultants are accelerating their own work, but the firm's shared client knowledge is fragmenting</li>
+          <li><strong>Agencies and consultancies</strong> where every account lead has their own AI workflow but client context lives nowhere shared</li>
+          <li><strong>Family businesses and partnerships</strong> where two or three principals make most of the decisions, increasingly with AI in the loop, and the next generation can't get to that context</li>
+          <li><strong>Distributed remote teams</strong> where async work was already a coordination challenge and AI has multiplied the volume each person produces in a day</li>
+        </ul>
+
+        <p>If your team has more than one person using AI seriously, and you've started to feel that the shared knowledge layer isn't keeping up with the pace of individual work, this is the underlying pattern. The fix is structural, not just behavioral.</p>
+      `,
+    },
+  ],
+
+  keyTakeaways: [
+    "Individual AI productivity accelerates faster than shared knowledge can keep up, unless you invest in the shared layer deliberately",
+    "Standardizing on one AI tool doesn't fix fragmentation — durable output still lives in private sessions",
+    "The shared brain has to be readable by both humans and their AI, or it degrades back into a stale wiki",
+    "Making the AI responsible for closing-out summaries inverts the old wiki-decay problem — the system gets more current, not less, as the team does more work",
+    "Connect your AI to the systems that already hold the truth, so the answer to most questions is a lookup, not an interruption",
+    "This isn't a behavior change problem disguised as a technology problem. It's a system design problem that, once solved, removes the need for most of the behavior change",
+  ],
+
+  faqs: [
+    {
+      question: "Do we need to consolidate onto one AI tool first?",
+      answer: "No. The shared brain sits underneath whatever tools individual people prefer. Each operator can keep their own AI subscription, their own workflow, their own preferences. What matters is where the durable output of their work lands. The personal layer stays personal. The shared layer is what gets invested in.",
+    },
+    {
+      question: "How long does it take to stand this up?",
+      answer: "For a small team, the structural work is usually a few weeks. The shared brain itself can be running quickly. The longer arc is wiring the AI assistants into the systems that already hold the truth — CRM, shared docs, inventory, ticketing. That work scales with how many systems and how messy they are. Most small teams see noticeable improvement inside the first quarter.",
+    },
+    {
+      question: "What if our team isn't disciplined enough to keep this current?",
+      answer: "That was the original problem and it's the part this approach is designed to solve. The shared brain stays current because the AI is the one writing summaries back to it at the end of each session, not the humans. People review and approve. They don't have to remember to update.",
+    },
+    {
+      question: "What happens to the private chats people are using today?",
+      answer: "They keep using them. The change isn't a ban on personal AI sessions. It's that the durable output — decisions, summaries, updated facts — lands in the shared brain at the end of the session instead of staying inside the private chat. Personal sessions are still the right place for individual thinking and exploration.",
+    },
+    {
+      question: "Will the team feel surveilled?",
+      answer: "No, because nobody else is reading their personal sessions. What gets shared is the summary the AI writes at the end of a session, which the operator approves before it lands in the brain. People stay in control of what they contribute. The transparency is at the level of decisions and outcomes, not at the level of individual chat windows.",
+    },
+    {
+      question: "Can we pilot this with one part of the business first?",
+      answer: "Yes, and that's usually how it should start. Pick one function — sales, account management, operations — where the fragmentation is most painful. Stand up the shared brain for that slice, wire in the relevant systems, and let the team get used to the new closing-out routine. Once it works in one area, the pattern is easy to extend.",
+    },
+    {
+      question: "What happens to this when someone leaves the team?",
+      answer: "This is one of the most underrated benefits. In the old model, when a team member left, a chunk of the company's context left with them. With a shared brain that's been getting updated continuously, the durable knowledge stays. The next person picks up from where the work actually was, not from where the leaver remembered to document it.",
+    },
+  ],
+});
+
 export function getSEOCaseStudyBySlug(slug: string): CaseStudy | undefined {
   return SEO_CASE_STUDIES.find((cs) => cs.slug === slug);
 }

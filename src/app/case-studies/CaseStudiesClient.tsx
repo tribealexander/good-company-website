@@ -225,6 +225,54 @@ export default function CaseStudiesClient({ initialCaseStudies }: CaseStudiesCli
                                 </div>
                               </div>
                             </div>
+                          ) : study.slug === "team-ai-shared-brain-small-business" ? (
+                            /* Mini shared-brain architecture thumbnail */
+                            <div className="absolute inset-0 bg-[#FAF9F7] p-4 flex flex-col">
+                              <div className="flex items-center justify-between mb-3">
+                                <span className="text-[10px] font-bold text-[#004D36]">Shared Brain Architecture</span>
+                                <span className="bg-[#006747] text-white text-[7px] font-semibold px-1.5 py-0.5 rounded-full">SYNCED</span>
+                              </div>
+                              {/* Personal AI row */}
+                              <div className="grid grid-cols-3 gap-1.5 mb-2">
+                                {["Personal AI", "Personal AI", "Personal AI"].map((label, i) => (
+                                  <div key={i} className="bg-white rounded p-1.5 border border-[#D4CFC7] text-center">
+                                    <p className="text-[6px] text-[#6B6B6B] uppercase tracking-wider">{label}</p>
+                                    <p className="text-[8px] font-bold text-[#3D3D3D]">Operator {i + 1}</p>
+                                  </div>
+                                ))}
+                              </div>
+                              {/* Arrows */}
+                              <div className="flex justify-around mb-1">
+                                {[0, 1, 2].map((i) => (
+                                  <div key={i} className="flex flex-col items-center leading-none">
+                                    <span className="text-[#006747] text-[8px]">&darr;</span>
+                                    <span className="text-[#B8860B] text-[8px]">&uarr;</span>
+                                  </div>
+                                ))}
+                              </div>
+                              {/* Shared brain bar */}
+                              <div className="bg-[#006747] rounded px-2 py-1.5 mb-2 text-center">
+                                <p className="text-[7px] uppercase tracking-wider text-white/70 font-semibold">Layer · Shared Context</p>
+                                <p className="text-[10px] font-bold text-white">Shared Brain</p>
+                              </div>
+                              {/* Arrows */}
+                              <div className="flex justify-around mb-1">
+                                {[0, 1, 2, 3].map((i) => (
+                                  <div key={i} className="flex flex-col items-center leading-none">
+                                    <span className="text-[#006747] text-[8px]">&uarr;</span>
+                                    <span className="text-[#B8860B] text-[8px]">&darr;</span>
+                                  </div>
+                                ))}
+                              </div>
+                              {/* Source of truth row */}
+                              <div className="grid grid-cols-4 gap-1">
+                                {["CRM", "Inventory", "Docs", "Tickets"].map((label) => (
+                                  <div key={label} className="bg-white rounded p-1 border border-[#D4CFC7] text-center">
+                                    <p className="text-[7px] font-bold text-[#004D36] leading-tight">{label}</p>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
                           ) : (
                             /* Placeholder for no thumbnail */
                             <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#004D36] to-[#006747]">
