@@ -354,16 +354,16 @@ export default function AgentsPage() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#1E40FF]/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
           <Link
-            href="/signal-to"
+            href="/agent-assembly"
             className="font-mono text-sm font-medium uppercase tracking-widest text-white transition-opacity hover:opacity-70"
           >
             ← Agent Assembly
           </Link>
           <Link
-            href="/signal-to#apply"
+            href="/agent-assembly#apply"
             className="bg-[#C7FF3F] px-5 py-2.5 font-mono text-xs font-semibold uppercase tracking-widest text-black transition-opacity hover:opacity-90"
           >
-            Apply
+            Save Your Seat
           </Link>
         </div>
       </nav>
@@ -429,7 +429,7 @@ export default function AgentsPage() {
           <div className="mx-auto max-w-7xl px-6 py-12 lg:px-10">
             <div className="flex flex-col items-center gap-5 md:flex-row md:justify-between">
               <Link
-                href="/signal-to"
+                href="/agent-assembly"
                 className="font-mono text-xs uppercase tracking-widest text-[#C7FF3F] transition-opacity hover:opacity-70"
               >
                 ← Back to Agent Assembly
