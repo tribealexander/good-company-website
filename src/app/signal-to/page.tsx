@@ -361,7 +361,7 @@ export default function AgentAssembly() {
             href="#apply"
             className="bg-[#C7FF3F] px-5 py-2.5 font-mono text-xs font-semibold uppercase tracking-widest text-black transition-opacity hover:opacity-90"
           >
-            Apply
+            Save Your Seat
           </a>
         </div>
       </nav>
@@ -484,7 +484,7 @@ export default function AgentAssembly() {
               {[
                 { label: "When", value: "Fall 2026", sub: "Single day" },
                 { label: "Where", value: "Toronto", sub: "Venue TBA" },
-                { label: "Who", value: "50–80", sub: "By application" },
+                { label: "Who", value: "Operators", sub: "Owners, VPs, GMs" },
                 { label: "What", value: "Talks + Tables", sub: "Operator-led" },
               ].map((item, i) => (
                 <div
@@ -552,7 +552,7 @@ export default function AgentAssembly() {
                   Talks are 15 minutes, operator-led, real numbers — the kind of case studies you&apos;d ask about at dinner if you got the chance.
                 </p>
                 <p>
-                  Everything else is open: lunch with no assigned seating, drinks at the end, real pauses built into the day. The room is capped at 50–80 people so the conversations you have actually compound the talks you watched.
+                  Everything else is open: lunch with no assigned seating, drinks at the end, real pauses built into the day so the conversations actually compound the talks you watched.
                 </p>
                 <p>
                   The structure is for the room, not just the program.
@@ -595,9 +595,9 @@ export default function AgentAssembly() {
                     "VPs and heads of marketing, finance, customer success, and operations at larger organizations — with the budget and mandate to figure AI out for your function.",
                 },
                 {
-                  label: "By Application",
+                  label: "Cross-Functional Mix",
                   description:
-                    "Every attendee applies. The bar is operational responsibility, not company size. Owners and enterprise VPs in the same room, on equal footing.",
+                    "Owners and enterprise VPs in the same room on equal footing. The conversations get sharper when ops, marketing, finance, and the C-suite are all present at once.",
                 },
               ].map((item) => (
                 <div key={item.label}>
@@ -725,10 +725,10 @@ export default function AgentAssembly() {
               Want a seat?
             </h2>
             <p className="mx-auto mb-12 max-w-xl text-lg text-white/70">
-              Tickets aren't on sale. Apply, tell us what you're working on, and if there's a fit we'll be in touch.
+              Drop your details and tell us what you're working on. We'll send program updates and lock your seat as the lineup firms up.
             </p>
             <a
-              href="mailto:hello@yourgoodcompany.com?subject=Agent Assembly application"
+              href="mailto:hello@yourgoodcompany.com?subject=Agent Assembly — Save my seat"
               className="inline-flex items-center bg-[#C7FF3F] px-10 py-5 font-mono text-sm font-semibold uppercase tracking-widest text-black transition-opacity hover:opacity-90"
             >
               Save Your Seat
